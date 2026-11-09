@@ -45,26 +45,26 @@ html, body {
 /* ================================================================= */
 
 /* SUPERFICIES CLARAS (POR DEFECTO): Texto Negro Pizarra */
-h1:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *),
-h2:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *),
-h3:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *),
-h4:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *),
-h5:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *),
-h6:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *),
-strong:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *),
-b:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *) {
+h1:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *):not(#modalRunnerWasm *):not(.dashboard-mockup-preview *):not(.cyberpunk-glitch-container *):not(.wasm-terminal-card *):not(.wasm-dark-card *),
+h2:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *):not(#modalRunnerWasm *):not(.dashboard-mockup-preview *):not(.cyberpunk-glitch-container *):not(.wasm-terminal-card *):not(.wasm-dark-card *),
+h3:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *):not(#modalRunnerWasm *):not(.dashboard-mockup-preview *):not(.cyberpunk-glitch-container *):not(.wasm-terminal-card *):not(.wasm-dark-card *),
+h4:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *):not(#modalRunnerWasm *):not(.dashboard-mockup-preview *):not(.cyberpunk-glitch-container *):not(.wasm-terminal-card *):not(.wasm-dark-card *),
+h5:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *):not(#modalRunnerWasm *):not(.dashboard-mockup-preview *):not(.cyberpunk-glitch-container *):not(.wasm-terminal-card *):not(.wasm-dark-card *),
+h6:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *):not(#modalRunnerWasm *):not(.dashboard-mockup-preview *):not(.cyberpunk-glitch-container *):not(.wasm-terminal-card *):not(.wasm-dark-card *),
+strong:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *):not(#modalRunnerWasm *):not(.dashboard-mockup-preview *):not(.cyberpunk-glitch-container *):not(.wasm-terminal-card *):not(.wasm-dark-card *),
+b:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *):not(#modalRunnerWasm *):not(.dashboard-mockup-preview *):not(.cyberpunk-glitch-container *):not(.wasm-terminal-card *):not(.wasm-dark-card *) {
     color: #0f172a !important;
 }
 
-p:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *),
-li:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *),
-td:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *) {
+p:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *):not(#modalRunnerWasm *):not(.dashboard-mockup-preview *):not(.cyberpunk-glitch-container *):not(.wasm-terminal-card *):not(.wasm-dark-card *),
+li:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *):not(#modalRunnerWasm *):not(.dashboard-mockup-preview *):not(.cyberpunk-glitch-container *):not(.wasm-terminal-card *):not(.wasm-dark-card *),
+td:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *):not(#modalRunnerWasm *):not(.dashboard-mockup-preview *):not(.cyberpunk-glitch-container *):not(.wasm-terminal-card *):not(.wasm-dark-card *) {
     color: #1e293b !important;
 }
 
-.concept-text:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *),
-.text-muted:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *),
-.text-secondary:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *) {
+.concept-text:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *):not(#modalRunnerWasm *):not(.dashboard-mockup-preview *):not(.cyberpunk-glitch-container *):not(.wasm-terminal-card *):not(.wasm-dark-card *),
+.text-muted:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *):not(#modalRunnerWasm *):not(.dashboard-mockup-preview *):not(.cyberpunk-glitch-container *):not(.wasm-terminal-card *):not(.wasm-dark-card *),
+.text-secondary:not(.hero-banner-python *):not(.alert-dark *):not(.dark-alert-box *):not(.bg-dark *):not(.bg-black *):not([style*="background-color:#000"] *):not([style*="background-color: #000"] *):not(.code-box-container *):not(.terminal-mockup-output *):not(#modalRunnerWasm *):not(.dashboard-mockup-preview *):not(.cyberpunk-glitch-container *):not(.wasm-terminal-card *):not(.wasm-dark-card *) {
     color: #1e293b !important;
     opacity: 1 !important;
 }
@@ -493,7 +493,7 @@ code.cmd-badge, .cmd-badge {
 /* ================================================================= */
 /* ==      TARJETAS, SECCIONES Y CONTENEDORES EN MODO CLARO         == */
 /* ================================================================= */
-.card, 
+.card:not(.bg-dark):not(.bg-black):not(.wasm-terminal-card):not(.wasm-dark-card), 
 .content-section, 
 .module-card,
 .theory-block, 
@@ -502,6 +502,16 @@ code.cmd-badge, .cmd-badge {
     background-color: #ffffff !important;
     border: 1px solid #cbd5e1 !important;
     color: #0f172a !important;
+    border-radius: 10px;
+}
+
+.card.bg-dark,
+.card.bg-black,
+.wasm-terminal-card,
+.wasm-dark-card {
+    background-color: #0d1117 !important;
+    border: 1px solid #334155 !important;
+    color: #f8fafc !important;
     border-radius: 10px;
 }
 
@@ -1273,7 +1283,8 @@ img {
 }
 
 #modalRunnerWasm .nav-pills .nav-link:hover:not(.active) {
-    background: #e2e8f0 !important;
+    background: #1d4ed8 !important;
+    color: #ffffff !important;
 }
 
 @media (max-width: 991.98px) {
@@ -1360,4 +1371,165 @@ img {
 #wasmCodeInput::selection {
     background: rgba(56, 189, 248, 0.3) !important;
     color: transparent !important;
+}
+
+
+/* ========================================================================== */
+/* 🛡️ GOBERNANZA ESTRICTA DE CONTRASTE WCAG 2.2 AAA (MODAL & MOCKUPS)         */
+/* ========================================================================== */
+.dashboard-mockup-preview {
+    background-color: #090d16 !important;
+    color: #f8fafc !important;
+    border: 1px solid #334155 !important;
+}
+.dashboard-mockup-preview h1,
+.dashboard-mockup-preview h2,
+.dashboard-mockup-preview h3,
+.dashboard-mockup-preview h4,
+.dashboard-mockup-preview h5,
+.dashboard-mockup-preview h6 {
+    color: #38bdf8 !important;
+    font-weight: 800 !important;
+}
+.dashboard-mockup-preview p,
+.dashboard-mockup-preview li,
+.dashboard-mockup-preview span:not(.badge),
+.dashboard-mockup-preview small,
+.dashboard-mockup-preview .concept-text {
+    color: #e2e8f0 !important;
+}
+.dashboard-mockup-preview strong,
+.dashboard-mockup-preview b {
+    color: #facc15 !important;
+}
+
+/* Modal Runner Wasm High Contrast Rules */
+#modalRunnerWasm #wasmCodeStats,
+#modalRunnerWasm #wasmTerminalCharCount,
+#modalRunnerWasm .modal-footer span.text-secondary {
+    color: #cbd5e1 !important;
+}
+
+#modalRunnerWasm #wasmTerminalCard {
+    background-color: #0d1117 !important;
+    border: 1px solid #30363d !important;
+}
+
+#modalRunnerWasm #wasmTerminalOutput {
+    background-color: #0d1117 !important;
+    color: #e2e8f0 !important;
+    font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace !important;
+}
+
+/* Alertas locales dentro del modal: fondo claro con texto negro pizarra nítido */
+#modalRunnerWasm #wasmLocalProjectAlert .alert-warning {
+    background-color: #fef3c7 !important;
+    color: #0f172a !important;
+    border: 2px solid #000000 !important;
+}
+#modalRunnerWasm #wasmLocalProjectAlert .alert-info {
+    background-color: #e0f2fe !important;
+    color: #0f172a !important;
+    border: 2px solid #000000 !important;
+}
+#modalRunnerWasm #wasmLocalProjectAlert .alert-secondary {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+    border: 2px solid #000000 !important;
+}
+#modalRunnerWasm #wasmLocalProjectAlert strong,
+#modalRunnerWasm #wasmLocalProjectAlert .text-dark,
+#modalRunnerWasm #wasmLocalProjectAlert .text-muted {
+    color: #0f172a !important;
+}
+#modalRunnerWasm #wasmLocalProjectAlert .bg-black,
+#modalRunnerWasm #wasmLocalProjectAlert .bg-black * {
+    background-color: #090d16 !important;
+}
+
+/* Visor Estructurado de Tablas y DataFrames en el Modal */
+.wasm-df-card {
+    background-color: #ffffff !important;
+    border: 2px solid #000000 !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    box-shadow: 4px 4px 0px #000000 !important;
+}
+.wasm-df-card .card-header {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    border-bottom: 2px solid #000000 !important;
+}
+.wasm-df-table {
+    width: 100% !important;
+    margin-bottom: 0 !important;
+    border-collapse: collapse !important;
+    font-size: 0.82rem !important;
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+}
+.wasm-df-table thead th {
+    background-color: #1e293b !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    padding: 8px 10px !important;
+    border: 1px solid #334155 !important;
+    white-space: nowrap !important;
+}
+.wasm-df-table tbody tr:nth-child(odd) {
+    background-color: #ffffff !important;
+}
+.wasm-df-table tbody tr:nth-child(even) {
+    background-color: #f1f5f9 !important;
+}
+.wasm-df-table tbody td,
+.wasm-df-table tbody th {
+    color: #0f172a !important;
+    padding: 6px 10px !important;
+    border: 1px solid #cbd5e1 !important;
+}
+
+/* Emulador en Vivo de Streamlit dentro del Modal */
+.streamlit-live-emulator {
+    background-color: #f8fafc !important;
+    color: #0f172a !important;
+    border: 2px solid #000000 !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    box-shadow: 4px 4px 0px #000000 !important;
+}
+.streamlit-live-header {
+    background: linear-gradient(90deg, #ff4b4b 0%, #ff7b72 100%) !important;
+    color: #ffffff !important;
+    padding: 10px 16px !important;
+    border-bottom: 2px solid #000000 !important;
+    font-weight: 800 !important;
+}
+.streamlit-kpi-card {
+    background-color: #ffffff !important;
+    border: 2px solid #0f172a !important;
+    border-radius: 8px !important;
+    padding: 12px 14px !important;
+    box-shadow: 2px 2px 0px #0f172a !important;
+    height: 100% !important;
+}
+.streamlit-kpi-label {
+    font-size: 0.76rem !important;
+    font-weight: 700 !important;
+    color: #475569 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.4px !important;
+    margin-bottom: 4px !important;
+}
+.streamlit-kpi-value {
+    font-size: 1.25rem !important;
+    font-weight: 900 !important;
+    color: #0f172a !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+}
+.streamlit-kpi-delta {
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    color: #15803d !important;
+    margin-top: 2px !important;
 }
