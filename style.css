@@ -1224,21 +1224,26 @@ img {
 }
 
 .btn-run-code {
-    background: #000000 !important;
+    background: #059669 !important;
     color: #ffffff !important;
-    border: 2px solid #000000 !important;
+    border: 1.5px solid #34d399 !important;
     border-radius: 6px !important;
     padding: 4px 12px !important;
     font-size: 0.82rem !important;
     font-weight: 700 !important;
     cursor: pointer !important;
     transition: all 0.2s ease !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35) !important;
 }
 .btn-run-code:hover {
-    background: #10b981 !important;
-    color: #ffffff !important;
+    background: #F5C518 !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
     transform: translateY(-1px) !important;
     box-shadow: 2px 2px 0px #000000 !important;
+}
+.btn-run-code:hover i {
+    color: #000000 !important;
 }
 
 .btn-run-floating {
