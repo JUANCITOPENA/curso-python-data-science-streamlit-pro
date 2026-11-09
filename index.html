@@ -35489,76 +35489,82 @@ document.addEventListener('DOMContentLoaded', () => {
 <!-- ======================================================= -->
 <!-- ⚡ MODAL MAESTRO: LABORATORIO INTERACTIVO WEBASSEMBLY (PYODIDE PRO STUDIO) -->
 <!-- ======================================================= -->
+<!-- ========================================================================== -->
+<!-- ⚡ TERMINAL DE PRUEBAS PYTHON & CONSOLA GRÁFICA (ESTÁNDAR DIPLOMADO CAES) -->
+<!-- ========================================================================== -->
 <div class="modal fade" id="modalRunnerWasm" tabindex="-1" aria-labelledby="modalRunnerWasmLabel" aria-hidden="true" data-bs-backdrop="static">
-  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" id="modalRunnerWasmDialog" style="max-width: 95vw; margin: 1.5vh auto;">
-    <div class="modal-content border-3 border-black shadow-hard-lg" style="background: #ffffff; border-radius: 16px; overflow: hidden;">
+  <div class="modal-dialog modal-dialog-centered" id="modalRunnerWasmDialog" style="max-width: 95vw; width: 95vw; margin: 1.5vh auto; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);">
+    <div class="modal-content shadow-hard-lg" style="background: #0f172a; border: 3px solid #000000; border-radius: 14px; overflow: hidden; height: 92vh; display: flex; flex-direction: column;">
       
-      <!-- HEADER DEL MODAL -->
-      <div class="modal-header bg-black text-white px-4 py-3 border-bottom border-black d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <!-- ENCABEZADO SUPERIOR DEL MODAL ESTILO MAC -->
+      <div class="modal-header py-3 px-4 d-flex justify-content-between align-items-center" style="background: #1e293b; border-bottom: 2px solid #000000;">
         <div class="d-flex align-items-center gap-2">
-          <span style="font-size: 1.4rem;">⚡</span>
-          <div>
-            <h5 class="modal-title fw-bold text-white mb-0" id="modalRunnerWasmLabel" style="font-family: 'Space Grotesk', sans-serif;">
-              JPV Python WebAssembly Studio Pro
-            </h5>
-            <div class="d-flex align-items-center gap-2 mt-1">
-              <span class="badge bg-warning text-black fw-bold" id="wasmEngineBadge" style="font-size: 0.75rem;">
-                <i class="fa-solid fa-microchip me-1"></i> WebAssembly Pyodide v0.26.1
-              </span>
-              <span class="badge bg-success text-white fw-bold" id="wasmStatusIndicator" style="font-size: 0.75rem;">
-                <i class="fa-solid fa-circle-check me-1"></i> Listo en RAM
-              </span>
-            </div>
+          <div class="d-flex gap-1 me-2">
+            <span style="width: 12px; height: 12px; border-radius: 50%; background: #EF4444; display: inline-block;"></span>
+            <span style="width: 12px; height: 12px; border-radius: 50%; background: #F5C518; display: inline-block;"></span>
+            <span style="width: 12px; height: 12px; border-radius: 50%; background: #10B981; display: inline-block;"></span>
           </div>
+          <h5 class="modal-title fw-bold mb-0 text-white fs-5" id="modalRunnerWasmLabel" style="font-family: 'Space Grotesk', sans-serif;">
+            <i class="fa-solid fa-terminal text-warning me-2"></i>Terminal de Pruebas Python & Consola Gráfica
+          </h5>
+          <span class="badge bg-primary text-white border border-black px-2 py-1 ms-2 small d-none d-md-inline-block" id="wasmStatusIndicator">
+            <i class="fa-solid fa-circle-check me-1"></i> Listo en RAM
+          </span>
         </div>
-
+        
         <div class="d-flex align-items-center gap-2">
-          <button type="button" class="btn btn-sm btn-outline-light fw-bold px-3 py-1 border-2" id="btnToggleWasmFullscreen" title="Alternar Pantalla Completa" onclick="window.toggleWasmFullscreen()">
+          <!-- BOTÓN FOTO DEL CÓDIGO (SNAPSHOT HD) -->
+          <button type="button" class="btn btn-sm btn-warning text-black fw-bold px-3 py-1 border-2 border-black" onclick="window.descargarFotoCodigo()" title="Descargar imagen estilizada del código en HD">
+            <i class="fa-solid fa-camera me-1"></i> <span class="d-none d-sm-inline">Foto del Código</span>
+          </button>
+          <!-- BOTÓN PANTALLA COMPLETA -->
+          <button type="button" class="btn btn-sm btn-outline-info px-3 fw-bold border-2" id="btnToggleWasmFullscreen" onclick="window.toggleWasmFullscreen()" title="Alternar Pantalla Completa">
             <i class="fa-solid fa-expand me-1" id="iconWasmFullscreen"></i> <span id="textWasmFullscreen" class="d-none d-sm-inline">Pantalla Completa</span>
           </button>
+          <!-- BOTÓN CERRAR -->
           <button type="button" class="btn btn-sm btn-light text-black fw-bold px-3 py-1 border-2 border-black" data-bs-dismiss="modal" aria-label="Cerrar">
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
       </div>
 
-      <!-- BARRA DE PESTAÑAS MULTI-ENTORNO -->
-      <div class="bg-light px-4 py-2 border-bottom border-2 border-black d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <!-- BARRA DE PESTAÑAS Y HERRAMIENTAS -->
+      <div class="px-4 py-2 border-bottom border-2 border-black d-flex justify-content-between align-items-center flex-wrap gap-2" style="background: #111827;">
         <ul class="nav nav-pills gap-2" id="wasmEnvironmentTabs" role="tablist">
           <li class="nav-item" role="presentation">
-            <button class="nav-link active fw-bold px-3 py-1 border border-black text-black" id="tab-online-btn" data-bs-toggle="pill" data-bs-target="#tab-online-content" type="button" role="tab" style="border-radius: 8px;">
-              🟢 En Línea (WebAssembly)
+            <button class="nav-link active fw-bold px-3 py-1 border border-black text-white" id="tab-online-btn" data-bs-toggle="pill" data-bs-target="#tab-online-content" type="button" role="tab" style="border-radius: 6px; background: #2563eb;">
+              🟢 En Línea (Wasm)
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link fw-bold px-3 py-1 border border-black text-black" id="tab-pystudio-btn" data-bs-toggle="pill" data-bs-target="#tab-pystudio-content" type="button" role="tab" style="border-radius: 8px;">
+            <button class="nav-link fw-bold px-3 py-1 border border-black text-white" id="tab-pystudio-btn" data-bs-toggle="pill" data-bs-target="#tab-pystudio-content" type="button" role="tab" style="border-radius: 6px; background: #374151;">
               🌐 JPV PyStudio Cloud
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link fw-bold px-3 py-1 border border-black text-black" id="tab-colab-btn" data-bs-toggle="pill" data-bs-target="#tab-colab-content" type="button" role="tab" style="border-radius: 8px;">
+            <button class="nav-link fw-bold px-3 py-1 border border-black text-white" id="tab-colab-btn" data-bs-toggle="pill" data-bs-target="#tab-colab-content" type="button" role="tab" style="border-radius: 6px; background: #374151;">
               🟡 Google Colab
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link fw-bold px-3 py-1 border border-black text-black" id="tab-vscode-btn" data-bs-toggle="pill" data-bs-target="#tab-vscode-content" type="button" role="tab" style="border-radius: 8px;">
+            <button class="nav-link fw-bold px-3 py-1 border border-black text-white" id="tab-vscode-btn" data-bs-toggle="pill" data-bs-target="#tab-vscode-content" type="button" role="tab" style="border-radius: 6px; background: #374151;">
               💻 VS Code Local
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link fw-bold px-3 py-1 border border-black text-black" id="tab-github-btn" data-bs-toggle="pill" data-bs-target="#tab-github-content" type="button" role="tab" style="border-radius: 8px;">
+            <button class="nav-link fw-bold px-3 py-1 border border-black text-white" id="tab-github-btn" data-bs-toggle="pill" data-bs-target="#tab-github-content" type="button" role="tab" style="border-radius: 6px; background: #374151;">
               🐙 Repositorio GitHub
             </button>
           </li>
         </ul>
 
-        <!-- SELECTOR DE PLANTILLAS MAESTRAS -->
+        <!-- SELECTOR DE PLANTILLAS -->
         <div class="d-flex align-items-center gap-2">
-          <label for="selectWasmPlantilla" class="small fw-bold text-secondary text-nowrap d-none d-md-inline">
-            <i class="fa-solid fa-folder-open me-1"></i> Plantillas:
+          <label for="selectWasmPlantilla" class="small fw-bold text-light text-nowrap d-none d-md-inline">
+            <i class="fa-solid fa-folder-open text-warning me-1"></i> Laboratorios:
           </label>
-          <select id="selectWasmPlantilla" class="form-select form-select-sm border-2 border-black fw-bold" style="min-width: 230px; border-radius: 8px;" onchange="window.cargarPlantillaEnModal(this.value)">
-            <option value="">📂 Cargar Plantilla Maestra...</option>
+          <select id="selectWasmPlantilla" class="form-select form-select-sm border-2 border-black fw-bold bg-dark text-white" style="min-width: 230px; border-radius: 6px;" onchange="window.cargarPlantillaEnModal(this.value)">
+            <option value="">📂 Cargar Laboratorio Rápido...</option>
             <option value="titanic">🚢 Titanic: Limpieza CSV Web & EDA</option>
             <option value="seaborn">📊 Seaborn: Heatmap & Correlación</option>
             <option value="sklearn">🤖 Scikit-Learn: Regresión Lineal & Métricas</option>
@@ -35574,138 +35580,116 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       </div>
 
-      <!-- CUERPO PRINCIPAL DEL MODAL -->
-      <div class="modal-body p-0" style="background: #f8fafc; min-height: 580px;">
-        <div class="tab-content" id="wasmTabContent">
+      <!-- CUERPO PRINCIPAL -->
+      <div class="modal-body p-3 p-lg-4" style="flex: 1; overflow: hidden; background: #0f172a;">
+        <div class="tab-content h-100" id="wasmTabContent">
           
-          <!-- PESTAÑA 1: EN LÍNEA (WEBASSEMBLY) -->
-          <div class="tab-pane fade show active" id="tab-online-content" role="tabpanel">
-            <div class="row g-0">
+          <!-- PESTAÑA 1: TERMINAL EN LÍNEA -->
+          <div class="tab-pane fade show active h-100" id="tab-online-content" role="tabpanel">
+            <div class="row g-3 h-100">
               
-              <!-- PANEL IZQUIERDO: EDITOR DE CÓDIGO + VFS -->
-              <div class="col-lg-6 border-end border-2 border-black d-flex flex-column" style="min-height: 580px; background: #ffffff;">
-                
-                <!-- Toolbar del Editor -->
-                <div class="p-3 bg-light border-bottom border-2 border-black d-flex justify-content-between align-items-center flex-wrap gap-2">
-                  <div class="d-flex align-items-center gap-2">
-                    <span class="badge bg-black text-white px-2 py-1 fw-bold">
-                      <i class="fa-brands fa-python me-1 text-warning"></i> <span id="wasmEditorFileName">script.py</span>
-                    </span>
-                    <span class="small text-muted fw-bold" id="wasmCodeStats">0 líneas | 0 chars</span>
-                  </div>
-
+              <!-- COLUMNA IZQUIERDA: CÓDIGO FUENTE -->
+              <div class="col-lg-6 d-flex flex-column h-100">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <label class="form-label fw-bold text-white mb-0 small text-uppercase" style="letter-spacing: 0.5px;">
+                    <i class="fa-solid fa-code text-info me-1"></i> Código Fuente (Editable en Vivo)
+                  </label>
                   <div class="d-flex gap-2">
-                    <button class="btn btn-sm btn-outline-secondary fw-bold border-2 border-black" title="Copiar código al portapapeles" onclick="window.copiarCodigoModal()">
+                    <button class="btn btn-sm btn-outline-secondary text-white border-secondary btn-copy-modal" onclick="window.copiarCodigoModal(this)" title="Copiar código">
                       <i class="fa-regular fa-copy me-1"></i> Copiar
                     </button>
-                    <button class="btn btn-sm btn-outline-secondary fw-bold border-2 border-black" title="Limpiar código" onclick="window.limpiarCodigoModal()">
+                    <button class="btn btn-sm btn-outline-secondary text-white border-secondary" onclick="window.limpiarCodigoModal()" title="Limpiar código">
                       <i class="fa-solid fa-eraser me-1"></i> Limpiar
                     </button>
-                    <button class="btn btn-sm btn-outline-secondary fw-bold border-2 border-black" title="Descargar archivo .py" onclick="window.descargarScriptModal()">
+                    <button class="btn btn-sm btn-outline-info text-info border-info" onclick="window.descargarScriptModal()" title="Descargar archivo .py">
                       <i class="fa-solid fa-download me-1"></i> .py
                     </button>
-                    <button class="btn btn-sm btn-success fw-bold text-white px-3 border-2 border-black shadow-sm" id="btnEjecutarWasm" onclick="window.ejecutarCodigoWasm()" style="background: #10b981;">
-                      <i class="fa-solid fa-play me-1"></i> <span id="textBtnEjecutar">Ejecutar (Ctrl+Enter)</span>
-                    </button>
                   </div>
                 </div>
 
-                <!-- Textarea del Editor -->
-                <div class="position-relative flex-grow-1" style="min-height: 380px;">
-                  <textarea id="wasmCodeInput" class="form-control h-100 border-0 p-3" style="font-family: 'Fira Code', 'JetBrains Mono', Consolas, monospace; font-size: 0.92rem; line-height: 1.5; background: #0d1117; color: #58a6ff; resize: none; border-radius: 0;" spellcheck="false" placeholder="# Escribe o pega tu código Python aquí..."></textarea>
+                <div class="flex-grow-1 position-relative" style="min-height: 280px;">
+                  <textarea id="wasmCodeInput" class="form-control h-100 border-0 p-3 font-monospace" style="background: #1e293b; color: #38bdf8; font-size: 0.92rem; line-height: 1.5; resize: none; border-radius: 8px;" spellcheck="false" placeholder="# Escribe o pega tu código Python aquí..."></textarea>
                 </div>
 
-                <!-- GESTOR DE DATOS Y VFS (SUBIR Y GENERAR DATASETS) -->
-                <div class="p-3 border-top border-2 border-black bg-light">
-                  <div class="d-flex justify-content-between align-items-center mb-2">
-                    <h6 class="fw-bold mb-0 text-black" style="font-family: 'Space Grotesk', sans-serif;">
-                      <i class="fa-solid fa-database text-primary me-1"></i> Gestor de Datasets y Archivos en Memoria (VFS)
-                    </h6>
-                    <span class="badge bg-secondary text-white" id="wasmFileCountBadge">0 archivos en RAM</span>
+                <div class="d-flex justify-content-between align-items-center mt-2 pt-2 border-top border-secondary">
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="badge bg-dark text-white px-2 py-1" id="wasmEditorFileName">script.py</span>
+                    <span class="small text-secondary fw-bold" id="wasmCodeStats">0 líneas | 0 chars</span>
                   </div>
+                  <button class="btn btn-warning text-black fw-bold px-4 py-2 border-2 border-black shadow-hard-sm" id="btnEjecutarWasm" onclick="window.ejecutarCodigoWasm()" style="background: #F5C518;">
+                    <i class="fa-solid fa-play me-1"></i> <span id="textBtnEjecutar">Ejecutar (Ctrl+Enter)</span>
+                  </button>
+                </div>
 
-                  <!-- Botones de subida y Drag & Drop -->
-                  <div class="d-flex flex-wrap gap-2 align-items-center mb-2">
-                    <label class="btn btn-sm btn-outline-dark fw-bold border-2 border-black mb-0 cursor-pointer" style="cursor: pointer;">
-                      <i class="fa-solid fa-cloud-arrow-up me-1 text-primary"></i> <span>Subir Mi Dataset (CSV / Excel / JSON)</span>
+                <!-- GESTOR DE DATASETS Y VFS EN MEMORIA -->
+                <div class="mt-2 p-2 rounded" style="background: #1e293b; border: 1px solid #334155;">
+                  <div class="d-flex justify-content-between align-items-center mb-1">
+                    <span class="text-white small fw-bold">
+                      <i class="fa-solid fa-database text-warning me-1"></i> Datasets en RAM (VFS):
+                    </span>
+                    <span class="badge bg-secondary text-white" id="wasmFileCountBadge">0 en RAM</span>
+                  </div>
+                  <div class="d-flex flex-wrap gap-2 align-items-center">
+                    <label class="btn btn-sm btn-outline-info py-0 px-2 fw-bold mb-0 cursor-pointer" style="cursor: pointer; font-size: 0.78rem;">
+                      <i class="fa-solid fa-upload me-1"></i> Subir Mi Dataset (.csv/.xlsx)
                       <input type="file" id="wasmInputFile" accept=".csv,.xlsx,.xls,.json,.txt" style="display: none;" onchange="window.manejarSubidaArchivoWasm(event)">
                     </label>
-
-                    <!-- Datasets sintéticos rápidos -->
-                    <div class="dropdown">
-                      <button class="btn btn-sm btn-warning text-black fw-bold border-2 border-black dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-wand-magic-sparkles me-1"></i> Generar Dataset de Prueba
-                      </button>
-                      <ul class="dropdown-menu border-2 border-black shadow-hard-sm">
-                        <li><a class="dropdown-item fw-bold" href="javascript:void(0)" onclick="window.inyectarDatasetSintetico('finanzas')">📊 Reporte Financiero Anual (CSV)</a></li>
-                        <li><a class="dropdown-item fw-bold" href="javascript:void(0)" onclick="window.inyectarDatasetSintetico('ventas')">🛒 Reporte Ventas 1,000 Registros (CSV)</a></li>
-                        <li><a class="dropdown-item fw-bold" href="javascript:void(0)" onclick="window.inyectarDatasetSintetico('nlp')">🧠 Dataset Sentimientos y NLP (CSV)</a></li>
-                        <li><a class="dropdown-item fw-bold" href="javascript:void(0)" onclick="window.inyectarDatasetSintetico('banco')">🏦 Base Solicitudes Bancarias (CSV)</a></li>
-                        <li><a class="dropdown-item fw-bold" href="javascript:void(0)" onclick="window.inyectarDatasetSintetico('titanic')">🚢 Titanic Pasajeros Oficial (CSV)</a></li>
-                      </ul>
-                    </div>
+                    <button class="btn btn-sm btn-outline-warning py-0 px-2 fw-bold" onclick="window.inyectarDatasetSintetico('finanzas')" style="font-size: 0.78rem;">
+                      📊 Finanzas CSV
+                    </button>
+                    <button class="btn btn-sm btn-outline-warning py-0 px-2 fw-bold" onclick="window.inyectarDatasetSintetico('ventas')" style="font-size: 0.78rem;">
+                      🛒 Ventas 1k CSV
+                    </button>
+                    <button class="btn btn-sm btn-outline-warning py-0 px-2 fw-bold" onclick="window.inyectarDatasetSintetico('titanic')" style="font-size: 0.78rem;">
+                      🚢 Titanic CSV
+                    </button>
                   </div>
-
-                  <!-- Lista de archivos cargados en el VFS -->
-                  <div id="wasmVfsList" class="d-flex flex-wrap gap-2 small">
-                    <span class="text-muted fst-italic">No hay archivos adicionales cargados en la memoria virtual.</span>
-                  </div>
+                  <div id="wasmVfsList" class="d-flex flex-wrap gap-1 mt-1 small"></div>
                 </div>
 
               </div>
 
-              <!-- PANEL DERECHO: TERMINAL + MÚLTIPLES GRÁFICOS + TABLAS -->
-              <div class="col-lg-6 d-flex flex-column" style="min-height: 580px; background: #ffffff;">
-                
-                <!-- Toolbar de Salida -->
-                <div class="p-3 bg-light border-bottom border-2 border-black d-flex justify-content-between align-items-center flex-wrap gap-2">
-                  <div class="d-flex align-items-center gap-2">
-                    <span class="badge bg-black text-white px-2 py-1 fw-bold">
-                      <i class="fa-solid fa-terminal me-1 text-success"></i> Salida de Ejecución
-                    </span>
-                    <span class="small text-muted fw-bold" id="wasmExecDuration">Listo</span>
-                  </div>
-
+              <!-- COLUMNA DERECHA: CONSOLA DE SALIDA + MÚLTIPLES GRÁFICOS -->
+              <div class="col-lg-6 d-flex flex-column h-100">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <label class="form-label fw-bold text-white mb-0 small text-uppercase" style="letter-spacing: 0.5px;">
+                    <i class="fa-solid fa-terminal text-success me-1"></i> Consola & Resultados
+                  </label>
                   <div class="d-flex gap-2">
-                    <button class="btn btn-sm btn-outline-secondary fw-bold border-2 border-black" title="Limpiar salida de consola y gráficos" onclick="window.limpiarSalidaModal()">
-                      <i class="fa-solid fa-trash me-1"></i> Limpiar Salida
+                    <span class="badge bg-dark text-info" id="wasmExecDuration">Listo</span>
+                    <button class="btn btn-sm btn-outline-secondary text-white border-secondary" onclick="window.limpiarSalidaModal()" title="Limpiar salida">
+                      <i class="fa-solid fa-trash me-1"></i> Limpiar
                     </button>
                   </div>
                 </div>
 
-                <!-- Contenedor scrollable de resultados -->
-                <div class="p-3 flex-grow-1 overflow-auto" id="wasmResultsContainer" style="max-height: 620px;">
+                <div class="flex-grow-1 overflow-auto p-3 rounded" id="wasmResultsContainer" style="background: #1e293b; border: 1px solid #334155; min-height: 280px; max-height: calc(92vh - 220px);">
                   
-                  <!-- Formulario dinámico para input() interactivo si el script lo requiere -->
-                  <div id="wasmDynamicInputContainer" style="display: none;" class="mb-3 p-3 bg-warning bg-opacity-10 border-2 border-warning rounded-3">
-                    <!-- Se inyecta dinámicamente si Python ejecuta input() -->
-                  </div>
+                  <!-- ALERTA DINÁMICA DE ENTORNO LOCAL (STREAMLIT / SQL SERVER / TKINTER) -->
+                  <div id="wasmLocalProjectAlert" style="display: none;"></div>
 
-                  <!-- Consola de Salida de Texto (stdout / stderr) -->
-                  <div class="card border-2 border-black shadow-hard-sm mb-3">
-                    <div class="card-header bg-black text-white py-2 px-3 d-flex justify-content-between align-items-center">
-                      <span class="fw-bold small"><i class="fa-solid fa-laptop-code text-warning me-1"></i> Consola Estándar (stdout)</span>
-                      <span class="badge bg-secondary text-white" id="wasmTerminalCharCount">0 chars</span>
+                  <!-- ENTRADA DE DATOS DINÁMICA PARA input() (CERO ALERTS DE JS) -->
+                  <div id="wasmDynamicInputContainer" style="display: none;" class="mb-3"></div>
+
+                  <!-- CONSOLA DE SALIDA STDOUT -->
+                  <div class="card border-0 mb-3" style="background: #0d1117; border-radius: 8px;">
+                    <div class="card-header py-1 px-3 d-flex justify-content-between align-items-center" style="background: #161b22; border-bottom: 1px solid #30363d;">
+                      <span class="text-white-50 small fw-bold"><i class="fa-solid fa-laptop-code text-warning me-1"></i> Salida de Terminal</span>
+                      <span class="text-secondary small" id="wasmTerminalCharCount">0 chars</span>
                     </div>
                     <div class="card-body p-0">
-                      <pre id="wasmTerminalOutput" class="m-0 p-3" style="font-family: 'Fira Code', 'JetBrains Mono', Consolas, monospace; font-size: 0.88rem; line-height: 1.45; background: #0d1117; color: #58a6ff; max-height: 250px; overflow-y: auto; white-space: pre-wrap; word-break: break-word;">Presiona "⚡ Ejecutar (Ctrl+Enter)" para compilar y probar tu código en tiempo real.</pre>
+                      <pre id="wasmTerminalOutput" class="m-0 p-3 font-monospace" style="background: transparent; color: #58a6ff; font-size: 0.88rem; line-height: 1.45; max-height: 220px; overflow-y: auto; white-space: pre-wrap; word-break: break-word;">Presiona "⚡ Ejecutar (Ctrl+Enter)" para compilar y probar tu código en tiempo real.</pre>
                     </div>
                   </div>
 
-                  <!-- CONTENEDOR DE MÚLTIPLES GRÁFICOS (1, 2, 3 O N VISTAS) -->
-                  <div id="wasmPlotsContainer" class="d-flex flex-column gap-3 mb-3">
-                    <!-- Cada figura de Matplotlib/Seaborn generada se inyectará aquí -->
-                  </div>
+                  <!-- CONTENEDOR MULTI-GRÁFICO (1, 2, 3 O N VISTAS) -->
+                  <div id="wasmPlotsContainer" class="d-flex flex-column gap-3 mb-3"></div>
 
-                  <!-- CONTENEDOR DE VISUALIZACIÓN INTERACTIVA (HTML / IFRAME PARA PLOTLY / FOLIUM) -->
-                  <div id="wasmInteractiveContainer" class="d-none mb-3">
-                    <!-- Se inyectará si el script genera mapa Folium o Plotly HTML -->
-                  </div>
+                  <!-- CONTENEDOR HTML INTERACTIVO -->
+                  <div id="wasmInteractiveContainer" class="d-none mb-3"></div>
 
-                  <!-- CONTENEDOR DE TABLAS DE DATOS / ARCHIVOS GENERADOS -->
-                  <div id="wasmGeneratedFilesContainer" class="d-flex flex-column gap-2 mb-3">
-                    <!-- Se inyectarán botones de descarga si se generan CSV o Excel -->
-                  </div>
+                  <!-- ARCHIVOS GENERADOS (CSV / EXCEL) -->
+                  <div id="wasmGeneratedFilesContainer" class="d-flex flex-column gap-2 mb-3"></div>
 
                 </div>
 
@@ -35715,95 +35699,54 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
 
           <!-- PESTAÑA 2: JPV PYSTUDIO CLOUD -->
-          <div class="tab-pane fade p-4" id="tab-pystudio-content" role="tabpanel" style="background: #ffffff;">
-            <div class="p-4 border-3 border-black rounded-3 shadow-hard-md bg-light">
-              <div class="d-flex align-items-center gap-3 mb-3">
-                <span style="font-size: 2.2rem;">🌐</span>
-                <div>
-                  <h4 class="fw-bold mb-1" style="font-family: 'Space Grotesk', sans-serif;">Entorno Oficial en la Nube: JPV PyStudio Cloud</h4>
-                  <p class="text-secondary mb-0">WebAssembly Pro Studio creado por el Ing. Juancito Peña con soporte completo para Folium, Plotly, Seaborn, NetworkX, WordCloud y Excel.</p>
-                </div>
-              </div>
-              <p>Puedes transferir automáticamente este script al compilador web completo de JPV PyStudio para contar con editor con resaltado Prism, visualizador full screen interactivo y opciones de exportación avanzadas.</p>
-              <div class="d-flex gap-2 flex-wrap mt-3">
-                <button class="btn btn-dark fw-bold px-4 py-2 border-2 border-black shadow-hard-sm" onclick="window.abrirEnPyStudioCloud()">
-                  <i class="fa-solid fa-arrow-up-right-from-square me-1 text-warning"></i> Copiar y Abrir en JPV PyStudio Cloud
-                </button>
-                <a href="https://juancitopena.github.io/JPV_PyStudio/" target="_blank" class="btn btn-outline-dark fw-bold px-4 py-2 border-2 border-black">
-                  Visitar Página Principal de JPV PyStudio
-                </a>
-              </div>
+          <div class="tab-pane fade p-4 h-100 overflow-auto" id="tab-pystudio-content" role="tabpanel" style="background: #1e293b; border-radius: 8px;">
+            <div class="p-4 rounded border border-secondary bg-dark text-white">
+              <h4 class="fw-bold text-warning mb-2"><i class="fa-solid fa-cloud me-2"></i>Entorno Oficial en la Nube: JPV PyStudio</h4>
+              <p class="text-light mb-3">WebAssembly Pro Studio creado por el Ing. Juancito Peña con soporte completo para Folium, Plotly, Seaborn, NetworkX, WordCloud y Excel.</p>
+              <button class="btn btn-primary fw-bold px-4 py-2" onclick="window.abrirEnPyStudioCloud()">
+                <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> Copiar y Abrir en JPV PyStudio Cloud
+              </button>
             </div>
           </div>
 
           <!-- PESTAÑA 3: GOOGLE COLAB -->
-          <div class="tab-pane fade p-4" id="tab-colab-content" role="tabpanel" style="background: #ffffff;">
-            <div class="p-4 border-3 border-black rounded-3 shadow-hard-md bg-light">
-              <div class="d-flex align-items-center gap-3 mb-3">
-                <span style="font-size: 2.2rem;">🟡</span>
-                <div>
-                  <h4 class="fw-bold mb-1" style="font-family: 'Space Grotesk', sans-serif;">Entorno Cloud con Aceleración GPU: Google Colab</h4>
-                  <p class="text-secondary mb-0">Para entrenamientos de Machine Learning y Deep Learning a gran escala con librerías científicas preinstaladas.</p>
-                </div>
-              </div>
-              <ol class="mb-4 ps-3">
-                <li class="mb-2">Haz clic en el botón de abajo para <strong>copiar el código actual</strong> y abrir un nuevo cuaderno de Google Colab.</li>
-                <li class="mb-2">En la primera celda del cuaderno Colab, presiona <kbd class="bg-dark text-warning px-2 py-1 rounded">Ctrl + V</kbd>.</li>
-                <li class="mb-2">Presiona <kbd class="bg-dark text-warning px-2 py-1 rounded">Shift + Enter</kbd> para ejecutar el entrenamiento con los servidores de Google.</li>
-              </ol>
-              <button class="btn btn-warning text-black fw-bold px-4 py-2 border-2 border-black shadow-hard-sm" onclick="window.abrirEnGoogleColab()">
+          <div class="tab-pane fade p-4 h-100 overflow-auto" id="tab-colab-content" role="tabpanel" style="background: #1e293b; border-radius: 8px;">
+            <div class="p-4 rounded border border-secondary bg-dark text-white">
+              <h4 class="fw-bold text-warning mb-2"><i class="fa-brands fa-google me-2"></i>Entorno Cloud con GPU: Google Colab</h4>
+              <p class="text-light mb-3">Para entrenamientos de Machine Learning y Deep Learning a gran escala con aceleración de tarjetas gráficas gratuitas.</p>
+              <button class="btn btn-warning text-black fw-bold px-4 py-2" onclick="window.abrirEnGoogleColab()">
                 <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> Copiar Código y Abrir Google Colab
               </button>
             </div>
           </div>
 
           <!-- PESTAÑA 4: VS CODE LOCAL -->
-          <div class="tab-pane fade p-4" id="tab-vscode-content" role="tabpanel" style="background: #ffffff;">
-            <div class="p-4 border-3 border-black rounded-3 shadow-hard-md bg-light">
-              <div class="d-flex align-items-center gap-3 mb-3">
-                <span style="font-size: 2.2rem;">💻</span>
-                <div>
-                  <h4 class="fw-bold mb-1" style="font-family: 'Space Grotesk', sans-serif;">Guía de Ejecución Local en Visual Studio Code</h4>
-                  <p class="text-secondary mb-0">Pasos para correr este script en tu máquina local con Python 3.12+ nativo.</p>
-                </div>
+          <div class="tab-pane fade p-4 h-100 overflow-auto" id="tab-vscode-content" role="tabpanel" style="background: #1e293b; border-radius: 8px;">
+            <div class="p-4 rounded border border-secondary bg-dark text-white">
+              <h4 class="fw-bold text-info mb-2"><i class="fa-solid fa-laptop-code me-2"></i>Guía de Ejecución Local en Visual Studio Code</h4>
+              <p class="text-light mb-2">Comando para instalar todas las dependencias del curso:</p>
+              <div class="bg-black p-3 rounded mb-3 font-monospace text-success">
+                pip install pandas numpy matplotlib seaborn plotly folium networkx wordcloud scipy scikit-learn openpyxl xlsxwriter requests streamlit
               </div>
-              <div class="card bg-black text-white p-3 mb-3 border-2 border-black">
-                <span class="text-secondary small fw-bold mb-1">1. Instalar dependencias necesarias en la terminal:</span>
-                <code class="text-success" style="font-family: 'Fira Code', monospace; font-size: 0.95rem;">
-                  pip install pandas numpy matplotlib seaborn plotly folium networkx wordcloud scipy scikit-learn openpyxl xlsxwriter requests streamlit
-                </code>
-              </div>
-              <div class="card bg-black text-white p-3 mb-3 border-2 border-black">
-                <span class="text-secondary small fw-bold mb-1">2. Ejecutar el script:</span>
-                <code class="text-warning" style="font-family: 'Fira Code', monospace; font-size: 0.95rem;">
-                  python app.py
-                </code>
-              </div>
-              <button class="btn btn-primary fw-bold px-4 py-2 border-2 border-black shadow-hard-sm" onclick="window.copiarCodigoModal()">
+              <button class="btn btn-outline-info fw-bold px-4 py-2" onclick="window.copiarCodigoModal(this)">
                 <i class="fa-regular fa-copy me-1"></i> Copiar Código para Guardar en app.py
               </button>
             </div>
           </div>
 
           <!-- PESTAÑA 5: GITHUB -->
-          <div class="tab-pane fade p-4" id="tab-github-content" role="tabpanel" style="background: #ffffff;">
-            <div class="p-4 border-3 border-black rounded-3 shadow-hard-md bg-light">
-              <div class="d-flex align-items-center gap-3 mb-3">
-                <span style="font-size: 2.2rem;">🐙</span>
-                <div>
-                  <h4 class="fw-bold mb-1" style="font-family: 'Space Grotesk', sans-serif;">Repositorio y Despliegue en GitHub</h4>
-                  <p class="text-secondary mb-0">Acceso directo al código fuente oficial y al portal en vivo en GitHub Pages.</p>
-                </div>
-              </div>
+          <div class="tab-pane fade p-4 h-100 overflow-auto" id="tab-github-content" role="tabpanel" style="background: #1e293b; border-radius: 8px;">
+            <div class="p-4 rounded border border-secondary bg-dark text-white">
+              <h4 class="fw-bold text-white mb-2"><i class="fa-brands fa-github me-2"></i>Repositorio y Despliegue en GitHub</h4>
               <div class="d-flex flex-wrap gap-3 mt-3">
-                <a href="https://github.com/JUANCITOPENA/curso-python-data-science-streamlit-pro" target="_blank" class="btn btn-dark fw-bold px-4 py-2 border-2 border-black shadow-hard-sm">
+                <a href="https://github.com/JUANCITOPENA/curso-python-data-science-streamlit-pro" target="_blank" class="btn btn-dark border border-secondary text-white fw-bold px-4 py-2">
                   <i class="fa-brands fa-github me-1"></i> Ver Repositorio en GitHub
                 </a>
-                <a href="https://juancitopena.github.io/curso-python-data-science-streamlit-pro/" target="_blank" class="btn btn-success text-white fw-bold px-4 py-2 border-2 border-black shadow-hard-sm">
-                  <i class="fa-solid fa-globe me-1"></i> Abrir Portal en Vivo en GitHub Pages
+                <a href="https://juancitopena.github.io/curso-python-data-science-streamlit-pro/" target="_blank" class="btn btn-success text-white fw-bold px-4 py-2">
+                  <i class="fa-solid fa-globe me-1"></i> Portal en Vivo (GitHub Pages)
                 </a>
-                <a href="https://github.com/JUANCITOPENA/Diplomado_Python_Analisis_De_Datos_Mas_IA_CAES" target="_blank" class="btn btn-outline-dark fw-bold px-4 py-2 border-2 border-black">
-                  <i class="fa-brands fa-github me-1"></i> Ver Proyecto Diplomado CAES
+                <a href="https://github.com/JUANCITOPENA/Diplomado_Python_Analisis_De_Datos_Mas_IA_CAES" target="_blank" class="btn btn-outline-light fw-bold px-4 py-2">
+                  <i class="fa-brands fa-github me-1"></i> Proyecto Diplomado CAES
                 </a>
               </div>
             </div>
@@ -35812,13 +35755,13 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       </div>
 
-      <!-- FOOTER DEL MODAL -->
-      <div class="modal-footer bg-light px-4 py-2 border-top border-2 border-black d-flex justify-content-between align-items-center flex-wrap gap-2">
-        <span class="small text-muted fw-bold">
-          <i class="fa-solid fa-shield-halved text-success me-1"></i> Sandbox Seguro 100% Cliente en WebAssembly. Ningún dato sale de tu navegador.
+      <!-- PIE DEL MODAL -->
+      <div class="modal-footer py-2 px-4 d-flex justify-content-between align-items-center" style="background: #1e293b; border-top: 1px solid #334155;">
+        <span class="small text-secondary fw-bold">
+          <i class="fa-solid fa-shield-halved text-success me-1"></i> 100% Cliente en WebAssembly. Privacidad total: ningún dato se envía a la nube.
         </span>
-        <button type="button" class="btn btn-outline-dark fw-bold px-4 border-2 border-black" data-bs-dismiss="modal">
-          Cerrar Laboratorio
+        <button type="button" class="btn btn-sm btn-outline-light fw-bold px-4" data-bs-dismiss="modal">
+          Cerrar Terminal
         </button>
       </div>
 

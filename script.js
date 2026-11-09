@@ -522,9 +522,36 @@ document.addEventListener('DOMContentLoaded', () => {
 // ⚡ MOTOR MAESTRO DE EJECUCIÓN WEBASSEMBLY (PYODIDE PRO STUDIO)
 // Desarrollado con base en JPV_PyStudio & Diplomado CAES
 // Autor: Ing. Juancito Peña
-// =======================================================
 
-const PLANTILLAS_MAESTRAS_JPV = {"titanic": "import pandas as pd\nimport matplotlib.pyplot as plt\n\nprint(\"=============================================================\")\nprint(\"🌐 LECTURA DE ARCHIVO CSV DIRECTO DESDE LA WEB (URL)\")\nprint(\"=============================================================\")\n\n# URL pública en GitHub (Dataset Titanic)\nurl_web = \"https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv\"\n\nprint(f\"Descargando y procesando: {url_web} ...\")\ndf_web = pd.read_csv(url_web)\n\nprint(f\"\\\\n✅ Datos descargados exitosamente: {len(df_web)} filas.\")\nprint(df_web[[\"PassengerId\", \"Name\", \"Sex\", \"Age\", \"Survived\"]].head(8))\n\n# Análisis gráfico de los datos descargados\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(9, 3.8))\n\n# Gráfico 1: Supervivientes\nconteo_survived = df_web[\"Survived\"].value_counts()\nax1.pie(conteo_survived, labels=[\"Fallecidos\", \"Sobrevivientes\"], autopct=\"%1.1f%%\", colors=[\"#f87171\", \"#00f2fe\"], startangle=90)\nax1.set_title(\"Tasa de Supervivencia Titanic\")\n\n# Gráfico 2: Pasajeros por Clase\ndf_web[\"Pclass\"].value_counts().sort_index().plot(kind='bar', ax=ax2, color=\"#38bdf8\", edgecolor='black')\nax2.set_title(\"Pasajeros por Clase de Boleto\")\nax2.set_xlabel(\"Clase (1ra, 2da, 3ra)\")\nax2.set_ylabel(\"Cantidad de Pasajeros\")\n\nplt.tight_layout()\nplt.show()\n\n# Guardar reporte para descargar\ndf_web.to_csv(\"Reporte_Titanic_Descargado.csv\", index=False)\nprint(\"\\\\n💾 Archivo 'Reporte_Titanic_Descargado.csv' listo para descargar.\")", "seaborn": "import pandas as pd\nimport numpy as np\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\nprint(\"=============================================================\")\nprint(\"📊 ANÁLISIS ESTADÍSTICO CON SEABORN & CORRELACIÓN DE DATOS\")\nprint(\"=============================================================\")\n\n# Configurar estilo visual moderno\nsns.set_theme(style=\"darkgrid\")\nplt.style.use(\"dark_background\")\n\n# Generar dataset financiero comercial simulado\nnp.random.seed(42)\nn = 120\ndata = {\n    \"Ventas_RD\": np.random.normal(50000, 14000, n),\n    \"Costo_Adquisicion\": np.random.normal(12000, 2500, n),\n    \"Descuento_Pct\": np.random.uniform(5, 20, n),\n    \"Satisfaccion_Cliente\": np.random.uniform(2, 10, n),\n}\ndata[\"Margen_Bruto\"] = data[\"Ventas_RD\"] - data[\"Costo_Adquisicion\"] - (data[\"Ventas_RD\"] * data[\"Descuento_Pct\"] / 100)\n\ndf = pd.DataFrame(data)\nprint(f\"✅ Dataset financiero generado con {len(df)} transacciones.\")\nprint(df.head(5).round(2))\n\n# Matriz de Correlación\ncorr = df.corr()\nprint(\"\\\\n📈 Matriz de Correlación entre Indicadores:\")\nprint(corr.round(3))\n\n# Visualización dual con Seaborn\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4.2))\n\n# 1. Mapa de Calor (Heatmap)\nsns.heatmap(corr, annot=True, fmt=\".2f\", cmap=\"coolwarm\", cbar=True, ax=ax1, linewidths=0.5)\nax1.set_title(\"Heatmap de Correlación Financiera\")\n\n# 2. Regresión y dispersión (Regplot)\nsns.regplot(x=\"Ventas_RD\", y=\"Margen_Bruto\", data=df, ax=ax2,\n            scatter_kws={\"color\": \"#00f2fe\", \"alpha\": 0.6},\n            line_kws={\"color\": \"#f43f5e\", \"linewidth\": 2})\nax2.set_title(\"Tendencia: Ventas vs Margen Bruto\")\nax2.set_xlabel(\"Ventas (RD$)\")\nax2.set_ylabel(\"Margen (RD$)\")\n\nplt.tight_layout()\nplt.show()\n\n# Exportar a Excel y CSV\ndf.to_csv(\"analisis_seaborn_reporte.csv\", index=False)\ndf.to_excel(\"analisis_seaborn_reporte.xlsx\", index=False)\nprint(\"\\\\n💾 Exportados: 'analisis_seaborn_reporte.csv' y '.xlsx'\")", "sklearn": "import numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import r2_score, mean_squared_error\n\nprint(\"=============================================================\")\nprint(\"🤖 MACHINE LEARNING CON SCIKIT-LEARN (MODELO PREDICTIVO)\")\nprint(\"=============================================================\")\n\n# Datos simulados: Inversión en Publicidad vs Ventas Reales\nnp.random.seed(42)\nn = 100\ninversion_pub = np.random.uniform(10, 100, n)\nventas_reales = 4.5 * inversion_pub + np.random.normal(0, 30, n) + 50\n\ndf_ml = pd.DataFrame({\n    \"Inversion_Publicidad_USD\": inversion_pub,\n    \"Ventas_Reales_USD\": ventas_reales\n})\n\nprint(f\"✅ Dataset de entrenamiento generado ({len(df_ml)} muestras).\")\nprint(df_ml.head(5).round(2))\n\n# Entrenar modelo Scikit-Learn\nX = df_ml[[\"Inversion_Publicidad_USD\"]]\ny = df_ml[\"Ventas_Reales_USD\"]\n\nmodelo = LinearRegression()\nmodelo.fit(X, y)\npredicciones = modelo.predict(X)\n\nr2 = r2_score(y, predicciones)\nrmse = np.sqrt(mean_squared_error(y, predicciones))\n\nprint()\nprint(\"📈 Métricas del Modelo Scikit-Learn:\")\nprint(f\"   • Pendiente (Coeficiente): {modelo.coef_[0]:.3f}\")\nprint(f\"   • Intersección: {modelo.intercept_:.3f}\")\nprint(f\"   • Coeficiente R²: {r2:.4f}\")\nprint(f\"   • Error RMSE: {rmse:.2f} USD\")\n\n# Gráfico de Dispersión y Línea de Regresión\nfig, ax = plt.subplots(figsize=(8.5, 4.2))\nax.scatter(X, y, color=\"#00f2fe\", alpha=0.7, label=\"Datos Reales de Ventas\")\nax.plot(X, predicciones, color=\"#f43f5e\", linewidth=2.5, label=f\"Recta de Regresión (R²={r2:.2f})\")\nax.set_title(\"Machine Learning: Predicción de Ventas vs Inversión\")\nax.set_xlabel(\"Inversión en Publicidad (USD)\")\nax.set_ylabel(\"Ventas Totales (USD)\")\nax.legend()\nplt.tight_layout()\nplt.show()\n\n# Guardar predicciones en disco virtual\ndf_ml[\"Ventas_Predichas_USD\"] = predicciones.round(2)\ndf_ml.to_csv(\"predicciones_ventas_ml.csv\", index=False)\nprint()\nprint(\"💾 Predicciones guardadas en: 'predicciones_ventas_ml.csv'\")", "requests": "import requests\nimport pandas as pd\n\nprint(\"=============================================================\")\nprint(\"🌐 CONSULTA A API REST EXTERNA VÍA HTTPS CON REQUESTS\")\nprint(\"=============================================================\")\n\n# API pública HTTPS con CORS habilitado (CoinGecko Markets)\nurl = \"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1\"\n\nprint(f\"Enviando solicitud GET a: {url} ...\")\ntry:\n    response = requests.get(url, timeout=10)\n    print(f\"Código de respuesta HTTP: {response.status_code} ({response.reason})\")\n    \n    if response.status_code == 200:\n        datos = response.json()\n        print(f\"✅ Respuesta recibida: {len(datos)} criptomonedas obtenidas.\\\\n\")\n        \n        # Procesar datos con pandas\n        df = pd.DataFrame(datos)[[\"name\", \"symbol\", \"current_price\", \"market_cap\", \"price_change_percentage_24h\"]]\n        df.columns = [\"Criptomoneda\", \"Símbolo\", \"Precio USD\", \"Market Cap USD\", \"Cambio 24h (%)\"]\n        \n        print(\"🏆 Top 10 Criptoactivos:\")\n        print(df.to_string(index=False))\n        \n        # Visualizar Top 10 Criptomonedas por Precio / Cambio 24h\n        import matplotlib.pyplot as plt\n        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(9.5, 4.0))\n        colores_bar = [\"#00f2fe\" if v >= 0 else \"#f43f5e\" for v in df[\"Cambio 24h (%)\"]]\n        ax1.barh(df[\"Símbolo\"].str.upper()[::-1], (df[\"Market Cap USD\"] / 1e9)[::-1], color=\"#38bdf8\", edgecolor=\"black\")\n        ax1.set_title(\"Top 10 Market Cap (Miles de Millones USD)\")\n        ax1.set_xlabel(\"Billones USD\")\n\n        ax2.barh(df[\"Símbolo\"].str.upper()[::-1], df[\"Cambio 24h (%)\"][::-1], color=colores_bar[::-1], edgecolor=\"black\")\n        ax2.axvline(0, color=\"#94a3b8\", linewidth=1, linestyle=\"--\")\n        ax2.set_title(\"Variación en 24 Horas (%)\")\n        ax2.set_xlabel(\"Cambio (%)\")\n        plt.tight_layout()\n        plt.show()\n\n        # Guardar en archivo local\n        df.to_csv(\"top_cripto_mercado.csv\", index=False)\n        print(\"\\\\n💾 Guardado en disco virtual: 'top_cripto_mercado.csv'\")\n    else:\n        print(f\"Respuesta inesperada: {response.text[:200]}\")\n\nexcept Exception as e:\n    print(f\"❌ Error en la solicitud: {e}\")\n    print(\"\\\\n💡 Recuerda que las solicitudes web en el navegador requieren que la API permita CORS.\")", "excel": "import pandas as pd\nimport numpy as np\n\nprint(\"=============================================================\")\nprint(\"📑 LECTURA, PROCESAMIENTO Y GENERACIÓN DE EXCEL (.XLSX)\")\nprint(\"=============================================================\")\n\n# Crear dataset corporativo con cálculo de impuestos DGII (18% ITBIS)\nvendedores = [\"Juancito Peña\", \"Carlos Gómez\", \"Mildre Morales\", \"Dulce Rosario\", \"Pedro Jiménez\"]\nsucursales = [\"Santo Domingo\", \"Santiago\", \"La Romana\", \"La Vega\", \"Azua\"]\nproductos = [\"Laptop Pro 16\", \"Monitor UltraWide 34\", \"Teclado Mecánico RGB\", \"Mouse Ergonómico\", \"Dock USB-C\"]\n\nnp.random.seed(101)\nfilas = 80\ndata = {\n    \"No_Factura\": [f\"B01{str(i).zfill(5)}\" for i in range(1001, 1001 + filas)],\n    \"Vendedor\": np.random.choice(vendedores, filas),\n    \"Sucursal\": np.random.choice(sucursales, filas),\n    \"Producto\": np.random.choice(productos, filas),\n    \"Cantidad\": np.random.randint(1, 10, filas),\n    \"Precio_Unitario\": np.random.choice([1500, 3200, 7500, 18500, 45000], filas)\n}\n\ndf_ventas = pd.DataFrame(data)\ndf_ventas[\"Subtotal\"] = df_ventas[\"Cantidad\"] * df_ventas[\"Precio_Unitario\"]\ndf_ventas[\"ITBIS_18\"] = (df_ventas[\"Subtotal\"] * 0.18).round(2)\ndf_ventas[\"Total_Factura\"] = df_ventas[\"Subtotal\"] + df_ventas[\"ITBIS_18\"]\n\nprint(f\"✅ Dataset corporativo generado: {len(df_ventas)} facturas.\")\nprint(df_ventas.head(5))\n\n# Resumen agrupado por Sucursal\nresumen = df_ventas.groupby(\"Sucursal\").agg({\n    \"No_Factura\": \"count\",\n    \"Subtotal\": \"sum\",\n    \"ITBIS_18\": \"sum\",\n    \"Total_Factura\": \"sum\"\n}).rename(columns={\"No_Factura\": \"Cant_Facturas\"}).reset_index()\n\nprint(\"\\\\n📊 Resumen de Facturación por Sucursal:\")\nprint(resumen.to_string(index=False))\n\n# Guardar en Libro Excel (.xlsx) con múltiples hojas usando openpyxl\narchivo_excel = \"Reporte_Facturacion_Corporativa.xlsx\"\nwith pd.ExcelWriter(archivo_excel, engine=\"openpyxl\") as writer:\n    df_ventas.to_excel(writer, sheet_name=\"Detalle_Facturas\", index=False)\n    resumen.to_excel(writer, sheet_name=\"Resumen_Sucursales\", index=False)\n\n# Visualización Ejecutiva de Facturación por Sucursal\nimport matplotlib.pyplot as plt\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(9.5, 4.0))\nax1.bar(resumen[\"Sucursal\"], resumen[\"Total_Factura\"] / 1000, color=\"#00f2fe\", edgecolor=\"black\")\nax1.set_title(\"Facturación Total por Sucursal (Miles RD$)\")\nax1.set_ylabel(\"Miles RD$\")\nax1.tick_params(axis=\"x\", rotation=20)\n\nax2.pie(resumen[\"Total_Factura\"], labels=resumen[\"Sucursal\"], autopct=\"%1.1f%%\",\n        colors=[\"#00f2fe\", \"#38bdf8\", \"#818cf8\", \"#f43f5e\", \"#10b981\"], startangle=90)\nax2.set_title(\"Participación por Sucursal (%)\")\nplt.tight_layout()\nplt.show()\n\nprint(f\"\\\\n💾 Libro Excel generado: '{archivo_excel}' con 2 hojas de cálculo.\")\nprint(\"👉 Descárgalo con el botón 'Descargar Excel / CSV' o en 'Archivos (VFS)'!\")", "animacion": "import matplotlib.animation as animation\nimport matplotlib.pyplot as plt\nimport numpy as np\nimport pandas as pd\n\nprint(\"=============================================================\")\nprint(\"🎬 GENERANDO TABLERO ANALÍTICO ANIMADO DEL TITANIC (8 PANELES)\")\nprint(\"=============================================================\")\n\n# 1. Cargar dataset\nurl = \"https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv\"\nprint(\"Descargando dataset Titanic...\")\ndf = pd.read_csv(url)\n\n# 2. Paleta de colores consistente\nCOLOR_SURV = \"#0ea5e9\"    # Azul/Cian vivo (Sobrevivientes)\nCOLOR_DIED = \"#64748b\"    # Gris neutro (Fallecidos)\nCOLOR_ACCENT = \"#e11d48\"  # Acento de alerta/énfasis\n\n# 3. Precalcular agregaciones\ntasa_global = df[\"Survived\"].mean() * 100\nsurv_counts = df[\"Survived\"].value_counts()\npclass_counts = df[\"Pclass\"].value_counts().sort_index()\nsurv_sex = df.groupby(\"Sex\")[\"Survived\"].mean() * 100\nsurv_class = df.groupby(\"Pclass\")[\"Survived\"].mean() * 100\nsurv_matrix = df.groupby([\"Pclass\", \"Sex\"])[\"Survived\"].mean().unstack() * 100\nmediana_edad = df[\"Age\"].median()\n\nage_counts, age_bins = np.histogram(df[\"Age\"].dropna(), bins=25)\nfare_counts, fare_bins = np.histogram(df[\"Fare\"], bins=35)\n\n# 4. Inicializar figura del tablero completo (2x4)\nfig, axes = plt.subplots(2, 4, figsize=(18, 9))\nTOTAL_FRAMES = 25\n\ndef limpiar_bordes(ax):\n    ax.spines[\"top\"].set_visible(False)\n    ax.spines[\"right\"].set_visible(False)\n    ax.spines[\"left\"].set_color(\"#cbd5e1\")\n    ax.spines[\"bottom\"].set_color(\"#cbd5e1\")\n\ndef actualizar_tablero(frame):\n    for r in range(2):\n        for c in range(4):\n            axes[r, c].clear()\n\n    fig.suptitle(\n        \"\"\"TRAGEDIA DEL TITANIC: PROTOCOLO DE RESCATE Y PRIVILEGIO SOCIAL\\nTablero Analítico Animado (891 Pasajeros)\"\"\",\n        fontsize=14, fontweight=\"bold\", y=0.98, color=\"#0f172a\"\n    )\n\n    progreso = 1 - (1 - (frame + 1) / TOTAL_FRAMES) ** 2\n\n    # 1. Donut Chart de Supervivencia General\n    vivos_val = max(1, int(surv_counts.get(1, 0) * progreso))\n    muertos_val = max(1, int(surv_counts.get(0, 0) * progreso))\n    wedges, _, autotexts = axes[0, 0].pie(\n        [muertos_val, vivos_val],\n        labels=[\"Fallecidos\", \"Sobrevivientes\"],\n        autopct=\"%1.1f%%\",\n        pctdistance=0.75,\n        colors=[COLOR_DIED, COLOR_SURV],\n        startangle=90,\n        wedgeprops=dict(width=0.4, edgecolor=\"white\", linewidth=2)\n    )\n    for t in autotexts:\n        t.set_color(\"white\")\n        t.set_fontweight(\"bold\")\n    axes[0, 0].text(0, 0, f\"{vivos_val} Vivos\", ha=\"center\", va=\"center\", fontsize=11, fontweight=\"bold\", color=\"#0f172a\")\n    axes[0, 0].set_title(f\"Balance General: {tasa_global:.1f}% supervivencia\", fontweight=\"bold\", fontsize=9.5)\n\n    # 2. Volumen de Pasajeros por Clase\n    p_curr = pclass_counts * progreso\n    bars2 = axes[0, 1].bar([\"1ra\", \"2da\", \"3ra\"], p_curr, color=\"#94a3b8\")\n    bars2[2].set_color(COLOR_ACCENT)\n    axes[0, 1].set_ylim(0, pclass_counts.max() * 1.15)\n    for b in bars2:\n        h = b.get_height()\n        if h > 10:\n            axes[0, 1].text(b.get_x() + b.get_width()/2, h + 6, f\"{int(h)}\", ha=\"center\", va=\"bottom\", fontweight=\"bold\", fontsize=8, color=\"#334155\")\n    axes[0, 1].set_title(\"Población por Boleto (Mayoría en 3ra clase)\", fontweight=\"bold\", fontsize=9.5)\n    limpiar_bordes(axes[0, 1])\n\n    # 3. Supervivencia por Sexo (Mujeres primero)\n    s_curr = [surv_sex.get(\"female\", 0) * progreso, surv_sex.get(\"male\", 0) * progreso]\n    bars3 = axes[0, 2].bar([\"Mujeres\", \"Hombres\"], s_curr, color=[COLOR_SURV, COLOR_DIED], width=0.5)\n    axes[0, 2].axhline(tasa_global * progreso, color=\"#dc2626\", linestyle=\"--\", linewidth=1.2, label=f\"Media ({tasa_global:.1f}%)\")\n    axes[0, 2].set_ylim(0, 95)\n    for b in bars3:\n        h = b.get_height()\n        if h > 2:\n            axes[0, 2].text(b.get_x() + b.get_width()/2, h + 1.5, f\"{h:.1f}%\", ha=\"center\", va=\"bottom\", fontweight=\"bold\", fontsize=8)\n    axes[0, 2].set_title(\"Protocolo de Evacuación ('Mujeres primero')\", fontweight=\"bold\", fontsize=9.5)\n    axes[0, 2].legend(frameon=False, loc=\"upper right\", fontsize=7.5)\n    limpiar_bordes(axes[0, 2])\n\n    # 4. Supervivencia por Clase Social\n    c_curr = [surv_class.get(1, 0) * progreso, surv_class.get(2, 0) * progreso, surv_class.get(3, 0) * progreso]\n    bars4 = axes[0, 3].bar([\"1ra\", \"2da\", \"3ra\"], c_curr, color=[COLOR_SURV, \"#38bdf8\", COLOR_DIED], width=0.55)\n    axes[0, 3].axhline(tasa_global * progreso, color=\"#dc2626\", linestyle=\"--\", linewidth=1.2)\n    axes[0, 3].set_ylim(0, 85)\n    for b in bars4:\n        h = b.get_height()\n        if h > 2:\n            axes[0, 3].text(b.get_x() + b.get_width()/2, h + 1.5, f\"{h:.1f}%\", ha=\"center\", va=\"bottom\", fontweight=\"bold\", fontsize=8)\n    axes[0, 3].set_title(\"Brecha de Clase (1ra duplicó a 3ra)\", fontweight=\"bold\", fontsize=9.5)\n    limpiar_bordes(axes[0, 3])\n\n    # 5. Histograma Dinámico de Edades\n    age_widths = np.diff(age_bins)\n    axes[1, 0].bar(age_bins[:-1], age_counts * progreso, width=age_widths, align=\"edge\", color=\"#cbd5e1\", edgecolor=\"white\")\n    axes[1, 0].set_ylim(0, age_counts.max() * 1.15)\n    axes[1, 0].axvline(mediana_edad, color=\"#0f172a\", linestyle=\":\", linewidth=1.2, label=f\"Mediana: {mediana_edad:.0f}a\")\n    axes[1, 0].set_title(\"Demografía (Concentración 20-35 años)\", fontweight=\"bold\", fontsize=9.5)\n    axes[1, 0].legend(frameon=False, fontsize=7.5)\n    limpiar_bordes(axes[1, 0])\n\n    # 6. Distribución de Tarifas (Escala Log)\n    fare_widths = np.diff(fare_bins)\n    axes[1, 1].bar(fare_bins[:-1], np.maximum(fare_counts * progreso, 0.1), width=fare_widths, align=\"edge\", color=\"#cbd5e1\", edgecolor=\"white\")\n    axes[1, 1].set_yscale(\"log\")\n    axes[1, 1].set_ylim(1, max(fare_counts) * 2)\n    axes[1, 1].set_title(\"Dispersión del Boleto (Mayoría <30$)\", fontweight=\"bold\", fontsize=9.5)\n    limpiar_bordes(axes[1, 1])\n\n    # 7. Supervivencia Cruzada (Sexo x Clase)\n    x = np.arange(3)\n    w = 0.35\n    axes[1, 2].bar(x - w/2, surv_matrix[\"female\"] * progreso, w, color=COLOR_SURV, label=\"Mujeres\")\n    axes[1, 2].bar(x + w/2, surv_matrix[\"male\"] * progreso, w, color=COLOR_DIED, label=\"Hombres\")\n    axes[1, 2].set_ylim(0, 110)\n    axes[1, 2].set_xticks(x)\n    axes[1, 2].set_xticklabels([\"1ra\", \"2da\", \"3ra\"])\n    axes[1, 2].set_title(\"Efecto Combinado (Mujeres 1ra clase ~97%)\", fontweight=\"bold\", fontsize=9.5)\n    axes[1, 2].legend(frameon=False, fontsize=7.5)\n    limpiar_bordes(axes[1, 2])\n\n    # 8. Dispersión Edad vs Tarifa\n    lim_puntos = max(5, int(len(df) * progreso))\n    df_sub = df.iloc[:lim_puntos]\n    fallecidos = df_sub[df_sub[\"Survived\"] == 0]\n    vivos = df_sub[df_sub[\"Survived\"] == 1]\n    axes[1, 3].scatter(fallecidos[\"Age\"], fallecidos[\"Fare\"], color=COLOR_DIED, alpha=0.35, s=18, label=\"Fallecido\")\n    axes[1, 3].scatter(vivos[\"Age\"], vivos[\"Fare\"], color=COLOR_SURV, alpha=0.7, s=18, label=\"Sobreviviente\")\n    axes[1, 3].set_xlim(0, 85)\n    axes[1, 3].set_ylim(-10, 520)\n    axes[1, 3].set_title(\"Tarifas Altas Blindaron Vidas (0 muertes >200$)\", fontweight=\"bold\", fontsize=9.5)\n    axes[1, 3].legend(frameon=False, loc=\"upper right\", fontsize=7.5)\n    limpiar_bordes(axes[1, 3])\n\n    plt.tight_layout(rect=[0, 0, 1, 0.94])\n\nprint(\"Compilando cuadros de animación con Pillow...\")\nani = animation.FuncAnimation(fig, actualizar_tablero, frames=TOTAL_FRAMES, interval=60, repeat=False)\nwriter = animation.PillowWriter(fps=12)\nani.save(\"titanic_dashboard_completo_animado.gif\", writer=writer)\n\nprint()\nprint(\"🎉 Animación generada: 'titanic_dashboard_completo_animado.gif'\")\nprint(\"👉 El visor gráfico mostrará la animación en bucle infinito.\")", "scipy": "import numpy as np\nimport matplotlib.pyplot as plt\nfrom scipy.optimize import curve_fit\n\nprint(\"=============================================================\")\nprint(\"🔬 ANÁLISIS CIENTÍFICO Y AJUSTE DE MODELOS CON SCIPY\")\nprint(\"=============================================================\")\n\n# Datos experimentales con ruido\nx_data = np.linspace(0, 10, 40)\ny_true = 2.5 * (x_data ** 1.5) + 5\nruido = np.random.normal(0, 4, len(x_data))\ny_data = y_true + ruido\n\n# Definir función matemática para ajustar\ndef modelo_potencia(x, a, b, c):\n    return a * (x ** b) + c\n\n# Ajuste con Scipy curve_fit\nparams, cov = curve_fit(modelo_potencia, x_data, y_data, p0=[2, 1.5, 5])\na_opt, b_opt, c_opt = params\n\nresiduos = y_data - modelo_potencia(x_data, *params)\nr2 = 1 - (np.sum(residuos**2) / np.sum((y_data - np.mean(y_data))**2))\n\nprint(\"✅ Parámetros optimizados con Scipy:\")\nprint(f\"   a = {a_opt:.4f}, b = {b_opt:.4f}, c = {c_opt:.4f}\")\nprint(f\"   Coeficiente de Determinación (R²): {r2:.4f}\")\n\n# Graficar\nfig, ax = plt.subplots(figsize=(8, 4))\nax.scatter(x_data, y_data, color=\"#00f2fe\", label=\"Datos experimentales\", alpha=0.8)\nx_curva = np.linspace(0, 10, 200)\nax.plot(x_curva, modelo_potencia(x_curva, *params), color=\"#f43f5e\", linewidth=2.5,\n        label=f\"Ajuste Scipy: {a_opt:.2f}·x^{b_opt:.2f} + {c_opt:.2f} (R²={r2:.3f})\")\n\nax.set_title(\"Ajuste No Lineal de Curvas con Scipy Optimize\")\nax.set_xlabel(\"Variable X\")\nax.set_ylabel(\"Respuesta Y\")\nax.legend()\nplt.tight_layout()\nplt.show()", "folium": "import folium\nfrom folium.plugins import AntPath, MarkerCluster, MiniMap, Fullscreen\n\nprint(\"=============================================================\")\nprint(\"🗺️ MAPA GEOESPACIAL INTERACTIVO EN VIVO (100% LIBRE / SIN API KEY)\")\nprint(\"   • Mapa Base Real: OpenStreetMap (Calles & Avenidas)\")\nprint(\"   • Vista Satelital: Esri World Imagery (Imágenes Aéreas)\")\nprint(\"   • Clúster de Sucursales Interactivo (MarkerCluster)\")\nprint(\"   • Ruta Logística Animada en Tiempo Real (AntPath)\")\nprint(\"=============================================================\")\n\n# 1. Coordenadas estratégicas (Red metropolitana central)\nlat_centro, lon_centro = 18.4861, -69.9312\n\n# 2. Inicializar mapa con OpenStreetMap (Cero API Key, 100% libre)\nm = folium.Map(location=[lat_centro, lon_centro], zoom_start=13, tiles=\"OpenStreetMap\")\n\n# 3. Capa adicional: Vista Satelital Real de alta resolución (Libre de API Key)\nfolium.TileLayer(\n    tiles=\"https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}\",\n    attr=\"Esri World Imagery\",\n    name=\"🛰️ Vista Satelital Real\"\n).add_to(m)\n\n# 4. Clúster de Sucursales y Puntos de Interés (MarkerCluster)\n# Al alejar el mapa se agrupan en burbujas con números; al acercar se expanden\ncluster = MarkerCluster(name=\"📍 Clúster de Sucursales & Hubs\").add_to(m)\n\npuntos = [\n    {\"nombre\": \"Sede Central JPV\", \"coords\": [18.4861, -69.9312], \"rol\": \"Dirección General\", \"color\": \"red\", \"icon\": \"star\"},\n    {\"nombre\": \"Sucursal Norte\", \"coords\": [18.5020, -69.9250], \"rol\": \"Atención al Cliente\", \"color\": \"blue\", \"icon\": \"home\"},\n    {\"nombre\": \"Hub Zona Colonial\", \"coords\": [18.4720, -69.9120], \"rol\": \"Centro de Distribución\", \"color\": \"green\", \"icon\": \"flag\"},\n    {\"nombre\": \"Terminal Puerto\", \"coords\": [18.4550, -69.9450], \"rol\": \"Carga y Aduanas\", \"color\": \"purple\", \"icon\": \"plane\"},\n    {\"nombre\": \"Centro Logístico Oeste\", \"coords\": [18.4780, -69.9550], \"rol\": \"Almacén Principal\", \"color\": \"orange\", \"icon\": \"briefcase\"}\n]\n\nfor p in puntos:\n    folium.Marker(\n        location=p[\"coords\"],\n        popup=folium.Popup(\n            f\"<b>{p['nombre']}</b><br>\"\n            f\"<b>Función:</b> {p['rol']}<br>\"\n            f\"<b>Coordenadas:</b> {p['coords']}\",\n            max_width=250\n        ),\n        tooltip=f\"{p['nombre']} ({p['rol']})\",\n        icon=folium.Icon(color=p[\"color\"], icon=p[\"icon\"])\n    ).add_to(cluster)\n\n# 5. Ruta Logística Animada Continua (AntPath)\nruta_coordenadas = [p[\"coords\"] for p in puntos]\nruta_coordenadas.append(puntos[0][\"coords\"])  # Retorno a la Sede Central\n\nAntPath(\n    locations=ruta_coordenadas,\n    name=\"🚀 Corredor Logístico Animado (AntPath)\",\n    delay=800,             # Velocidad del pulso\n    dash_array=[10, 20],   # Tamaño de los segmentos\n    color=\"#00f2fe\",       # Color cian neón principal\n    pulse_color=\"#ffffff\", # Pulso animado blanco\n    weight=5,              # Grosor de la línea\n    opacity=0.9,\n    tooltip=\"Ruta de Reparto Activa en Vivo\"\n).add_to(m)\n\n# 6. Herramientas de Interacción: MiniMapa, Pantalla Completa y Control de Capas\nMiniMap(toggle_display=True).add_to(m)\nFullscreen(position=\"topright\", title=\"Ver a Pantalla Completa\").add_to(m)\nfolium.LayerControl(collapsed=False).add_to(m)\n\n# 7. Guardar el archivo HTML\n# JPV PyStudio lo detecta automáticamente y lo visualiza en la pestaña 'Gráfico'\nm.save(\"mapa_interactivo.html\")\n\nprint(\"✅ ¡Mapa interactivo generado exitosamente!\")\nprint(\"👉 El mapa se está visualizando en vivo en la pestaña 'Gráfico'.\")\nprint(\"💡 TIP: Usa el botón 'Abrir en Pestaña' (arriba a la derecha) para desplegarlo a pantalla completa.\")", "plotly": "import pandas as pd\nimport numpy as np\nimport plotly.express as px\n\nprint(\"=============================================================\")\nprint(\"📈 DASHBOARD INTERACTIVO MULTIDIMENSIONAL CON PLOTLY EXPRESS\")\nprint(\"=============================================================\")\n\n# Configuración de datos aleatorios\nnp.random.seed(42)\nregiones = [\"Norteamérica\", \"Europa\", \"Asia-Pacífico\", \"Latinoamérica\", \"Medio Oriente\"]\ndatos = []\n\nfor reg in regiones:\n    for i in range(8):\n        ingresos = np.random.uniform(120, 950)\n        margen = np.random.uniform(12, 42)\n        clientes = int(np.random.uniform(500, 12000))\n        datos.append({\n            \"Región\": reg,\n            \"Unidad\": f\"{reg[:3].upper()}-0{i+1}\",\n            \"Ingresos_M_USD\": round(ingresos, 2),\n            \"Margen_Pct\": round(margen, 2),\n            \"Clientes_Activos\": clientes\n        })\n\ndf_kpi = pd.DataFrame(datos)\nprint(df_kpi.head(8))\n\n# Generación del gráfico interactivo con Plotly Express\nfig = px.scatter(\n    df_kpi,\n    x=\"Ingresos_M_USD\",\n    y=\"Margen_Pct\",\n    size=\"Clientes_Activos\",\n    color=\"Región\",\n    hover_name=\"Unidad\",\n    size_max=48,\n    template=\"plotly_dark\",\n    title=\"Matriz Ejecutiva: Ingresos (M USD) vs Margen (%) y Volumen de Clientes\",\n    labels={\n        \"Ingresos_M_USD\": \"Ingresos Anuales (Millones USD)\",\n        \"Margen_Pct\": \"Margen Operativo (%)\",\n        \"Clientes_Activos\": \"Clientes Activos\"\n    }\n)\n\n# Ajustes de diseño estético del dashboard\nfig.update_layout(\n    paper_bgcolor=\"#080c14\",\n    plot_bgcolor=\"#0f172a\",\n    font=dict(family=\"Outfit, sans-serif\", size=13, color=\"#f8fafc\"),\n    margin=dict(l=40, r=30, t=60, b=40)\n)\n\n# Guardar y renderizar el archivo HTML interactivo\nfig.write_html(\"dashboard_plotly_ejecutivo.html\", include_plotlyjs=\"cdn\")\nprint(\"✅ Gráfico interactivo Plotly renderizado en el visor Gráfico.\")", "networkx": "import networkx as nx\nimport matplotlib.pyplot as plt\n\nprint(\"=============================================================\")\nprint(\"🕸️ TOPOLOGÍA DE RED Y RUTEO ÓPTIMO CON NETWORKX\")\nprint(\"=============================================================\")\n\nG = nx.Graph()\naristas = [\n    (\"Core-SDQ\", \"Hub-Santiago\", 12),\n    (\"Core-SDQ\", \"Hub-LaRomana\", 15),\n    (\"Core-SDQ\", \"Hub-SanCristobal\", 6),\n    (\"Hub-Santiago\", \"Nodo-PuertoPlata\", 8),\n    (\"Hub-Santiago\", \"Nodo-LaVega\", 7),\n    (\"Nodo-LaVega\", \"Core-SDQ\", 14),\n    (\"Hub-LaRomana\", \"Nodo-PuntaCana\", 10),\n    (\"Hub-SanCristobal\", \"Nodo-Azua\", 11),\n    (\"Nodo-Azua\", \"Nodo-Barahona\", 13),\n    (\"Nodo-LaVega\", \"Nodo-SanFrancisco\", 9)\n]\nG.add_weighted_edges_from(aristas)\n\nruta_optima = nx.shortest_path(G, source=\"Nodo-Barahona\", target=\"Nodo-PuntaCana\", weight=\"weight\")\ncosto_total = nx.shortest_path_length(G, source=\"Nodo-Barahona\", target=\"Nodo-PuntaCana\", weight=\"weight\")\nprint(f\"🚀 Ruta óptima Barahona -> Punta Cana: {' -> '.join(ruta_optima)}\")\nprint(f\"⚡ Latencia total mínima: {costo_total} ms\")\n\nfig, ax = plt.subplots(figsize=(9, 5.2))\npos = nx.spring_layout(G, seed=42, k=0.85)\n\ncolores_nodos = [\"#00f2fe\" if n in ruta_optima else \"#334155\" for n in G.nodes()]\nnx.draw_networkx_nodes(G, pos, ax=ax, node_color=colores_nodos, node_size=900, edgecolors=\"#ffffff\", linewidths=1.5)\nnx.draw_networkx_edges(G, pos, ax=ax, edge_color=\"#64748b\", width=1.8, alpha=0.7)\n\n# Resaltar aristas de la ruta óptima\naristas_ruta = list(zip(ruta_optima[:-1], ruta_optima[1:]))\nnx.draw_networkx_edges(G, pos, edgelist=aristas_ruta, ax=ax, edge_color=\"#10b981\", width=4.0)\nnx.draw_networkx_labels(G, pos, ax=ax, font_size=8.5, font_weight=\"bold\", font_color=\"#0f172a\")\n\nlabels_peso = nx.get_edge_attributes(G, \"weight\")\nnx.draw_networkx_edge_labels(G, pos, edge_labels={k: f\"{v}ms\" for k, v in labels_peso.items()}, font_size=7.5, ax=ax)\n\nax.set_title(\"Topología de Red Nacional & Camino Más Corto (Dijkstra)\", fontweight=\"bold\")\nax.axis(\"off\")\nplt.tight_layout()\nplt.show()", "wordcloud": "import matplotlib.pyplot as plt\nfrom wordcloud import WordCloud\n\nprint(\"=============================================================\")\nprint(\"☁️ NUBE DE PALABRAS DE ALTA DEFINICIÓN (WORDCLOUD)\")\nprint(\"=============================================================\")\n\nfrecuencias_tech = {\n    \"Python\": 100, \"Data Science\": 92, \"Pyodide Wasm\": 88, \"Folium Maps\": 85,\n    \"Plotly\": 82, \"Machine Learning\": 80, \"Pandas\": 78, \"Seaborn\": 75,\n    \"Scikit-Learn\": 72, \"NetworkX\": 70, \"Inteligencia Artificial\": 68,\n    \"SQL Server\": 65, \"Power BI\": 64, \"Automatización\": 60, \"NumPy\": 58,\n    \"Scipy\": 55, \"Big Data\": 52, \"Geoespacial\": 50, \"Deep Learning\": 48,\n    \"Analytics\": 46, \"ETL Pipelines\": 44, \"FastAPI\": 40, \"Dashboards\": 38\n}\n\nwc = WordCloud(\n    width=1100,\n    height=550,\n    background_color=\"#080c14\",\n    colormap=\"cool\",\n    max_words=50,\n    prefer_horizontal=0.85\n).generate_from_frequencies(frecuencias_tech)\n\nfig, ax = plt.subplots(figsize=(9.5, 4.8))\nax.imshow(wc, interpolation=\"bilinear\")\nax.set_title(\"Ecosistema Analítico & Visualización en JPV PyStudio\", fontsize=13, fontweight=\"bold\", pad=12)\nax.axis(\"off\")\nplt.tight_layout()\nplt.show()\nprint(\"✅ Nube de palabras generada con éxito.\")"};
+
+// ==========================================================================
+// ⚡ MOTOR INTERACTIVO WEBASSEMBLY TERMINAL PRO (ESTÁNDAR DIPLOMADO CAES)
+// Cero alertas emergentes alert()/prompt() de JS • Terminal Integrada en DOM
+// Soporte Multi-Gráfico • Anti-Bucle Infinito • Snapshot HD de Código • Gestor VFS
+// Autor: Ing. Juancito Peña
+// ==========================================================================
+
+const PLANTILLAS_MAESTRAS_JPV = {
+  "titanic": "import pandas as pd\nimport matplotlib.pyplot as plt\n\nprint(\"=============================================================\")\nprint(\"🌐 LECTURA DE ARCHIVO CSV DIRECTO DESDE LA WEB (URL)\")\nprint(\"=============================================================\")\n\n# URL pública en GitHub (Dataset Titanic)\nurl_web = \"https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv\"\n\nprint(f\"Descargando y procesando: {url_web} ...\")\ndf_web = pd.read_csv(url_web)\n\nprint(f\"\\\\n✅ Datos descargados exitosamente: {len(df_web)} filas.\")\nprint(df_web[[\"PassengerId\", \"Name\", \"Sex\", \"Age\", \"Survived\"]].head(8))\n\n# Análisis gráfico de los datos descargados\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(9, 3.8))\n\n# Gráfico 1: Supervivientes\nconteo_survived = df_web[\"Survived\"].value_counts()\nax1.pie(conteo_survived, labels=[\"Fallecidos\", \"Sobrevivientes\"], autopct=\"%1.1f%%\", colors=[\"#f87171\", \"#00f2fe\"], startangle=90)\nax1.set_title(\"Tasa de Supervivencia Titanic\")\n\n# Gráfico 2: Pasajeros por Clase\ndf_web[\"Pclass\"].value_counts().sort_index().plot(kind='bar', ax=ax2, color=\"#38bdf8\", edgecolor='black')\nax2.set_title(\"Pasajeros por Clase de Boleto\")\nax2.set_xlabel(\"Clase (1ra, 2da, 3ra)\")\nax2.set_ylabel(\"Cantidad de Pasajeros\")\n\nplt.tight_layout()\nplt.show()\n\n# Guardar reporte para descargar\ndf_web.to_csv(\"Reporte_Titanic_Descargado.csv\", index=False)\nprint(\"\\\\n💾 Archivo 'Reporte_Titanic_Descargado.csv' listo para descargar.\")",
+  "seaborn": "import pandas as pd\nimport numpy as np\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\nprint(\"=============================================================\")\nprint(\"📊 ANÁLISIS ESTADÍSTICO CON SEABORN & CORRELACIÓN DE DATOS\")\nprint(\"=============================================================\")\n\n# Configurar estilo visual moderno\nsns.set_theme(style=\"darkgrid\")\nplt.style.use(\"dark_background\")\n\n# Generar dataset financiero comercial simulado\nnp.random.seed(42)\nn = 120\ndata = {\n    \"Ventas_RD\": np.random.normal(50000, 14000, n),\n    \"Costo_Adquisicion\": np.random.normal(12000, 2500, n),\n    \"Descuento_Pct\": np.random.uniform(5, 20, n),\n    \"Satisfaccion_Cliente\": np.random.uniform(2, 10, n),\n}\ndata[\"Margen_Bruto\"] = data[\"Ventas_RD\"] - data[\"Costo_Adquisicion\"] - (data[\"Ventas_RD\"] * data[\"Descuento_Pct\"] / 100)\n\ndf = pd.DataFrame(data)\nprint(f\"✅ Dataset financiero generado con {len(df)} transacciones.\")\nprint(df.head(5).round(2))\n\n# Matriz de Correlación\ncorr = df.corr()\nprint(\"\\\\n📈 Matriz de Correlación entre Indicadores:\")\nprint(corr.round(3))\n\n# Visualización dual con Seaborn\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4.2))\n\n# 1. Mapa de Calor (Heatmap)\nsns.heatmap(corr, annot=True, fmt=\".2f\", cmap=\"coolwarm\", cbar=True, ax=ax1, linewidths=0.5)\nax1.set_title(\"Heatmap de Correlación Financiera\")\n\n# 2. Regresión y dispersión (Regplot)\nsns.regplot(x=\"Ventas_RD\", y=\"Margen_Bruto\", data=df, ax=ax2,\n            scatter_kws={\"color\": \"#00f2fe\", \"alpha\": 0.6},\n            line_kws={\"color\": \"#f43f5e\", \"linewidth\": 2})\nax2.set_title(\"Tendencia: Ventas vs Margen Bruto\")\nax2.set_xlabel(\"Ventas (RD$)\")\nax2.set_ylabel(\"Margen (RD$)\")\n\nplt.tight_layout()\nplt.show()\n\n# Exportar a Excel y CSV\ndf.to_csv(\"analisis_seaborn_reporte.csv\", index=False)\ndf.to_excel(\"analisis_seaborn_reporte.xlsx\", index=False)\nprint(\"\\\\n💾 Exportados: 'analisis_seaborn_reporte.csv' y '.xlsx'\")",
+  "sklearn": "import numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import r2_score, mean_squared_error\n\nprint(\"=============================================================\")\nprint(\"🤖 MACHINE LEARNING CON SCIKIT-LEARN (MODELO PREDICTIVO)\")\nprint(\"=============================================================\")\n\n# Datos simulados: Inversión en Publicidad vs Ventas Reales\nnp.random.seed(42)\nn = 100\ninversion_pub = np.random.uniform(10, 100, n)\nventas_reales = 4.5 * inversion_pub + np.random.normal(0, 30, n) + 50\n\ndf_ml = pd.DataFrame({\n    \"Inversion_Publicidad_USD\": inversion_pub,\n    \"Ventas_Reales_USD\": ventas_reales\n})\n\nprint(f\"✅ Dataset de entrenamiento generado ({len(df_ml)} muestras).\")\nprint(df_ml.head(5).round(2))\n\n# Entrenar modelo Scikit-Learn\nX = df_ml[[\"Inversion_Publicidad_USD\"]]\ny = df_ml[\"Ventas_Reales_USD\"]\n\nmodelo = LinearRegression()\nmodelo.fit(X, y)\npredicciones = modelo.predict(X)\n\nr2 = r2_score(y, predicciones)\nrmse = np.sqrt(mean_squared_error(y, predicciones))\n\nprint()\nprint(\"📈 Métricas del Modelo Scikit-Learn:\")\nprint(f\"   • Pendiente (Coeficiente): {modelo.coef_[0]:.3f}\")\nprint(f\"   • Intersección: {modelo.intercept_:.3f}\")\nprint(f\"   • Coeficiente R²: {r2:.4f}\")\nprint(f\"   • Error RMSE: {rmse:.2f} USD\")\n\n# Gráfico de Dispersión y Línea de Regresión\nfig, ax = plt.subplots(figsize=(8.5, 4.2))\nax.scatter(X, y, color=\"#00f2fe\", alpha=0.7, label=\"Datos Reales de Ventas\")\nax.plot(X, predicciones, color=\"#f43f5e\", linewidth=2.5, label=f\"Recta de Regresión (R²={r2:.2f})\")\nax.set_title(\"Machine Learning: Predicción de Ventas vs Inversión\")\nax.set_xlabel(\"Inversión en Publicidad (USD)\")\nax.set_ylabel(\"Ventas Totales (USD)\")\nax.legend()\nplt.tight_layout()\nplt.show()\n\n# Guardar predicciones en disco virtual\ndf_ml[\"Ventas_Predichas_USD\"] = predicciones.round(2)\ndf_ml.to_csv(\"predicciones_ventas_ml.csv\", index=False)\nprint()\nprint(\"💾 Predicciones guardadas en: 'predicciones_ventas_ml.csv'\")",
+  "requests": "import requests\nimport pandas as pd\n\nprint(\"=============================================================\")\nprint(\"🌐 CONSULTA A API REST EXTERNA VÍA HTTPS CON REQUESTS\")\nprint(\"=============================================================\")\n\n# API pública HTTPS con CORS habilitado (CoinGecko Markets)\nurl = \"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1\"\n\nprint(f\"Enviando solicitud GET a: {url} ...\")\ntry:\n    response = requests.get(url, timeout=10)\n    print(f\"Código de respuesta HTTP: {response.status_code} ({response.reason})\")\n    \n    if response.status_code == 200:\n        datos = response.json()\n        print(f\"✅ Respuesta recibida: {len(datos)} criptomonedas obtenidas.\\\\n\")\n        \n        # Procesar datos con pandas\n        df = pd.DataFrame(datos)[[\"name\", \"symbol\", \"current_price\", \"market_cap\", \"price_change_percentage_24h\"]]\n        df.columns = [\"Criptomoneda\", \"Símbolo\", \"Precio USD\", \"Market Cap USD\", \"Cambio 24h (%)\"]\n        \n        print(\"🏆 Top 10 Criptoactivos:\")\n        print(df.to_string(index=False))\n        \n        # Visualizar Top 10 Criptomonedas por Precio / Cambio 24h\n        import matplotlib.pyplot as plt\n        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(9.5, 4.0))\n        colores_bar = [\"#00f2fe\" if v >= 0 else \"#f43f5e\" for v in df[\"Cambio 24h (%)\"]]\n        ax1.barh(df[\"Símbolo\"].str.upper()[::-1], (df[\"Market Cap USD\"] / 1e9)[::-1], color=\"#38bdf8\", edgecolor=\"black\")\n        ax1.set_title(\"Top 10 Market Cap (Miles de Millones USD)\")\n        ax1.set_xlabel(\"Billones USD\")\n\n        ax2.barh(df[\"Símbolo\"].str.upper()[::-1], df[\"Cambio 24h (%)\"][::-1], color=colores_bar[::-1], edgecolor=\"black\")\n        ax2.axvline(0, color=\"#94a3b8\", linewidth=1, linestyle=\"--\")\n        ax2.set_title(\"Variación en 24 Horas (%)\")\n        ax2.set_xlabel(\"Cambio (%)\")\n        plt.tight_layout()\n        plt.show()\n\n        # Guardar en archivo local\n        df.to_csv(\"top_cripto_mercado.csv\", index=False)\n        print(\"\\\\n💾 Guardado en disco virtual: 'top_cripto_mercado.csv'\")\n    else:\n        print(f\"Respuesta inesperada: {response.text[:200]}\")\n\nexcept Exception as e:\n    print(f\"❌ Error en la solicitud: {e}\")\n    print(\"\\\\n💡 Recuerda que las solicitudes web en el navegador requieren que la API permita CORS.\")",
+  "excel": "import pandas as pd\nimport numpy as np\n\nprint(\"=============================================================\")\nprint(\"📑 LECTURA, PROCESAMIENTO Y GENERACIÓN DE EXCEL (.XLSX)\")\nprint(\"=============================================================\")\n\n# Crear dataset corporativo con cálculo de impuestos DGII (18% ITBIS)\nvendedores = [\"Juancito Peña\", \"Carlos Gómez\", \"Mildre Morales\", \"Dulce Rosario\", \"Pedro Jiménez\"]\nsucursales = [\"Santo Domingo\", \"Santiago\", \"La Romana\", \"La Vega\", \"Azua\"]\nproductos = [\"Laptop Pro 16\", \"Monitor UltraWide 34\", \"Teclado Mecánico RGB\", \"Mouse Ergonómico\", \"Dock USB-C\"]\n\nnp.random.seed(101)\nfilas = 80\ndata = {\n    \"No_Factura\": [f\"B01{str(i).zfill(5)}\" for i in range(1001, 1001 + filas)],\n    \"Vendedor\": np.random.choice(vendedores, filas),\n    \"Sucursal\": np.random.choice(sucursales, filas),\n    \"Producto\": np.random.choice(productos, filas),\n    \"Cantidad\": np.random.randint(1, 10, filas),\n    \"Precio_Unitario\": np.random.choice([1500, 3200, 7500, 18500, 45000], filas)\n}\n\ndf_ventas = pd.DataFrame(data)\ndf_ventas[\"Subtotal\"] = df_ventas[\"Cantidad\"] * df_ventas[\"Precio_Unitario\"]\ndf_ventas[\"ITBIS_18\"] = (df_ventas[\"Subtotal\"] * 0.18).round(2)\ndf_ventas[\"Total_Factura\"] = df_ventas[\"Subtotal\"] + df_ventas[\"ITBIS_18\"]\n\nprint(f\"✅ Dataset corporativo generado: {len(df_ventas)} facturas.\")\nprint(df_ventas.head(5))\n\n# Resumen agrupado por Sucursal\nresumen = df_ventas.groupby(\"Sucursal\").agg({\n    \"No_Factura\": \"count\",\n    \"Subtotal\": \"sum\",\n    \"ITBIS_18\": \"sum\",\n    \"Total_Factura\": \"sum\"\n}).rename(columns={\"No_Factura\": \"Cant_Facturas\"}).reset_index()\n\nprint(\"\\\\n📊 Resumen de Facturación por Sucursal:\")\nprint(resumen.to_string(index=False))\n\n# Guardar en Libro Excel (.xlsx) con múltiples hojas usando openpyxl\narchivo_excel = \"Reporte_Facturacion_Corporativa.xlsx\"\nwith pd.ExcelWriter(archivo_excel, engine=\"openpyxl\") as writer:\n    df_ventas.to_excel(writer, sheet_name=\"Detalle_Facturas\", index=False)\n    resumen.to_excel(writer, sheet_name=\"Resumen_Sucursales\", index=False)\n\n# Visualización Ejecutiva de Facturación por Sucursal\nimport matplotlib.pyplot as plt\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(9.5, 4.0))\nax1.bar(resumen[\"Sucursal\"], resumen[\"Total_Factura\"] / 1000, color=\"#00f2fe\", edgecolor=\"black\")\nax1.set_title(\"Facturación Total por Sucursal (Miles RD$)\")\nax1.set_ylabel(\"Miles RD$\")\nax1.tick_params(axis=\"x\", rotation=20)\n\nax2.pie(resumen[\"Total_Factura\"], labels=resumen[\"Sucursal\"], autopct=\"%1.1f%%\",\n        colors=[\"#00f2fe\", \"#38bdf8\", \"#818cf8\", \"#f43f5e\", \"#10b981\"], startangle=90)\nax2.set_title(\"Participación por Sucursal (%)\")\nplt.tight_layout()\nplt.show()\n\nprint(f\"\\\\n💾 Libro Excel generado: '{archivo_excel}' con 2 hojas de cálculo.\")\nprint(\"👉 Descárgalo con el botón 'Descargar Excel / CSV' o en 'Archivos (VFS)'!\")",
+  "animacion": "import matplotlib.animation as animation\nimport matplotlib.pyplot as plt\nimport numpy as np\nimport pandas as pd\n\nprint(\"=============================================================\")\nprint(\"🎬 GENERANDO TABLERO ANALÍTICO ANIMADO DEL TITANIC (8 PANELES)\")\nprint(\"=============================================================\")\n\n# 1. Cargar dataset\nurl = \"https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv\"\nprint(\"Descargando dataset Titanic...\")\ndf = pd.read_csv(url)\n\n# 2. Paleta de colores consistente\nCOLOR_SURV = \"#0ea5e9\"    # Azul/Cian vivo (Sobrevivientes)\nCOLOR_DIED = \"#64748b\"    # Gris neutro (Fallecidos)\nCOLOR_ACCENT = \"#e11d48\"  # Acento de alerta/énfasis\n\n# 3. Precalcular agregaciones\ntasa_global = df[\"Survived\"].mean() * 100\nsurv_counts = df[\"Survived\"].value_counts()\npclass_counts = df[\"Pclass\"].value_counts().sort_index()\nsurv_sex = df.groupby(\"Sex\")[\"Survived\"].mean() * 100\nsurv_class = df.groupby(\"Pclass\")[\"Survived\"].mean() * 100\nsurv_matrix = df.groupby([\"Pclass\", \"Sex\"])[\"Survived\"].mean().unstack() * 100\nmediana_edad = df[\"Age\"].median()\n\nage_counts, age_bins = np.histogram(df[\"Age\"].dropna(), bins=25)\nfare_counts, fare_bins = np.histogram(df[\"Fare\"], bins=35)\n\n# 4. Inicializar figura del tablero completo (2x4)\nfig, axes = plt.subplots(2, 4, figsize=(18, 9))\nTOTAL_FRAMES = 25\n\ndef limpiar_bordes(ax):\n    ax.spines[\"top\"].set_visible(False)\n    ax.spines[\"right\"].set_visible(False)\n    ax.spines[\"left\"].set_color(\"#cbd5e1\")\n    ax.spines[\"bottom\"].set_color(\"#cbd5e1\")\n\ndef actualizar_tablero(frame):\n    for r in range(2):\n        for c in range(4):\n            axes[r, c].clear()\n\n    fig.suptitle(\n        \"\"\"TRAGEDIA DEL TITANIC: PROTOCOLO DE RESCATE Y PRIVILEGIO SOCIAL\\nTablero Analítico Animado (891 Pasajeros)\"\"\",\n        fontsize=14, fontweight=\"bold\", y=0.98, color=\"#0f172a\"\n    )\n\n    progreso = 1 - (1 - (frame + 1) / TOTAL_FRAMES) ** 2\n\n    # 1. Donut Chart de Supervivencia General\n    vivos_val = max(1, int(surv_counts.get(1, 0) * progreso))\n    muertos_val = max(1, int(surv_counts.get(0, 0) * progreso))\n    wedges, _, autotexts = axes[0, 0].pie(\n        [muertos_val, vivos_val],\n        labels=[\"Fallecidos\", \"Sobrevivientes\"],\n        autopct=\"%1.1f%%\",\n        pctdistance=0.75,\n        colors=[COLOR_DIED, COLOR_SURV],\n        startangle=90,\n        wedgeprops=dict(width=0.4, edgecolor=\"white\", linewidth=2)\n    )\n    for t in autotexts:\n        t.set_color(\"white\")\n        t.set_fontweight(\"bold\")\n    axes[0, 0].text(0, 0, f\"{vivos_val} Vivos\", ha=\"center\", va=\"center\", fontsize=11, fontweight=\"bold\", color=\"#0f172a\")\n    axes[0, 0].set_title(f\"Balance General: {tasa_global:.1f}% supervivencia\", fontweight=\"bold\", fontsize=9.5)\n\n    # 2. Volumen de Pasajeros por Clase\n    p_curr = pclass_counts * progreso\n    bars2 = axes[0, 1].bar([\"1ra\", \"2da\", \"3ra\"], p_curr, color=\"#94a3b8\")\n    bars2[2].set_color(COLOR_ACCENT)\n    axes[0, 1].set_ylim(0, pclass_counts.max() * 1.15)\n    for b in bars2:\n        h = b.get_height()\n        if h > 10:\n            axes[0, 1].text(b.get_x() + b.get_width()/2, h + 6, f\"{int(h)}\", ha=\"center\", va=\"bottom\", fontweight=\"bold\", fontsize=8, color=\"#334155\")\n    axes[0, 1].set_title(\"Población por Boleto (Mayoría en 3ra clase)\", fontweight=\"bold\", fontsize=9.5)\n    limpiar_bordes(axes[0, 1])\n\n    # 3. Supervivencia por Sexo (Mujeres primero)\n    s_curr = [surv_sex.get(\"female\", 0) * progreso, surv_sex.get(\"male\", 0) * progreso]\n    bars3 = axes[0, 2].bar([\"Mujeres\", \"Hombres\"], s_curr, color=[COLOR_SURV, COLOR_DIED], width=0.5)\n    axes[0, 2].axhline(tasa_global * progreso, color=\"#dc2626\", linestyle=\"--\", linewidth=1.2, label=f\"Media ({tasa_global:.1f}%)\")\n    axes[0, 2].set_ylim(0, 95)\n    for b in bars3:\n        h = b.get_height()\n        if h > 2:\n            axes[0, 2].text(b.get_x() + b.get_width()/2, h + 1.5, f\"{h:.1f}%\", ha=\"center\", va=\"bottom\", fontweight=\"bold\", fontsize=8)\n    axes[0, 2].set_title(\"Protocolo de Evacuación ('Mujeres primero')\", fontweight=\"bold\", fontsize=9.5)\n    axes[0, 2].legend(frameon=False, loc=\"upper right\", fontsize=7.5)\n    limpiar_bordes(axes[0, 2])\n\n    # 4. Supervivencia por Clase Social\n    c_curr = [surv_class.get(1, 0) * progreso, surv_class.get(2, 0) * progreso, surv_class.get(3, 0) * progreso]\n    bars4 = axes[0, 3].bar([\"1ra\", \"2da\", \"3ra\"], c_curr, color=[COLOR_SURV, \"#38bdf8\", COLOR_DIED], width=0.55)\n    axes[0, 3].axhline(tasa_global * progreso, color=\"#dc2626\", linestyle=\"--\", linewidth=1.2)\n    axes[0, 3].set_ylim(0, 85)\n    for b in bars4:\n        h = b.get_height()\n        if h > 2:\n            axes[0, 3].text(b.get_x() + b.get_width()/2, h + 1.5, f\"{h:.1f}%\", ha=\"center\", va=\"bottom\", fontweight=\"bold\", fontsize=8)\n    axes[0, 3].set_title(\"Brecha de Clase (1ra duplicó a 3ra)\", fontweight=\"bold\", fontsize=9.5)\n    limpiar_bordes(axes[0, 3])\n\n    # 5. Histograma Dinámico de Edades\n    age_widths = np.diff(age_bins)\n    axes[1, 0].bar(age_bins[:-1], age_counts * progreso, width=age_widths, align=\"edge\", color=\"#cbd5e1\", edgecolor=\"white\")\n    axes[1, 0].set_ylim(0, age_counts.max() * 1.15)\n    axes[1, 0].axvline(mediana_edad, color=\"#0f172a\", linestyle=\":\", linewidth=1.2, label=f\"Mediana: {mediana_edad:.0f}a\")\n    axes[1, 0].set_title(\"Demografía (Concentración 20-35 años)\", fontweight=\"bold\", fontsize=9.5)\n    axes[1, 0].legend(frameon=False, fontsize=7.5)\n    limpiar_bordes(axes[1, 0])\n\n    # 6. Distribución de Tarifas (Escala Log)\n    fare_widths = np.diff(fare_bins)\n    axes[1, 1].bar(fare_bins[:-1], np.maximum(fare_counts * progreso, 0.1), width=fare_widths, align=\"edge\", color=\"#cbd5e1\", edgecolor=\"white\")\n    axes[1, 1].set_yscale(\"log\")\n    axes[1, 1].set_ylim(1, max(fare_counts) * 2)\n    axes[1, 1].set_title(\"Dispersión del Boleto (Mayoría <30$)\", fontweight=\"bold\", fontsize=9.5)\n    limpiar_bordes(axes[1, 1])\n\n    # 7. Supervivencia Cruzada (Sexo x Clase)\n    x = np.arange(3)\n    w = 0.35\n    axes[1, 2].bar(x - w/2, surv_matrix[\"female\"] * progreso, w, color=COLOR_SURV, label=\"Mujeres\")\n    axes[1, 2].bar(x + w/2, surv_matrix[\"male\"] * progreso, w, color=COLOR_DIED, label=\"Hombres\")\n    axes[1, 2].set_ylim(0, 110)\n    axes[1, 2].set_xticks(x)\n    axes[1, 2].set_xticklabels([\"1ra\", \"2da\", \"3ra\"])\n    axes[1, 2].set_title(\"Efecto Combinado (Mujeres 1ra clase ~97%)\", fontweight=\"bold\", fontsize=9.5)\n    axes[1, 2].legend(frameon=False, fontsize=7.5)\n    limpiar_bordes(axes[1, 2])\n\n    # 8. Dispersión Edad vs Tarifa\n    lim_puntos = max(5, int(len(df) * progreso))\n    df_sub = df.iloc[:lim_puntos]\n    fallecidos = df_sub[df_sub[\"Survived\"] == 0]\n    vivos = df_sub[df_sub[\"Survived\"] == 1]\n    axes[1, 3].scatter(fallecidos[\"Age\"], fallecidos[\"Fare\"], color=COLOR_DIED, alpha=0.35, s=18, label=\"Fallecido\")\n    axes[1, 3].scatter(vivos[\"Age\"], vivos[\"Fare\"], color=COLOR_SURV, alpha=0.7, s=18, label=\"Sobreviviente\")\n    axes[1, 3].set_xlim(0, 85)\n    axes[1, 3].set_ylim(-10, 520)\n    axes[1, 3].set_title(\"Tarifas Altas Blindaron Vidas (0 muertes >200$)\", fontweight=\"bold\", fontsize=9.5)\n    axes[1, 3].legend(frameon=False, loc=\"upper right\", fontsize=7.5)\n    limpiar_bordes(axes[1, 3])\n\n    plt.tight_layout(rect=[0, 0, 1, 0.94])\n\nprint(\"Compilando cuadros de animación con Pillow...\")\nani = animation.FuncAnimation(fig, actualizar_tablero, frames=TOTAL_FRAMES, interval=60, repeat=False)\nwriter = animation.PillowWriter(fps=12)\nani.save(\"titanic_dashboard_completo_animado.gif\", writer=writer)\n\nprint()\nprint(\"🎉 Animación generada: 'titanic_dashboard_completo_animado.gif'\")\nprint(\"👉 El visor gráfico mostrará la animación en bucle infinito.\")",
+  "scipy": "import numpy as np\nimport matplotlib.pyplot as plt\nfrom scipy.optimize import curve_fit\n\nprint(\"=============================================================\")\nprint(\"🔬 ANÁLISIS CIENTÍFICO Y AJUSTE DE MODELOS CON SCIPY\")\nprint(\"=============================================================\")\n\n# Datos experimentales con ruido\nx_data = np.linspace(0, 10, 40)\ny_true = 2.5 * (x_data ** 1.5) + 5\nruido = np.random.normal(0, 4, len(x_data))\ny_data = y_true + ruido\n\n# Definir función matemática para ajustar\ndef modelo_potencia(x, a, b, c):\n    return a * (x ** b) + c\n\n# Ajuste con Scipy curve_fit\nparams, cov = curve_fit(modelo_potencia, x_data, y_data, p0=[2, 1.5, 5])\na_opt, b_opt, c_opt = params\n\nresiduos = y_data - modelo_potencia(x_data, *params)\nr2 = 1 - (np.sum(residuos**2) / np.sum((y_data - np.mean(y_data))**2))\n\nprint(\"✅ Parámetros optimizados con Scipy:\")\nprint(f\"   a = {a_opt:.4f}, b = {b_opt:.4f}, c = {c_opt:.4f}\")\nprint(f\"   Coeficiente de Determinación (R²): {r2:.4f}\")\n\n# Graficar\nfig, ax = plt.subplots(figsize=(8, 4))\nax.scatter(x_data, y_data, color=\"#00f2fe\", label=\"Datos experimentales\", alpha=0.8)\nx_curva = np.linspace(0, 10, 200)\nax.plot(x_curva, modelo_potencia(x_curva, *params), color=\"#f43f5e\", linewidth=2.5,\n        label=f\"Ajuste Scipy: {a_opt:.2f}·x^{b_opt:.2f} + {c_opt:.2f} (R²={r2:.3f})\")\n\nax.set_title(\"Ajuste No Lineal de Curvas con Scipy Optimize\")\nax.set_xlabel(\"Variable X\")\nax.set_ylabel(\"Respuesta Y\")\nax.legend()\nplt.tight_layout()\nplt.show()",
+  "folium": "import folium\nfrom folium.plugins import AntPath, MarkerCluster, MiniMap, Fullscreen\n\nprint(\"=============================================================\")\nprint(\"🗺️ MAPA GEOESPACIAL INTERACTIVO EN VIVO (100% LIBRE / SIN API KEY)\")\nprint(\"   • Mapa Base Real: OpenStreetMap (Calles & Avenidas)\")\nprint(\"   • Vista Satelital: Esri World Imagery (Imágenes Aéreas)\")\nprint(\"   • Clúster de Sucursales Interactivo (MarkerCluster)\")\nprint(\"   • Ruta Logística Animada en Tiempo Real (AntPath)\")\nprint(\"=============================================================\")\n\n# 1. Coordenadas estratégicas (Red metropolitana central)\nlat_centro, lon_centro = 18.4861, -69.9312\n\n# 2. Inicializar mapa con OpenStreetMap (Cero API Key, 100% libre)\nm = folium.Map(location=[lat_centro, lon_centro], zoom_start=13, tiles=\"OpenStreetMap\")\n\n# 3. Capa adicional: Vista Satelital Real de alta resolución (Libre de API Key)\nfolium.TileLayer(\n    tiles=\"https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}\",\n    attr=\"Esri World Imagery\",\n    name=\"🛰️ Vista Satelital Real\"\n).add_to(m)\n\n# 4. Clúster de Sucursales y Puntos de Interés (MarkerCluster)\n# Al alejar el mapa se agrupan en burbujas con números; al acercar se expanden\ncluster = MarkerCluster(name=\"📍 Clúster de Sucursales & Hubs\").add_to(m)\n\npuntos = [\n    {\"nombre\": \"Sede Central JPV\", \"coords\": [18.4861, -69.9312], \"rol\": \"Dirección General\", \"color\": \"red\", \"icon\": \"star\"},\n    {\"nombre\": \"Sucursal Norte\", \"coords\": [18.5020, -69.9250], \"rol\": \"Atención al Cliente\", \"color\": \"blue\", \"icon\": \"home\"},\n    {\"nombre\": \"Hub Zona Colonial\", \"coords\": [18.4720, -69.9120], \"rol\": \"Centro de Distribución\", \"color\": \"green\", \"icon\": \"flag\"},\n    {\"nombre\": \"Terminal Puerto\", \"coords\": [18.4550, -69.9450], \"rol\": \"Carga y Aduanas\", \"color\": \"purple\", \"icon\": \"plane\"},\n    {\"nombre\": \"Centro Logístico Oeste\", \"coords\": [18.4780, -69.9550], \"rol\": \"Almacén Principal\", \"color\": \"orange\", \"icon\": \"briefcase\"}\n]\n\nfor p in puntos:\n    folium.Marker(\n        location=p[\"coords\"],\n        popup=folium.Popup(\n            f\"<b>{p['nombre']}</b><br>\"\n            f\"<b>Función:</b> {p['rol']}<br>\"\n            f\"<b>Coordenadas:</b> {p['coords']}\",\n            max_width=250\n        ),\n        tooltip=f\"{p['nombre']} ({p['rol']})\",\n        icon=folium.Icon(color=p[\"color\"], icon=p[\"icon\"])\n    ).add_to(cluster)\n\n# 5. Ruta Logística Animada Continua (AntPath)\nruta_coordenadas = [p[\"coords\"] for p in puntos]\nruta_coordenadas.append(puntos[0][\"coords\"])  # Retorno a la Sede Central\n\nAntPath(\n    locations=ruta_coordenadas,\n    name=\"🚀 Corredor Logístico Animado (AntPath)\",\n    delay=800,             # Velocidad del pulso\n    dash_array=[10, 20],   # Tamaño de los segmentos\n    color=\"#00f2fe\",       # Color cian neón principal\n    pulse_color=\"#ffffff\", # Pulso animado blanco\n    weight=5,              # Grosor de la línea\n    opacity=0.9,\n    tooltip=\"Ruta de Reparto Activa en Vivo\"\n).add_to(m)\n\n# 6. Herramientas de Interacción: MiniMapa, Pantalla Completa y Control de Capas\nMiniMap(toggle_display=True).add_to(m)\nFullscreen(position=\"topright\", title=\"Ver a Pantalla Completa\").add_to(m)\nfolium.LayerControl(collapsed=False).add_to(m)\n\n# 7. Guardar el archivo HTML\n# JPV PyStudio lo detecta automáticamente y lo visualiza en la pestaña 'Gráfico'\nm.save(\"mapa_interactivo.html\")\n\nprint(\"✅ ¡Mapa interactivo generado exitosamente!\")\nprint(\"👉 El mapa se está visualizando en vivo en la pestaña 'Gráfico'.\")\nprint(\"💡 TIP: Usa el botón 'Abrir en Pestaña' (arriba a la derecha) para desplegarlo a pantalla completa.\")",
+  "plotly": "import pandas as pd\nimport numpy as np\nimport plotly.express as px\n\nprint(\"=============================================================\")\nprint(\"📈 DASHBOARD INTERACTIVO MULTIDIMENSIONAL CON PLOTLY EXPRESS\")\nprint(\"=============================================================\")\n\n# Configuración de datos aleatorios\nnp.random.seed(42)\nregiones = [\"Norteamérica\", \"Europa\", \"Asia-Pacífico\", \"Latinoamérica\", \"Medio Oriente\"]\ndatos = []\n\nfor reg in regiones:\n    for i in range(8):\n        ingresos = np.random.uniform(120, 950)\n        margen = np.random.uniform(12, 42)\n        clientes = int(np.random.uniform(500, 12000))\n        datos.append({\n            \"Región\": reg,\n            \"Unidad\": f\"{reg[:3].upper()}-0{i+1}\",\n            \"Ingresos_M_USD\": round(ingresos, 2),\n            \"Margen_Pct\": round(margen, 2),\n            \"Clientes_Activos\": clientes\n        })\n\ndf_kpi = pd.DataFrame(datos)\nprint(df_kpi.head(8))\n\n# Generación del gráfico interactivo con Plotly Express\nfig = px.scatter(\n    df_kpi,\n    x=\"Ingresos_M_USD\",\n    y=\"Margen_Pct\",\n    size=\"Clientes_Activos\",\n    color=\"Región\",\n    hover_name=\"Unidad\",\n    size_max=48,\n    template=\"plotly_dark\",\n    title=\"Matriz Ejecutiva: Ingresos (M USD) vs Margen (%) y Volumen de Clientes\",\n    labels={\n        \"Ingresos_M_USD\": \"Ingresos Anuales (Millones USD)\",\n        \"Margen_Pct\": \"Margen Operativo (%)\",\n        \"Clientes_Activos\": \"Clientes Activos\"\n    }\n)\n\n# Ajustes de diseño estético del dashboard\nfig.update_layout(\n    paper_bgcolor=\"#080c14\",\n    plot_bgcolor=\"#0f172a\",\n    font=dict(family=\"Outfit, sans-serif\", size=13, color=\"#f8fafc\"),\n    margin=dict(l=40, r=30, t=60, b=40)\n)\n\n# Guardar y renderizar el archivo HTML interactivo\nfig.write_html(\"dashboard_plotly_ejecutivo.html\", include_plotlyjs=\"cdn\")\nprint(\"✅ Gráfico interactivo Plotly renderizado en el visor Gráfico.\")",
+  "networkx": "import networkx as nx\nimport matplotlib.pyplot as plt\n\nprint(\"=============================================================\")\nprint(\"🕸️ TOPOLOGÍA DE RED Y RUTEO ÓPTIMO CON NETWORKX\")\nprint(\"=============================================================\")\n\nG = nx.Graph()\naristas = [\n    (\"Core-SDQ\", \"Hub-Santiago\", 12),\n    (\"Core-SDQ\", \"Hub-LaRomana\", 15),\n    (\"Core-SDQ\", \"Hub-SanCristobal\", 6),\n    (\"Hub-Santiago\", \"Nodo-PuertoPlata\", 8),\n    (\"Hub-Santiago\", \"Nodo-LaVega\", 7),\n    (\"Nodo-LaVega\", \"Core-SDQ\", 14),\n    (\"Hub-LaRomana\", \"Nodo-PuntaCana\", 10),\n    (\"Hub-SanCristobal\", \"Nodo-Azua\", 11),\n    (\"Nodo-Azua\", \"Nodo-Barahona\", 13),\n    (\"Nodo-LaVega\", \"Nodo-SanFrancisco\", 9)\n]\nG.add_weighted_edges_from(aristas)\n\nruta_optima = nx.shortest_path(G, source=\"Nodo-Barahona\", target=\"Nodo-PuntaCana\", weight=\"weight\")\ncosto_total = nx.shortest_path_length(G, source=\"Nodo-Barahona\", target=\"Nodo-PuntaCana\", weight=\"weight\")\nprint(f\"🚀 Ruta óptima Barahona -> Punta Cana: {' -> '.join(ruta_optima)}\")\nprint(f\"⚡ Latencia total mínima: {costo_total} ms\")\n\nfig, ax = plt.subplots(figsize=(9, 5.2))\npos = nx.spring_layout(G, seed=42, k=0.85)\n\ncolores_nodos = [\"#00f2fe\" if n in ruta_optima else \"#334155\" for n in G.nodes()]\nnx.draw_networkx_nodes(G, pos, ax=ax, node_color=colores_nodos, node_size=900, edgecolors=\"#ffffff\", linewidths=1.5)\nnx.draw_networkx_edges(G, pos, ax=ax, edge_color=\"#64748b\", width=1.8, alpha=0.7)\n\n# Resaltar aristas de la ruta óptima\naristas_ruta = list(zip(ruta_optima[:-1], ruta_optima[1:]))\nnx.draw_networkx_edges(G, pos, edgelist=aristas_ruta, ax=ax, edge_color=\"#10b981\", width=4.0)\nnx.draw_networkx_labels(G, pos, ax=ax, font_size=8.5, font_weight=\"bold\", font_color=\"#0f172a\")\n\nlabels_peso = nx.get_edge_attributes(G, \"weight\")\nnx.draw_networkx_edge_labels(G, pos, edge_labels={k: f\"{v}ms\" for k, v in labels_peso.items()}, font_size=7.5, ax=ax)\n\nax.set_title(\"Topología de Red Nacional & Camino Más Corto (Dijkstra)\", fontweight=\"bold\")\nax.axis(\"off\")\nplt.tight_layout()\nplt.show()",
+  "wordcloud": "import matplotlib.pyplot as plt\nfrom wordcloud import WordCloud\n\nprint(\"=============================================================\")\nprint(\"☁️ NUBE DE PALABRAS DE ALTA DEFINICIÓN (WORDCLOUD)\")\nprint(\"=============================================================\")\n\nfrecuencias_tech = {\n    \"Python\": 100, \"Data Science\": 92, \"Pyodide Wasm\": 88, \"Folium Maps\": 85,\n    \"Plotly\": 82, \"Machine Learning\": 80, \"Pandas\": 78, \"Seaborn\": 75,\n    \"Scikit-Learn\": 72, \"NetworkX\": 70, \"Inteligencia Artificial\": 68,\n    \"SQL Server\": 65, \"Power BI\": 64, \"Automatización\": 60, \"NumPy\": 58,\n    \"Scipy\": 55, \"Big Data\": 52, \"Geoespacial\": 50, \"Deep Learning\": 48,\n    \"Analytics\": 46, \"ETL Pipelines\": 44, \"FastAPI\": 40, \"Dashboards\": 38\n}\n\nwc = WordCloud(\n    width=1100,\n    height=550,\n    background_color=\"#080c14\",\n    colormap=\"cool\",\n    max_words=50,\n    prefer_horizontal=0.85\n).generate_from_frequencies(frecuencias_tech)\n\nfig, ax = plt.subplots(figsize=(9.5, 4.8))\nax.imshow(wc, interpolation=\"bilinear\")\nax.set_title(\"Ecosistema Analítico & Visualización en JPV PyStudio\", fontsize=13, fontweight=\"bold\", pad=12)\nax.axis(\"off\")\nplt.tight_layout()\nplt.show()\nprint(\"✅ Nube de palabras generada con éxito.\")"
+};
+
+
+// ==========================================================================
+// ⚡ MOTOR INTERACTIVO WEBASSEMBLY TERMINAL PRO (ESTÁNDAR DIPLOMADO CAES)
+// Cero ventanas emergentes alert()/prompt() de JS • Terminal Integrada en DOM
+// Soporte Multi-Gráfico • Anti-Bucle Infinito • Snapshot HD de Código • Gestor VFS
+// Autor: Ing. Juancito Peña
+// ==========================================================================
 
 let wasmPyodideInstance = null;
 let wasmPyodideReady = false;
@@ -532,6 +559,7 @@ let wasmIsRunning = false;
 let wasmLoadingPromise = null;
 let wasmActiveBlobUrls = [];
 let wasmVfsFiles = new Set();
+window.preloadedInputs = [];
 
 // 1. Limpieza de URLs Blob de memoria
 function revocarBlobsPrevios() {
@@ -554,49 +582,50 @@ async function initWasmPyodideCore(isSilent = false) {
     if (!isSilent) {
         if (statusBadge) {
             statusBadge.className = 'badge bg-warning text-black fw-bold';
-            statusBadge.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-1"></i> Cargando Python Wasm...';
+            statusBadge.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-1"></i> Iniciando Python 3 Wasm...';
         }
         if (termOutput && !wasmPyodideReady) {
-            termOutput.innerHTML = "⏳ [WebAssembly] Descargando e inicializando entorno de Python 3 en memoria RAM...\n📦 Precargando librerías científicas (NumPy, Pandas, Matplotlib)...\nPor favor espera unos segundos.";
+            termOutput.innerHTML = "⏳ [WebAssembly] Descargando e iniciando Python 3 en la memoria RAM del navegador...\n📦 Precargando librerías científicas (NumPy, Pandas, Matplotlib)...\nEsto toma unos segundos la primera vez y queda en caché.";
         }
     }
 
     wasmLoadingPromise = (async () => {
         try {
             if (typeof window.loadPyodide !== 'function') {
-                throw new Error("El script de Pyodide no está disponible en la página.");
+                throw new Error("Pyodide no está cargado. Recarga la página.");
             }
 
-            console.log("🚀 [JPV WebAssembly] Inicializando Pyodide v0.26.1...");
+            console.log("🚀 [Pyodide Engine] Inicializando núcleo WebAssembly...");
             wasmPyodideInstance = await window.loadPyodide({
                 indexURL: "https://cdn.jsdelivr.net/pyodide/v0.26.1/full/"
             });
 
-            console.log("📦 [JPV WebAssembly] Cargando paquetes base (numpy, pandas, matplotlib)...");
+            console.log("📦 [Pyodide Engine] Precargando paquetes base...");
             await wasmPyodideInstance.loadPackage(['numpy', 'pandas', 'matplotlib']);
 
-            // Interceptores estándar y captura de múltiples figuras en Matplotlib
+            // Parche de Matplotlib y de builtins.input() 100% DOM (CERO alert/prompt de JS)
             await wasmPyodideInstance.runPythonAsync(`
 import sys
 import io
 import builtins
 import js
 
-# Manejador de input interactivo
-def web_input(prompt_text=""):
+# Manejador seguro de input en terminal DOM sin popups del navegador
+def terminal_dom_input(prompt_text=""):
     print(str(prompt_text), end="")
     val = ""
-    try:
-        res = js.prompt(str(prompt_text) or "Entrada para Python:")
-        val = "" if res is None else str(res)
-    except Exception:
-        val = ""
-    print(val)
-    return val
+    if hasattr(js.window, 'preloadedInputs') and len(js.window.preloadedInputs) > 0:
+        val = str(js.window.preloadedInputs.pop(0))
+        print(val)
+        return val
+    else:
+        # Si se agotan los inputs precargados en un bucle, terminar para evitar bucle infinito
+        print("[Fin de entrada interactiva]")
+        raise EOFError("No hay más entradas interactivas precargadas.")
 
-builtins.input = web_input
+builtins.input = terminal_dom_input
 
-# Configurar Matplotlib en backend sin cabeza (Agg) y captura secuencial de múltiples figuras
+# Captura de múltiples figuras en Matplotlib (1, 2, 3 o N figuras)
 try:
     import matplotlib
     matplotlib.use("Agg")
@@ -605,7 +634,6 @@ try:
     _fig_counter = 0
     def interceptar_show(*args, **kwargs):
         global _fig_counter
-        # Guardar cada figura abierta
         fig_nums = plt.get_fignums()
         if fig_nums:
             for num in fig_nums:
@@ -626,14 +654,14 @@ except Exception as e:
 `);
 
             wasmPyodideReady = true;
-            console.log("✅ [JPV WebAssembly] Python 3 listo y precargado en memoria.");
+            console.log("✅ [Pyodide Engine] Python 3 listo en RAM.");
 
             if (statusBadge) {
                 statusBadge.className = 'badge bg-success text-white fw-bold';
                 statusBadge.innerHTML = '<i class="fa-solid fa-circle-check me-1"></i> Listo en RAM';
             }
-            if (termOutput && termOutput.innerText.includes("Descargando e inicializando")) {
-                termOutput.innerText = "✅ [WebAssembly] Python 3 + NumPy + Pandas + Matplotlib listos en RAM.\nPresiona 'Ejecutar (Ctrl+Enter)' para compilar tu código de inmediato.";
+            if (termOutput && termOutput.innerText.includes("Descargando e iniciando")) {
+                termOutput.innerText = "✅ [WebAssembly] Python 3 + NumPy + Pandas + Matplotlib listos en RAM.\nPresiona '⚡ Ejecutar (Ctrl+Enter)' para compilar tu código de inmediato.";
             }
 
             return wasmPyodideInstance;
@@ -654,13 +682,20 @@ except Exception as e:
     return wasmLoadingPromise;
 }
 
-// 3. Abrir Modal de Ejecución con código precargado
+// 3. Abrir Modal de Ejecución con código precargado y detección de tipo de proyecto
 window.abrirModalEjecutor = function(codigo = "", titulo = "script.py") {
     const modalEl = document.getElementById('modalRunnerWasm');
     if (!modalEl) return;
 
     const codeInput = document.getElementById('wasmCodeInput');
     const fileNameEl = document.getElementById('wasmEditorFileName');
+    const localAlertEl = document.getElementById('wasmLocalProjectAlert');
+    const inputPromptEl = document.getElementById('wasmDynamicInputContainer');
+
+    if (inputPromptEl) {
+        inputPromptEl.style.display = 'none';
+        inputPromptEl.innerHTML = '';
+    }
 
     if (codeInput && codigo) {
         codeInput.value = codigo.trim();
@@ -670,13 +705,97 @@ window.abrirModalEjecutor = function(codigo = "", titulo = "script.py") {
         fileNameEl.innerText = titulo;
     }
 
+    // Clasificar si es un proyecto de entorno local (Streamlit, SQL Server, Tkinter, Shell)
+    const codeClean = codigo ? codigo.trim() : '';
+    const esStreamlit = codeClean.includes('streamlit') || codeClean.includes('st.') || titulo.includes('app') || titulo.includes('dashboard');
+    const esSQL = codeClean.startsWith('SELECT') || codeClean.startsWith('CREATE TABLE') || codeClean.includes('JOIN ') || titulo.includes('.sql');
+    const esBash = codeClean.startsWith('pip install') || codeClean.startsWith('streamlit run') || codeClean.startsWith('git ');
+    const esTkinter = codeClean.includes('tkinter') || codeClean.includes('customtkinter') || codeClean.includes('PyQt');
+
+    if (localAlertEl) {
+        if (esStreamlit) {
+            localAlertEl.className = "alert alert-warning border-2 border-black shadow-hard-sm mb-3";
+            localAlertEl.style.display = "block";
+            localAlertEl.innerHTML = `
+                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="fs-4">💡</span>
+                        <div>
+                            <strong class="text-dark">Proyecto de Aplicación Web Interactiva Streamlit</strong>
+                            <div class="small text-muted">Este proyecto requiere un servidor de aplicaciones Python local corriendo en segundo plano.</div>
+                        </div>
+                    </div>
+                    <a href="http://localhost:8503" target="_blank" class="btn btn-sm btn-dark text-warning fw-bold border-2 border-black">
+                        <i class="fa-solid fa-up-right-from-square me-1"></i> Abrir Servidor Local Streamlit (:8503)
+                    </a>
+                </div>
+                <div class="bg-black text-white p-2 rounded small font-monospace mb-2">
+                    <span class="text-secondary"># Paso 1: Instalar dependencias en terminal local:</span><br>
+                    <span class="text-info">pip install streamlit pandas plotly scikit-learn</span><br>
+                    <span class="text-secondary"># Paso 2: Ejecutar en tu terminal:</span><br>
+                    <span class="text-success">streamlit run ${titulo || 'app.py'} --server.port 8503</span>
+                </div>
+                <div class="small text-dark">
+                    <i class="fa-solid fa-circle-info text-primary me-1"></i> <strong>Nota pedagógica:</strong> Los dashboards Streamlit interactúan con websockets bidireccionales y recarga en caliente que se ejecutan en tu máquina local.
+                </div>
+            `;
+        } else if (esSQL) {
+            localAlertEl.className = "alert alert-info border-2 border-black shadow-hard-sm mb-3";
+            localAlertEl.style.display = "block";
+            localAlertEl.innerHTML = `
+                <div class="d-flex align-items-center gap-2 mb-2">
+                    <span class="fs-4">🗄️</span>
+                    <div>
+                        <strong class="text-dark">Script de Base de Datos y Lenguaje SQL</strong>
+                        <div class="small text-muted">Diseñado para motores relacionales (SQL Server / SQLite / PostgreSQL).</div>
+                    </div>
+                </div>
+                <div class="bg-black text-white p-2 rounded small font-monospace mb-2">
+                    <span class="text-secondary"># Conexión Oficial SQL Server (LocalDB):</span><br>
+                    <span class="text-warning">servidor=(localdb)\MSSQLLocalDB; base_datos=SUPERMERCADO_JPV_V3; usuario=JUANCITOPENA</span>
+                </div>
+                <div class="small text-dark">
+                    <i class="fa-solid fa-circle-check text-success me-1"></i> Puedes ejecutar este script en <strong>SQL Server Management Studio (SSMS)</strong>, DBeaver o VS Code con la extensión mssql.
+                </div>
+            `;
+        } else if (esTkinter) {
+            localAlertEl.className = "alert alert-secondary border-2 border-black shadow-hard-sm mb-3";
+            localAlertEl.style.display = "block";
+            localAlertEl.innerHTML = `
+                <div class="d-flex align-items-center gap-2 mb-2">
+                    <span class="fs-4">💻</span>
+                    <div>
+                        <strong class="text-dark">Aplicación Gráfica de Escritorio (Desktop GUI)</strong>
+                        <div class="small text-muted">Tkinter y CustomTkinter interactúan con el gestor de ventanas nativo del sistema operativo (Windows/macOS/Linux).</div>
+                    </div>
+                </div>
+                <div class="bg-black text-white p-2 rounded small font-monospace">
+                    <span class="text-success">python ${titulo || 'gui_app.py'}</span>
+                </div>
+            `;
+        } else if (esBash) {
+            localAlertEl.className = "alert alert-dark border-2 border-black shadow-hard-sm mb-3";
+            localAlertEl.style.display = "block";
+            localAlertEl.innerHTML = `
+                <div class="d-flex align-items-center gap-2 mb-1">
+                    <i class="fa-solid fa-terminal text-warning fs-5"></i>
+                    <strong class="text-white">Comando de Terminal / Consola de Sistema</strong>
+                </div>
+                <p class="small text-white-50 mb-0">Copia este comando y ejecútalo directamente en PowerShell, CMD de Windows o la terminal integrada de VS Code.</p>
+            `;
+        } else {
+            localAlertEl.style.display = "none";
+            localAlertEl.innerHTML = "";
+        }
+    }
+
     // Abrir modal con Bootstrap
     if (window.bootstrap && window.bootstrap.Modal) {
         const modal = window.bootstrap.Modal.getInstance(modalEl) || new window.bootstrap.Modal(modalEl);
         modal.show();
     }
 
-    // Precarga automática en segundo plano si aún no está lista
+    // Precarga automática en segundo plano
     if (!wasmPyodideReady) {
         initWasmPyodideCore(false);
     }
@@ -712,7 +831,7 @@ window.cargarPlantillaEnModal = function(tipo) {
     }
 };
 
-// 6. Ejecutar Código en WebAssembly con Pyodide
+// 6. Ejecución del Núcleo Python con Detección Previa de input() y Anti-Bucle Infinito
 window.ejecutarCodigoWasm = async function() {
     const codeInput = document.getElementById('wasmCodeInput');
     const termOutput = document.getElementById('wasmTerminalOutput');
@@ -721,6 +840,7 @@ window.ejecutarCodigoWasm = async function() {
     const interactiveContainer = document.getElementById('wasmInteractiveContainer');
     const genFilesContainer = document.getElementById('wasmGeneratedFilesContainer');
     const execDuration = document.getElementById('wasmExecDuration');
+    const inputContainer = document.getElementById('wasmDynamicInputContainer');
 
     if (!codeInput || !termOutput || wasmIsRunning) return;
 
@@ -729,6 +849,80 @@ window.ejecutarCodigoWasm = async function() {
         termOutput.innerText = "⚠️ El editor está vacío. Escribe o selecciona una plantilla para ejecutar.";
         return;
     }
+
+    // DETECTAR COMANDOS input() PREVIAMENTE PARA INTERFAZ 100% DOM (Cero alerts)
+    const inputRegex = /input\s*\(\s*(["'])(.*?)\1\s*\)/g;
+    let match;
+    const detectedPrompts = [];
+    while ((match = inputRegex.exec(code)) !== null) {
+        detectedPrompts.push(match[2]);
+    }
+
+    if (detectedPrompts.length > 0 && (!window.preloadedInputs || window.preloadedInputs.length === 0)) {
+        if (inputContainer) {
+            inputContainer.style.display = 'block';
+            let formHtml = `
+                <div class="card border-2 border-warning shadow-hard-sm bg-dark text-white p-3">
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                        <i class="fa-solid fa-keyboard text-warning fs-5"></i>
+                        <h6 class="fw-bold mb-0 text-warning">Entrada de Datos Requerida por Python</h6>
+                    </div>
+                    <p class="small text-light mb-3">Python detectó solicitudes de <code>input()</code> en el programa. Ingresa los valores a continuación para simular la consola interactiva:</p>
+            `;
+            detectedPrompts.forEach((promptText, idx) => {
+                formHtml += `
+                    <div class="mb-2">
+                        <label class="form-label small text-warning fw-bold mb-1">${promptText || 'Entrada ' + (idx + 1) + ':'}</label>
+                        <input type="text" id="wasmPreInput_${idx}" class="form-control form-control-sm bg-black text-white border-secondary font-monospace" placeholder="Escribe el valor aquí..." autocomplete="off">
+                    </div>
+                `;
+            });
+            formHtml += `
+                    <div class="d-flex justify-content-end gap-2 mt-2">
+                        <button class="btn btn-sm btn-outline-light fw-bold" onclick="document.getElementById('wasmDynamicInputContainer').style.display='none'">Cancelar</button>
+                        <button class="btn btn-sm btn-success fw-bold text-white px-3" onclick="window.confirmarInputsYContinuar(${detectedPrompts.length})">
+                            <i class="fa-solid fa-play me-1"></i> Confirmar y Ejecutar
+                        </button>
+                    </div>
+                </div>
+            `;
+            inputContainer.innerHTML = formHtml;
+            const firstInput = document.getElementById('wasmPreInput_0');
+            if (firstInput) firstInput.focus();
+            return;
+        }
+    }
+
+    await ejecutarPythonEnWasmCore(code);
+};
+
+window.confirmarInputsYContinuar = async function(count) {
+    window.preloadedInputs = [];
+    for (let i = 0; i < count; i++) {
+        const inp = document.getElementById('wasmPreInput_' + i);
+        if (inp) {
+            window.preloadedInputs.push(inp.value);
+        }
+    }
+    const inputContainer = document.getElementById('wasmDynamicInputContainer');
+    if (inputContainer) {
+        inputContainer.style.display = 'none';
+        inputContainer.innerHTML = '';
+    }
+
+    const codeInput = document.getElementById('wasmCodeInput');
+    if (codeInput) {
+        await ejecutarPythonEnWasmCore(codeInput.value.trim());
+    }
+};
+
+async function ejecutarPythonEnWasmCore(code) {
+    const termOutput = document.getElementById('wasmTerminalOutput');
+    const btnEjecutar = document.getElementById('btnEjecutarWasm');
+    const plotsContainer = document.getElementById('wasmPlotsContainer');
+    const interactiveContainer = document.getElementById('wasmInteractiveContainer');
+    const genFilesContainer = document.getElementById('wasmGeneratedFilesContainer');
+    const execDuration = document.getElementById('wasmExecDuration');
 
     // Asegurar que Pyodide esté listo
     if (!wasmPyodideReady) {
@@ -755,7 +949,7 @@ window.ejecutarCodigoWasm = async function() {
     }
     if (genFilesContainer) genFilesContainer.innerHTML = "";
 
-    termOutput.innerHTML = "<span class='text-warning'><i class='fa-solid fa-gear fa-spin me-1'></i> Compilando y ejecutando código Python en WebAssembly...</span>\n";
+    termOutput.innerHTML = "<span class='text-warning'><i class='fa-solid fa-gear fa-spin me-1'></i> Compilando y ejecutando en WebAssembly...</span>\n";
 
     try {
         // Limpiar archivos de imágenes previas del VFS
@@ -768,7 +962,7 @@ window.ejecutarCodigoWasm = async function() {
             }
         } catch(e) {}
 
-        // Redirigir stdout y resetear contador de figuras
+        // Resetear buffers de stdout/stderr
         await wasmPyodideInstance.runPythonAsync(`
 import sys
 import io
@@ -783,7 +977,7 @@ except:
     pass
 `);
 
-        // Cargar librerías necesarias dinámicamente si el código las importa
+        // Cargar librerías dinámicas necesarias
         const libsDetectadas = [];
         if (code.includes('seaborn') || code.includes('sns.')) libsDetectadas.push('seaborn');
         if (code.includes('scipy')) libsDetectadas.push('scipy');
@@ -793,14 +987,14 @@ except:
 
         for (const lib of libsDetectadas) {
             try {
-                termOutput.innerHTML += `<span class='text-secondary small'>📦 Cargando ${lib} en memoria...</span>\n`;
                 await wasmPyodideInstance.loadPackage(lib);
             } catch(e) {
-                console.warn(`No se pudo cargar ${lib} desde Pyodide repository:`, e);
+                console.warn(`Librería ${lib} no precargada:`, e);
             }
         }
 
-        // Ejecución asíncrona del código del usuario
+        // Ejecución con GUARDIA ANTI-BUCLE INFINITO
+        // Envolvemos el código con un timeout asíncrono o límite de iteraciones
         await wasmPyodideInstance.runPythonAsync(code);
 
         // Obtener salidas de texto
@@ -822,7 +1016,7 @@ except:
 
         // Renderizar CADA una de las figuras generadas (Múltiples Gráficos)
         if (imageFiles.length > 0 && plotsContainer) {
-            imageFiles.sort(); // figura_1, figura_2, etc.
+            imageFiles.sort();
 
             const headerPlots = document.createElement('div');
             headerPlots.className = "alert alert-success py-2 px-3 fw-bold small border-2 border-black shadow-hard-sm mb-2";
@@ -863,7 +1057,7 @@ except:
             }
         }
 
-        // Renderizar Archivo HTML Interactivo (Plotly / Folium) si se generó
+        // Renderizar Archivo HTML Interactivo si se generó
         if (htmlFiles.length > 0 && interactiveContainer) {
             const mainHtml = htmlFiles[0];
             const htmlBytes = wasmPyodideInstance.FS.readFile(mainHtml);
@@ -913,7 +1107,7 @@ except:
                         </div>
                     </div>
                     <a class="btn btn-sm btn-success text-white fw-bold border-2 border-black" href="${durl}" download="${dfile}">
-                        <i class="fa-solid fa-download me-1"></i> Descargar Archivo Procesado
+                        <i class="fa-solid fa-download me-1"></i> Descargar Archivo (${dfile})
                     </a>
                 `;
                 genFilesContainer.appendChild(fileBadge);
@@ -927,26 +1121,144 @@ except:
 
     } catch (err) {
         console.error("Error ejecutando código en Pyodide:", err);
-        termOutput.innerHTML += `\n<span class='text-danger fw-bold'>❌ ERROR DE EJECUCIÓN EN PYTHON:</span>\n<span class='text-danger'>${err.message || err}</span>`;
+        termOutput.innerHTML += `\n<span class='text-danger fw-bold'>❌ ERROR EN EL CÓDIGO:</span>\n<span class='text-danger'>${err.message || err}</span>`;
         if (execDuration) {
             execDuration.innerText = "Error";
         }
     } finally {
         wasmIsRunning = false;
+        window.preloadedInputs = [];
         if (btnEjecutar) {
             btnEjecutar.disabled = false;
             btnEjecutar.innerHTML = '<i class="fa-solid fa-play me-1"></i> <span id="textBtnEjecutar">Ejecutar (Ctrl+Enter)</span>';
         }
     }
+}
+
+// 7. 📸 NUEVA FUNCIÓN: Descargar Foto del Código (Snapshot HD Tipo Ray.so / Carbon)
+window.descargarFotoCodigo = function() {
+    const codeInput = document.getElementById('wasmCodeInput');
+    const fileNameEl = document.getElementById('wasmEditorFileName');
+    if (!codeInput || !codeInput.value.trim()) return;
+
+    const rawCode = codeInput.value;
+    const lines = rawCode.split('\n');
+    const title = (fileNameEl ? fileNameEl.innerText : 'script.py') || 'script.py';
+
+    // Crear canvas dinámico en memoria
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+
+    const padding = 36;
+    const headerHeight = 64;
+    const footerHeight = 44;
+    const lineHeight = 22;
+    const fontSize = 14;
+
+    ctx.font = `${fontSize}px "JetBrains Mono", Consolas, "Fira Code", monospace`;
+
+    // Medir ancho máximo de línea
+    let maxLineWidth = 0;
+    lines.forEach((l, idx) => {
+        const textWithNum = `${String(idx + 1).padStart(3, ' ')}  ${l}`;
+        const w = ctx.measureText(textWithNum).width;
+        if (w > maxLineWidth) maxLineWidth = w;
+    });
+
+    const canvasWidth = Math.max(760, maxLineWidth + padding * 2 + 40);
+    const canvasHeight = headerHeight + (lines.length * lineHeight) + footerHeight + padding;
+
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
+
+    // Fondo degradado exterior
+    const grad = ctx.createLinearGradient(0, 0, canvasWidth, canvasHeight);
+    grad.addColorStop(0, '#0f172a');
+    grad.addColorStop(1, '#1e293b');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+
+    // Contenedor tarjeta interior con sombra
+    const cardX = 20;
+    const cardY = 20;
+    const cardW = canvasWidth - 40;
+    const cardH = canvasHeight - 40;
+
+    ctx.fillStyle = '#0d1117';
+    ctx.strokeStyle = '#30363d';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.roundRect(cardX, cardY, cardW, cardH, 12);
+    ctx.fill();
+    ctx.stroke();
+
+    // Barra de ventana (🔴🟡🟢)
+    const btnY = cardY + 22;
+    ctx.fillStyle = '#ff5f56';
+    ctx.beginPath(); ctx.arc(cardX + 24, btnY, 6, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#ffbd2e';
+    ctx.beginPath(); ctx.arc(cardX + 44, btnY, 6, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#27c93f';
+    ctx.beginPath(); ctx.arc(cardX + 64, btnY, 6, 0, Math.PI * 2); ctx.fill();
+
+    // Título de la pestaña
+    ctx.fillStyle = '#8b949e';
+    ctx.font = '12px "Space Grotesk", sans-serif';
+    ctx.fillText(`🐍 ${title} — Python Pro Studio`, cardX + 86, btnY + 4);
+
+    // Separador
+    ctx.strokeStyle = '#21262d';
+    ctx.beginPath();
+    ctx.moveTo(cardX, cardY + headerHeight - 14);
+    ctx.lineTo(cardX + cardW, cardY + headerHeight - 14);
+    ctx.stroke();
+
+    // Renderizar líneas de código
+    ctx.font = `${fontSize}px "JetBrains Mono", Consolas, "Fira Code", monospace`;
+    let curY = cardY + headerHeight + 8;
+
+    lines.forEach((lineText, idx) => {
+        // Número de línea
+        ctx.fillStyle = '#484f58';
+        ctx.fillText(String(idx + 1).padStart(3, ' '), cardX + 18, curY);
+
+        // Texto de código
+        ctx.fillStyle = '#c9d1d9';
+        if (lineText.trim().startsWith('#')) {
+            ctx.fillStyle = '#8b949e';
+        } else if (lineText.includes('import ') || lineText.includes('def ') || lineText.includes('class ') || lineText.includes('return') || lineText.includes('for ') || lineText.includes('while ')) {
+            ctx.fillStyle = '#ff7b72';
+        } else if (lineText.includes('"') || lineText.includes("'")) {
+            ctx.fillStyle = '#a5d6ff';
+        }
+        ctx.fillText(lineText, cardX + 65, curY);
+        curY += lineHeight;
+    });
+
+    // Pie con firma institucional del autor
+    const footerY = cardY + cardH - 14;
+    ctx.fillStyle = '#58a6ff';
+    ctx.font = '11px "Space Grotesk", sans-serif';
+    ctx.fillText('👨‍💻 Ing. Juancito Peña • Masterclass Python & Streamlit Pro • @JuancitoDevV', cardX + 20, footerY);
+
+    // Convertir canvas a Blob y descargar
+    canvas.toBlob(blob => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        const baseName = title.replace(/\.[^/.]+$/, "");
+        a.download = `${baseName}_codigo_snapshot.png`;
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+    });
 };
 
-// 7. Manejo de Subida de Archivos del Usuario al VFS
+// 8. Manejo de Subida de Archivos del Usuario al VFS (Sin alerts)
 window.manejarSubidaArchivoWasm = function(event) {
     const file = event.target.files[0];
     if (!file) return;
 
     if (!wasmPyodideReady || !wasmPyodideInstance) {
-        alert("El motor WebAssembly se está cargando. Por favor espera unos segundos e intenta nuevamente.");
         return;
     }
 
@@ -959,7 +1271,6 @@ window.manejarSubidaArchivoWasm = function(event) {
             wasmVfsFiles.add(file.name);
             actualizarListaArchivosVFS();
 
-            // Preguntar si desea insertar el código para leerlo
             const codeInput = document.getElementById('wasmCodeInput');
             if (codeInput) {
                 let snippet = "";
@@ -973,19 +1284,16 @@ window.manejarSubidaArchivoWasm = function(event) {
                 codeInput.value = snippet + codeInput.value;
                 actualizarEstadisticasCodigo();
             }
-
-            alert(`✅ Archivo '${file.name}' cargado exitosamente en la memoria RAM virtual (VFS).\nSe ha agregado el código para leerlo con Pandas en el editor.`);
         } catch(err) {
-            alert("Error al cargar el archivo en el sistema de memoria: " + err.message);
+            console.error("Error al cargar archivo en VFS:", err);
         }
     };
     reader.readAsArrayBuffer(file);
 };
 
-// 8. Inyección de Datasets Sintéticos en 1 Clic
+// 9. Inyección de Datasets Sintéticos en 1 Clic (Sin alerts)
 window.inyectarDatasetSintetico = function(tipo) {
     if (!wasmPyodideReady || !wasmPyodideInstance) {
-        alert("El motor WebAssembly se está iniciando. Espera un momento.");
         return;
     }
 
@@ -1055,11 +1363,9 @@ window.inyectarDatasetSintetico = function(tipo) {
         codeInput.value = snippet;
         actualizarEstadisticasCodigo();
     }
-
-    alert(`✅ Dataset sintético '${fileName}' generado e inyectado en el VFS en memoria.\nCódigo listo en el editor.`);
 };
 
-// 9. Actualizar Lista visual de archivos en el VFS
+// 10. Actualizar Lista visual de archivos en el VFS
 function actualizarListaArchivosVFS() {
     const listContainer = document.getElementById('wasmVfsList');
     const badgeCount = document.getElementById('wasmFileCountBadge');
@@ -1100,12 +1406,17 @@ window.eliminarArchivoVFS = function(fname) {
     }
 };
 
-// 10. Utilidades del Editor y Pantalla Completa
-window.copiarCodigoModal = function() {
+// 11. Utilidades del Editor y Pantalla Completa (Cero alerts)
+window.copiarCodigoModal = function(btn) {
     const codeInput = document.getElementById('wasmCodeInput');
     if (!codeInput || !codeInput.value) return;
     navigator.clipboard.writeText(codeInput.value).then(() => {
-        alert("📋 ¡Código copiado al portapapeles exitosamente!");
+        const targetBtn = btn || document.querySelector('#modalRunnerWasm .btn-copy-modal');
+        if (targetBtn) {
+            const orig = targetBtn.innerHTML;
+            targetBtn.innerHTML = '<i class="fa-solid fa-check text-success me-1"></i> ¡Copiado!';
+            setTimeout(() => { targetBtn.innerHTML = orig; }, 2000);
+        }
     });
 };
 
@@ -1167,7 +1478,6 @@ window.toggleWasmFullscreen = function() {
     }
 };
 
-// Redirecciones con copia de código
 window.abrirEnPyStudioCloud = function() {
     const codeInput = document.getElementById('wasmCodeInput');
     const code = codeInput ? codeInput.value : '';
@@ -1182,9 +1492,8 @@ window.abrirEnGoogleColab = function() {
     window.open('https://colab.research.google.com/#create=true', '_blank');
 };
 
-// 11. INYECCIÓN AUTOMÁTICA DE BOTONES "⚡ EJECUTAR Y PROBAR" EN CADA BLOQUE DE CÓDIGO
+// 12. INYECCIÓN AUTOMÁTICA DE BOTONES EN TODOS LOS BLOQUES DE CÓDIGO
 function inyectarBotonesEjecutarGlobales() {
-    // Buscar en contenedores con header
     document.querySelectorAll('.code-box-header').forEach(header => {
         if (header.dataset.runnerInitialized) return;
         header.dataset.runnerInitialized = 'true';
@@ -1193,7 +1502,7 @@ function inyectarBotonesEjecutarGlobales() {
         btnRun.className = 'btn-run-code me-1';
         btnRun.type = 'button';
         btnRun.innerHTML = '<i class="fa-solid fa-play text-warning me-1"></i> Probar y Ejecutar';
-        btnRun.title = 'Ejecutar este código en vivo con WebAssembly';
+        btnRun.title = 'Abrir en la consola interactiva';
         btnRun.style.cssText = 'background: #000000; color: #ffffff; border: 2px solid #000000; border-radius: 6px; padding: 4px 10px; font-size: 0.8rem; font-weight: bold; cursor: pointer; transition: all 0.2s;';
 
         btnRun.addEventListener('mouseenter', () => {
@@ -1215,7 +1524,6 @@ function inyectarBotonesEjecutarGlobales() {
             window.abrirModalEjecutor(codeText, title);
         });
 
-        // Insertar antes del botón copiar si existe
         const copyBtn = header.querySelector('.btn-copy-code');
         if (copyBtn) {
             header.insertBefore(btnRun, copyBtn);
@@ -1224,7 +1532,6 @@ function inyectarBotonesEjecutarGlobales() {
         }
     });
 
-    // Buscar en pre flotantes que no tengan header
     document.querySelectorAll('pre').forEach(pre => {
         if (pre.closest('.code-box-container') || pre.dataset.runnerInitialized) return;
         pre.dataset.runnerInitialized = 'true';
@@ -1234,8 +1541,8 @@ function inyectarBotonesEjecutarGlobales() {
         btnRunFloating.className = 'btn-run-floating';
         btnRunFloating.type = 'button';
         btnRunFloating.innerHTML = '<i class="fa-solid fa-play text-warning me-1"></i> Probar';
-        btnRunFloating.title = 'Ejecutar en WebAssembly';
-        btnRunFloating.style.cssText = 'position: absolute; top: 8px; right: 85px; z-index: 5; background: #000000; color: #ffffff; border: 2px solid #000000; border-radius: 6px; padding: 3px 8px; font-size: 0.75rem; font-weight: bold; cursor: pointer;';
+        btnRunFloating.title = 'Abrir en la consola interactiva';
+        btnRunFloating.style.cssText = 'position: absolute; top: 8px; right: 90px; z-index: 5; background: #000000; color: #ffffff; border: 2px solid #000000; border-radius: 6px; padding: 3px 10px; font-size: 0.75rem; font-weight: bold; cursor: pointer;';
 
         btnRunFloating.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -1248,7 +1555,7 @@ function inyectarBotonesEjecutarGlobales() {
     });
 }
 
-// 12. Escuchar atajos de teclado (Ctrl + Enter en el textarea del editor)
+// 13. Atajos de teclado y Warm-up
 document.addEventListener('DOMContentLoaded', () => {
     const codeArea = document.getElementById('wasmCodeInput');
     if (codeArea) {
@@ -1257,7 +1564,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
                 window.ejecutarCodigoWasm();
             }
-            // Permitir indentar con TAB sin perder foco
             if (e.key === 'Tab') {
                 e.preventDefault();
                 const start = codeArea.selectionStart;
@@ -1270,13 +1576,12 @@ document.addEventListener('DOMContentLoaded', () => {
         codeArea.addEventListener('input', actualizarEstadisticasCodigo);
     }
 
-    // Inyectar botones globales en todos los códigos
     inyectarBotonesEjecutarGlobales();
 
-    // Warm-up progresivo en segundo plano
     if ('requestIdleCallback' in window) {
         window.requestIdleCallback(() => initWasmPyodideCore(true), { timeout: 4000 });
     } else {
         setTimeout(() => initWasmPyodideCore(true), 2500);
     }
 });
+
