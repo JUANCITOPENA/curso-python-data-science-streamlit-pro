@@ -1,6 +1,6 @@
-# 🛡️ PUNTO DE RESTAURACIÓN MAESTRO: v3.0.0-PRO
-**Identificador del Checkpoint:** `CP-PYTHON-DATA-SCIENCE-STREAMLIT-V3.0.0-PRO`  
-**Fecha y Hora:** 9 de Noviembre, 2026 - 03:25 AM (GMT-4)  
+# 🛡️ PUNTO DE RESTAURACIÓN MAESTRO: v3.5.0-PRO
+**Identificador del Checkpoint:** `CP-PYTHON-DATA-SCIENCE-STREAMLIT-V3.5.0-PRO-WASM`  
+**Fecha y Hora:** 9 de Noviembre, 2026 - 11:30 AM (GMT-4)  
 **Autor Principal:** Ing. Juancito Peña  
 **Ubicación Física Local:**  
 `C:\Users\User\Desktop\CARPETA DE TRABAJO DE ANTIGRAVITY CLI-JPV\Curso_Python_Data_Science_Streamlit_Master_Pro`  
@@ -12,16 +12,16 @@
 ---
 
 ## 📋 Resumen del Estado de Restauración
-Este documento actúa como la instantánea técnica inmutable del proyecto tras la finalización exitosa de la versión 3.0.0-PRO. El sistema se encuentra en estado limpio, probado en navegadores modernos (Edge, Chrome), con servidores locales corriendo y sincronizado con GitHub.
+Este documento certifica la instantánea inmutable del proyecto tras la incorporación del motor interactivo WebAssembly (Pyodide v0.26.1), la integración de los 11 laboratorios técnicos de `JPV_PyStudio`, el botón global de ejecución interactiva en cada bloque de código y el gestor de subida de datasets VFS.
 
 ---
 
 ## 🧱 Componentes del Sistema Asegurados
 
 ### 1. Archivos Core y Frontend
-- `index.html`: Portal principal interactivo. Contiene los módulos de Fundamentos, Operadores, FAANG, Big Data, Machine Learning, Catálogo de 30 Dashboards Streamlit y Motor de Certificación Oficial JPV.
-- `style.css`: Hojas de estilo Neo-Brutalistas. Incluye paletas de alto contraste, sombras duras sólidas de 4px a 6px, transiciones táctiles y animación `@keyframes tech-heartbeat`.
-- `script.js`: Interactividad cliente, resaltado dinámico de sintaxis, copiado de bloques de código en un clic, cálculo de notas y emisión del certificado vectorial de excelencia.
+- `index.html`: Portal principal interactivo. Contiene los módulos de Fundamentos, Operadores, FAANG, Big Data, Machine Learning, los 11 Laboratorios Técnicos de JPV_PyStudio, el Catálogo de 30 Dashboards Streamlit, el Modal Maestro de Ejecución WebAssembly (`#modalRunnerWasm`) y el Motor de Certificación Oficial JPV. Exactamente 0 IDs duplicados.
+- `style.css`: Hojas de estilo Neo-Brutalistas. Incluye paletas de alto contraste, sombras duras sólidas (`.shadow-hard-lg`, `.shadow-hard-md`, `.shadow-hard-sm`), transiciones táctiles, animación `@keyframes tech-heartbeat` y estilos del modal runner.
+- `script.js`: Motor de interactividad cliente, motor Pyodide WebAssembly, interceptores multigráfico para Matplotlib (`plt.figure()`), visor de tablas y resultados, subida de archivos al VFS en memoria, generador de datasets sintéticos y atajos de teclado (`Ctrl + Enter`, `Tab`).
 - `assets/icons/`: Subcarpetas `ai/` y `tech/` con más de 45 logos vectoriales oficiales en SVG/PNG integrados localmente.
 
 ### 2. Catálogo de 30 Dashboards Streamlit (`scripts/`)
@@ -29,7 +29,7 @@ Este documento actúa como la instantánea técnica inmutable del proyecto tras 
 - `requirements.txt`: Especificación estricta de dependencias (streamlit, pandas, numpy, plotly, scikit-learn, etc.).
 
 ### 3. Copia de Respaldo Local de Seguridad (`.backup/`)
-- Contiene respaldos pre-deduplicación para garantizar que ninguna línea de código original se haya extraviado de forma irreversible.
+- Contiene los respaldos previos: `index.html.pre_wasm_studio.bak`, `script.js.pre_wasm_studio.bak`, `style.css.pre_wasm_studio.bak`.
 - Excluido de Git mediante `.gitignore` para optimizar el peso del repositorio en la nube.
 
 ---
@@ -61,10 +61,3 @@ Si en el futuro se requiere levantar el entorno completo desde cero en otra máq
    streamlit run scripts/app30.py --server.port 8503
    # Abrir en el navegador: http://localhost:8503
    ```
-
----
-
-## 🔒 Auditoría de Calidad y Seguridad
-- **WCAG 2.2 AAA:** Contraste estricto verificado en todas las tarjetas y tablas explicativas.
-- **Sin Dependencias Rotas:** Todos los iconos cargan desde rutas relativas locales sin depender de CDNs externos caídos.
-- **Cero IDs Duplicados:** La navegación del sidebar por hash `#id` salta de manera exacta a cada módulo sin saltos erróneos en el DOM.

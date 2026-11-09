@@ -19,6 +19,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet"/>
 <!-- Custom CSS (Luminous Dark Mode & Cyber Aesthetics) -->
 <link href="style.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.js"></script>
 </head>
 <body>
 <!-- NAVBAR MAESTRO DE NAVEGACIÓN -->
@@ -4053,6 +4054,101 @@ print(f"Prueba de error: {error_divisa}")
 </div>
 </div>
 </div>
+
+
+<!-- 🌐 Laboratorio Práctico: Consumo en Tiempo Real de APIs RESTful vía HTTPS (Requests) -->
+<div class="card border-3 border-black shadow-hard-lg rounded-3 mb-5 overflow-hidden" id="lab-requests-api" style="background: #ffffff;">
+  <div class="card-header bg-black text-white px-4 py-3 border-bottom border-3 border-black d-flex justify-content-between align-items-center flex-wrap gap-2">
+    <div class="d-flex align-items-center gap-2">
+      <span class="badge bg-dark border border-black fw-bold px-2 py-1">Requests • JSON • APIs</span>
+      <h5 class="fw-bold text-white mb-0" style="font-family: 'Space Grotesk', sans-serif;">🌐 Laboratorio Práctico: Consumo en Tiempo Real de APIs RESTful vía HTTPS (Requests)</h5>
+    </div>
+    <span class="badge bg-warning text-black fw-bold px-3 py-1 border border-black">Nivel Esencial</span>
+  </div>
+  <div class="card-body p-4">
+    <p class="text-dark mb-3" style="font-size: 1.02rem; line-height: 1.6;">
+      Conecta tu código al mundo exterior consumiendo endpoints REST públicos y seguros. Aprende a validar códigos de respuesta HTTP (200 OK, 404, 500), extraer cargas JSON anidadas y normalizarlas instantáneamente en DataFrames estructurados listos para analítica de negocio.
+    </p>
+
+    <!-- BLOQUE DE CÓDIGO CON BOTONES DE ACCIÓN -->
+    <div class="code-box-container border-2 border-black rounded-3 overflow-hidden shadow-hard-sm mb-3">
+      <div class="code-box-header bg-light border-bottom border-2 border-black px-3 py-2 d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <span class="fw-bold small text-black"><i class="fa-brands fa-python text-warning me-1"></i> requests_lab.py</span>
+        <div class="d-flex gap-2">
+          <button class="btn btn-sm btn-dark text-white fw-bold border-2 border-black btn-run-code" title="Ejecutar en WebAssembly" onclick="window.abrirModalEjecutor(this.closest('.code-box-container').querySelector('code').innerText, 'requests_lab.py')">
+            <i class="fa-solid fa-play text-warning me-1"></i> ⚡ Probar y Ejecutar
+          </button>
+          <button class="btn btn-sm btn-outline-dark fw-bold border-2 border-black btn-copy-code" title="Copiar código">
+            <i class="fa-regular fa-copy me-1"></i> Copiar
+          </button>
+          <button class="btn btn-sm btn-outline-dark fw-bold border-2 border-black" title="Abrir en JPV PyStudio Cloud" onclick="window.copiarYAbrirPyStudio('lab-requests-api')">
+            <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> PyStudio Cloud
+          </button>
+        </div>
+      </div>
+      <pre class="m-0 p-3" style="background: #0d1117; max-height: 480px; overflow-y: auto;"><code class="language-python">import requests
+import pandas as pd
+
+print(&quot;=============================================================&quot;)
+print(&quot;🌐 CONSULTA A API REST EXTERNA VÍA HTTPS CON REQUESTS&quot;)
+print(&quot;=============================================================&quot;)
+
+# API pública HTTPS con CORS habilitado (CoinGecko Markets)
+url = &quot;https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&amp;order=market_cap_desc&amp;per_page=10&amp;page=1&quot;
+
+print(f&quot;Enviando solicitud GET a: {url} ...&quot;)
+try:
+    response = requests.get(url, timeout=10)
+    print(f&quot;Código de respuesta HTTP: {response.status_code} ({response.reason})&quot;)
+    
+    if response.status_code == 200:
+        datos = response.json()
+        print(f&quot;✅ Respuesta recibida: {len(datos)} criptomonedas obtenidas.\\n&quot;)
+        
+        # Procesar datos con pandas
+        df = pd.DataFrame(datos)[[&quot;name&quot;, &quot;symbol&quot;, &quot;current_price&quot;, &quot;market_cap&quot;, &quot;price_change_percentage_24h&quot;]]
+        df.columns = [&quot;Criptomoneda&quot;, &quot;Símbolo&quot;, &quot;Precio USD&quot;, &quot;Market Cap USD&quot;, &quot;Cambio 24h (%)&quot;]
+        
+        print(&quot;🏆 Top 10 Criptoactivos:&quot;)
+        print(df.to_string(index=False))
+        
+        # Visualizar Top 10 Criptomonedas por Precio / Cambio 24h
+        import matplotlib.pyplot as plt
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(9.5, 4.0))
+        colores_bar = [&quot;#00f2fe&quot; if v &gt;= 0 else &quot;#f43f5e&quot; for v in df[&quot;Cambio 24h (%)&quot;]]
+        ax1.barh(df[&quot;Símbolo&quot;].str.upper()[::-1], (df[&quot;Market Cap USD&quot;] / 1e9)[::-1], color=&quot;#38bdf8&quot;, edgecolor=&quot;black&quot;)
+        ax1.set_title(&quot;Top 10 Market Cap (Miles de Millones USD)&quot;)
+        ax1.set_xlabel(&quot;Billones USD&quot;)
+
+        ax2.barh(df[&quot;Símbolo&quot;].str.upper()[::-1], df[&quot;Cambio 24h (%)&quot;][::-1], color=colores_bar[::-1], edgecolor=&quot;black&quot;)
+        ax2.axvline(0, color=&quot;#94a3b8&quot;, linewidth=1, linestyle=&quot;--&quot;)
+        ax2.set_title(&quot;Variación en 24 Horas (%)&quot;)
+        ax2.set_xlabel(&quot;Cambio (%)&quot;)
+        plt.tight_layout()
+        plt.show()
+
+        # Guardar en archivo local
+        df.to_csv(&quot;top_cripto_mercado.csv&quot;, index=False)
+        print(&quot;\\n💾 Guardado en disco virtual: &#x27;top_cripto_mercado.csv&#x27;&quot;)
+    else:
+        print(f&quot;Respuesta inesperada: {response.text[:200]}&quot;)
+
+except Exception as e:
+    print(f&quot;❌ Error en la solicitud: {e}&quot;)
+    print(&quot;\\n💡 Recuerda que las solicitudes web en el navegador requieren que la API permita CORS.&quot;)</code></pre>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pt-2 border-top">
+      <span class="small text-muted fw-bold">
+        <i class="fa-solid fa-bolt text-warning me-1"></i> Compatible con ejecución inmediata en memoria mediante WebAssembly (Pyodide).
+      </span>
+      <button class="btn btn-sm btn-success fw-bold text-white px-3 py-1 border-2 border-black shadow-sm" onclick="window.abrirModalEjecutor(document.querySelector('#lab-requests-api code').innerText, 'requests_lab.py')">
+        <i class="fa-solid fa-flask me-1"></i> Abrir en el Laboratorio Interactivo
+      </button>
+    </div>
+  </div>
+</div>
+
 </section><section class="mb-5 content-section" id="db">
 <h2 class="section-title">🗄️ 7. Bases de Datos y Operaciones CRUD con SQLite</h2>
 <p class="lead">Hasta ahora, todos los datos que hemos manejado en nuestros programas (variables, listas, diccionarios) son <strong>volátiles</strong>; desaparecen en cuanto el programa termina. Para que una aplicación sea verdaderamente útil, necesita <strong>persistir</strong> los datos, es decir, guardarlos de forma permanente. Aquí es donde entran las <strong>bases de datos</strong>. Aprenderás a interactuar con una base de datos relacional usando el lenguaje <strong>SQL</strong> desde Python para realizar las cuatro operaciones fundamentales: <strong>CRUD</strong>.</p>
@@ -4499,6 +4595,87 @@ print("\n--- 🎨 Gráfico de Supervivencia por Sexo generado ---")
 </div>
 </div>
 </div>
+
+
+<!-- 🚢 Laboratorio Práctico: Ingesta Web, Limpieza y Análisis Exploratorio (Titanic Dataset) -->
+<div class="card border-3 border-black shadow-hard-lg rounded-3 mb-5 overflow-hidden" id="lab-titanic-eda" style="background: #ffffff;">
+  <div class="card-header bg-black text-white px-4 py-3 border-bottom border-3 border-black d-flex justify-content-between align-items-center flex-wrap gap-2">
+    <div class="d-flex align-items-center gap-2">
+      <span class="badge bg-primary border border-black fw-bold px-2 py-1">Pandas • Matplotlib • EDA</span>
+      <h5 class="fw-bold text-white mb-0" style="font-family: 'Space Grotesk', sans-serif;">🚢 Laboratorio Práctico: Ingesta Web, Limpieza y Análisis Exploratorio (Titanic Dataset)</h5>
+    </div>
+    <span class="badge bg-warning text-black fw-bold px-3 py-1 border border-black">Nivel Intermedio</span>
+  </div>
+  <div class="card-body p-4">
+    <p class="text-dark mb-3" style="font-size: 1.02rem; line-height: 1.6;">
+      Aprende a consumir datasets directamente desde repositorios GitHub mediante HTTPS sin necesidad de descargar archivos locales previamente. Este laboratorio realiza la inspección demográfica, cálculo de tasas de supervivencia por clase y género, y genera una visualización bivariada en alta definición.
+    </p>
+
+    <!-- BLOQUE DE CÓDIGO CON BOTONES DE ACCIÓN -->
+    <div class="code-box-container border-2 border-black rounded-3 overflow-hidden shadow-hard-sm mb-3">
+      <div class="code-box-header bg-light border-bottom border-2 border-black px-3 py-2 d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <span class="fw-bold small text-black"><i class="fa-brands fa-python text-warning me-1"></i> titanic_lab.py</span>
+        <div class="d-flex gap-2">
+          <button class="btn btn-sm btn-dark text-white fw-bold border-2 border-black btn-run-code" title="Ejecutar en WebAssembly" onclick="window.abrirModalEjecutor(this.closest('.code-box-container').querySelector('code').innerText, 'titanic_lab.py')">
+            <i class="fa-solid fa-play text-warning me-1"></i> ⚡ Probar y Ejecutar
+          </button>
+          <button class="btn btn-sm btn-outline-dark fw-bold border-2 border-black btn-copy-code" title="Copiar código">
+            <i class="fa-regular fa-copy me-1"></i> Copiar
+          </button>
+          <button class="btn btn-sm btn-outline-dark fw-bold border-2 border-black" title="Abrir en JPV PyStudio Cloud" onclick="window.copiarYAbrirPyStudio('lab-titanic-eda')">
+            <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> PyStudio Cloud
+          </button>
+        </div>
+      </div>
+      <pre class="m-0 p-3" style="background: #0d1117; max-height: 480px; overflow-y: auto;"><code class="language-python">import pandas as pd
+import matplotlib.pyplot as plt
+
+print(&quot;=============================================================&quot;)
+print(&quot;🌐 LECTURA DE ARCHIVO CSV DIRECTO DESDE LA WEB (URL)&quot;)
+print(&quot;=============================================================&quot;)
+
+# URL pública en GitHub (Dataset Titanic)
+url_web = &quot;https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv&quot;
+
+print(f&quot;Descargando y procesando: {url_web} ...&quot;)
+df_web = pd.read_csv(url_web)
+
+print(f&quot;\\n✅ Datos descargados exitosamente: {len(df_web)} filas.&quot;)
+print(df_web[[&quot;PassengerId&quot;, &quot;Name&quot;, &quot;Sex&quot;, &quot;Age&quot;, &quot;Survived&quot;]].head(8))
+
+# Análisis gráfico de los datos descargados
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(9, 3.8))
+
+# Gráfico 1: Supervivientes
+conteo_survived = df_web[&quot;Survived&quot;].value_counts()
+ax1.pie(conteo_survived, labels=[&quot;Fallecidos&quot;, &quot;Sobrevivientes&quot;], autopct=&quot;%1.1f%%&quot;, colors=[&quot;#f87171&quot;, &quot;#00f2fe&quot;], startangle=90)
+ax1.set_title(&quot;Tasa de Supervivencia Titanic&quot;)
+
+# Gráfico 2: Pasajeros por Clase
+df_web[&quot;Pclass&quot;].value_counts().sort_index().plot(kind=&#x27;bar&#x27;, ax=ax2, color=&quot;#38bdf8&quot;, edgecolor=&#x27;black&#x27;)
+ax2.set_title(&quot;Pasajeros por Clase de Boleto&quot;)
+ax2.set_xlabel(&quot;Clase (1ra, 2da, 3ra)&quot;)
+ax2.set_ylabel(&quot;Cantidad de Pasajeros&quot;)
+
+plt.tight_layout()
+plt.show()
+
+# Guardar reporte para descargar
+df_web.to_csv(&quot;Reporte_Titanic_Descargado.csv&quot;, index=False)
+print(&quot;\\n💾 Archivo &#x27;Reporte_Titanic_Descargado.csv&#x27; listo para descargar.&quot;)</code></pre>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pt-2 border-top">
+      <span class="small text-muted fw-bold">
+        <i class="fa-solid fa-bolt text-warning me-1"></i> Compatible con ejecución inmediata en memoria mediante WebAssembly (Pyodide).
+      </span>
+      <button class="btn btn-sm btn-success fw-bold text-white px-3 py-1 border-2 border-black shadow-sm" onclick="window.abrirModalEjecutor(document.querySelector('#lab-titanic-eda code').innerText, 'titanic_lab.py')">
+        <i class="fa-solid fa-flask me-1"></i> Abrir en el Laboratorio Interactivo
+      </button>
+    </div>
+  </div>
+</div>
+
 </section><section class="container py-5 border-top" id="syllabus">
 <div class="row mb-5 text-center">
 <div class="col-lg-8 mx-auto">
@@ -9250,6 +9427,106 @@ plt.show()</code></pre></div>
 </div>
 </div>
 </div>
+
+
+<!-- 📊 Laboratorio Práctico: Matrices de Correlación y Mapas de Calor (Seaborn Heatmap) -->
+<div class="card border-3 border-black shadow-hard-lg rounded-3 mb-5 overflow-hidden" id="lab-seaborn-correlation" style="background: #ffffff;">
+  <div class="card-header bg-black text-white px-4 py-3 border-bottom border-3 border-black d-flex justify-content-between align-items-center flex-wrap gap-2">
+    <div class="d-flex align-items-center gap-2">
+      <span class="badge bg-info text-dark border border-black fw-bold px-2 py-1">Seaborn • NumPy • Estadística</span>
+      <h5 class="fw-bold text-white mb-0" style="font-family: 'Space Grotesk', sans-serif;">📊 Laboratorio Práctico: Matrices de Correlación y Mapas de Calor (Seaborn Heatmap)</h5>
+    </div>
+    <span class="badge bg-warning text-black fw-bold px-3 py-1 border border-black">Nivel Avanzado</span>
+  </div>
+  <div class="card-body p-4">
+    <p class="text-dark mb-3" style="font-size: 1.02rem; line-height: 1.6;">
+      Domina la técnica fundamental de descubrimiento multivariado en Ciencia de Datos. Utiliza `sns.heatmap()` combinando máscaras booleanas triangulares (`np.triu`) y la paleta divergente `coolwarm` para aislar correlaciones espurias y detectar multicolinealidad antes de entrenar modelos predictivos.
+    </p>
+
+    <!-- BLOQUE DE CÓDIGO CON BOTONES DE ACCIÓN -->
+    <div class="code-box-container border-2 border-black rounded-3 overflow-hidden shadow-hard-sm mb-3">
+      <div class="code-box-header bg-light border-bottom border-2 border-black px-3 py-2 d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <span class="fw-bold small text-black"><i class="fa-brands fa-python text-warning me-1"></i> seaborn_lab.py</span>
+        <div class="d-flex gap-2">
+          <button class="btn btn-sm btn-dark text-white fw-bold border-2 border-black btn-run-code" title="Ejecutar en WebAssembly" onclick="window.abrirModalEjecutor(this.closest('.code-box-container').querySelector('code').innerText, 'seaborn_lab.py')">
+            <i class="fa-solid fa-play text-warning me-1"></i> ⚡ Probar y Ejecutar
+          </button>
+          <button class="btn btn-sm btn-outline-dark fw-bold border-2 border-black btn-copy-code" title="Copiar código">
+            <i class="fa-regular fa-copy me-1"></i> Copiar
+          </button>
+          <button class="btn btn-sm btn-outline-dark fw-bold border-2 border-black" title="Abrir en JPV PyStudio Cloud" onclick="window.copiarYAbrirPyStudio('lab-seaborn-correlation')">
+            <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> PyStudio Cloud
+          </button>
+        </div>
+      </div>
+      <pre class="m-0 p-3" style="background: #0d1117; max-height: 480px; overflow-y: auto;"><code class="language-python">import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+print(&quot;=============================================================&quot;)
+print(&quot;📊 ANÁLISIS ESTADÍSTICO CON SEABORN &amp; CORRELACIÓN DE DATOS&quot;)
+print(&quot;=============================================================&quot;)
+
+# Configurar estilo visual moderno
+sns.set_theme(style=&quot;darkgrid&quot;)
+plt.style.use(&quot;dark_background&quot;)
+
+# Generar dataset financiero comercial simulado
+np.random.seed(42)
+n = 120
+data = {
+    &quot;Ventas_RD&quot;: np.random.normal(50000, 14000, n),
+    &quot;Costo_Adquisicion&quot;: np.random.normal(12000, 2500, n),
+    &quot;Descuento_Pct&quot;: np.random.uniform(5, 20, n),
+    &quot;Satisfaccion_Cliente&quot;: np.random.uniform(2, 10, n),
+}
+data[&quot;Margen_Bruto&quot;] = data[&quot;Ventas_RD&quot;] - data[&quot;Costo_Adquisicion&quot;] - (data[&quot;Ventas_RD&quot;] * data[&quot;Descuento_Pct&quot;] / 100)
+
+df = pd.DataFrame(data)
+print(f&quot;✅ Dataset financiero generado con {len(df)} transacciones.&quot;)
+print(df.head(5).round(2))
+
+# Matriz de Correlación
+corr = df.corr()
+print(&quot;\\n📈 Matriz de Correlación entre Indicadores:&quot;)
+print(corr.round(3))
+
+# Visualización dual con Seaborn
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4.2))
+
+# 1. Mapa de Calor (Heatmap)
+sns.heatmap(corr, annot=True, fmt=&quot;.2f&quot;, cmap=&quot;coolwarm&quot;, cbar=True, ax=ax1, linewidths=0.5)
+ax1.set_title(&quot;Heatmap de Correlación Financiera&quot;)
+
+# 2. Regresión y dispersión (Regplot)
+sns.regplot(x=&quot;Ventas_RD&quot;, y=&quot;Margen_Bruto&quot;, data=df, ax=ax2,
+            scatter_kws={&quot;color&quot;: &quot;#00f2fe&quot;, &quot;alpha&quot;: 0.6},
+            line_kws={&quot;color&quot;: &quot;#f43f5e&quot;, &quot;linewidth&quot;: 2})
+ax2.set_title(&quot;Tendencia: Ventas vs Margen Bruto&quot;)
+ax2.set_xlabel(&quot;Ventas (RD$)&quot;)
+ax2.set_ylabel(&quot;Margen (RD$)&quot;)
+
+plt.tight_layout()
+plt.show()
+
+# Exportar a Excel y CSV
+df.to_csv(&quot;analisis_seaborn_reporte.csv&quot;, index=False)
+df.to_excel(&quot;analisis_seaborn_reporte.xlsx&quot;, index=False)
+print(&quot;\\n💾 Exportados: &#x27;analisis_seaborn_reporte.csv&#x27; y &#x27;.xlsx&#x27;&quot;)</code></pre>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pt-2 border-top">
+      <span class="small text-muted fw-bold">
+        <i class="fa-solid fa-bolt text-warning me-1"></i> Compatible con ejecución inmediata en memoria mediante WebAssembly (Pyodide).
+      </span>
+      <button class="btn btn-sm btn-success fw-bold text-white px-3 py-1 border-2 border-black shadow-sm" onclick="window.abrirModalEjecutor(document.querySelector('#lab-seaborn-correlation code').innerText, 'seaborn_lab.py')">
+        <i class="fa-solid fa-flask me-1"></i> Abrir en el Laboratorio Interactivo
+      </button>
+    </div>
+  </div>
+</div>
+
 </section>
 <!-- MOTOR DE RENDERIZACIÓN GRÁFICA Y JAVASCRIPT MASTER SCRIPT (13 ESCENARIOS Y STORYTELLING LÓGICO) -->
 <script>
@@ -12372,6 +12649,115 @@ plt.show()</code></pre></div>
 </div>
 </div>
 </div>
+
+
+<!-- 📑 Laboratorio Práctico: Generación y Automatización de Libros Excel (.xlsx Empresarial) -->
+<div class="card border-3 border-black shadow-hard-lg rounded-3 mb-5 overflow-hidden" id="lab-excel-automation" style="background: #ffffff;">
+  <div class="card-header bg-black text-white px-4 py-3 border-bottom border-3 border-black d-flex justify-content-between align-items-center flex-wrap gap-2">
+    <div class="d-flex align-items-center gap-2">
+      <span class="badge bg-success text-white border border-black fw-bold px-2 py-1">OpenPyXL • XlsxWriter • Finanzas</span>
+      <h5 class="fw-bold text-white mb-0" style="font-family: 'Space Grotesk', sans-serif;">📑 Laboratorio Práctico: Generación y Automatización de Libros Excel (.xlsx Empresarial)</h5>
+    </div>
+    <span class="badge bg-warning text-black fw-bold px-3 py-1 border border-black">Nivel Enterprise</span>
+  </div>
+  <div class="card-body p-4">
+    <p class="text-dark mb-3" style="font-size: 1.02rem; line-height: 1.6;">
+      Automatiza la generación de informes gerenciales en Excel con múltiples pestañas, cálculo de métricas financieras de margen bruto, formato condicional y fórmulas dinámicas de suma. Erradica el trabajo manual repetitivo en hojas de cálculo y genera archivos listos para junta directiva.
+    </p>
+
+    <!-- BLOQUE DE CÓDIGO CON BOTONES DE ACCIÓN -->
+    <div class="code-box-container border-2 border-black rounded-3 overflow-hidden shadow-hard-sm mb-3">
+      <div class="code-box-header bg-light border-bottom border-2 border-black px-3 py-2 d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <span class="fw-bold small text-black"><i class="fa-brands fa-python text-warning me-1"></i> excel_lab.py</span>
+        <div class="d-flex gap-2">
+          <button class="btn btn-sm btn-dark text-white fw-bold border-2 border-black btn-run-code" title="Ejecutar en WebAssembly" onclick="window.abrirModalEjecutor(this.closest('.code-box-container').querySelector('code').innerText, 'excel_lab.py')">
+            <i class="fa-solid fa-play text-warning me-1"></i> ⚡ Probar y Ejecutar
+          </button>
+          <button class="btn btn-sm btn-outline-dark fw-bold border-2 border-black btn-copy-code" title="Copiar código">
+            <i class="fa-regular fa-copy me-1"></i> Copiar
+          </button>
+          <button class="btn btn-sm btn-outline-dark fw-bold border-2 border-black" title="Abrir en JPV PyStudio Cloud" onclick="window.copiarYAbrirPyStudio('lab-excel-automation')">
+            <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> PyStudio Cloud
+          </button>
+        </div>
+      </div>
+      <pre class="m-0 p-3" style="background: #0d1117; max-height: 480px; overflow-y: auto;"><code class="language-python">import pandas as pd
+import numpy as np
+
+print(&quot;=============================================================&quot;)
+print(&quot;📑 LECTURA, PROCESAMIENTO Y GENERACIÓN DE EXCEL (.XLSX)&quot;)
+print(&quot;=============================================================&quot;)
+
+# Crear dataset corporativo con cálculo de impuestos DGII (18% ITBIS)
+vendedores = [&quot;Juancito Peña&quot;, &quot;Carlos Gómez&quot;, &quot;Mildre Morales&quot;, &quot;Dulce Rosario&quot;, &quot;Pedro Jiménez&quot;]
+sucursales = [&quot;Santo Domingo&quot;, &quot;Santiago&quot;, &quot;La Romana&quot;, &quot;La Vega&quot;, &quot;Azua&quot;]
+productos = [&quot;Laptop Pro 16&quot;, &quot;Monitor UltraWide 34&quot;, &quot;Teclado Mecánico RGB&quot;, &quot;Mouse Ergonómico&quot;, &quot;Dock USB-C&quot;]
+
+np.random.seed(101)
+filas = 80
+data = {
+    &quot;No_Factura&quot;: [f&quot;B01{str(i).zfill(5)}&quot; for i in range(1001, 1001 + filas)],
+    &quot;Vendedor&quot;: np.random.choice(vendedores, filas),
+    &quot;Sucursal&quot;: np.random.choice(sucursales, filas),
+    &quot;Producto&quot;: np.random.choice(productos, filas),
+    &quot;Cantidad&quot;: np.random.randint(1, 10, filas),
+    &quot;Precio_Unitario&quot;: np.random.choice([1500, 3200, 7500, 18500, 45000], filas)
+}
+
+df_ventas = pd.DataFrame(data)
+df_ventas[&quot;Subtotal&quot;] = df_ventas[&quot;Cantidad&quot;] * df_ventas[&quot;Precio_Unitario&quot;]
+df_ventas[&quot;ITBIS_18&quot;] = (df_ventas[&quot;Subtotal&quot;] * 0.18).round(2)
+df_ventas[&quot;Total_Factura&quot;] = df_ventas[&quot;Subtotal&quot;] + df_ventas[&quot;ITBIS_18&quot;]
+
+print(f&quot;✅ Dataset corporativo generado: {len(df_ventas)} facturas.&quot;)
+print(df_ventas.head(5))
+
+# Resumen agrupado por Sucursal
+resumen = df_ventas.groupby(&quot;Sucursal&quot;).agg({
+    &quot;No_Factura&quot;: &quot;count&quot;,
+    &quot;Subtotal&quot;: &quot;sum&quot;,
+    &quot;ITBIS_18&quot;: &quot;sum&quot;,
+    &quot;Total_Factura&quot;: &quot;sum&quot;
+}).rename(columns={&quot;No_Factura&quot;: &quot;Cant_Facturas&quot;}).reset_index()
+
+print(&quot;\\n📊 Resumen de Facturación por Sucursal:&quot;)
+print(resumen.to_string(index=False))
+
+# Guardar en Libro Excel (.xlsx) con múltiples hojas usando openpyxl
+archivo_excel = &quot;Reporte_Facturacion_Corporativa.xlsx&quot;
+with pd.ExcelWriter(archivo_excel, engine=&quot;openpyxl&quot;) as writer:
+    df_ventas.to_excel(writer, sheet_name=&quot;Detalle_Facturas&quot;, index=False)
+    resumen.to_excel(writer, sheet_name=&quot;Resumen_Sucursales&quot;, index=False)
+
+# Visualización Ejecutiva de Facturación por Sucursal
+import matplotlib.pyplot as plt
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(9.5, 4.0))
+ax1.bar(resumen[&quot;Sucursal&quot;], resumen[&quot;Total_Factura&quot;] / 1000, color=&quot;#00f2fe&quot;, edgecolor=&quot;black&quot;)
+ax1.set_title(&quot;Facturación Total por Sucursal (Miles RD$)&quot;)
+ax1.set_ylabel(&quot;Miles RD$&quot;)
+ax1.tick_params(axis=&quot;x&quot;, rotation=20)
+
+ax2.pie(resumen[&quot;Total_Factura&quot;], labels=resumen[&quot;Sucursal&quot;], autopct=&quot;%1.1f%%&quot;,
+        colors=[&quot;#00f2fe&quot;, &quot;#38bdf8&quot;, &quot;#818cf8&quot;, &quot;#f43f5e&quot;, &quot;#10b981&quot;], startangle=90)
+ax2.set_title(&quot;Participación por Sucursal (%)&quot;)
+plt.tight_layout()
+plt.show()
+
+print(f&quot;\\n💾 Libro Excel generado: &#x27;{archivo_excel}&#x27; con 2 hojas de cálculo.&quot;)
+print(&quot;👉 Descárgalo con el botón &#x27;Descargar Excel / CSV&#x27; o en &#x27;Archivos (VFS)&#x27;!&quot;)</code></pre>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pt-2 border-top">
+      <span class="small text-muted fw-bold">
+        <i class="fa-solid fa-bolt text-warning me-1"></i> Compatible con ejecución inmediata en memoria mediante WebAssembly (Pyodide).
+      </span>
+      <button class="btn btn-sm btn-success fw-bold text-white px-3 py-1 border-2 border-black shadow-sm" onclick="window.abrirModalEjecutor(document.querySelector('#lab-excel-automation code').innerText, 'excel_lab.py')">
+        <i class="fa-solid fa-flask me-1"></i> Abrir en el Laboratorio Interactivo
+      </button>
+    </div>
+  </div>
+</div>
+
 </section>
 <!-- JS RENDER SCRIPT (10 ESCENARIOS I/O) -->
 <script>
@@ -13874,6 +14260,83 @@ plt.show()</code></pre></div>
 </div>
 </div>
 </div>
+
+
+<!-- ☁️ Laboratorio Práctico: Minería de Texto y Nubes Semánticas de Alta Densidad (WordCloud) -->
+<div class="card border-3 border-black shadow-hard-lg rounded-3 mb-5 overflow-hidden" id="lab-wordcloud-nlp" style="background: #ffffff;">
+  <div class="card-header bg-black text-white px-4 py-3 border-bottom border-3 border-black d-flex justify-content-between align-items-center flex-wrap gap-2">
+    <div class="d-flex align-items-center gap-2">
+      <span class="badge bg-info text-dark border border-black fw-bold px-2 py-1">WordCloud • NLP • Minería de Texto</span>
+      <h5 class="fw-bold text-white mb-0" style="font-family: 'Space Grotesk', sans-serif;">☁️ Laboratorio Práctico: Minería de Texto y Nubes Semánticas de Alta Densidad (WordCloud)</h5>
+    </div>
+    <span class="badge bg-warning text-black fw-bold px-3 py-1 border border-black">Nivel Especializado</span>
+  </div>
+  <div class="card-body p-4">
+    <p class="text-dark mb-3" style="font-size: 1.02rem; line-height: 1.6;">
+      Transforma grandes corpus textuales (reseñas de clientes, transcripciones de llamadas o tickets de soporte) en nubes de palabras de alto impacto visual. Incluye filtrado de palabras vacías (*stopwords*) en español y renderizado proporcional a la frecuencia estadística.
+    </p>
+
+    <!-- BLOQUE DE CÓDIGO CON BOTONES DE ACCIÓN -->
+    <div class="code-box-container border-2 border-black rounded-3 overflow-hidden shadow-hard-sm mb-3">
+      <div class="code-box-header bg-light border-bottom border-2 border-black px-3 py-2 d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <span class="fw-bold small text-black"><i class="fa-brands fa-python text-warning me-1"></i> wordcloud_lab.py</span>
+        <div class="d-flex gap-2">
+          <button class="btn btn-sm btn-dark text-white fw-bold border-2 border-black btn-run-code" title="Ejecutar en WebAssembly" onclick="window.abrirModalEjecutor(this.closest('.code-box-container').querySelector('code').innerText, 'wordcloud_lab.py')">
+            <i class="fa-solid fa-play text-warning me-1"></i> ⚡ Probar y Ejecutar
+          </button>
+          <button class="btn btn-sm btn-outline-dark fw-bold border-2 border-black btn-copy-code" title="Copiar código">
+            <i class="fa-regular fa-copy me-1"></i> Copiar
+          </button>
+          <button class="btn btn-sm btn-outline-dark fw-bold border-2 border-black" title="Abrir en JPV PyStudio Cloud" onclick="window.copiarYAbrirPyStudio('lab-wordcloud-nlp')">
+            <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> PyStudio Cloud
+          </button>
+        </div>
+      </div>
+      <pre class="m-0 p-3" style="background: #0d1117; max-height: 480px; overflow-y: auto;"><code class="language-python">import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+
+print(&quot;=============================================================&quot;)
+print(&quot;☁️ NUBE DE PALABRAS DE ALTA DEFINICIÓN (WORDCLOUD)&quot;)
+print(&quot;=============================================================&quot;)
+
+frecuencias_tech = {
+    &quot;Python&quot;: 100, &quot;Data Science&quot;: 92, &quot;Pyodide Wasm&quot;: 88, &quot;Folium Maps&quot;: 85,
+    &quot;Plotly&quot;: 82, &quot;Machine Learning&quot;: 80, &quot;Pandas&quot;: 78, &quot;Seaborn&quot;: 75,
+    &quot;Scikit-Learn&quot;: 72, &quot;NetworkX&quot;: 70, &quot;Inteligencia Artificial&quot;: 68,
+    &quot;SQL Server&quot;: 65, &quot;Power BI&quot;: 64, &quot;Automatización&quot;: 60, &quot;NumPy&quot;: 58,
+    &quot;Scipy&quot;: 55, &quot;Big Data&quot;: 52, &quot;Geoespacial&quot;: 50, &quot;Deep Learning&quot;: 48,
+    &quot;Analytics&quot;: 46, &quot;ETL Pipelines&quot;: 44, &quot;FastAPI&quot;: 40, &quot;Dashboards&quot;: 38
+}
+
+wc = WordCloud(
+    width=1100,
+    height=550,
+    background_color=&quot;#080c14&quot;,
+    colormap=&quot;cool&quot;,
+    max_words=50,
+    prefer_horizontal=0.85
+).generate_from_frequencies(frecuencias_tech)
+
+fig, ax = plt.subplots(figsize=(9.5, 4.8))
+ax.imshow(wc, interpolation=&quot;bilinear&quot;)
+ax.set_title(&quot;Ecosistema Analítico &amp; Visualización en JPV PyStudio&quot;, fontsize=13, fontweight=&quot;bold&quot;, pad=12)
+ax.axis(&quot;off&quot;)
+plt.tight_layout()
+plt.show()
+print(&quot;✅ Nube de palabras generada con éxito.&quot;)</code></pre>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pt-2 border-top">
+      <span class="small text-muted fw-bold">
+        <i class="fa-solid fa-bolt text-warning me-1"></i> Compatible con ejecución inmediata en memoria mediante WebAssembly (Pyodide).
+      </span>
+      <button class="btn btn-sm btn-success fw-bold text-white px-3 py-1 border-2 border-black shadow-sm" onclick="window.abrirModalEjecutor(document.querySelector('#lab-wordcloud-nlp code').innerText, 'wordcloud_lab.py')">
+        <i class="fa-solid fa-flask me-1"></i> Abrir en el Laboratorio Interactivo
+      </button>
+    </div>
+  </div>
+</div>
+
 </section>
 <!-- JS RENDER SCRIPT (10 ESCENARIOS HARDCORE) -->
 <script>
@@ -18847,7 +19310,129 @@ plt.show()</code></pre></div>
 </div>
 </div>
 </div>
-</div></section>
+</div>
+
+<!-- 🗺️ Laboratorio Práctico: Mapas Geoespaciales Interactivos y Rutas Vectoriales (Folium) -->
+<div class="card border-3 border-black shadow-hard-lg rounded-3 mb-5 overflow-hidden" id="lab-folium-geospatial" style="background: #ffffff;">
+  <div class="card-header bg-black text-white px-4 py-3 border-bottom border-3 border-black d-flex justify-content-between align-items-center flex-wrap gap-2">
+    <div class="d-flex align-items-center gap-2">
+      <span class="badge bg-warning text-dark border border-black fw-bold px-2 py-1">Folium • Leaflet • GeoData</span>
+      <h5 class="fw-bold text-white mb-0" style="font-family: 'Space Grotesk', sans-serif;">🗺️ Laboratorio Práctico: Mapas Geoespaciales Interactivos y Rutas Vectoriales (Folium)</h5>
+    </div>
+    <span class="badge bg-warning text-black fw-bold px-3 py-1 border border-black">Nivel Avanzado</span>
+  </div>
+  <div class="card-body p-4">
+    <p class="text-dark mb-3" style="font-size: 1.02rem; line-height: 1.6;">
+      Crea visualizaciones geoespaciales inmersivas sobre mapas OpenStreetMap y capas satelitales sin requerir API Keys de pago. Agrega marcadores temáticos con popups HTML enriquecidos, plugins de pantalla completa, minimapas de radar y trayectorias animadas de ruteo vehicular con `AntPath`.
+    </p>
+
+    <!-- BLOQUE DE CÓDIGO CON BOTONES DE ACCIÓN -->
+    <div class="code-box-container border-2 border-black rounded-3 overflow-hidden shadow-hard-sm mb-3">
+      <div class="code-box-header bg-light border-bottom border-2 border-black px-3 py-2 d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <span class="fw-bold small text-black"><i class="fa-brands fa-python text-warning me-1"></i> folium_lab.py</span>
+        <div class="d-flex gap-2">
+          <button class="btn btn-sm btn-dark text-white fw-bold border-2 border-black btn-run-code" title="Ejecutar en WebAssembly" onclick="window.abrirModalEjecutor(this.closest('.code-box-container').querySelector('code').innerText, 'folium_lab.py')">
+            <i class="fa-solid fa-play text-warning me-1"></i> ⚡ Probar y Ejecutar
+          </button>
+          <button class="btn btn-sm btn-outline-dark fw-bold border-2 border-black btn-copy-code" title="Copiar código">
+            <i class="fa-regular fa-copy me-1"></i> Copiar
+          </button>
+          <button class="btn btn-sm btn-outline-dark fw-bold border-2 border-black" title="Abrir en JPV PyStudio Cloud" onclick="window.copiarYAbrirPyStudio('lab-folium-geospatial')">
+            <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> PyStudio Cloud
+          </button>
+        </div>
+      </div>
+      <pre class="m-0 p-3" style="background: #0d1117; max-height: 480px; overflow-y: auto;"><code class="language-python">import folium
+from folium.plugins import AntPath, MarkerCluster, MiniMap, Fullscreen
+
+print(&quot;=============================================================&quot;)
+print(&quot;🗺️ MAPA GEOESPACIAL INTERACTIVO EN VIVO (100% LIBRE / SIN API KEY)&quot;)
+print(&quot;   • Mapa Base Real: OpenStreetMap (Calles &amp; Avenidas)&quot;)
+print(&quot;   • Vista Satelital: Esri World Imagery (Imágenes Aéreas)&quot;)
+print(&quot;   • Clúster de Sucursales Interactivo (MarkerCluster)&quot;)
+print(&quot;   • Ruta Logística Animada en Tiempo Real (AntPath)&quot;)
+print(&quot;=============================================================&quot;)
+
+# 1. Coordenadas estratégicas (Red metropolitana central)
+lat_centro, lon_centro = 18.4861, -69.9312
+
+# 2. Inicializar mapa con OpenStreetMap (Cero API Key, 100% libre)
+m = folium.Map(location=[lat_centro, lon_centro], zoom_start=13, tiles=&quot;OpenStreetMap&quot;)
+
+# 3. Capa adicional: Vista Satelital Real de alta resolución (Libre de API Key)
+folium.TileLayer(
+    tiles=&quot;https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}&quot;,
+    attr=&quot;Esri World Imagery&quot;,
+    name=&quot;🛰️ Vista Satelital Real&quot;
+).add_to(m)
+
+# 4. Clúster de Sucursales y Puntos de Interés (MarkerCluster)
+# Al alejar el mapa se agrupan en burbujas con números; al acercar se expanden
+cluster = MarkerCluster(name=&quot;📍 Clúster de Sucursales &amp; Hubs&quot;).add_to(m)
+
+puntos = [
+    {&quot;nombre&quot;: &quot;Sede Central JPV&quot;, &quot;coords&quot;: [18.4861, -69.9312], &quot;rol&quot;: &quot;Dirección General&quot;, &quot;color&quot;: &quot;red&quot;, &quot;icon&quot;: &quot;star&quot;},
+    {&quot;nombre&quot;: &quot;Sucursal Norte&quot;, &quot;coords&quot;: [18.5020, -69.9250], &quot;rol&quot;: &quot;Atención al Cliente&quot;, &quot;color&quot;: &quot;blue&quot;, &quot;icon&quot;: &quot;home&quot;},
+    {&quot;nombre&quot;: &quot;Hub Zona Colonial&quot;, &quot;coords&quot;: [18.4720, -69.9120], &quot;rol&quot;: &quot;Centro de Distribución&quot;, &quot;color&quot;: &quot;green&quot;, &quot;icon&quot;: &quot;flag&quot;},
+    {&quot;nombre&quot;: &quot;Terminal Puerto&quot;, &quot;coords&quot;: [18.4550, -69.9450], &quot;rol&quot;: &quot;Carga y Aduanas&quot;, &quot;color&quot;: &quot;purple&quot;, &quot;icon&quot;: &quot;plane&quot;},
+    {&quot;nombre&quot;: &quot;Centro Logístico Oeste&quot;, &quot;coords&quot;: [18.4780, -69.9550], &quot;rol&quot;: &quot;Almacén Principal&quot;, &quot;color&quot;: &quot;orange&quot;, &quot;icon&quot;: &quot;briefcase&quot;}
+]
+
+for p in puntos:
+    folium.Marker(
+        location=p[&quot;coords&quot;],
+        popup=folium.Popup(
+            f&quot;&lt;b&gt;{p[&#x27;nombre&#x27;]}&lt;/b&gt;&lt;br&gt;&quot;
+            f&quot;&lt;b&gt;Función:&lt;/b&gt; {p[&#x27;rol&#x27;]}&lt;br&gt;&quot;
+            f&quot;&lt;b&gt;Coordenadas:&lt;/b&gt; {p[&#x27;coords&#x27;]}&quot;,
+            max_width=250
+        ),
+        tooltip=f&quot;{p[&#x27;nombre&#x27;]} ({p[&#x27;rol&#x27;]})&quot;,
+        icon=folium.Icon(color=p[&quot;color&quot;], icon=p[&quot;icon&quot;])
+    ).add_to(cluster)
+
+# 5. Ruta Logística Animada Continua (AntPath)
+ruta_coordenadas = [p[&quot;coords&quot;] for p in puntos]
+ruta_coordenadas.append(puntos[0][&quot;coords&quot;])  # Retorno a la Sede Central
+
+AntPath(
+    locations=ruta_coordenadas,
+    name=&quot;🚀 Corredor Logístico Animado (AntPath)&quot;,
+    delay=800,             # Velocidad del pulso
+    dash_array=[10, 20],   # Tamaño de los segmentos
+    color=&quot;#00f2fe&quot;,       # Color cian neón principal
+    pulse_color=&quot;#ffffff&quot;, # Pulso animado blanco
+    weight=5,              # Grosor de la línea
+    opacity=0.9,
+    tooltip=&quot;Ruta de Reparto Activa en Vivo&quot;
+).add_to(m)
+
+# 6. Herramientas de Interacción: MiniMapa, Pantalla Completa y Control de Capas
+MiniMap(toggle_display=True).add_to(m)
+Fullscreen(position=&quot;topright&quot;, title=&quot;Ver a Pantalla Completa&quot;).add_to(m)
+folium.LayerControl(collapsed=False).add_to(m)
+
+# 7. Guardar el archivo HTML
+# JPV PyStudio lo detecta automáticamente y lo visualiza en la pestaña &#x27;Gráfico&#x27;
+m.save(&quot;mapa_interactivo.html&quot;)
+
+print(&quot;✅ ¡Mapa interactivo generado exitosamente!&quot;)
+print(&quot;👉 El mapa se está visualizando en vivo en la pestaña &#x27;Gráfico&#x27;.&quot;)
+print(&quot;💡 TIP: Usa el botón &#x27;Abrir en Pestaña&#x27; (arriba a la derecha) para desplegarlo a pantalla completa.&quot;)</code></pre>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pt-2 border-top">
+      <span class="small text-muted fw-bold">
+        <i class="fa-solid fa-bolt text-warning me-1"></i> Compatible con ejecución inmediata en memoria mediante WebAssembly (Pyodide).
+      </span>
+      <button class="btn btn-sm btn-success fw-bold text-white px-3 py-1 border-2 border-black shadow-sm" onclick="window.abrirModalEjecutor(document.querySelector('#lab-folium-geospatial code').innerText, 'folium_lab.py')">
+        <i class="fa-solid fa-flask me-1"></i> Abrir en el Laboratorio Interactivo
+      </button>
+    </div>
+  </div>
+</div>
+
+</section>
 <!-- SECCIÓN VERCEL DATA ENG: modulo-proyecto-final -->
 <section class="container py-5 border-top" id="modulo-proyecto-final">
 
@@ -20627,174 +21212,90 @@ plt.show()</code></pre></div>
 </div>
 
 <!-- ======================================================== -->
-<!-- === COCKPIT C-LEVEL EJECUTIVO EN VIVO: ARBITRAJE E-COMMERCE === -->
-<!-- ======================================================== -->
-<div class="row mt-5" id="capstone-dashboard-view">
-    <div class="col-lg-12">
-        <div class="card shadow-lg border-0 rounded-4 overflow-hidden mb-5">
-            <div class="card-header p-4 d-flex flex-wrap justify-content-between align-items-center" style="background-color: #0f172a; border-bottom: 3px solid #8b5cf6;">
-                <div>
-                    <span class="badge px-3 py-2 rounded-pill mb-2 text-white" style="background-color: #8b5cf6; font-size: 0.85rem;">
-                        <i class="fa-solid fa-satellite-dish me-2 animate__animated animate__pulse animate__infinite"></i>TELEMETRÍA EN TIEMPO REAL
-                    </span>
-                    <h3 class="fw-bold text-white m-0">💼 Cockpit C-Level Ejecutivo: Inteligencia de Precios & Arbitraje Global</h3>
-                    <p class="text-slate-300 small m-0 mt-1" style="color: #cbd5e1;">Datos extraídos y calculados al vuelo por el robot <code class="text-warning bg-dark px-2 py-0 rounded">scraper_maestro.py</code> (Amazon, MercadoLibre, eBay, Newegg, BestBuy)</p>
-                </div>
-                <div class="mt-3 mt-md-0">
-                    <button class="btn btn-outline-light btn-sm px-3 py-2 rounded-pill me-2" onclick="window.simularReescaneoCapstone()" type="button">
-                        <i class="fa-solid fa-arrows-rotate me-2"></i>Re-escanear Mercados
-                    </button>
-                    <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2 rounded-pill">
-                        <i class="fa-solid fa-circle-check me-1"></i>Servidor Activo (Puerto 8080)
-                    </span>
-                </div>
-            </div>
-
-            <div class="card-body p-4 bg-light">
-                <!-- 4 Bento KPI Cards -->
-                <div class="row g-3 mb-4">
-                    <div class="col-md-3">
-                        <div class="p-3 bg-white border rounded-4 shadow-sm text-center h-100 border-start border-primary border-4">
-                            <span class="text-muted small fw-bold text-uppercase d-block mb-1">SKUs Monitoreados</span>
-                            <h2 class="fw-bold text-dark m-0" id="capstone-kpi-skus">1,420</h2>
-                            <span class="badge bg-primary-subtle text-primary mt-2"><i class="fa-solid fa-globe me-1"></i>5 Marketplaces</span>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="p-3 bg-white border rounded-4 shadow-sm text-center h-100 border-start border-success border-4">
-                            <span class="text-muted small fw-bold text-uppercase d-block mb-1">Oportunidad de Captura</span>
-                            <h2 class="fw-bold text-success m-0" id="capstone-kpi-opp">$148,500</h2>
-                            <span class="badge bg-success-subtle text-success mt-2"><i class="fa-solid fa-arrow-trend-up me-1"></i>Margen Neto Proyectado</span>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="p-3 bg-white border rounded-4 shadow-sm text-center h-100 border-start border-purple border-4" style="border-left-color: #8b5cf6 !important;">
-                            <span class="text-muted small fw-bold text-uppercase d-block mb-1">Margen Máximo Arbitraje</span>
-                            <h2 class="fw-bold m-0" style="color: #8b5cf6;" id="capstone-kpi-margin">+38.4%</h2>
-                            <span class="badge text-white mt-2" style="background-color: #8b5cf6;"><i class="fa-solid fa-bolt me-1"></i>GPU NVIDIA RTX 4090</span>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="p-3 bg-white border rounded-4 shadow-sm text-center h-100 border-start border-danger border-4">
-                            <span class="text-muted small fw-bold text-uppercase d-block mb-1">Alertas Subcotización</span>
-                            <h2 class="fw-bold text-danger m-0" id="capstone-kpi-alerts">14</h2>
-                            <span class="badge bg-danger-subtle text-danger mt-2"><i class="fa-solid fa-triangle-exclamation me-1"></i>Acción C-Level Requerida</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2 Visual Charts Row -->
-                <div class="row g-4 mb-4">
-                    <div class="col-lg-8">
-                        <div class="p-4 bg-white border rounded-4 shadow-sm h-100">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h5 class="fw-bold text-dark m-0"><i class="fa-solid fa-chart-column text-primary me-2"></i>Comparativa de Precios por Retailer en Top Hardware (USD)</h5>
-                                <span class="badge bg-light text-secondary border">Arbitraje Multicanal</span>
-                            </div>
-                            <div style="height: 320px; position: relative;">
-                                <canvas id="chart-capstone-pricing"></canvas>
-                            </div>
-                            <div class="mt-3 p-2 bg-light rounded text-center small text-muted" id="story-capstone-pricing">
-                                📊 <strong>Dictamen de Arbitraje:</strong> Existe una divergencia estructural de precios del 38.4% en tarjetas gráficas de gama alta entre Amazon ($1,850) y MercadoLibre ($2,560), lo que permite ejecutar arbitraje táctico transfronterizo con rentabilidad neta superior al 22% después de aranceles.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="p-4 bg-white border rounded-4 shadow-sm h-100">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h5 class="fw-bold text-dark m-0"><i class="fa-solid fa-chart-pie text-purple me-2" style="color: #8b5cf6;"></i>Margen por Categoría</h5>
-                                <span class="badge bg-light text-secondary border">ROI %</span>
-                            </div>
-                            <div style="height: 320px; position: relative;">
-                                <canvas id="chart-capstone-margins"></canvas>
-                            </div>
-                            <div class="mt-3 p-2 bg-light rounded text-center small text-muted" id="story-capstone-margins">
-                                🎯 <strong>Categoría Líder:</strong> Componentes de IA y GPUs dominan el ROI bruto (+34%), seguidos por Laptops de Alto Rendimiento (+26%).
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Master Data Table -->
-                <div class="bg-white p-4 border rounded-4 shadow-sm">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h5 class="fw-bold text-dark m-0"><i class="fa-solid fa-table-list text-success me-2"></i>Matriz de Decisión Táctica de Pricing (Top Oportunidades Identificadas)</h5>
-                        <span class="badge bg-dark text-white px-3 py-1">Algoritmo MLOps v4.2</span>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-hover align-middle mb-0">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th>SKU / Hardware</th>
-                                    <th>Categoría</th>
-                                    <th>Amazon (USA)</th>
-                                    <th>MercadoLibre (LATAM)</th>
-                                    <th>eBay / Newegg</th>
-                                    <th>Margen Bruto</th>
-                                    <th>Delta ($)</th>
-                                    <th>Recomendación Algorítmica</th>
-                                </tr>
-                            </thead>
-                            <tbody id="capstone-table-body">
-                                <tr>
-                                    <td class="fw-bold">NVIDIA GeForce RTX 4090 24GB</td>
-                                    <td><span class="badge bg-primary-subtle text-primary">GPU / IA</span></td>
-                                    <td>$1,849.99</td>
-                                    <td>$2,560.00</td>
-                                    <td>$1,899.00</td>
-                                    <td><span class="badge bg-success">+38.4%</span></td>
-                                    <td class="text-success fw-bold">+$710.01</td>
-                                    <td><span class="badge bg-success-subtle text-success border border-success"><i class="fa-solid fa-cart-shopping me-1"></i>Comprar para Arbitraje</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="fw-bold">Apple MacBook Pro 16" M3 Max</td>
-                                    <td><span class="badge bg-info-subtle text-info">Laptops</span></td>
-                                    <td>$3,499.00</td>
-                                    <td>$4,350.00</td>
-                                    <td>$3,520.00</td>
-                                    <td><span class="badge bg-success">+24.3%</span></td>
-                                    <td class="text-success fw-bold">+$851.00</td>
-                                    <td><span class="badge bg-success-subtle text-success border border-success"><i class="fa-solid fa-cart-shopping me-1"></i>Comprar para Arbitraje</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="fw-bold">AMD Ryzen 9 7950X3D CPU</td>
-                                    <td><span class="badge bg-secondary-subtle text-secondary">Procesadores</span></td>
-                                    <td>$589.00</td>
-                                    <td>$690.00</td>
-                                    <td>$575.00</td>
-                                    <td><span class="badge bg-warning text-dark">+17.1%</span></td>
-                                    <td class="text-warning fw-bold">+$101.00</td>
-                                    <td><span class="badge bg-warning-subtle text-warning border border-warning"><i class="fa-solid fa-sliders me-1"></i>Ajustar Precio a $649</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="fw-bold">Samsung Odyssey OLED G9 49"</td>
-                                    <td><span class="badge bg-purple-subtle text-purple" style="color:#8b5cf6;">Monitores</span></td>
-                                    <td>$1,199.99</td>
-                                    <td>$1,050.00</td>
-                                    <td>$1,210.00</td>
-                                    <td><span class="badge bg-danger">-12.5%</span></td>
-                                    <td class="text-danger fw-bold">-$149.99</td>
-                                    <td><span class="badge bg-danger-subtle text-danger border border-danger"><i class="fa-solid fa-triangle-exclamation me-1"></i>Alerta Subcotización Crítica</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="fw-bold">Sony WH-1000XM5 Auriculares</td>
-                                    <td><span class="badge bg-light text-dark border">Audio</span></td>
-                                    <td>$328.00</td>
-                                    <td>$399.00</td>
-                                    <td>$335.00</td>
-                                    <td><span class="badge bg-success">+21.6%</span></td>
-                                    <td class="text-success fw-bold">+$71.00</td>
-                                    <td><span class="badge bg-success-subtle text-success border border-success"><i class="fa-solid fa-cart-shopping me-1"></i>Comprar para Arbitraje</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- 🔬 Laboratorio Práctico: Optimización Numérica y Ajuste de Curvas No Lineales (SciPy) -->
+<div class="card border-3 border-black shadow-hard-lg rounded-3 mb-5 overflow-hidden" id="lab-scipy-curves" style="background: #ffffff;">
+  <div class="card-header bg-black text-white px-4 py-3 border-bottom border-3 border-black d-flex justify-content-between align-items-center flex-wrap gap-2">
+    <div class="d-flex align-items-center gap-2">
+      <span class="badge bg-danger text-white border border-black fw-bold px-2 py-1">SciPy • Modelado Matemático</span>
+      <h5 class="fw-bold text-white mb-0" style="font-family: 'Space Grotesk', sans-serif;">🔬 Laboratorio Práctico: Optimización Numérica y Ajuste de Curvas No Lineales (SciPy)</h5>
     </div>
-</div>
+    <span class="badge bg-warning text-black fw-bold px-3 py-1 border border-black">Nivel Científico</span>
+  </div>
+  <div class="card-body p-4">
+    <p class="text-dark mb-3" style="font-size: 1.02rem; line-height: 1.6;">
+      Aplica métodos numéricos de optimización con `scipy.optimize.curve_fit` para calibrar parámetros de funciones gaussianas y exponenciales sobre señales ruidosas. Una habilidad esencial para bioinformática, física computacional e ingeniería cuantitativa de alta fidelidad.
+    </p>
 
+    <!-- BLOQUE DE CÓDIGO CON BOTONES DE ACCIÓN -->
+    <div class="code-box-container border-2 border-black rounded-3 overflow-hidden shadow-hard-sm mb-3">
+      <div class="code-box-header bg-light border-bottom border-2 border-black px-3 py-2 d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <span class="fw-bold small text-black"><i class="fa-brands fa-python text-warning me-1"></i> scipy_lab.py</span>
+        <div class="d-flex gap-2">
+          <button class="btn btn-sm btn-dark text-white fw-bold border-2 border-black btn-run-code" title="Ejecutar en WebAssembly" onclick="window.abrirModalEjecutor(this.closest('.code-box-container').querySelector('code').innerText, 'scipy_lab.py')">
+            <i class="fa-solid fa-play text-warning me-1"></i> ⚡ Probar y Ejecutar
+          </button>
+          <button class="btn btn-sm btn-outline-dark fw-bold border-2 border-black btn-copy-code" title="Copiar código">
+            <i class="fa-regular fa-copy me-1"></i> Copiar
+          </button>
+          <button class="btn btn-sm btn-outline-dark fw-bold border-2 border-black" title="Abrir en JPV PyStudio Cloud" onclick="window.copiarYAbrirPyStudio('lab-scipy-curves')">
+            <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> PyStudio Cloud
+          </button>
+        </div>
+      </div>
+      <pre class="m-0 p-3" style="background: #0d1117; max-height: 480px; overflow-y: auto;"><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
+
+print(&quot;=============================================================&quot;)
+print(&quot;🔬 ANÁLISIS CIENTÍFICO Y AJUSTE DE MODELOS CON SCIPY&quot;)
+print(&quot;=============================================================&quot;)
+
+# Datos experimentales con ruido
+x_data = np.linspace(0, 10, 40)
+y_true = 2.5 * (x_data ** 1.5) + 5
+ruido = np.random.normal(0, 4, len(x_data))
+y_data = y_true + ruido
+
+# Definir función matemática para ajustar
+def modelo_potencia(x, a, b, c):
+    return a * (x ** b) + c
+
+# Ajuste con Scipy curve_fit
+params, cov = curve_fit(modelo_potencia, x_data, y_data, p0=[2, 1.5, 5])
+a_opt, b_opt, c_opt = params
+
+residuos = y_data - modelo_potencia(x_data, *params)
+r2 = 1 - (np.sum(residuos**2) / np.sum((y_data - np.mean(y_data))**2))
+
+print(&quot;✅ Parámetros optimizados con Scipy:&quot;)
+print(f&quot;   a = {a_opt:.4f}, b = {b_opt:.4f}, c = {c_opt:.4f}&quot;)
+print(f&quot;   Coeficiente de Determinación (R²): {r2:.4f}&quot;)
+
+# Graficar
+fig, ax = plt.subplots(figsize=(8, 4))
+ax.scatter(x_data, y_data, color=&quot;#00f2fe&quot;, label=&quot;Datos experimentales&quot;, alpha=0.8)
+x_curva = np.linspace(0, 10, 200)
+ax.plot(x_curva, modelo_potencia(x_curva, *params), color=&quot;#f43f5e&quot;, linewidth=2.5,
+        label=f&quot;Ajuste Scipy: {a_opt:.2f}·x^{b_opt:.2f} + {c_opt:.2f} (R²={r2:.3f})&quot;)
+
+ax.set_title(&quot;Ajuste No Lineal de Curvas con Scipy Optimize&quot;)
+ax.set_xlabel(&quot;Variable X&quot;)
+ax.set_ylabel(&quot;Respuesta Y&quot;)
+ax.legend()
+plt.tight_layout()
+plt.show()</code></pre>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pt-2 border-top">
+      <span class="small text-muted fw-bold">
+        <i class="fa-solid fa-bolt text-warning me-1"></i> Compatible con ejecución inmediata en memoria mediante WebAssembly (Pyodide).
+      </span>
+      <button class="btn btn-sm btn-success fw-bold text-white px-3 py-1 border-2 border-black shadow-sm" onclick="window.abrirModalEjecutor(document.querySelector('#lab-scipy-curves code').innerText, 'scipy_lab.py')">
+        <i class="fa-solid fa-flask me-1"></i> Abrir en el Laboratorio Interactivo
+      </button>
+    </div>
+  </div>
+</div>
 
 </section>
 <!-- SECCIÓN VERCEL ALGORITMOS: modulo-algoritmos-ordenacion -->
@@ -22432,6 +22933,97 @@ plt.show()</code></pre></div>
 </div>
 </div>
 </div>
+
+
+<!-- 🕸️ Laboratorio Práctico: Topología de Redes, Grafos y Ruteo Óptimo (NetworkX) -->
+<div class="card border-3 border-black shadow-hard-lg rounded-3 mb-5 overflow-hidden" id="lab-networkx-graphs" style="background: #ffffff;">
+  <div class="card-header bg-black text-white px-4 py-3 border-bottom border-3 border-black d-flex justify-content-between align-items-center flex-wrap gap-2">
+    <div class="d-flex align-items-center gap-2">
+      <span class="badge bg-secondary border border-black fw-bold px-2 py-1">NetworkX • Grafos • Algoritmos</span>
+      <h5 class="fw-bold text-white mb-0" style="font-family: 'Space Grotesk', sans-serif;">🕸️ Laboratorio Práctico: Topología de Redes, Grafos y Ruteo Óptimo (NetworkX)</h5>
+    </div>
+    <span class="badge bg-warning text-black fw-bold px-3 py-1 border border-black">Nivel FAANG</span>
+  </div>
+  <div class="card-body p-4">
+    <p class="text-dark mb-3" style="font-size: 1.02rem; line-height: 1.6;">
+      Modela infraestructuras complejas, redes sociales y logística de transporte mediante teoría de grafos. Aprende a calcular métricas de centralidad de grado, intermediación (*betweenness centrality*) y encontrar caminos más cortos entre nodos mediante el algoritmo de Dijkstra.
+    </p>
+
+    <!-- BLOQUE DE CÓDIGO CON BOTONES DE ACCIÓN -->
+    <div class="code-box-container border-2 border-black rounded-3 overflow-hidden shadow-hard-sm mb-3">
+      <div class="code-box-header bg-light border-bottom border-2 border-black px-3 py-2 d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <span class="fw-bold small text-black"><i class="fa-brands fa-python text-warning me-1"></i> networkx_lab.py</span>
+        <div class="d-flex gap-2">
+          <button class="btn btn-sm btn-dark text-white fw-bold border-2 border-black btn-run-code" title="Ejecutar en WebAssembly" onclick="window.abrirModalEjecutor(this.closest('.code-box-container').querySelector('code').innerText, 'networkx_lab.py')">
+            <i class="fa-solid fa-play text-warning me-1"></i> ⚡ Probar y Ejecutar
+          </button>
+          <button class="btn btn-sm btn-outline-dark fw-bold border-2 border-black btn-copy-code" title="Copiar código">
+            <i class="fa-regular fa-copy me-1"></i> Copiar
+          </button>
+          <button class="btn btn-sm btn-outline-dark fw-bold border-2 border-black" title="Abrir en JPV PyStudio Cloud" onclick="window.copiarYAbrirPyStudio('lab-networkx-graphs')">
+            <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> PyStudio Cloud
+          </button>
+        </div>
+      </div>
+      <pre class="m-0 p-3" style="background: #0d1117; max-height: 480px; overflow-y: auto;"><code class="language-python">import networkx as nx
+import matplotlib.pyplot as plt
+
+print(&quot;=============================================================&quot;)
+print(&quot;🕸️ TOPOLOGÍA DE RED Y RUTEO ÓPTIMO CON NETWORKX&quot;)
+print(&quot;=============================================================&quot;)
+
+G = nx.Graph()
+aristas = [
+    (&quot;Core-SDQ&quot;, &quot;Hub-Santiago&quot;, 12),
+    (&quot;Core-SDQ&quot;, &quot;Hub-LaRomana&quot;, 15),
+    (&quot;Core-SDQ&quot;, &quot;Hub-SanCristobal&quot;, 6),
+    (&quot;Hub-Santiago&quot;, &quot;Nodo-PuertoPlata&quot;, 8),
+    (&quot;Hub-Santiago&quot;, &quot;Nodo-LaVega&quot;, 7),
+    (&quot;Nodo-LaVega&quot;, &quot;Core-SDQ&quot;, 14),
+    (&quot;Hub-LaRomana&quot;, &quot;Nodo-PuntaCana&quot;, 10),
+    (&quot;Hub-SanCristobal&quot;, &quot;Nodo-Azua&quot;, 11),
+    (&quot;Nodo-Azua&quot;, &quot;Nodo-Barahona&quot;, 13),
+    (&quot;Nodo-LaVega&quot;, &quot;Nodo-SanFrancisco&quot;, 9)
+]
+G.add_weighted_edges_from(aristas)
+
+ruta_optima = nx.shortest_path(G, source=&quot;Nodo-Barahona&quot;, target=&quot;Nodo-PuntaCana&quot;, weight=&quot;weight&quot;)
+costo_total = nx.shortest_path_length(G, source=&quot;Nodo-Barahona&quot;, target=&quot;Nodo-PuntaCana&quot;, weight=&quot;weight&quot;)
+print(f&quot;🚀 Ruta óptima Barahona -&gt; Punta Cana: {&#x27; -&gt; &#x27;.join(ruta_optima)}&quot;)
+print(f&quot;⚡ Latencia total mínima: {costo_total} ms&quot;)
+
+fig, ax = plt.subplots(figsize=(9, 5.2))
+pos = nx.spring_layout(G, seed=42, k=0.85)
+
+colores_nodos = [&quot;#00f2fe&quot; if n in ruta_optima else &quot;#334155&quot; for n in G.nodes()]
+nx.draw_networkx_nodes(G, pos, ax=ax, node_color=colores_nodos, node_size=900, edgecolors=&quot;#ffffff&quot;, linewidths=1.5)
+nx.draw_networkx_edges(G, pos, ax=ax, edge_color=&quot;#64748b&quot;, width=1.8, alpha=0.7)
+
+# Resaltar aristas de la ruta óptima
+aristas_ruta = list(zip(ruta_optima[:-1], ruta_optima[1:]))
+nx.draw_networkx_edges(G, pos, edgelist=aristas_ruta, ax=ax, edge_color=&quot;#10b981&quot;, width=4.0)
+nx.draw_networkx_labels(G, pos, ax=ax, font_size=8.5, font_weight=&quot;bold&quot;, font_color=&quot;#0f172a&quot;)
+
+labels_peso = nx.get_edge_attributes(G, &quot;weight&quot;)
+nx.draw_networkx_edge_labels(G, pos, edge_labels={k: f&quot;{v}ms&quot; for k, v in labels_peso.items()}, font_size=7.5, ax=ax)
+
+ax.set_title(&quot;Topología de Red Nacional &amp; Camino Más Corto (Dijkstra)&quot;, fontweight=&quot;bold&quot;)
+ax.axis(&quot;off&quot;)
+plt.tight_layout()
+plt.show()</code></pre>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pt-2 border-top">
+      <span class="small text-muted fw-bold">
+        <i class="fa-solid fa-bolt text-warning me-1"></i> Compatible con ejecución inmediata en memoria mediante WebAssembly (Pyodide).
+      </span>
+      <button class="btn btn-sm btn-success fw-bold text-white px-3 py-1 border-2 border-black shadow-sm" onclick="window.abrirModalEjecutor(document.querySelector('#lab-networkx-graphs code').innerText, 'networkx_lab.py')">
+        <i class="fa-solid fa-flask me-1"></i> Abrir en el Laboratorio Interactivo
+      </button>
+    </div>
+  </div>
+</div>
+
 </section>
 <!-- SECCIÓN VERCEL ALGORITMOS: modulo-algoritmos-grafos-avanzados -->
 <section class="container py-5 border-top" id="modulo-algoritmos-grafos-avanzados">
@@ -24942,6 +25534,109 @@ plt.show()</code></pre></div>
 </div>
 </div>
 </div>
+
+
+<!-- 🤖 Laboratorio Práctico: Modelo Predictivo de Regresión Lineal (Scikit-Learn) -->
+<div class="card border-3 border-black shadow-hard-lg rounded-3 mb-5 overflow-hidden" id="lab-sklearn-regression" style="background: #ffffff;">
+  <div class="card-header bg-black text-white px-4 py-3 border-bottom border-3 border-black d-flex justify-content-between align-items-center flex-wrap gap-2">
+    <div class="d-flex align-items-center gap-2">
+      <span class="badge bg-success border border-black fw-bold px-2 py-1">Scikit-Learn • Machine Learning</span>
+      <h5 class="fw-bold text-white mb-0" style="font-family: 'Space Grotesk', sans-serif;">🤖 Laboratorio Práctico: Modelo Predictivo de Regresión Lineal (Scikit-Learn)</h5>
+    </div>
+    <span class="badge bg-warning text-black fw-bold px-3 py-1 border border-black">Nivel Profesional</span>
+  </div>
+  <div class="card-body p-4">
+    <p class="text-dark mb-3" style="font-size: 1.02rem; line-height: 1.6;">
+      Construye tu primer pipeline supervisado completo con Scikit-Learn. Aprende a separar variables explicativas (X) del objetivo (y), ajustar el modelo con `LinearRegression()`, predecir valores futuros y calcular las dos métricas cardinales de la industria: Coeficiente de Determinación ($R^2$) y Raíz del Error Cuadrático Medio (RMSE).
+    </p>
+
+    <!-- BLOQUE DE CÓDIGO CON BOTONES DE ACCIÓN -->
+    <div class="code-box-container border-2 border-black rounded-3 overflow-hidden shadow-hard-sm mb-3">
+      <div class="code-box-header bg-light border-bottom border-2 border-black px-3 py-2 d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <span class="fw-bold small text-black"><i class="fa-brands fa-python text-warning me-1"></i> sklearn_lab.py</span>
+        <div class="d-flex gap-2">
+          <button class="btn btn-sm btn-dark text-white fw-bold border-2 border-black btn-run-code" title="Ejecutar en WebAssembly" onclick="window.abrirModalEjecutor(this.closest('.code-box-container').querySelector('code').innerText, 'sklearn_lab.py')">
+            <i class="fa-solid fa-play text-warning me-1"></i> ⚡ Probar y Ejecutar
+          </button>
+          <button class="btn btn-sm btn-outline-dark fw-bold border-2 border-black btn-copy-code" title="Copiar código">
+            <i class="fa-regular fa-copy me-1"></i> Copiar
+          </button>
+          <button class="btn btn-sm btn-outline-dark fw-bold border-2 border-black" title="Abrir en JPV PyStudio Cloud" onclick="window.copiarYAbrirPyStudio('lab-sklearn-regression')">
+            <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> PyStudio Cloud
+          </button>
+        </div>
+      </div>
+      <pre class="m-0 p-3" style="background: #0d1117; max-height: 480px; overflow-y: auto;"><code class="language-python">import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score, mean_squared_error
+
+print(&quot;=============================================================&quot;)
+print(&quot;🤖 MACHINE LEARNING CON SCIKIT-LEARN (MODELO PREDICTIVO)&quot;)
+print(&quot;=============================================================&quot;)
+
+# Datos simulados: Inversión en Publicidad vs Ventas Reales
+np.random.seed(42)
+n = 100
+inversion_pub = np.random.uniform(10, 100, n)
+ventas_reales = 4.5 * inversion_pub + np.random.normal(0, 30, n) + 50
+
+df_ml = pd.DataFrame({
+    &quot;Inversion_Publicidad_USD&quot;: inversion_pub,
+    &quot;Ventas_Reales_USD&quot;: ventas_reales
+})
+
+print(f&quot;✅ Dataset de entrenamiento generado ({len(df_ml)} muestras).&quot;)
+print(df_ml.head(5).round(2))
+
+# Entrenar modelo Scikit-Learn
+X = df_ml[[&quot;Inversion_Publicidad_USD&quot;]]
+y = df_ml[&quot;Ventas_Reales_USD&quot;]
+
+modelo = LinearRegression()
+modelo.fit(X, y)
+predicciones = modelo.predict(X)
+
+r2 = r2_score(y, predicciones)
+rmse = np.sqrt(mean_squared_error(y, predicciones))
+
+print()
+print(&quot;📈 Métricas del Modelo Scikit-Learn:&quot;)
+print(f&quot;   • Pendiente (Coeficiente): {modelo.coef_[0]:.3f}&quot;)
+print(f&quot;   • Intersección: {modelo.intercept_:.3f}&quot;)
+print(f&quot;   • Coeficiente R²: {r2:.4f}&quot;)
+print(f&quot;   • Error RMSE: {rmse:.2f} USD&quot;)
+
+# Gráfico de Dispersión y Línea de Regresión
+fig, ax = plt.subplots(figsize=(8.5, 4.2))
+ax.scatter(X, y, color=&quot;#00f2fe&quot;, alpha=0.7, label=&quot;Datos Reales de Ventas&quot;)
+ax.plot(X, predicciones, color=&quot;#f43f5e&quot;, linewidth=2.5, label=f&quot;Recta de Regresión (R²={r2:.2f})&quot;)
+ax.set_title(&quot;Machine Learning: Predicción de Ventas vs Inversión&quot;)
+ax.set_xlabel(&quot;Inversión en Publicidad (USD)&quot;)
+ax.set_ylabel(&quot;Ventas Totales (USD)&quot;)
+ax.legend()
+plt.tight_layout()
+plt.show()
+
+# Guardar predicciones en disco virtual
+df_ml[&quot;Ventas_Predichas_USD&quot;] = predicciones.round(2)
+df_ml.to_csv(&quot;predicciones_ventas_ml.csv&quot;, index=False)
+print()
+print(&quot;💾 Predicciones guardadas en: &#x27;predicciones_ventas_ml.csv&#x27;&quot;)</code></pre>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pt-2 border-top">
+      <span class="small text-muted fw-bold">
+        <i class="fa-solid fa-bolt text-warning me-1"></i> Compatible con ejecución inmediata en memoria mediante WebAssembly (Pyodide).
+      </span>
+      <button class="btn btn-sm btn-success fw-bold text-white px-3 py-1 border-2 border-black shadow-sm" onclick="window.abrirModalEjecutor(document.querySelector('#lab-sklearn-regression code').innerText, 'sklearn_lab.py')">
+        <i class="fa-solid fa-flask me-1"></i> Abrir en el Laboratorio Interactivo
+      </button>
+    </div>
+  </div>
+</div>
+
 </section>
 <!-- SECCIÓN VERCEL ML/SANDBOX: retos-tech -->
 <section class="container py-5 border-top" id="retos-tech">
@@ -27749,6 +28444,313 @@ with col2:
 </div>
 </div>
 </div>
+
+
+<!-- 📈 Laboratorio Práctico: Dashboards Interactivos en 3D y Dispersión Analítica (Plotly) -->
+<div class="card border-3 border-black shadow-hard-lg rounded-3 mb-5 overflow-hidden" id="lab-plotly-dashboard" style="background: #ffffff;">
+  <div class="card-header bg-black text-white px-4 py-3 border-bottom border-3 border-black d-flex justify-content-between align-items-center flex-wrap gap-2">
+    <div class="d-flex align-items-center gap-2">
+      <span class="badge bg-primary border border-black fw-bold px-2 py-1">Plotly Express • Web Visuals</span>
+      <h5 class="fw-bold text-white mb-0" style="font-family: 'Space Grotesk', sans-serif;">📈 Laboratorio Práctico: Dashboards Interactivos en 3D y Dispersión Analítica (Plotly)</h5>
+    </div>
+    <span class="badge bg-warning text-black fw-bold px-3 py-1 border border-black">Nivel Pro</span>
+  </div>
+  <div class="card-body p-4">
+    <p class="text-dark mb-3" style="font-size: 1.02rem; line-height: 1.6;">
+      Lleva la experiencia del usuario al siguiente nivel con gráficos vectoriales interactivos que responden al puntero del ratón con zoom dinámico, paneo tridimensional y tooltips enriquecidos. Aprende a exportar visualizaciones en archivos `.html` autónomos que pueden compartirse por correo o alojarse en la web.
+    </p>
+
+    <!-- BLOQUE DE CÓDIGO CON BOTONES DE ACCIÓN -->
+    <div class="code-box-container border-2 border-black rounded-3 overflow-hidden shadow-hard-sm mb-3">
+      <div class="code-box-header bg-light border-bottom border-2 border-black px-3 py-2 d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <span class="fw-bold small text-black"><i class="fa-brands fa-python text-warning me-1"></i> plotly_lab.py</span>
+        <div class="d-flex gap-2">
+          <button class="btn btn-sm btn-dark text-white fw-bold border-2 border-black btn-run-code" title="Ejecutar en WebAssembly" onclick="window.abrirModalEjecutor(this.closest('.code-box-container').querySelector('code').innerText, 'plotly_lab.py')">
+            <i class="fa-solid fa-play text-warning me-1"></i> ⚡ Probar y Ejecutar
+          </button>
+          <button class="btn btn-sm btn-outline-dark fw-bold border-2 border-black btn-copy-code" title="Copiar código">
+            <i class="fa-regular fa-copy me-1"></i> Copiar
+          </button>
+          <button class="btn btn-sm btn-outline-dark fw-bold border-2 border-black" title="Abrir en JPV PyStudio Cloud" onclick="window.copiarYAbrirPyStudio('lab-plotly-dashboard')">
+            <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> PyStudio Cloud
+          </button>
+        </div>
+      </div>
+      <pre class="m-0 p-3" style="background: #0d1117; max-height: 480px; overflow-y: auto;"><code class="language-python">import pandas as pd
+import numpy as np
+import plotly.express as px
+
+print(&quot;=============================================================&quot;)
+print(&quot;📈 DASHBOARD INTERACTIVO MULTIDIMENSIONAL CON PLOTLY EXPRESS&quot;)
+print(&quot;=============================================================&quot;)
+
+# Configuración de datos aleatorios
+np.random.seed(42)
+regiones = [&quot;Norteamérica&quot;, &quot;Europa&quot;, &quot;Asia-Pacífico&quot;, &quot;Latinoamérica&quot;, &quot;Medio Oriente&quot;]
+datos = []
+
+for reg in regiones:
+    for i in range(8):
+        ingresos = np.random.uniform(120, 950)
+        margen = np.random.uniform(12, 42)
+        clientes = int(np.random.uniform(500, 12000))
+        datos.append({
+            &quot;Región&quot;: reg,
+            &quot;Unidad&quot;: f&quot;{reg[:3].upper()}-0{i+1}&quot;,
+            &quot;Ingresos_M_USD&quot;: round(ingresos, 2),
+            &quot;Margen_Pct&quot;: round(margen, 2),
+            &quot;Clientes_Activos&quot;: clientes
+        })
+
+df_kpi = pd.DataFrame(datos)
+print(df_kpi.head(8))
+
+# Generación del gráfico interactivo con Plotly Express
+fig = px.scatter(
+    df_kpi,
+    x=&quot;Ingresos_M_USD&quot;,
+    y=&quot;Margen_Pct&quot;,
+    size=&quot;Clientes_Activos&quot;,
+    color=&quot;Región&quot;,
+    hover_name=&quot;Unidad&quot;,
+    size_max=48,
+    template=&quot;plotly_dark&quot;,
+    title=&quot;Matriz Ejecutiva: Ingresos (M USD) vs Margen (%) y Volumen de Clientes&quot;,
+    labels={
+        &quot;Ingresos_M_USD&quot;: &quot;Ingresos Anuales (Millones USD)&quot;,
+        &quot;Margen_Pct&quot;: &quot;Margen Operativo (%)&quot;,
+        &quot;Clientes_Activos&quot;: &quot;Clientes Activos&quot;
+    }
+)
+
+# Ajustes de diseño estético del dashboard
+fig.update_layout(
+    paper_bgcolor=&quot;#080c14&quot;,
+    plot_bgcolor=&quot;#0f172a&quot;,
+    font=dict(family=&quot;Outfit, sans-serif&quot;, size=13, color=&quot;#f8fafc&quot;),
+    margin=dict(l=40, r=30, t=60, b=40)
+)
+
+# Guardar y renderizar el archivo HTML interactivo
+fig.write_html(&quot;dashboard_plotly_ejecutivo.html&quot;, include_plotlyjs=&quot;cdn&quot;)
+print(&quot;✅ Gráfico interactivo Plotly renderizado en el visor Gráfico.&quot;)</code></pre>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pt-2 border-top">
+      <span class="small text-muted fw-bold">
+        <i class="fa-solid fa-bolt text-warning me-1"></i> Compatible con ejecución inmediata en memoria mediante WebAssembly (Pyodide).
+      </span>
+      <button class="btn btn-sm btn-success fw-bold text-white px-3 py-1 border-2 border-black shadow-sm" onclick="window.abrirModalEjecutor(document.querySelector('#lab-plotly-dashboard code').innerText, 'plotly_lab.py')">
+        <i class="fa-solid fa-flask me-1"></i> Abrir en el Laboratorio Interactivo
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<!-- 🎬 Laboratorio Práctico: Cockpit Ejecutivo Multigráfico 8-en-1 (Subplots Matplotlib) -->
+<div class="card border-3 border-black shadow-hard-lg rounded-3 mb-5 overflow-hidden" id="lab-animacion-multiview" style="background: #ffffff;">
+  <div class="card-header bg-black text-white px-4 py-3 border-bottom border-3 border-black d-flex justify-content-between align-items-center flex-wrap gap-2">
+    <div class="d-flex align-items-center gap-2">
+      <span class="badge bg-dark text-warning border border-black fw-bold px-2 py-1">Matplotlib • Subplots • Grid 8x1</span>
+      <h5 class="fw-bold text-white mb-0" style="font-family: 'Space Grotesk', sans-serif;">🎬 Laboratorio Práctico: Cockpit Ejecutivo Multigráfico 8-en-1 (Subplots Matplotlib)</h5>
+    </div>
+    <span class="badge bg-warning text-black fw-bold px-3 py-1 border border-black">Nivel Maestro</span>
+  </div>
+  <div class="card-body p-4">
+    <p class="text-dark mb-3" style="font-size: 1.02rem; line-height: 1.6;">
+      Domina la composición espacial avanzada generando un tablero analítico integral de 8 cuadrantes simultáneos sobre un único lienzo en alta definición (distribución de edades, tarifas, puertos de embarque, correlaciones y supervivencia por clase socioeconómica).
+    </p>
+
+    <!-- BLOQUE DE CÓDIGO CON BOTONES DE ACCIÓN -->
+    <div class="code-box-container border-2 border-black rounded-3 overflow-hidden shadow-hard-sm mb-3">
+      <div class="code-box-header bg-light border-bottom border-2 border-black px-3 py-2 d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <span class="fw-bold small text-black"><i class="fa-brands fa-python text-warning me-1"></i> animacion_lab.py</span>
+        <div class="d-flex gap-2">
+          <button class="btn btn-sm btn-dark text-white fw-bold border-2 border-black btn-run-code" title="Ejecutar en WebAssembly" onclick="window.abrirModalEjecutor(this.closest('.code-box-container').querySelector('code').innerText, 'animacion_lab.py')">
+            <i class="fa-solid fa-play text-warning me-1"></i> ⚡ Probar y Ejecutar
+          </button>
+          <button class="btn btn-sm btn-outline-dark fw-bold border-2 border-black btn-copy-code" title="Copiar código">
+            <i class="fa-regular fa-copy me-1"></i> Copiar
+          </button>
+          <button class="btn btn-sm btn-outline-dark fw-bold border-2 border-black" title="Abrir en JPV PyStudio Cloud" onclick="window.copiarYAbrirPyStudio('lab-animacion-multiview')">
+            <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> PyStudio Cloud
+          </button>
+        </div>
+      </div>
+      <pre class="m-0 p-3" style="background: #0d1117; max-height: 480px; overflow-y: auto;"><code class="language-python">import matplotlib.animation as animation
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+print(&quot;=============================================================&quot;)
+print(&quot;🎬 GENERANDO TABLERO ANALÍTICO ANIMADO DEL TITANIC (8 PANELES)&quot;)
+print(&quot;=============================================================&quot;)
+
+# 1. Cargar dataset
+url = &quot;https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv&quot;
+print(&quot;Descargando dataset Titanic...&quot;)
+df = pd.read_csv(url)
+
+# 2. Paleta de colores consistente
+COLOR_SURV = &quot;#0ea5e9&quot;    # Azul/Cian vivo (Sobrevivientes)
+COLOR_DIED = &quot;#64748b&quot;    # Gris neutro (Fallecidos)
+COLOR_ACCENT = &quot;#e11d48&quot;  # Acento de alerta/énfasis
+
+# 3. Precalcular agregaciones
+tasa_global = df[&quot;Survived&quot;].mean() * 100
+surv_counts = df[&quot;Survived&quot;].value_counts()
+pclass_counts = df[&quot;Pclass&quot;].value_counts().sort_index()
+surv_sex = df.groupby(&quot;Sex&quot;)[&quot;Survived&quot;].mean() * 100
+surv_class = df.groupby(&quot;Pclass&quot;)[&quot;Survived&quot;].mean() * 100
+surv_matrix = df.groupby([&quot;Pclass&quot;, &quot;Sex&quot;])[&quot;Survived&quot;].mean().unstack() * 100
+mediana_edad = df[&quot;Age&quot;].median()
+
+age_counts, age_bins = np.histogram(df[&quot;Age&quot;].dropna(), bins=25)
+fare_counts, fare_bins = np.histogram(df[&quot;Fare&quot;], bins=35)
+
+# 4. Inicializar figura del tablero completo (2x4)
+fig, axes = plt.subplots(2, 4, figsize=(18, 9))
+TOTAL_FRAMES = 25
+
+def limpiar_bordes(ax):
+    ax.spines[&quot;top&quot;].set_visible(False)
+    ax.spines[&quot;right&quot;].set_visible(False)
+    ax.spines[&quot;left&quot;].set_color(&quot;#cbd5e1&quot;)
+    ax.spines[&quot;bottom&quot;].set_color(&quot;#cbd5e1&quot;)
+
+def actualizar_tablero(frame):
+    for r in range(2):
+        for c in range(4):
+            axes[r, c].clear()
+
+    fig.suptitle(
+        &quot;&quot;&quot;TRAGEDIA DEL TITANIC: PROTOCOLO DE RESCATE Y PRIVILEGIO SOCIAL\nTablero Analítico Animado (891 Pasajeros)&quot;&quot;&quot;,
+        fontsize=14, fontweight=&quot;bold&quot;, y=0.98, color=&quot;#0f172a&quot;
+    )
+
+    progreso = 1 - (1 - (frame + 1) / TOTAL_FRAMES) ** 2
+
+    # 1. Donut Chart de Supervivencia General
+    vivos_val = max(1, int(surv_counts.get(1, 0) * progreso))
+    muertos_val = max(1, int(surv_counts.get(0, 0) * progreso))
+    wedges, _, autotexts = axes[0, 0].pie(
+        [muertos_val, vivos_val],
+        labels=[&quot;Fallecidos&quot;, &quot;Sobrevivientes&quot;],
+        autopct=&quot;%1.1f%%&quot;,
+        pctdistance=0.75,
+        colors=[COLOR_DIED, COLOR_SURV],
+        startangle=90,
+        wedgeprops=dict(width=0.4, edgecolor=&quot;white&quot;, linewidth=2)
+    )
+    for t in autotexts:
+        t.set_color(&quot;white&quot;)
+        t.set_fontweight(&quot;bold&quot;)
+    axes[0, 0].text(0, 0, f&quot;{vivos_val} Vivos&quot;, ha=&quot;center&quot;, va=&quot;center&quot;, fontsize=11, fontweight=&quot;bold&quot;, color=&quot;#0f172a&quot;)
+    axes[0, 0].set_title(f&quot;Balance General: {tasa_global:.1f}% supervivencia&quot;, fontweight=&quot;bold&quot;, fontsize=9.5)
+
+    # 2. Volumen de Pasajeros por Clase
+    p_curr = pclass_counts * progreso
+    bars2 = axes[0, 1].bar([&quot;1ra&quot;, &quot;2da&quot;, &quot;3ra&quot;], p_curr, color=&quot;#94a3b8&quot;)
+    bars2[2].set_color(COLOR_ACCENT)
+    axes[0, 1].set_ylim(0, pclass_counts.max() * 1.15)
+    for b in bars2:
+        h = b.get_height()
+        if h &gt; 10:
+            axes[0, 1].text(b.get_x() + b.get_width()/2, h + 6, f&quot;{int(h)}&quot;, ha=&quot;center&quot;, va=&quot;bottom&quot;, fontweight=&quot;bold&quot;, fontsize=8, color=&quot;#334155&quot;)
+    axes[0, 1].set_title(&quot;Población por Boleto (Mayoría en 3ra clase)&quot;, fontweight=&quot;bold&quot;, fontsize=9.5)
+    limpiar_bordes(axes[0, 1])
+
+    # 3. Supervivencia por Sexo (Mujeres primero)
+    s_curr = [surv_sex.get(&quot;female&quot;, 0) * progreso, surv_sex.get(&quot;male&quot;, 0) * progreso]
+    bars3 = axes[0, 2].bar([&quot;Mujeres&quot;, &quot;Hombres&quot;], s_curr, color=[COLOR_SURV, COLOR_DIED], width=0.5)
+    axes[0, 2].axhline(tasa_global * progreso, color=&quot;#dc2626&quot;, linestyle=&quot;--&quot;, linewidth=1.2, label=f&quot;Media ({tasa_global:.1f}%)&quot;)
+    axes[0, 2].set_ylim(0, 95)
+    for b in bars3:
+        h = b.get_height()
+        if h &gt; 2:
+            axes[0, 2].text(b.get_x() + b.get_width()/2, h + 1.5, f&quot;{h:.1f}%&quot;, ha=&quot;center&quot;, va=&quot;bottom&quot;, fontweight=&quot;bold&quot;, fontsize=8)
+    axes[0, 2].set_title(&quot;Protocolo de Evacuación (&#x27;Mujeres primero&#x27;)&quot;, fontweight=&quot;bold&quot;, fontsize=9.5)
+    axes[0, 2].legend(frameon=False, loc=&quot;upper right&quot;, fontsize=7.5)
+    limpiar_bordes(axes[0, 2])
+
+    # 4. Supervivencia por Clase Social
+    c_curr = [surv_class.get(1, 0) * progreso, surv_class.get(2, 0) * progreso, surv_class.get(3, 0) * progreso]
+    bars4 = axes[0, 3].bar([&quot;1ra&quot;, &quot;2da&quot;, &quot;3ra&quot;], c_curr, color=[COLOR_SURV, &quot;#38bdf8&quot;, COLOR_DIED], width=0.55)
+    axes[0, 3].axhline(tasa_global * progreso, color=&quot;#dc2626&quot;, linestyle=&quot;--&quot;, linewidth=1.2)
+    axes[0, 3].set_ylim(0, 85)
+    for b in bars4:
+        h = b.get_height()
+        if h &gt; 2:
+            axes[0, 3].text(b.get_x() + b.get_width()/2, h + 1.5, f&quot;{h:.1f}%&quot;, ha=&quot;center&quot;, va=&quot;bottom&quot;, fontweight=&quot;bold&quot;, fontsize=8)
+    axes[0, 3].set_title(&quot;Brecha de Clase (1ra duplicó a 3ra)&quot;, fontweight=&quot;bold&quot;, fontsize=9.5)
+    limpiar_bordes(axes[0, 3])
+
+    # 5. Histograma Dinámico de Edades
+    age_widths = np.diff(age_bins)
+    axes[1, 0].bar(age_bins[:-1], age_counts * progreso, width=age_widths, align=&quot;edge&quot;, color=&quot;#cbd5e1&quot;, edgecolor=&quot;white&quot;)
+    axes[1, 0].set_ylim(0, age_counts.max() * 1.15)
+    axes[1, 0].axvline(mediana_edad, color=&quot;#0f172a&quot;, linestyle=&quot;:&quot;, linewidth=1.2, label=f&quot;Mediana: {mediana_edad:.0f}a&quot;)
+    axes[1, 0].set_title(&quot;Demografía (Concentración 20-35 años)&quot;, fontweight=&quot;bold&quot;, fontsize=9.5)
+    axes[1, 0].legend(frameon=False, fontsize=7.5)
+    limpiar_bordes(axes[1, 0])
+
+    # 6. Distribución de Tarifas (Escala Log)
+    fare_widths = np.diff(fare_bins)
+    axes[1, 1].bar(fare_bins[:-1], np.maximum(fare_counts * progreso, 0.1), width=fare_widths, align=&quot;edge&quot;, color=&quot;#cbd5e1&quot;, edgecolor=&quot;white&quot;)
+    axes[1, 1].set_yscale(&quot;log&quot;)
+    axes[1, 1].set_ylim(1, max(fare_counts) * 2)
+    axes[1, 1].set_title(&quot;Dispersión del Boleto (Mayoría &lt;30$)&quot;, fontweight=&quot;bold&quot;, fontsize=9.5)
+    limpiar_bordes(axes[1, 1])
+
+    # 7. Supervivencia Cruzada (Sexo x Clase)
+    x = np.arange(3)
+    w = 0.35
+    axes[1, 2].bar(x - w/2, surv_matrix[&quot;female&quot;] * progreso, w, color=COLOR_SURV, label=&quot;Mujeres&quot;)
+    axes[1, 2].bar(x + w/2, surv_matrix[&quot;male&quot;] * progreso, w, color=COLOR_DIED, label=&quot;Hombres&quot;)
+    axes[1, 2].set_ylim(0, 110)
+    axes[1, 2].set_xticks(x)
+    axes[1, 2].set_xticklabels([&quot;1ra&quot;, &quot;2da&quot;, &quot;3ra&quot;])
+    axes[1, 2].set_title(&quot;Efecto Combinado (Mujeres 1ra clase ~97%)&quot;, fontweight=&quot;bold&quot;, fontsize=9.5)
+    axes[1, 2].legend(frameon=False, fontsize=7.5)
+    limpiar_bordes(axes[1, 2])
+
+    # 8. Dispersión Edad vs Tarifa
+    lim_puntos = max(5, int(len(df) * progreso))
+    df_sub = df.iloc[:lim_puntos]
+    fallecidos = df_sub[df_sub[&quot;Survived&quot;] == 0]
+    vivos = df_sub[df_sub[&quot;Survived&quot;] == 1]
+    axes[1, 3].scatter(fallecidos[&quot;Age&quot;], fallecidos[&quot;Fare&quot;], color=COLOR_DIED, alpha=0.35, s=18, label=&quot;Fallecido&quot;)
+    axes[1, 3].scatter(vivos[&quot;Age&quot;], vivos[&quot;Fare&quot;], color=COLOR_SURV, alpha=0.7, s=18, label=&quot;Sobreviviente&quot;)
+    axes[1, 3].set_xlim(0, 85)
+    axes[1, 3].set_ylim(-10, 520)
+    axes[1, 3].set_title(&quot;Tarifas Altas Blindaron Vidas (0 muertes &gt;200$)&quot;, fontweight=&quot;bold&quot;, fontsize=9.5)
+    axes[1, 3].legend(frameon=False, loc=&quot;upper right&quot;, fontsize=7.5)
+    limpiar_bordes(axes[1, 3])
+
+    plt.tight_layout(rect=[0, 0, 1, 0.94])
+
+print(&quot;Compilando cuadros de animación con Pillow...&quot;)
+ani = animation.FuncAnimation(fig, actualizar_tablero, frames=TOTAL_FRAMES, interval=60, repeat=False)
+writer = animation.PillowWriter(fps=12)
+ani.save(&quot;titanic_dashboard_completo_animado.gif&quot;, writer=writer)
+
+print()
+print(&quot;🎉 Animación generada: &#x27;titanic_dashboard_completo_animado.gif&#x27;&quot;)
+print(&quot;👉 El visor gráfico mostrará la animación en bucle infinito.&quot;)</code></pre>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pt-2 border-top">
+      <span class="small text-muted fw-bold">
+        <i class="fa-solid fa-bolt text-warning me-1"></i> Compatible con ejecución inmediata en memoria mediante WebAssembly (Pyodide).
+      </span>
+      <button class="btn btn-sm btn-success fw-bold text-white px-3 py-1 border-2 border-black shadow-sm" onclick="window.abrirModalEjecutor(document.querySelector('#lab-animacion-multiview code').innerText, 'animacion_lab.py')">
+        <i class="fa-solid fa-flask me-1"></i> Abrir en el Laboratorio Interactivo
+      </button>
+    </div>
+  </div>
+</div>
+
 </section>
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <!-- ======== PROYECTO 1: DASHBOARD DE VENTAS (TUTORIAL DEFINITIVO) ======== -->
@@ -34481,6 +35483,348 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 </script>
+
+
+
+<!-- ======================================================= -->
+<!-- ⚡ MODAL MAESTRO: LABORATORIO INTERACTIVO WEBASSEMBLY (PYODIDE PRO STUDIO) -->
+<!-- ======================================================= -->
+<div class="modal fade" id="modalRunnerWasm" tabindex="-1" aria-labelledby="modalRunnerWasmLabel" aria-hidden="true" data-bs-backdrop="static">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" id="modalRunnerWasmDialog" style="max-width: 95vw; margin: 1.5vh auto;">
+    <div class="modal-content border-3 border-black shadow-hard-lg" style="background: #ffffff; border-radius: 16px; overflow: hidden;">
+      
+      <!-- HEADER DEL MODAL -->
+      <div class="modal-header bg-black text-white px-4 py-3 border-bottom border-black d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div class="d-flex align-items-center gap-2">
+          <span style="font-size: 1.4rem;">⚡</span>
+          <div>
+            <h5 class="modal-title fw-bold text-white mb-0" id="modalRunnerWasmLabel" style="font-family: 'Space Grotesk', sans-serif;">
+              JPV Python WebAssembly Studio Pro
+            </h5>
+            <div class="d-flex align-items-center gap-2 mt-1">
+              <span class="badge bg-warning text-black fw-bold" id="wasmEngineBadge" style="font-size: 0.75rem;">
+                <i class="fa-solid fa-microchip me-1"></i> WebAssembly Pyodide v0.26.1
+              </span>
+              <span class="badge bg-success text-white fw-bold" id="wasmStatusIndicator" style="font-size: 0.75rem;">
+                <i class="fa-solid fa-circle-check me-1"></i> Listo en RAM
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+          <button type="button" class="btn btn-sm btn-outline-light fw-bold px-3 py-1 border-2" id="btnToggleWasmFullscreen" title="Alternar Pantalla Completa" onclick="window.toggleWasmFullscreen()">
+            <i class="fa-solid fa-expand me-1" id="iconWasmFullscreen"></i> <span id="textWasmFullscreen" class="d-none d-sm-inline">Pantalla Completa</span>
+          </button>
+          <button type="button" class="btn btn-sm btn-light text-black fw-bold px-3 py-1 border-2 border-black" data-bs-dismiss="modal" aria-label="Cerrar">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- BARRA DE PESTAÑAS MULTI-ENTORNO -->
+      <div class="bg-light px-4 py-2 border-bottom border-2 border-black d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <ul class="nav nav-pills gap-2" id="wasmEnvironmentTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active fw-bold px-3 py-1 border border-black text-black" id="tab-online-btn" data-bs-toggle="pill" data-bs-target="#tab-online-content" type="button" role="tab" style="border-radius: 8px;">
+              🟢 En Línea (WebAssembly)
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link fw-bold px-3 py-1 border border-black text-black" id="tab-pystudio-btn" data-bs-toggle="pill" data-bs-target="#tab-pystudio-content" type="button" role="tab" style="border-radius: 8px;">
+              🌐 JPV PyStudio Cloud
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link fw-bold px-3 py-1 border border-black text-black" id="tab-colab-btn" data-bs-toggle="pill" data-bs-target="#tab-colab-content" type="button" role="tab" style="border-radius: 8px;">
+              🟡 Google Colab
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link fw-bold px-3 py-1 border border-black text-black" id="tab-vscode-btn" data-bs-toggle="pill" data-bs-target="#tab-vscode-content" type="button" role="tab" style="border-radius: 8px;">
+              💻 VS Code Local
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link fw-bold px-3 py-1 border border-black text-black" id="tab-github-btn" data-bs-toggle="pill" data-bs-target="#tab-github-content" type="button" role="tab" style="border-radius: 8px;">
+              🐙 Repositorio GitHub
+            </button>
+          </li>
+        </ul>
+
+        <!-- SELECTOR DE PLANTILLAS MAESTRAS -->
+        <div class="d-flex align-items-center gap-2">
+          <label for="selectWasmPlantilla" class="small fw-bold text-secondary text-nowrap d-none d-md-inline">
+            <i class="fa-solid fa-folder-open me-1"></i> Plantillas:
+          </label>
+          <select id="selectWasmPlantilla" class="form-select form-select-sm border-2 border-black fw-bold" style="min-width: 230px; border-radius: 8px;" onchange="window.cargarPlantillaEnModal(this.value)">
+            <option value="">📂 Cargar Plantilla Maestra...</option>
+            <option value="titanic">🚢 Titanic: Limpieza CSV Web & EDA</option>
+            <option value="seaborn">📊 Seaborn: Heatmap & Correlación</option>
+            <option value="sklearn">🤖 Scikit-Learn: Regresión Lineal & Métricas</option>
+            <option value="requests">🌐 Requests: API REST en vivo (HTTPS)</option>
+            <option value="excel">📑 Excel: openpyxl / xlsxwriter Empresarial</option>
+            <option value="folium">🗺️ Folium: Mapa Geoespacial Satelital</option>
+            <option value="plotly">📈 Plotly Express: Dashboard Interactivo</option>
+            <option value="networkx">🕸️ NetworkX: Topología de Red y Ruteo</option>
+            <option value="wordcloud">☁️ WordCloud: Minería de Texto NLP</option>
+            <option value="scipy">🔬 Scipy: Ajuste de Curvas Matemáticas</option>
+            <option value="animacion">🎬 Animación Multigráfico (Dashboard 8-en-1)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- CUERPO PRINCIPAL DEL MODAL -->
+      <div class="modal-body p-0" style="background: #f8fafc; min-height: 580px;">
+        <div class="tab-content" id="wasmTabContent">
+          
+          <!-- PESTAÑA 1: EN LÍNEA (WEBASSEMBLY) -->
+          <div class="tab-pane fade show active" id="tab-online-content" role="tabpanel">
+            <div class="row g-0">
+              
+              <!-- PANEL IZQUIERDO: EDITOR DE CÓDIGO + VFS -->
+              <div class="col-lg-6 border-end border-2 border-black d-flex flex-column" style="min-height: 580px; background: #ffffff;">
+                
+                <!-- Toolbar del Editor -->
+                <div class="p-3 bg-light border-bottom border-2 border-black d-flex justify-content-between align-items-center flex-wrap gap-2">
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="badge bg-black text-white px-2 py-1 fw-bold">
+                      <i class="fa-brands fa-python me-1 text-warning"></i> <span id="wasmEditorFileName">script.py</span>
+                    </span>
+                    <span class="small text-muted fw-bold" id="wasmCodeStats">0 líneas | 0 chars</span>
+                  </div>
+
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-sm btn-outline-secondary fw-bold border-2 border-black" title="Copiar código al portapapeles" onclick="window.copiarCodigoModal()">
+                      <i class="fa-regular fa-copy me-1"></i> Copiar
+                    </button>
+                    <button class="btn btn-sm btn-outline-secondary fw-bold border-2 border-black" title="Limpiar código" onclick="window.limpiarCodigoModal()">
+                      <i class="fa-solid fa-eraser me-1"></i> Limpiar
+                    </button>
+                    <button class="btn btn-sm btn-outline-secondary fw-bold border-2 border-black" title="Descargar archivo .py" onclick="window.descargarScriptModal()">
+                      <i class="fa-solid fa-download me-1"></i> .py
+                    </button>
+                    <button class="btn btn-sm btn-success fw-bold text-white px-3 border-2 border-black shadow-sm" id="btnEjecutarWasm" onclick="window.ejecutarCodigoWasm()" style="background: #10b981;">
+                      <i class="fa-solid fa-play me-1"></i> <span id="textBtnEjecutar">Ejecutar (Ctrl+Enter)</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Textarea del Editor -->
+                <div class="position-relative flex-grow-1" style="min-height: 380px;">
+                  <textarea id="wasmCodeInput" class="form-control h-100 border-0 p-3" style="font-family: 'Fira Code', 'JetBrains Mono', Consolas, monospace; font-size: 0.92rem; line-height: 1.5; background: #0d1117; color: #58a6ff; resize: none; border-radius: 0;" spellcheck="false" placeholder="# Escribe o pega tu código Python aquí..."></textarea>
+                </div>
+
+                <!-- GESTOR DE DATOS Y VFS (SUBIR Y GENERAR DATASETS) -->
+                <div class="p-3 border-top border-2 border-black bg-light">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h6 class="fw-bold mb-0 text-black" style="font-family: 'Space Grotesk', sans-serif;">
+                      <i class="fa-solid fa-database text-primary me-1"></i> Gestor de Datasets y Archivos en Memoria (VFS)
+                    </h6>
+                    <span class="badge bg-secondary text-white" id="wasmFileCountBadge">0 archivos en RAM</span>
+                  </div>
+
+                  <!-- Botones de subida y Drag & Drop -->
+                  <div class="d-flex flex-wrap gap-2 align-items-center mb-2">
+                    <label class="btn btn-sm btn-outline-dark fw-bold border-2 border-black mb-0 cursor-pointer" style="cursor: pointer;">
+                      <i class="fa-solid fa-cloud-arrow-up me-1 text-primary"></i> <span>Subir Mi Dataset (CSV / Excel / JSON)</span>
+                      <input type="file" id="wasmInputFile" accept=".csv,.xlsx,.xls,.json,.txt" style="display: none;" onchange="window.manejarSubidaArchivoWasm(event)">
+                    </label>
+
+                    <!-- Datasets sintéticos rápidos -->
+                    <div class="dropdown">
+                      <button class="btn btn-sm btn-warning text-black fw-bold border-2 border-black dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-wand-magic-sparkles me-1"></i> Generar Dataset de Prueba
+                      </button>
+                      <ul class="dropdown-menu border-2 border-black shadow-hard-sm">
+                        <li><a class="dropdown-item fw-bold" href="javascript:void(0)" onclick="window.inyectarDatasetSintetico('finanzas')">📊 Reporte Financiero Anual (CSV)</a></li>
+                        <li><a class="dropdown-item fw-bold" href="javascript:void(0)" onclick="window.inyectarDatasetSintetico('ventas')">🛒 Reporte Ventas 1,000 Registros (CSV)</a></li>
+                        <li><a class="dropdown-item fw-bold" href="javascript:void(0)" onclick="window.inyectarDatasetSintetico('nlp')">🧠 Dataset Sentimientos y NLP (CSV)</a></li>
+                        <li><a class="dropdown-item fw-bold" href="javascript:void(0)" onclick="window.inyectarDatasetSintetico('banco')">🏦 Base Solicitudes Bancarias (CSV)</a></li>
+                        <li><a class="dropdown-item fw-bold" href="javascript:void(0)" onclick="window.inyectarDatasetSintetico('titanic')">🚢 Titanic Pasajeros Oficial (CSV)</a></li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <!-- Lista de archivos cargados en el VFS -->
+                  <div id="wasmVfsList" class="d-flex flex-wrap gap-2 small">
+                    <span class="text-muted fst-italic">No hay archivos adicionales cargados en la memoria virtual.</span>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- PANEL DERECHO: TERMINAL + MÚLTIPLES GRÁFICOS + TABLAS -->
+              <div class="col-lg-6 d-flex flex-column" style="min-height: 580px; background: #ffffff;">
+                
+                <!-- Toolbar de Salida -->
+                <div class="p-3 bg-light border-bottom border-2 border-black d-flex justify-content-between align-items-center flex-wrap gap-2">
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="badge bg-black text-white px-2 py-1 fw-bold">
+                      <i class="fa-solid fa-terminal me-1 text-success"></i> Salida de Ejecución
+                    </span>
+                    <span class="small text-muted fw-bold" id="wasmExecDuration">Listo</span>
+                  </div>
+
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-sm btn-outline-secondary fw-bold border-2 border-black" title="Limpiar salida de consola y gráficos" onclick="window.limpiarSalidaModal()">
+                      <i class="fa-solid fa-trash me-1"></i> Limpiar Salida
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Contenedor scrollable de resultados -->
+                <div class="p-3 flex-grow-1 overflow-auto" id="wasmResultsContainer" style="max-height: 620px;">
+                  
+                  <!-- Formulario dinámico para input() interactivo si el script lo requiere -->
+                  <div id="wasmDynamicInputContainer" style="display: none;" class="mb-3 p-3 bg-warning bg-opacity-10 border-2 border-warning rounded-3">
+                    <!-- Se inyecta dinámicamente si Python ejecuta input() -->
+                  </div>
+
+                  <!-- Consola de Salida de Texto (stdout / stderr) -->
+                  <div class="card border-2 border-black shadow-hard-sm mb-3">
+                    <div class="card-header bg-black text-white py-2 px-3 d-flex justify-content-between align-items-center">
+                      <span class="fw-bold small"><i class="fa-solid fa-laptop-code text-warning me-1"></i> Consola Estándar (stdout)</span>
+                      <span class="badge bg-secondary text-white" id="wasmTerminalCharCount">0 chars</span>
+                    </div>
+                    <div class="card-body p-0">
+                      <pre id="wasmTerminalOutput" class="m-0 p-3" style="font-family: 'Fira Code', 'JetBrains Mono', Consolas, monospace; font-size: 0.88rem; line-height: 1.45; background: #0d1117; color: #58a6ff; max-height: 250px; overflow-y: auto; white-space: pre-wrap; word-break: break-word;">Presiona "⚡ Ejecutar (Ctrl+Enter)" para compilar y probar tu código en tiempo real.</pre>
+                    </div>
+                  </div>
+
+                  <!-- CONTENEDOR DE MÚLTIPLES GRÁFICOS (1, 2, 3 O N VISTAS) -->
+                  <div id="wasmPlotsContainer" class="d-flex flex-column gap-3 mb-3">
+                    <!-- Cada figura de Matplotlib/Seaborn generada se inyectará aquí -->
+                  </div>
+
+                  <!-- CONTENEDOR DE VISUALIZACIÓN INTERACTIVA (HTML / IFRAME PARA PLOTLY / FOLIUM) -->
+                  <div id="wasmInteractiveContainer" class="d-none mb-3">
+                    <!-- Se inyectará si el script genera mapa Folium o Plotly HTML -->
+                  </div>
+
+                  <!-- CONTENEDOR DE TABLAS DE DATOS / ARCHIVOS GENERADOS -->
+                  <div id="wasmGeneratedFilesContainer" class="d-flex flex-column gap-2 mb-3">
+                    <!-- Se inyectarán botones de descarga si se generan CSV o Excel -->
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <!-- PESTAÑA 2: JPV PYSTUDIO CLOUD -->
+          <div class="tab-pane fade p-4" id="tab-pystudio-content" role="tabpanel" style="background: #ffffff;">
+            <div class="p-4 border-3 border-black rounded-3 shadow-hard-md bg-light">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <span style="font-size: 2.2rem;">🌐</span>
+                <div>
+                  <h4 class="fw-bold mb-1" style="font-family: 'Space Grotesk', sans-serif;">Entorno Oficial en la Nube: JPV PyStudio Cloud</h4>
+                  <p class="text-secondary mb-0">WebAssembly Pro Studio creado por el Ing. Juancito Peña con soporte completo para Folium, Plotly, Seaborn, NetworkX, WordCloud y Excel.</p>
+                </div>
+              </div>
+              <p>Puedes transferir automáticamente este script al compilador web completo de JPV PyStudio para contar con editor con resaltado Prism, visualizador full screen interactivo y opciones de exportación avanzadas.</p>
+              <div class="d-flex gap-2 flex-wrap mt-3">
+                <button class="btn btn-dark fw-bold px-4 py-2 border-2 border-black shadow-hard-sm" onclick="window.abrirEnPyStudioCloud()">
+                  <i class="fa-solid fa-arrow-up-right-from-square me-1 text-warning"></i> Copiar y Abrir en JPV PyStudio Cloud
+                </button>
+                <a href="https://juancitopena.github.io/JPV_PyStudio/" target="_blank" class="btn btn-outline-dark fw-bold px-4 py-2 border-2 border-black">
+                  Visitar Página Principal de JPV PyStudio
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- PESTAÑA 3: GOOGLE COLAB -->
+          <div class="tab-pane fade p-4" id="tab-colab-content" role="tabpanel" style="background: #ffffff;">
+            <div class="p-4 border-3 border-black rounded-3 shadow-hard-md bg-light">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <span style="font-size: 2.2rem;">🟡</span>
+                <div>
+                  <h4 class="fw-bold mb-1" style="font-family: 'Space Grotesk', sans-serif;">Entorno Cloud con Aceleración GPU: Google Colab</h4>
+                  <p class="text-secondary mb-0">Para entrenamientos de Machine Learning y Deep Learning a gran escala con librerías científicas preinstaladas.</p>
+                </div>
+              </div>
+              <ol class="mb-4 ps-3">
+                <li class="mb-2">Haz clic en el botón de abajo para <strong>copiar el código actual</strong> y abrir un nuevo cuaderno de Google Colab.</li>
+                <li class="mb-2">En la primera celda del cuaderno Colab, presiona <kbd class="bg-dark text-warning px-2 py-1 rounded">Ctrl + V</kbd>.</li>
+                <li class="mb-2">Presiona <kbd class="bg-dark text-warning px-2 py-1 rounded">Shift + Enter</kbd> para ejecutar el entrenamiento con los servidores de Google.</li>
+              </ol>
+              <button class="btn btn-warning text-black fw-bold px-4 py-2 border-2 border-black shadow-hard-sm" onclick="window.abrirEnGoogleColab()">
+                <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> Copiar Código y Abrir Google Colab
+              </button>
+            </div>
+          </div>
+
+          <!-- PESTAÑA 4: VS CODE LOCAL -->
+          <div class="tab-pane fade p-4" id="tab-vscode-content" role="tabpanel" style="background: #ffffff;">
+            <div class="p-4 border-3 border-black rounded-3 shadow-hard-md bg-light">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <span style="font-size: 2.2rem;">💻</span>
+                <div>
+                  <h4 class="fw-bold mb-1" style="font-family: 'Space Grotesk', sans-serif;">Guía de Ejecución Local en Visual Studio Code</h4>
+                  <p class="text-secondary mb-0">Pasos para correr este script en tu máquina local con Python 3.12+ nativo.</p>
+                </div>
+              </div>
+              <div class="card bg-black text-white p-3 mb-3 border-2 border-black">
+                <span class="text-secondary small fw-bold mb-1">1. Instalar dependencias necesarias en la terminal:</span>
+                <code class="text-success" style="font-family: 'Fira Code', monospace; font-size: 0.95rem;">
+                  pip install pandas numpy matplotlib seaborn plotly folium networkx wordcloud scipy scikit-learn openpyxl xlsxwriter requests streamlit
+                </code>
+              </div>
+              <div class="card bg-black text-white p-3 mb-3 border-2 border-black">
+                <span class="text-secondary small fw-bold mb-1">2. Ejecutar el script:</span>
+                <code class="text-warning" style="font-family: 'Fira Code', monospace; font-size: 0.95rem;">
+                  python app.py
+                </code>
+              </div>
+              <button class="btn btn-primary fw-bold px-4 py-2 border-2 border-black shadow-hard-sm" onclick="window.copiarCodigoModal()">
+                <i class="fa-regular fa-copy me-1"></i> Copiar Código para Guardar en app.py
+              </button>
+            </div>
+          </div>
+
+          <!-- PESTAÑA 5: GITHUB -->
+          <div class="tab-pane fade p-4" id="tab-github-content" role="tabpanel" style="background: #ffffff;">
+            <div class="p-4 border-3 border-black rounded-3 shadow-hard-md bg-light">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <span style="font-size: 2.2rem;">🐙</span>
+                <div>
+                  <h4 class="fw-bold mb-1" style="font-family: 'Space Grotesk', sans-serif;">Repositorio y Despliegue en GitHub</h4>
+                  <p class="text-secondary mb-0">Acceso directo al código fuente oficial y al portal en vivo en GitHub Pages.</p>
+                </div>
+              </div>
+              <div class="d-flex flex-wrap gap-3 mt-3">
+                <a href="https://github.com/JUANCITOPENA/curso-python-data-science-streamlit-pro" target="_blank" class="btn btn-dark fw-bold px-4 py-2 border-2 border-black shadow-hard-sm">
+                  <i class="fa-brands fa-github me-1"></i> Ver Repositorio en GitHub
+                </a>
+                <a href="https://juancitopena.github.io/curso-python-data-science-streamlit-pro/" target="_blank" class="btn btn-success text-white fw-bold px-4 py-2 border-2 border-black shadow-hard-sm">
+                  <i class="fa-solid fa-globe me-1"></i> Abrir Portal en Vivo en GitHub Pages
+                </a>
+                <a href="https://github.com/JUANCITOPENA/Diplomado_Python_Analisis_De_Datos_Mas_IA_CAES" target="_blank" class="btn btn-outline-dark fw-bold px-4 py-2 border-2 border-black">
+                  <i class="fa-brands fa-github me-1"></i> Ver Proyecto Diplomado CAES
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FOOTER DEL MODAL -->
+      <div class="modal-footer bg-light px-4 py-2 border-top border-2 border-black d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <span class="small text-muted fw-bold">
+          <i class="fa-solid fa-shield-halved text-success me-1"></i> Sandbox Seguro 100% Cliente en WebAssembly. Ningún dato sale de tu navegador.
+        </span>
+        <button type="button" class="btn btn-outline-dark fw-bold px-4 border-2 border-black" data-bs-dismiss="modal">
+          Cerrar Laboratorio
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

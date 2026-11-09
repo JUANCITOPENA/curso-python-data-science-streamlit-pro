@@ -1,6 +1,6 @@
 # 📊 STATUS ACTUAL DEL PROYECTO: Curso Maestro de Python, Data Science & Streamlit Pro
 **Autor:** Ing. Juancito Peña  
-**Versión:** `v3.0.0-PRO (Edición Definitiva de Producción)`  
+**Versión:** `v3.5.0-PRO (WebAssembly Interactive Studio Edition)`  
 **Fecha:** 9 de Noviembre, 2026  
 **Licencia:** MIT / Formato de Alta Gobernanza JPV  
 **Repositorio GitHub:** [curso-python-data-science-streamlit-pro](https://github.com/JUANCITOPENA/curso-python-data-science-streamlit-pro)  
@@ -9,62 +9,59 @@
 ---
 
 ## 🎯 Estado General de la Plataforma
-- **Integridad Técnica:** 100% Funcional, 0 errores sintácticos, 0 advertencias de DOM.
-- **Validación DOM:** 0 IDs duplicados en `index.html` (comprobado vía analizador AST/Regex automatizado).
-- **Consistencia Visual:** Diseño Neo-Brutalista Light Mode de alto contraste (WCAG 2.2 AAA), tipografía `Space Grotesk` y `JetBrains Mono`.
-- **Ecosistema de Servidores Activos:**
-  - Servidor Web Principal HTTP: Puerto `8080`.
-  - Servidor Streamlit Suite (App 30 Full): Puerto `8503`.
+- **Integridad Técnica:** 100% Funcional, 0 errores sintácticos en HTML/CSS/JS (validado con Node.js y Python).
+- **Validación DOM:** Exactamente **0 IDs duplicados** en `index.html`.
+- **Nuevo Motor Integrado:** **Laboratorio Interactivo WebAssembly (Pyodide v0.26.1)** con ejecución en tiempo real en la RAM del navegador, sin dependencias de servidores externos ni cobros por API.
+- **Soporte Multigráfico:** Captura simultánea y renderizado secuencial de todas las figuras de Matplotlib (`plt.figure()`), Seaborn, Plotly y Folium generadas por cualquier script.
+- **Gestor VFS de Datasets:** Subida propia de archivos (CSV, Excel, JSON) al disco en memoria + Generador de Datasets Sintéticos en 1 clic.
 
 ---
 
-## 💎 Mejoras y Entregables Clave de la Versión v3.0.0-PRO
+## 💎 Nuevas Funcionalidades y Entregables Clave de la Versión v3.5.0-PRO
 
-### 1. 📚 8 Tablas Maestras de Fundamentos y Operadores
-Ubicadas en `#fundamentos` y `#operadores`, cada tabla cuenta con explicación pedagógica previa, rigor técnico, ejemplos sintácticos ejecutables y consideraciones de bajo nivel en memoria (CPython):
-1. **Tipos de Datos Primitivos:** `int`, `float`, `complex`, `bool`, `str`, `bytes`. Explicación de inmutabilidad y límites de precisión.
-2. **Estructuras de Colecciones Nativas:** `list`, `tuple`, `set`, `dict`, `frozenset`. Mutabilidad, ordenación y complejidad algorítmica Big-O.
-3. **Variables y Constantes en Python:** Duck Typing dinámico, convención PEP 8 `SCREAMING_SNAKE_CASE` y uso de `typing.Final`.
-4. **Paso de Parámetros: Paso por Asignación de Objeto:** Explicación profunda de `id()`, `is` vs `==`, paso de inmutables vs mutables con efecto colateral.
-5. **Operadores Aritméticos:** `+`, `-`, `*`, `/`, `//` (división entera con floor), `%` (módulo), `**` (exponenciación con precisión arbitraria).
-6. **Operadores de Comparación Relacionales:** `==`, `!=`, `>`, `<`, `>=`, `<=`, y encadenamiento natural de operadores (`18 <= edad < 65`).
-7. **Operadores Lógicos Booleanos:** `and`, `or`, `not` con evaluación de cortocircuito (*short-circuit evaluation*) y retorno de valores operandos.
-8. **Operadores de Identidad y Pertenencia:** `is`, `is not` (identidad en memoria heap) y `in`, `not in` (búsqueda en colecciones con O(1) en sets vs O(n) en listas).
+### 1. ⚡ Botón Global "⚡ Probar y Ejecutar" en CADA Bloque de Código
+- Inyección automatizada en todos los contenedores `.code-box-header`, `.code-box-container` y bloques `<pre><code>`.
+- Al pulsar el botón, se abre instantáneamente el modal interactivo `#modalRunnerWasm` con el código cargado, limpio y listo para compilar.
 
-### 2. 🫀 Efecto Visual de Latidos ("Heartbeat")
-- Animación CSS `@keyframes tech-heartbeat` (latido rápido-lento con elevación 3D y brillo reactivo).
-- Aplicada a más de 45 tarjetas de tecnologías, logos vectoriales y celdas de lenguajes de programación.
-- Control interactivo: el latido se pausa suavemente al pasar el puntero del ratón (`hover`) aumentando un 5% de escala para inspección ergonómica.
+### 2. 🖥️ Modal Maestro WebAssembly Runner (Pyodide Pro Studio)
+Inspirado y sincronizado con **JPV_PyStudio** y **Diplomado CAES**:
+- **Pestañas Multi-Entorno:**
+  - 🟢 **En Línea (WebAssembly / Pyodide)**: Ejecución privada y directa en memoria.
+  - 🌐 **JPV PyStudio Cloud**: Redirección directa al compilador oficial en vivo del autor.
+  - 🟡 **Google Colab**: Copia de código con 1 clic y apertura de nuevo notebook.
+  - 💻 **VS Code Local**: Guía y comando pip install para correrlo en local.
+  - 🐙 **Proyecto GitHub**: Enlaces al repositorio y al portal en GitHub Pages.
+- **Visualizador Multigráfico:**
+  - Despliega todas las vistas generadas (1, 2, 3 o N gráficos).
+  - Opciones: Ver en Grande (modal HD), Descargar PNG en alta resolución y selector de fondo.
+- **Gestor de Archivos y VFS:**
+  - Subida de archivos `.csv`, `.xlsx`, `.json` mediante botón o arrastrar/soltar.
+  - Generador instantáneo de 5 datasets sintéticos (Finanzas, Ventas 1,000 registros, NLP Sentimientos, Score Bancario y Titanic).
+  - Descarga directa de archivos CSV o Excel generados por el código Python.
 
-### 3. 🌐 Catálogo de +45 Logos e Iconos Oficiales Descargados Localmente
-Todos los logos están alojados en `assets/icons/ai/` y `assets/icons/tech/` para garantizar independencia de CDN y carga offline:
-- **IA Generativa y LLMs:** OpenAI, Claude, Google Gemini, Microsoft Copilot, HuggingFace, DeepSeek, Ollama, LangChain.
-- **Deep Learning y Machine Learning:** PyTorch, TensorFlow, Scikit-Learn, XGBoost, LightGBM, Keras.
-- **Frontend y Visualización Analítica:** Streamlit, Plotly, Seaborn, Matplotlib, Power BI, Tableau, D3.js.
-- **Big Data & Data Warehouses:** Pandas, Polars, DuckDB, Apache Spark, Snowflake, Google BigQuery, dbt.
-- **Ciberseguridad y Redes:** Python Scapy, Kali Linux, Wireshark, Nmap, Metasploit.
-- **Lenguajes de Comparación:** Python, Rust, Go, C++, Java, JavaScript, Julia, R.
-
-### 4. 🧹 Depuración Radical y Erradicación de Redundancias
-- Eliminadas ~9,550 líneas de código duplicadas generadas en versiones intermedias.
-- Unificación total de secciones: una sola sección de Fundamentos, una sola sección de Operadores, y el catálogo maestro de 30 Dashboards en Streamlit estructurado cronológicamente.
-- Enumeración jerárquica estricta (ej. 2.1.1, 2.2.1, 2.3.1) en todos los títulos, subtítulos y Retos Técnicos con prefijo en negrita y emojis descriptivos.
+### 3. 🔬 11 Laboratorios Técnicos Oficiales de JPV_PyStudio Integrados Temáticamente
+Cada laboratorio incluye tarjeta bento Neo-Brutalista, explicación pedagógica, código coloreado en Prism, y botones de copia, ejecución interactiva y apertura en la nube:
+1. **🚢 Titanic EDA & Limpieza Web:** Módulo de Análisis de Datos (`#analisis-datos`).
+2. **📊 Seaborn Heatmap & Correlación:** Módulo de Storytelling (`#modulo-storytelling`).
+3. **🤖 Scikit-Learn Regresión Predictiva:** Módulo de Machine Learning (`#modulo-machine-learning`).
+4. **🌐 Requests API REST en vivo (HTTPS):** Módulo de APIs (`#apis`).
+5. **📑 Excel Empresarial (openpyxl/xlsxwriter):** Módulo I/O & Automatización (`#modulo-io-pro`).
+6. **🗺️ Folium Mapas Geoespaciales Satelitales:** Módulo de Extracción Remota (`#modulo-extraccion-remota`).
+7. **📈 Plotly Express Dashboards 3D/Scatter:** Módulo de Dashboards (`#dashboards`).
+8. **🕸️ NetworkX Topología de Redes y Ruteo:** Módulo de Algoritmos de Grafos (`#modulo-algoritmos-grafos`).
+9. **☁️ WordCloud Minería de Texto NLP:** Módulo Hardcore NLP (`#modulo-hardcore`).
+10. **🔬 SciPy Ajuste de Curvas No Lineales:** Módulo de Computación Científica (`#modulo-algoritmos`).
+11. **🎬 Cockpit Multigráfico 8-en-1:** Módulo de Arquitectura Multivista (`#dashboards`).
 
 ---
 
 ## 📈 Matriz de Cobertura del Proyecto
 | Área de Conocimiento | Módulos / Proyectos | Estado |
 | :--- | :--- | :--- |
-| **Sintaxis y Fundamentos** | 8 Tablas + 20 Retos Técnicos | ✅ 100% Completo |
+| **Sintaxis y Fundamentos** | 8 Tablas Maestras + 20 Retos Técnicos | ✅ 100% Completo |
 | **Estructuras de Datos FAANG** | 19 Retos Clásicos (Two Sum, LRU, etc.) | ✅ 100% Completo |
 | **Algoritmos y Machine Learning** | 36 Visualizaciones SVG + Algoritmos | ✅ 100% Completo |
+| **Laboratorios JPV_PyStudio** | 11 Suites WebAssembly con Multigráfico | ✅ 100% Completo |
 | **Dashboards en Streamlit** | 30 Aplicaciones Reales Completas | ✅ 100% Completo |
 | **Certificación de Excelencia** | Diploma interactivo + Exportación PDF | ✅ 100% Completo |
 | **Despliegue Cloud / CI-CD** | Repositorio GitHub + GitHub Pages | ✅ 100% En Producción |
-
----
-
-## 🚀 Próximos Pasos Sugeridos
-1. Integración de pruebas E2E con Playwright para validación continua de la interfaz web.
-2. Añadir empaquetador Dockerfile para levantar los 30 dashboards en contenedores aislados.
-3. Continuar ampliando el catálogo de ejercicios prácticos a 100 retos corporativos.

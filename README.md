@@ -1,107 +1,70 @@
-# 🐍 Plataforma Maestra: Python, Data Science & Machine Learning Pro
-### El Catálogo y Manual Definitivo de Ingeniería de Datos, Algoritmia y 30 Dashboards en Streamlit
-**Autor:** Ing. Juancito Peña Vizcaíno (`DataIADev`)  
-**Versión:** `v3.0.0-PRO` | **Estado:** 🟢 Producción Estable  
-**Estándar Visual:** WCAG 2.2 AAA | Modern Light Base + Deep Black Technical Code Surfaces  
-**Despliegue en Vivo (GitHub Pages):** 👉 [https://juancitopena.github.io/curso-python-data-science-streamlit-pro/](https://juancitopena.github.io/curso-python-data-science-streamlit-pro/)  
-**Repositorio Oficial:** 👉 [https://github.com/JUANCITOPENA/curso-python-data-science-streamlit-pro](https://github.com/JUANCITOPENA/curso-python-data-science-streamlit-pro)
+# 🐍 Curso Maestro: Python, Data Science, Machine Learning & 30 Dashboards Streamlit Pro
+
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Demo-success?style=for-the-badge&logo=github)](https://juancitopena.github.io/curso-python-data-science-streamlit-pro/)
+[![Python](https://img.shields.io/badge/Python-3.12%2B-blue?style=for-the-badge&logo=python)](https://www.python.org/)
+[![WebAssembly](https://img.shields.io/badge/WebAssembly-Pyodide%20v0.26.1-654FF0?style=for-the-badge&logo=webassembly)](https://pyodide.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.35%2B-FF4B4B?style=for-the-badge&logo=streamlit)](https://streamlit.io/)
+[![Status](https://img.shields.io/badge/Version-v3.5.0--PRO-brightgreen?style=for-the-badge)](STATUS_PROYECTO.md)
+
+> **Autor:** Ing. Juancito Peña  
+> **Plataforma Web en Vivo:** [juancitopena.github.io/curso-python-data-science-streamlit-pro](https://juancitopena.github.io/curso-python-data-science-streamlit-pro/)  
+> **Repositorio Oficial:** [github.com/JUANCITOPENA/curso-python-data-science-streamlit-pro](https://github.com/JUANCITOPENA/curso-python-data-science-streamlit-pro)
 
 ---
 
-## 🏛️ Descripción General
-Esta plataforma representa la obra maestra formativa y técnica más completa en habla hispana para ingenieros de software, analistas de datos y científicos de datos. Integra en una única experiencia interactiva desde los fundamentos más rigurosos del lenguaje Python hasta algoritmos avanzados de teoría de grafos, machine learning predictivo, un pipeline de arbitraje e-commerce en tiempo real (Capstone) y un catálogo de **30 Dashboards Interactivos en Streamlit** con datasets reales.
+## 🌟 ¿Qué es este Proyecto?
+Es el ecosistema pedagógico y aplicativo más exhaustivo del mundo hispanohablante para aprender Python desde cero hasta el nivel de Arquitecto de Datos y Machine Learning.
+
+La versión **v3.5.0-PRO** integra un **Laboratorio Interactivo WebAssembly (Pyodide v0.26.1)** directo en el navegador, permitiendo ejecutar código Python, renderizar **múltiples gráficos secuenciales en alta definición**, subir datasets propios y exportar resultados sin necesidad de instalar nada ni gastar créditos de APIs.
 
 ---
 
-## 🚀 Arquitectura y Tecnologías
-* **Frontend Web Core:** HTML5 Semántico, CSS3 Moderno, JavaScript ES6+ Nativo, Bootstrap 5.3.3.
-* **Resaltado Sintáctico Técnico:** Prism.js (Python, Bash, SQL) con contenedores oscuros técnicos (`#0d1117`), barra macOS de control, badges de lenguaje y botones interactivos de copiado rápido.
-* **Logos Vectoriales Oficiales (Offline-Ready):** Colección de +45 SVGs/PNGs oficiales en `assets/icons/ai/` y `assets/icons/tech/` (OpenAI, Anthropic Claude, Google Gemini, Microsoft Copilot, DeepSeek, PyTorch, Streamlit, etc.).
-* **Efectos Microinteractivos:** Animación biológica de latido de corazón (*Heartbeat Pulse* rápido-rápido-lento con desbordamiento 3D) en iconos tecnológicos y tabla comparativa de lenguajes.
-* **Motores de Visualización:**
-  * **Chart.js 4.4.x**: Series temporales, barras comparativas, gráficos de dispersión y métricas de complejidad.
-  * **ApexCharts 3.45.x**: Gráficos de área interactivos, diagramas de radar, indicadores radiales y análisis multidimensional.
-* **Ecosistema de Datos Python:** Pandas, Polars, NumPy, Scikit-Learn, SciPy, NetworkX, Beautiful Soup 4, Matplotlib, Seaborn, DuckDB, SQLAlchemy.
-* **Servidor de Aplicaciones Analíticas:** Streamlit 1.30+ (Puerto 8503+).
+## ⚡ Novedades de la Versión v3.5.0-PRO (WebAssembly Studio)
+
+1. **Botón Global "⚡ Probar y Ejecutar":** Presente en **cada bloque de código** del portal para probar scripts de inmediato en una ventana modal interactiva.
+2. **Soporte Multigráfico:** Captura simultánea de todas las figuras de Matplotlib (`plt.figure()`), Seaborn, Plotly y Folium generadas por el script.
+3. **Gestor de Datasets y VFS en Memoria:**
+   - Sube tus propios archivos `.csv`, `.xlsx` o `.json` arrastrándolos al modal.
+   - Genera 5 datasets sintéticos en 1 clic (Finanzas Anual, Ventas Masivas 1,000, Sentimientos NLP, Solicitudes Bancarias y Titanic).
+4. **11 Laboratorios Técnicos Oficiales de JPV_PyStudio:**
+   - 🚢 *Titanic EDA & Limpieza Web* (Pandas / Matplotlib)
+   - 📊 *Seaborn Heatmap & Matrices de Correlación* (Seaborn / NumPy)
+   - 🤖 *Modelo Predictivo de Regresión Lineal* (Scikit-Learn)
+   - 🌐 *Consumo de APIs RESTful en vivo* (Requests / HTTPS)
+   - 📑 *Automatización de Reportes Excel Empresariales* (OpenPyXL / XlsxWriter)
+   - 🗺️ *Mapas Geoespaciales Satelitales y Rutas AntPath* (Folium / Leaflet)
+   - 📈 *Dashboards Interactivos 3D y Dispersión* (Plotly Express)
+   - 🕸️ *Topología de Redes y Ruteo Óptimo* (NetworkX / Grafos)
+   - ☁️ *Minería de Texto y Nubes Semánticas* (WordCloud / NLP)
+   - 🔬 *Optimización y Ajuste de Curvas No Lineales* (SciPy)
+   - 🎬 *Cockpit Multigráfico 8-en-1* (Subplots Matplotlib)
 
 ---
 
-## 📑 Mapa de Contenidos del Proyecto
+## 🚀 Inicio Rápido Local
 
-```text
-📁 curso-python-data-science-streamlit-pro/
-├── 📄 index.html                       # Plataforma web monolítica unificada (1.6 MB, 0 IDs duplicados)
-├── 📄 style.css                        # Estilos canónicos (Light Base, Black Codeboxes, Bento Grid, Heartbeat)
-├── 📄 script.js                        # Controladores de interactividad, telemetría y copiado
-├── 📄 README.md                        # Documentación maestra del sistema
-├── 📄 STATUS_PROYECTO.md               # Bitácora ejecutiva de estado y roadmap
-├── 📄 PUNTO_DE_RESTAURACION.md         # Snapshot maestro de restauración v3.0.0-PRO
-│
-├── 📁 assets/
-│   └── 📁 icons/
-│       ├── 📁 ai/                      # Logos vectoriales oficiales de IA (OpenAI, Claude, Gemini, Copilot, etc.)
-│       └── 📁 tech/                    # Logos oficiales de librerías y lenguajes (Rust, PyTorch, Streamlit, etc.)
-│
-├── 📁 datasets/                        # Repositorio de datos estructurados (CSV, JSON, Excel)
-│   ├── datos_ventas_demo.csv / .xlsx
-│   ├── inventario_junio2025.csv / .xlsx
-│   └── inventario_rotacion.csv / .xlsx
-│
-├── 📁 imagenes/                        # Biblioteca de activos visuales y fotos de pioneros
-│   ├── pioneros/                       # 8 pioneros de la computación en HD
-│   ├── guido.png
-│   └── mockups y diagramas
-│
-├── 📁 scripts/                         # 30 Aplicaciones interactivas en Streamlit (app1.py ... app30.py)
-└── 📁 .backup/                         # Puntos de restauración seguros locales
+### 1. Clonar el repositorio
+```powershell
+git clone https://github.com/JUANCITOPENA/curso-python-data-science-streamlit-pro.git
+cd curso-python-data-science-streamlit-pro
 ```
 
----
-
-## ⚡ Guía Rápida de Ejecución
-
-### 1. Iniciar la Plataforma Web Principal
-Abre tu terminal en la carpeta raíz del proyecto y levanta el servidor HTTP local:
-```bash
+### 2. Levantar el portal interactivo web (Puerto 8080)
+```powershell
 python -m http.server 8080
+# Abre en tu navegador: http://localhost:8080
 ```
-Accede desde tu navegador a:
-👉 **[http://localhost:8080/](http://localhost:8080/)**
 
-### 2. Ejecutar los Dashboards en Streamlit
-Para inicializar cualquiera de las 30 aplicaciones analíticas avanzadas:
-```bash
-# Ejemplo: Dashboard #30 (Gestión Ejecutiva de Cobranzas)
+### 3. Ejecutar los Dashboards en Streamlit (Ejemplo: App 30)
+```powershell
+pip install -r requirements.txt
 streamlit run scripts/app30.py --server.port 8503
+# Abre en tu navegador: http://localhost:8503
 ```
-Accede desde tu navegador a:
-👉 **[http://localhost:8503/](http://localhost:8503/)**
 
 ---
 
-## 📊 Módulos Destacados
-
-1. **🏛️ Los Pioneros de la Era Digital:** Galería de 8 gigantes de la computación (Ada Lovelace, Alan Turing, Dennis Ritchie, Bjarne Stroustrup, James Gosling, Brendan Eich, Rasmus Lerdorf, Yukihiro Matsumoto) con imágenes locales y fichas biográficas sin duplicados.
-2. **🐍 8 Tablas Maestras de Fundamentos y Operadores (Cero Omisiones):**
-   * **Tabla 1:** Catálogo Maestro de Tipos Nativos (`int`, `float`, `complex`, `str`, `bool`, `NoneType`, `bytes`).
-   * **Tabla 2:** Anatomía de Variables, Constantes e Identificadores (Convenciones PEP 8, `Final[T]`).
-   * **Tabla 3:** Matriz de Mutabilidad y Comportamiento en Memoria (*Call by Object Reference*, `id()`, shallow vs deep copy).
-   * **Tabla 4:** Operadores Aritméticos Completos (`+`, `-`, `*`, `/`, `//`, `%`, `**`, métodos dunder, PEMDAS).
-   * **Tabla 5:** Operadores de Comparación y Encadenamiento (`==`, `!=`, `<`, `>`, `<=`, `>=`, encadenados `a < x < b`).
-   * **Tabla 6:** Operadores Lógicos y Tabla de Verdad Dinámica (`and`, `or`, `not`, cortocircuito, Truthiness y Falsiness).
-   * **Tabla 7:** Operadores de Identidad (`is`, `is not`) y Pertenencia (`in`, `not in` con complejidad $O(1)$).
-   * **Tabla 8:** Asignación Compuesta, Operador Walrus (`:=`) y Operadores Bitwise (`&`, `|`, `^`, `~`, `<<`, `>>`).
-3. **📊 Estadística Aplicada y Storytelling:** 13 escenarios industriales interactivos (Series de tiempo, churn rate, PCA, scoring crediticio).
-4. **🔍 Análisis Exploratorio de Datos (EDA) & Data Wrangling:** Pipelines de limpieza y transformación vectorial sin bucles lentos.
-5. **💼 Proyecto Final Capstone (Arbitraje E-Commerce):** Cockpit C-Level con telemetría en tiempo real, 4 Bento KPIs, comparativa de precios multicanal y matriz de recomendación táctica de pricing.
-6. **🧠 Suite de Algoritmos & Machine Learning (36 Gráficos):** Búsqueda, Ordenación, Grafos Core, Grafos Avanzados, Heurística y Modelos Predictivos en vivo.
-7. **🖥️ Retos Técnicos FAANG (19 Terminales):** Consolas de ejecución emuladas para Amazon, Google, Meta, Microsoft, OpenAI, Apple, Tesla, Netflix, etc.
-8. **✨ Catálogo Maestro de 30 Dashboards en Streamlit:** 30 soluciones completas de Business Intelligence para Ventas, Logística, Inventario, Salud, Banca y Finanzas.
-9. **🎓 Certificación Oficial de Excelencia Técnica:** Examen interactivo con cálculo automático de nota y Diploma Oficial firmado por el Ing. Juancito Peña (`DataIADev`).
-
----
-
-## 🔒 Estándares de Calidad y Gobernanza
-* **Cero Contraste Roto:** Cumplimiento estricto WCAG 2.2 AAA.
-* **Cero Duplicados:** Estructura depurada con 1 solo menú lateral y 55 lienzos únicos sin colisiones en el DOM.
-* **Sandboxed Backups:** Todas las copias de seguridad residen en `.backup/`.
+## 🏛️ Estándares y Gobernanza JPV
+- **WCAG 2.2 AAA:** Alto contraste en todas las interfaces y componentes interactivos.
+- **Neo-Brutalist Design:** Bordes limpios de 2px/3px, sombras de bloque sólidas (#000), tipografía `Space Grotesk` y `JetBrains Mono`.
+- **Privacidad Total (Zero-Trust):** La ejecución en WebAssembly se procesa 100% en el procesador y memoria RAM del cliente, sin enviar datos a la nube.
