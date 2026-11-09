@@ -35607,8 +35607,11 @@ document.addEventListener('DOMContentLoaded', () => {
                   </div>
                 </div>
 
-                <div class="flex-grow-1 position-relative" style="min-height: 280px;">
-                  <textarea id="wasmCodeInput" class="form-control h-100 border-0 p-3 font-monospace" style="background: #1e293b; color: #38bdf8; font-size: 0.92rem; line-height: 1.5; resize: none; border-radius: 8px;" spellcheck="false" placeholder="# Escribe o pega tu código Python aquí..."></textarea>
+                <div class="flex-grow-1 position-relative editor-live-wrapper" style="min-height: 280px;">
+                  <!-- Capa de Resaltado Prism a Color en Vivo -->
+                  <pre id="wasmHighlightLayer" aria-hidden="true" class="language-python"><code id="wasmHighlightCode" class="language-python"></code></pre>
+                  <!-- Textarea Editable con Cursor y Selección -->
+                  <textarea id="wasmCodeInput" spellcheck="false" placeholder="# Escribe o pega tu código Python aquí..."></textarea>
                 </div>
 
                 <div class="d-flex justify-content-between align-items-center mt-2 pt-2 border-top border-secondary">

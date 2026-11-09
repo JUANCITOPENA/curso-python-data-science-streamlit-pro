@@ -802,7 +802,31 @@ window.abrirModalEjecutor = function(codigo = "", titulo = "script.py") {
 };
 
 // 4. Actualizar contador de líneas y caracteres
+
+// Sincronización de Resaltado Prism en Vivo en el Editor
+function sincronizarPrismEditor() {
+    const textarea = document.getElementById('wasmCodeInput');
+    const codeEl = document.getElementById('wasmHighlightCode');
+    const layerEl = document.getElementById('wasmHighlightLayer');
+    if (!textarea || !codeEl) return;
+    
+    let val = textarea.value;
+    if (val.endsWith('\n')) val += ' ';
+    codeEl.textContent = val;
+    
+    if (window.Prism) {
+        window.Prism.highlightElement(codeEl);
+    }
+    
+    if (layerEl) {
+        layerEl.scrollTop = textarea.scrollTop;
+        layerEl.scrollLeft = textarea.scrollLeft;
+    }
+}
+window.sincronizarPrismEditor = sincronizarPrismEditor;
+
 function actualizarEstadisticasCodigo() {
+    sincronizarPrismEditor();
     const codeInput = document.getElementById('wasmCodeInput');
     const statsEl = document.getElementById('wasmCodeStats');
     if (!codeInput || !statsEl) return;
@@ -1573,7 +1597,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 actualizarEstadisticasCodigo();
             }
         });
-        codeArea.addEventListener('input', actualizarEstadisticasCodigo);
+        codeArea.addEventListener('input', () => { actualizarEstadisticasCodigo(); sincronizarPrismEditor(); });
+        codeArea.addEventListener('scroll', () => { const l = document.getElementById('wasmHighlightLayer'); if(l) { l.scrollTop = codeArea.scrollTop; l.scrollLeft = codeArea.scrollLeft; } });
     }
 
     inyectarBotonesEjecutarGlobales();
