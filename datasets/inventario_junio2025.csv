@@ -1,0 +1,501 @@
+Fecha Movimiento,Nº Factura,Cliente,Código Producto,Nombre Producto,Categoría,Stock Inicial,Entrada,Salida,Stock Despachado,Stock Actual,Unidad,Costo Unitario,Costo Total Actual,Estado Stock,Días en Inventario,Rotación (%),Proveedor,Fecha Vencimiento,Días para Vencer,Estatus Vencimiento,Ubicación
+2025-08-21,FAC-3286,Cliente 029,P004,Leche Entera 1L,Lácteos,62,0,16,16,46,Unidad,369.55,16999.3,Bajo,15,25.81,La Famosa,2026-01-05,122,Vigente,Depósito Norte
+2025-06-28,FAC-9928,Cliente 026,P008,Galletas Chocolate 100g,Snacks,308,0,72,72,236,Botella,212.66,50187.76,Óptimo,69,23.38,Bimbo,2025-09-29,24,Próximo a Vencer,Zona Fría
+2025-06-21,FAC-4527,Cliente Interno,P023,Banana 1kg,Frutas,266,49,0,0,315,Unidad,478.82,150828.3,Exceso,76,0.0,Induveca,2026-03-21,197,Vigente,Almacén B
+2025-07-15,FAC-9785,Cliente 059,P020,Carne Molida 1kg,Carnes,185,0,94,94,91,Unidad,66.79,6077.89,Óptimo,52,50.81,Coca-Cola,2026-04-16,223,Vigente,Zona Fría
+2025-08-13,FAC-4733,Cliente Interno,P007,Papas Fritas 150g,Snacks,410,179,0,0,589,Caja,387.67,228337.63,Exceso,23,0.0,PepsiCo,2026-07-01,299,Vigente,Almacén B
+2025-08-21,FAC-4432,Cliente Interno,P027,Cebolla 1kg,Verduras,236,100,0,0,336,Botella,336.74,113144.64,Exceso,15,0.0,PepsiCo,2026-03-24,200,Vigente,Estante 1
+2025-06-21,FAC-4598,Cliente Interno,P015,Cloro 1L,Limpieza,244,173,0,0,417,Caja,343.88,143397.96,Exceso,76,0.0,Nestlé,2026-04-12,219,Vigente,Almacén A
+2025-07-05,FAC-6155,Cliente 092,P003,Jugo de Naranja 1L,Bebidas,158,0,73,73,85,Paquete,110.25,9371.25,Óptimo,62,46.2,Bimbo,2025-12-13,99,Vigente,Depósito Sur
+2025-07-02,FAC-8019,Cliente 075,P024,Naranja 1kg,Frutas,337,0,96,96,241,Litro,449.42,108310.22,Óptimo,65,28.49,Coca-Cola,2025-06-23,-74,Vencido,Estante 2
+2025-08-05,FAC-3621,Cliente 020,P016,Sardinas en Lata 125g,Enlatados,96,0,15,15,81,Botella,397.08,32163.48,Óptimo,31,15.62,Coca-Cola,2026-06-30,298,Vigente,Almacén B
+2025-08-07,FAC-2876,Cliente 088,P009,Maní Salado 200g,Snacks,333,0,2,2,331,Litro,342.45,113350.95,Exceso,29,0.6,La Famosa,2026-06-15,283,Vigente,Zona Seca
+2025-06-21,FAC-9201,Cliente 034,P015,Cloro 1L,Limpieza,51,0,47,47,4,Unidad,382.17,1528.68,Bajo,76,92.16,La Famosa,2026-06-05,273,Vigente,Zona Fría
+2025-08-17,FAC-9837,Cliente Interno,P007,Papas Fritas 150g,Snacks,128,51,0,0,179,Unidad,476.98,85379.42,Óptimo,19,0.0,La Famosa,2026-01-11,128,Vigente,Zona Seca
+2025-07-17,FAC-4946,Cliente 008,P029,Croissant 100g,Panadería,475,0,31,31,444,Unidad,439.61,195186.84,Exceso,50,6.53,PepsiCo,2026-07-14,312,Vigente,Depósito Sur
+2025-06-17,FAC-3705,Cliente Interno,P005,Yogurt Natural 200g,Lácteos,387,150,0,0,537,Paquete,136.2,73139.4,Exceso,80,0.0,Kraft Foods,2025-07-12,-55,Vencido,Estante 2
+2025-08-28,FAC-7118,Cliente Interno,P007,Papas Fritas 150g,Snacks,415,181,0,0,596,Paquete,221.86,132228.56,Exceso,8,0.0,La Famosa,2025-12-28,114,Vigente,Almacén B
+2025-07-14,FAC-1117,Cliente 029,P001,Agua Mineral 500ml,Bebidas,351,0,76,76,275,Caja,40.14,11038.5,Óptimo,53,21.65,Nestlé,2025-08-11,-25,Vencido,Almacén B
+2025-07-13,FAC-8953,Cliente Interno,P003,Jugo de Naranja 1L,Bebidas,313,181,0,0,494,Kg,111.05,54858.7,Exceso,54,0.0,Unilever,2026-06-10,278,Vigente,Depósito Sur
+2025-07-23,FAC-6804,Cliente Interno,P007,Papas Fritas 150g,Snacks,98,120,0,0,218,Kg,214.67,46798.06,Óptimo,44,0.0,Bimbo,2025-12-10,96,Vigente,Almacén A
+2025-06-08,FAC-5073,Cliente Interno,P013,Detergente 1kg,Limpieza,422,37,0,0,459,Paquete,99.84,45826.56,Exceso,89,0.0,La Famosa,2026-01-26,143,Vigente,Estante 1
+2025-07-30,FAC-2604,Cliente 071,P008,Galletas Chocolate 100g,Snacks,497,0,57,57,440,Unidad,30.04,13217.6,Exceso,37,11.47,La Famosa,2025-08-27,-9,Vencido,Almacén B
+2025-07-01,FAC-7570,Cliente Interno,P006,Queso Cheddar 250g,Lácteos,258,64,0,0,322,Paquete,451.71,145450.62,Exceso,66,0.0,Unilever,2025-06-14,-83,Vencido,Almacén A
+2025-07-29,FAC-8973,Cliente 072,P010,Shampoo 400ml,Cuidado Personal,266,0,94,94,172,Caja,81.62,14038.64,Óptimo,38,35.34,Procter & Gamble,2025-11-27,83,Vigente,Almacén A
+2025-07-11,FAC-3579,Cliente 068,P002,Refresco Cola 1.5L,Bebidas,75,0,65,65,10,Unidad,33.16,331.6,Bajo,56,86.67,La Famosa,2025-11-12,68,Vigente,Estante 1
+2025-08-26,FAC-5033,Cliente Interno,P028,Pan de Molde 500g,Panadería,170,155,0,0,325,Botella,291.56,94757.0,Exceso,10,0.0,Nestlé,2026-08-18,347,Vigente,Almacén B
+2025-07-11,FAC-6147,Cliente Interno,P030,Bizcocho 250g,Panadería,183,193,0,0,376,Caja,123.15,46304.4,Exceso,56,0.0,Coca-Cola,2025-11-15,71,Vigente,Zona Fría
+2025-06-02,FAC-9808,Cliente 010,P015,Cloro 1L,Limpieza,368,0,13,13,355,Caja,110.51,39231.05,Exceso,95,3.53,Procter & Gamble,2026-01-03,120,Vigente,Zona Seca
+2025-07-18,FAC-5956,Cliente Interno,P010,Shampoo 400ml,Cuidado Personal,130,149,0,0,279,Unidad,307.78,85870.62,Óptimo,49,0.0,La Famosa,2025-07-22,-45,Vencido,Zona Fría
+2025-06-18,FAC-3546,Cliente 071,P009,Maní Salado 200g,Snacks,109,0,96,96,13,Caja,139.81,1817.53,Bajo,79,88.07,Kraft Foods,2026-01-29,146,Vigente,Zona Seca
+2025-08-04,FAC-7939,Cliente 012,P016,Sardinas en Lata 125g,Enlatados,178,0,7,7,171,Unidad,415.53,71055.63,Óptimo,32,3.93,Nestlé,2026-03-16,192,Vigente,Zona Seca
+2025-06-21,FAC-1158,Cliente 072,P024,Naranja 1kg,Frutas,276,0,55,55,221,Botella,60.38,13343.98,Óptimo,76,19.93,Unilever,2025-12-03,89,Vigente,Almacén A
+2025-07-26,FAC-6862,Cliente Interno,P005,Yogurt Natural 200g,Lácteos,71,20,0,0,91,Kg,108.99,9918.09,Óptimo,41,0.0,Colgate-Palmolive,2026-05-20,257,Vigente,Almacén B
+2025-08-19,FAC-3900,Cliente 021,P024,Naranja 1kg,Frutas,129,0,31,31,98,Caja,441.3,43247.4,Óptimo,17,24.03,Nestlé,2026-06-15,283,Vigente,Zona Seca
+2025-08-25,FAC-2771,Cliente 021,P028,Pan de Molde 500g,Panadería,426,0,35,35,391,Paquete,194.36,75994.76,Exceso,11,8.22,Nestlé,2026-07-16,314,Vigente,Estante 2
+2025-07-15,FAC-1387,Cliente 029,P010,Shampoo 400ml,Cuidado Personal,470,0,30,30,440,Litro,331.72,145956.8,Exceso,52,6.38,Coca-Cola,2026-03-04,180,Vigente,Zona Fría
+2025-07-15,FAC-6425,Cliente Interno,P021,Chuleta Ahumada 500g,Carnes,310,147,0,0,457,Litro,469.92,214753.44,Exceso,52,0.0,PepsiCo,2026-02-25,173,Vigente,Estante 1
+2025-06-05,FAC-6139,Cliente Interno,P004,Leche Entera 1L,Lácteos,355,196,0,0,551,Unidad,221.01,121776.51,Exceso,92,0.0,La Famosa,2025-12-09,95,Vigente,Depósito Norte
+2025-07-03,FAC-9821,Cliente Interno,P002,Refresco Cola 1.5L,Bebidas,412,143,0,0,555,Litro,344.99,191469.45,Exceso,64,0.0,Colgate-Palmolive,2026-03-19,195,Vigente,Depósito Norte
+2025-08-19,FAC-9308,Cliente 039,P011,Jabón de Tocador 100g,Cuidado Personal,389,0,93,93,296,Litro,158.1,46797.6,Óptimo,17,23.91,Coca-Cola,2026-01-21,138,Vigente,Depósito Norte
+2025-06-25,FAC-3851,Cliente 096,P014,Suavizante 500ml,Limpieza,390,0,87,87,303,Paquete,309.68,93833.04,Exceso,72,22.31,Procter & Gamble,2026-01-08,125,Vigente,Almacén A
+2025-07-26,FAC-8238,Cliente 060,P026,Lechuga 1 pieza,Verduras,346,0,42,42,304,Botella,223.87,68056.48,Exceso,41,12.14,Colgate-Palmolive,2026-01-18,135,Vigente,Depósito Sur
+2025-08-24,FAC-6491,Cliente 080,P003,Jugo de Naranja 1L,Bebidas,195,0,82,82,113,Kg,51.23,5788.99,Óptimo,12,42.05,Colgate-Palmolive,2026-03-03,179,Vigente,Zona Fría
+2025-06-19,FAC-2193,Cliente Interno,P001,Agua Mineral 500ml,Bebidas,73,131,0,0,204,Caja,230.43,47007.72,Óptimo,78,0.0,Kraft Foods,2026-01-19,136,Vigente,Depósito Norte
+2025-06-19,FAC-7965,Cliente Interno,P021,Chuleta Ahumada 500g,Carnes,402,37,0,0,439,Paquete,113.33,49751.87,Exceso,78,0.0,La Famosa,2025-11-18,74,Vigente,Almacén A
+2025-07-29,FAC-6198,Cliente Interno,P005,Yogurt Natural 200g,Lácteos,460,145,0,0,605,Botella,475.27,287538.35,Exceso,38,0.0,Bimbo,2026-06-12,280,Vigente,Depósito Norte
+2025-06-21,FAC-5050,Cliente Interno,P024,Naranja 1kg,Frutas,491,76,0,0,567,Botella,420.73,238553.91,Exceso,76,0.0,Procter & Gamble,2026-02-06,154,Vigente,Depósito Sur
+2025-07-27,FAC-6502,Cliente Interno,P003,Jugo de Naranja 1L,Bebidas,415,79,0,0,494,Unidad,163.26,80650.44,Exceso,40,0.0,La Famosa,2026-05-09,246,Vigente,Estante 1
+2025-08-28,FAC-7678,Cliente Interno,P005,Yogurt Natural 200g,Lácteos,411,116,0,0,527,Paquete,168.79,88952.33,Exceso,8,0.0,Bimbo,2026-06-29,297,Vigente,Almacén A
+2025-07-20,FAC-7232,Cliente 003,P029,Croissant 100g,Panadería,444,0,90,90,354,Litro,241.1,85349.4,Exceso,47,20.27,Induveca,2026-05-20,257,Vigente,Depósito Norte
+2025-08-08,FAC-8999,Cliente 029,P024,Naranja 1kg,Frutas,426,0,78,78,348,Paquete,113.61,39536.28,Exceso,28,18.31,Coca-Cola,2026-06-01,269,Vigente,Almacén A
+2025-06-22,FAC-1441,Cliente 069,P027,Cebolla 1kg,Verduras,289,0,80,80,209,Botella,453.93,94871.37,Óptimo,75,27.68,Kraft Foods,2026-04-27,234,Vigente,Almacén A
+2025-06-18,FAC-7211,Cliente Interno,P028,Pan de Molde 500g,Panadería,286,76,0,0,362,Litro,167.04,60468.48,Exceso,79,0.0,Bimbo,2026-03-29,205,Vigente,Zona Seca
+2025-07-06,FAC-8705,Cliente Interno,P025,Tomate 1kg,Verduras,475,30,0,0,505,Unidad,14.59,7367.95,Exceso,61,0.0,La Famosa,2025-11-08,64,Vigente,Zona Seca
+2025-08-23,FAC-4266,Cliente Interno,P002,Refresco Cola 1.5L,Bebidas,436,73,0,0,509,Caja,420.42,213993.78,Exceso,13,0.0,Kraft Foods,2026-01-18,135,Vigente,Estante 2
+2025-08-12,FAC-3749,Cliente 048,P007,Papas Fritas 150g,Snacks,288,0,99,99,189,Caja,304.92,57629.88,Óptimo,24,34.38,PepsiCo,2025-11-23,79,Vigente,Zona Fría
+2025-07-10,FAC-4249,Cliente 051,P019,Pollo Entero 2kg,Carnes,396,0,49,49,347,Unidad,42.62,14789.14,Exceso,57,12.37,Colgate-Palmolive,2025-12-08,94,Vigente,Zona Fría
+2025-08-12,FAC-7071,Cliente Interno,P026,Lechuga 1 pieza,Verduras,71,119,0,0,190,Unidad,39.13,7434.7,Óptimo,24,0.0,Induveca,2026-01-03,120,Vigente,Depósito Norte
+2025-07-26,FAC-3506,Cliente 091,P012,Pasta Dental 75ml,Cuidado Personal,375,0,59,59,316,Kg,220.57,69700.12,Exceso,41,15.73,La Famosa,2026-07-26,324,Vigente,Zona Fría
+2025-08-01,FAC-6280,Cliente 035,P015,Cloro 1L,Limpieza,273,0,76,76,197,Litro,426.6,84040.2,Óptimo,35,27.84,PepsiCo,2026-06-24,292,Vigente,Depósito Sur
+2025-08-12,FAC-9098,Cliente Interno,P020,Carne Molida 1kg,Carnes,392,17,0,0,409,Paquete,426.22,174323.98,Exceso,24,0.0,Unilever,2026-03-22,198,Vigente,Estante 2
+2025-07-14,FAC-1166,Cliente 072,P009,Maní Salado 200g,Snacks,500,0,36,36,464,Unidad,260.73,120978.72,Exceso,53,7.2,Colgate-Palmolive,2026-06-19,287,Vigente,Estante 2
+2025-08-11,FAC-9041,Cliente 092,P025,Tomate 1kg,Verduras,173,0,83,83,90,Unidad,226.85,20416.5,Óptimo,25,47.98,Nestlé,2026-03-13,189,Vigente,Zona Fría
+2025-07-10,FAC-9698,Cliente Interno,P022,Manzana Roja 1kg,Frutas,347,151,0,0,498,Litro,175.16,87229.68,Exceso,57,0.0,La Famosa,2026-02-23,171,Vigente,Zona Seca
+2025-07-10,FAC-6169,Cliente Interno,P009,Maní Salado 200g,Snacks,168,59,0,0,227,Kg,64.18,14568.86,Óptimo,57,0.0,La Famosa,2026-06-12,280,Vigente,Estante 1
+2025-07-06,FAC-5636,Cliente 077,P024,Naranja 1kg,Frutas,351,0,68,68,283,Litro,490.35,138769.05,Óptimo,61,19.37,Colgate-Palmolive,2026-03-07,183,Vigente,Estante 2
+2025-06-02,FAC-1893,Cliente Interno,P023,Banana 1kg,Frutas,323,21,0,0,344,Kg,278.91,95945.04,Exceso,95,0.0,Unilever,2025-09-06,1,Próximo a Vencer,Depósito Sur
+2025-08-13,FAC-4020,Cliente Interno,P010,Shampoo 400ml,Cuidado Personal,290,97,0,0,387,Paquete,482.92,186890.04,Exceso,23,0.0,Procter & Gamble,2026-06-04,272,Vigente,Almacén B
+2025-08-02,FAC-3444,Cliente 020,P003,Jugo de Naranja 1L,Bebidas,345,0,7,7,338,Unidad,406.52,137403.76,Exceso,34,2.03,Procter & Gamble,2026-06-01,269,Vigente,Estante 2
+2025-08-17,FAC-7232,Cliente 067,P020,Carne Molida 1kg,Carnes,454,0,100,100,354,Litro,228.0,80712.0,Exceso,19,22.03,Bimbo,2025-12-15,101,Vigente,Depósito Norte
+2025-08-18,FAC-4457,Cliente 081,P024,Naranja 1kg,Frutas,100,0,27,27,73,Caja,136.0,9928.0,Óptimo,18,27.0,PepsiCo,2025-12-24,110,Vigente,Estante 2
+2025-06-21,FAC-8699,Cliente Interno,P001,Agua Mineral 500ml,Bebidas,259,162,0,0,421,Litro,149.17,62800.57,Exceso,76,0.0,Colgate-Palmolive,2026-05-09,246,Vigente,Zona Fría
+2025-06-10,FAC-4241,Cliente 076,P022,Manzana Roja 1kg,Frutas,169,0,81,81,88,Caja,215.44,18958.72,Óptimo,87,47.93,La Famosa,2025-07-07,-60,Vencido,Estante 1
+2025-06-19,FAC-5728,Cliente Interno,P003,Jugo de Naranja 1L,Bebidas,80,88,0,0,168,Kg,222.38,37359.84,Óptimo,78,0.0,Bimbo,2026-02-03,151,Vigente,Zona Fría
+2025-08-04,FAC-1653,Cliente Interno,P018,Maíz en Lata 300g,Enlatados,302,163,0,0,465,Botella,445.26,207045.9,Exceso,32,0.0,Induveca,2026-02-27,175,Vigente,Zona Fría
+2025-08-26,FAC-5415,Cliente 098,P027,Cebolla 1kg,Verduras,490,0,3,3,487,Paquete,290.24,141346.88,Exceso,10,0.61,Unilever,2025-09-01,-4,Vencido,Depósito Sur
+2025-08-14,FAC-6700,Cliente 061,P014,Suavizante 500ml,Limpieza,375,0,12,12,363,Kg,207.13,75188.19,Exceso,22,3.2,Induveca,2026-04-29,236,Vigente,Almacén B
+2025-07-23,FAC-1601,Cliente Interno,P023,Banana 1kg,Frutas,303,112,0,0,415,Litro,230.14,95508.1,Exceso,44,0.0,Induveca,2026-05-15,252,Vigente,Zona Seca
+2025-08-05,FAC-7770,Cliente 060,P027,Cebolla 1kg,Verduras,50,0,35,35,15,Litro,31.83,477.45,Bajo,31,70.0,La Famosa,2025-11-29,85,Vigente,Depósito Sur
+2025-06-27,FAC-8178,Cliente Interno,P009,Maní Salado 200g,Snacks,331,83,0,0,414,Unidad,441.02,182582.28,Exceso,70,0.0,Bimbo,2025-05-19,-109,Vencido,Almacén A
+2025-07-01,FAC-7684,Cliente Interno,P023,Banana 1kg,Frutas,131,13,0,0,144,Paquete,51.14,7364.16,Óptimo,66,0.0,PepsiCo,2025-12-16,102,Vigente,Almacén B
+2025-08-03,FAC-5479,Cliente Interno,P030,Bizcocho 250g,Panadería,416,190,0,0,606,Paquete,210.67,127666.02,Exceso,33,0.0,Bimbo,2026-01-14,131,Vigente,Estante 2
+2025-07-20,FAC-5526,Cliente 009,P007,Papas Fritas 150g,Snacks,356,0,18,18,338,Litro,387.47,130964.86,Exceso,47,5.06,Coca-Cola,2026-03-11,187,Vigente,Zona Fría
+2025-07-09,FAC-3434,Cliente 063,P027,Cebolla 1kg,Verduras,350,0,85,85,265,Litro,226.04,59900.6,Óptimo,58,24.29,Bimbo,2026-04-18,225,Vigente,Zona Seca
+2025-07-29,FAC-7274,Cliente 031,P030,Bizcocho 250g,Panadería,214,0,90,90,124,Unidad,120.61,14955.64,Óptimo,38,42.06,Coca-Cola,2026-05-10,247,Vigente,Zona Seca
+2025-07-20,FAC-1606,Cliente 064,P022,Manzana Roja 1kg,Frutas,455,0,20,20,435,Litro,67.49,29358.15,Exceso,47,4.4,Kraft Foods,2026-05-31,268,Vigente,Almacén B
+2025-06-13,FAC-7717,Cliente Interno,P017,Atún en Lata 170g,Enlatados,283,46,0,0,329,Unidad,436.11,143480.19,Exceso,84,0.0,Unilever,2026-01-24,141,Vigente,Depósito Sur
+2025-07-14,FAC-6383,Cliente Interno,P020,Carne Molida 1kg,Carnes,404,30,0,0,434,Paquete,426.91,185278.94,Exceso,53,0.0,La Famosa,2026-06-18,286,Vigente,Zona Seca
+2025-08-09,FAC-5708,Cliente Interno,P002,Refresco Cola 1.5L,Bebidas,366,171,0,0,537,Paquete,498.73,267818.01,Exceso,27,0.0,PepsiCo,2025-12-28,114,Vigente,Almacén B
+2025-07-27,FAC-1753,Cliente Interno,P006,Queso Cheddar 250g,Lácteos,405,17,0,0,422,Litro,165.57,69870.54,Exceso,40,0.0,Nestlé,2026-01-07,124,Vigente,Zona Seca
+2025-07-02,FAC-3868,Cliente 022,P017,Atún en Lata 170g,Enlatados,260,0,24,24,236,Botella,44.09,10405.24,Óptimo,65,9.23,Coca-Cola,2025-12-12,98,Vigente,Estante 2
+2025-06-30,FAC-1153,Cliente Interno,P015,Cloro 1L,Limpieza,376,75,0,0,451,Litro,449.96,202931.96,Exceso,67,0.0,Bimbo,2026-03-23,199,Vigente,Estante 1
+2025-08-15,FAC-8484,Cliente 033,P010,Shampoo 400ml,Cuidado Personal,377,0,89,89,288,Paquete,423.43,121947.84,Óptimo,21,23.61,Colgate-Palmolive,2026-05-27,264,Vigente,Depósito Sur
+2025-08-13,FAC-5837,Cliente Interno,P012,Pasta Dental 75ml,Cuidado Personal,344,189,0,0,533,Litro,15.86,8453.38,Exceso,23,0.0,Coca-Cola,2025-12-06,92,Vigente,Almacén A
+2025-08-17,FAC-4770,Cliente 100,P024,Naranja 1kg,Frutas,304,0,37,37,267,Caja,305.5,81568.5,Óptimo,19,12.17,Induveca,2026-01-24,141,Vigente,Estante 2
+2025-08-20,FAC-1546,Cliente 057,P004,Leche Entera 1L,Lácteos,371,0,40,40,331,Unidad,291.89,96615.59,Exceso,16,10.78,Unilever,2026-06-18,286,Vigente,Zona Fría
+2025-06-23,FAC-9221,Cliente 068,P007,Papas Fritas 150g,Snacks,117,0,47,47,70,Litro,457.18,32002.6,Óptimo,74,40.17,Unilever,2025-07-03,-64,Vencido,Depósito Sur
+2025-07-14,FAC-3306,Cliente Interno,P026,Lechuga 1 pieza,Verduras,108,29,0,0,137,Kg,378.3,51827.1,Óptimo,53,0.0,Colgate-Palmolive,2025-08-09,-27,Vencido,Depósito Norte
+2025-08-11,FAC-9791,Cliente 034,P012,Pasta Dental 75ml,Cuidado Personal,96,0,2,2,94,Kg,66.18,6220.92,Óptimo,25,2.08,Induveca,2026-05-18,255,Vigente,Zona Fría
+2025-06-14,FAC-6374,Cliente Interno,P022,Manzana Roja 1kg,Frutas,169,168,0,0,337,Kg,458.05,154362.85,Exceso,83,0.0,Colgate-Palmolive,2026-05-07,244,Vigente,Almacén B
+2025-08-29,FAC-1742,Cliente Interno,P010,Shampoo 400ml,Cuidado Personal,382,45,0,0,427,Paquete,473.4,202141.8,Exceso,7,0.0,Procter & Gamble,2026-08-29,358,Vigente,Almacén B
+2025-06-18,FAC-9850,Cliente Interno,P013,Detergente 1kg,Limpieza,282,200,0,0,482,Paquete,212.47,102410.54,Exceso,79,0.0,Unilever,2026-04-12,219,Vigente,Almacén B
+2025-07-06,FAC-8285,Cliente Interno,P002,Refresco Cola 1.5L,Bebidas,403,123,0,0,526,Unidad,475.52,250123.52,Exceso,61,0.0,Induveca,2026-04-05,212,Vigente,Zona Seca
+2025-06-08,FAC-8450,Cliente Interno,P013,Detergente 1kg,Limpieza,191,41,0,0,232,Kg,50.38,11688.16,Óptimo,89,0.0,Colgate-Palmolive,2026-02-23,171,Vigente,Almacén A
+2025-07-02,FAC-4394,Cliente 098,P005,Yogurt Natural 200g,Lácteos,452,0,9,9,443,Litro,295.26,130800.18,Exceso,65,1.99,Colgate-Palmolive,2025-10-01,26,Próximo a Vencer,Estante 1
+2025-07-06,FAC-3858,Cliente 033,P028,Pan de Molde 500g,Panadería,124,0,70,70,54,Caja,59.41,3208.14,Óptimo,61,56.45,Nestlé,2026-02-02,150,Vigente,Almacén A
+2025-08-15,FAC-3076,Cliente Interno,P011,Jabón de Tocador 100g,Cuidado Personal,58,23,0,0,81,Unidad,372.15,30144.15,Óptimo,21,0.0,La Famosa,2026-05-17,254,Vigente,Almacén B
+2025-08-05,FAC-1710,Cliente Interno,P019,Pollo Entero 2kg,Carnes,105,66,0,0,171,Litro,364.99,62413.29,Óptimo,31,0.0,La Famosa,2025-11-18,74,Vigente,Depósito Sur
+2025-06-08,FAC-2768,Cliente Interno,P016,Sardinas en Lata 125g,Enlatados,483,185,0,0,668,Unidad,247.68,165450.24,Exceso,89,0.0,Bimbo,2025-11-20,76,Vigente,Almacén B
+2025-06-09,FAC-6327,Cliente 071,P005,Yogurt Natural 200g,Lácteos,190,0,75,75,115,Botella,193.55,22258.25,Óptimo,88,39.47,Kraft Foods,2026-04-15,222,Vigente,Zona Fría
+2025-06-13,FAC-4522,Cliente Interno,P026,Lechuga 1 pieza,Verduras,409,177,0,0,586,Paquete,217.88,127677.68,Exceso,84,0.0,Colgate-Palmolive,2026-04-03,210,Vigente,Zona Seca
+2025-07-24,FAC-5176,Cliente Interno,P024,Naranja 1kg,Frutas,98,90,0,0,188,Kg,190.28,35772.64,Óptimo,43,0.0,Unilever,2025-12-04,90,Vigente,Depósito Sur
+2025-06-12,FAC-1982,Cliente 017,P014,Suavizante 500ml,Limpieza,99,0,48,48,51,Botella,295.3,15060.3,Óptimo,85,48.48,La Famosa,2026-04-08,215,Vigente,Zona Seca
+2025-07-16,FAC-1842,Cliente 093,P028,Pan de Molde 500g,Panadería,390,0,55,55,335,Litro,484.36,162260.6,Exceso,51,14.1,Kraft Foods,2026-06-30,298,Vigente,Zona Seca
+2025-06-28,FAC-6736,Cliente Interno,P005,Yogurt Natural 200g,Lácteos,386,37,0,0,423,Unidad,423.46,179123.58,Exceso,69,0.0,Induveca,2026-05-03,240,Vigente,Zona Fría
+2025-08-11,FAC-1430,Cliente 083,P025,Tomate 1kg,Verduras,469,0,87,87,382,Unidad,306.45,117063.9,Exceso,25,18.55,Procter & Gamble,2026-04-16,223,Vigente,Estante 1
+2025-07-14,FAC-7566,Cliente Interno,P012,Pasta Dental 75ml,Cuidado Personal,53,46,0,0,99,Unidad,39.44,3904.56,Óptimo,53,0.0,Nestlé,2026-06-01,269,Vigente,Estante 2
+2025-07-14,FAC-2391,Cliente Interno,P006,Queso Cheddar 250g,Lácteos,239,93,0,0,332,Caja,442.25,146827.0,Exceso,53,0.0,Unilever,2026-02-28,176,Vigente,Almacén A
+2025-07-27,FAC-7785,Cliente Interno,P022,Manzana Roja 1kg,Frutas,267,123,0,0,390,Unidad,140.22,54685.8,Exceso,40,0.0,La Famosa,2026-03-19,195,Vigente,Zona Seca
+2025-08-26,FAC-6053,Cliente Interno,P022,Manzana Roja 1kg,Frutas,353,180,0,0,533,Botella,27.48,14646.84,Exceso,10,0.0,Coca-Cola,2026-04-27,234,Vigente,Almacén A
+2025-06-28,FAC-2965,Cliente 042,P025,Tomate 1kg,Verduras,120,0,38,38,82,Caja,8.83,724.06,Óptimo,69,31.67,Coca-Cola,2026-01-21,138,Vigente,Estante 1
+2025-08-04,FAC-7505,Cliente 010,P018,Maíz en Lata 300g,Enlatados,476,0,46,46,430,Paquete,431.57,185575.1,Exceso,32,9.66,Nestlé,2025-12-11,97,Vigente,Almacén A
+2025-07-11,FAC-7843,Cliente 082,P019,Pollo Entero 2kg,Carnes,269,0,91,91,178,Unidad,148.31,26399.18,Óptimo,56,33.83,Coca-Cola,2026-06-01,269,Vigente,Zona Seca
+2025-08-28,FAC-4986,Cliente Interno,P030,Bizcocho 250g,Panadería,235,37,0,0,272,Botella,220.66,60019.52,Óptimo,8,0.0,Coca-Cola,2026-05-03,240,Vigente,Almacén B
+2025-07-14,FAC-2868,Cliente 066,P008,Galletas Chocolate 100g,Snacks,220,0,10,10,210,Litro,267.65,56206.5,Óptimo,53,4.55,Colgate-Palmolive,2025-12-26,112,Vigente,Zona Seca
+2025-07-01,FAC-3504,Cliente Interno,P004,Leche Entera 1L,Lácteos,124,54,0,0,178,Caja,381.31,67873.18,Óptimo,66,0.0,PepsiCo,2026-05-16,253,Vigente,Depósito Sur
+2025-08-27,FAC-6179,Cliente 042,P030,Bizcocho 250g,Panadería,339,0,80,80,259,Paquete,79.72,20647.48,Óptimo,9,23.6,PepsiCo,2026-04-14,221,Vigente,Depósito Sur
+2025-08-15,FAC-8404,Cliente 060,P002,Refresco Cola 1.5L,Bebidas,230,0,40,40,190,Litro,23.62,4487.8,Óptimo,21,17.39,Induveca,2025-12-29,115,Vigente,Almacén B
+2025-08-18,FAC-1672,Cliente Interno,P020,Carne Molida 1kg,Carnes,309,158,0,0,467,Kg,227.62,106298.54,Exceso,18,0.0,Kraft Foods,2026-07-17,315,Vigente,Estante 2
+2025-08-04,FAC-2381,Cliente Interno,P005,Yogurt Natural 200g,Lácteos,81,97,0,0,178,Unidad,254.75,45345.5,Óptimo,32,0.0,Unilever,2026-06-14,282,Vigente,Estante 2
+2025-08-07,FAC-5634,Cliente Interno,P017,Atún en Lata 170g,Enlatados,362,105,0,0,467,Kg,196.77,91891.59,Exceso,29,0.0,Induveca,2026-04-25,232,Vigente,Almacén A
+2025-06-09,FAC-5128,Cliente 037,P011,Jabón de Tocador 100g,Cuidado Personal,98,0,50,50,48,Caja,363.25,17436.0,Bajo,88,51.02,Kraft Foods,2025-11-18,74,Vigente,Zona Seca
+2025-07-15,FAC-2388,Cliente 017,P010,Shampoo 400ml,Cuidado Personal,385,0,51,51,334,Kg,158.24,52852.16,Exceso,52,13.25,Coca-Cola,2026-07-09,307,Vigente,Zona Seca
+2025-06-12,FAC-1298,Cliente Interno,P021,Chuleta Ahumada 500g,Carnes,393,102,0,0,495,Caja,184.49,91322.55,Exceso,85,0.0,Unilever,2025-06-28,-69,Vencido,Zona Seca
+2025-06-25,FAC-2657,Cliente Interno,P008,Galletas Chocolate 100g,Snacks,120,85,0,0,205,Kg,256.31,52543.55,Óptimo,72,0.0,La Famosa,2025-11-29,85,Vigente,Almacén A
+2025-08-16,FAC-3712,Cliente Interno,P013,Detergente 1kg,Limpieza,128,187,0,0,315,Paquete,361.99,114026.85,Exceso,20,0.0,Nestlé,2026-03-15,191,Vigente,Zona Seca
+2025-07-27,FAC-9749,Cliente 030,P020,Carne Molida 1kg,Carnes,195,0,58,58,137,Caja,123.39,16904.43,Óptimo,40,29.74,Bimbo,2026-06-07,275,Vigente,Zona Seca
+2025-07-30,FAC-7859,Cliente 068,P025,Tomate 1kg,Verduras,194,0,65,65,129,Botella,483.3,62345.7,Óptimo,37,33.51,Colgate-Palmolive,2025-11-23,79,Vigente,Estante 1
+2025-08-22,FAC-9452,Cliente Interno,P016,Sardinas en Lata 125g,Enlatados,497,36,0,0,533,Unidad,426.33,227233.89,Exceso,14,0.0,Procter & Gamble,2026-08-09,338,Vigente,Estante 1
+2025-06-19,FAC-8391,Cliente Interno,P027,Cebolla 1kg,Verduras,273,66,0,0,339,Paquete,442.89,150139.71,Exceso,78,0.0,Nestlé,2026-03-27,203,Vigente,Almacén A
+2025-07-01,FAC-6221,Cliente Interno,P013,Detergente 1kg,Limpieza,91,17,0,0,108,Caja,465.76,50302.08,Óptimo,66,0.0,Induveca,2026-05-28,265,Vigente,Estante 1
+2025-08-29,FAC-1086,Cliente 058,P027,Cebolla 1kg,Verduras,121,0,61,61,60,Litro,453.4,27204.0,Óptimo,7,50.41,Nestlé,2026-08-24,353,Vigente,Estante 2
+2025-07-25,FAC-2996,Cliente Interno,P004,Leche Entera 1L,Lácteos,447,87,0,0,534,Kg,28.64,15293.76,Exceso,42,0.0,Coca-Cola,2026-07-05,303,Vigente,Depósito Sur
+2025-08-16,FAC-3352,Cliente 031,P018,Maíz en Lata 300g,Enlatados,58,0,37,37,21,Botella,149.18,3132.78,Bajo,20,63.79,Nestlé,2026-06-15,283,Vigente,Zona Seca
+2025-06-24,FAC-2108,Cliente Interno,P022,Manzana Roja 1kg,Frutas,392,102,0,0,494,Botella,476.93,235603.42,Exceso,73,0.0,La Famosa,2026-05-20,257,Vigente,Almacén A
+2025-06-06,FAC-1266,Cliente 096,P021,Chuleta Ahumada 500g,Carnes,248,0,33,33,215,Litro,181.76,39078.4,Óptimo,91,13.31,PepsiCo,2025-10-27,52,Vigente,Estante 2
+2025-08-14,FAC-6772,Cliente Interno,P024,Naranja 1kg,Frutas,437,21,0,0,458,Kg,275.28,126078.24,Exceso,22,0.0,Unilever,2025-07-14,-53,Vencido,Depósito Sur
+2025-08-20,FAC-8498,Cliente Interno,P006,Queso Cheddar 250g,Lácteos,465,193,0,0,658,Unidad,23.31,15337.98,Exceso,16,0.0,Colgate-Palmolive,2026-04-28,235,Vigente,Estante 2
+2025-07-10,FAC-5150,Cliente 061,P017,Atún en Lata 170g,Enlatados,253,0,70,70,183,Litro,23.13,4232.79,Óptimo,57,27.67,Colgate-Palmolive,2025-11-01,57,Vigente,Zona Seca
+2025-08-23,FAC-8159,Cliente Interno,P011,Jabón de Tocador 100g,Cuidado Personal,189,104,0,0,293,Paquete,445.3,130472.9,Óptimo,13,0.0,Bimbo,2025-07-22,-45,Vencido,Zona Seca
+2025-08-28,FAC-2353,Cliente 035,P016,Sardinas en Lata 125g,Enlatados,238,0,67,67,171,Paquete,364.91,62399.61,Óptimo,8,28.15,PepsiCo,2026-05-09,246,Vigente,Estante 1
+2025-06-14,FAC-7981,Cliente 058,P003,Jugo de Naranja 1L,Bebidas,217,0,40,40,177,Litro,87.49,15485.73,Óptimo,83,18.43,Bimbo,2026-03-11,187,Vigente,Depósito Sur
+2025-08-18,FAC-7655,Cliente 010,P014,Suavizante 500ml,Limpieza,190,0,8,8,182,Unidad,184.84,33640.88,Óptimo,18,4.21,Unilever,2026-06-28,296,Vigente,Estante 1
+2025-06-05,FAC-7001,Cliente Interno,P005,Yogurt Natural 200g,Lácteos,84,175,0,0,259,Unidad,184.26,47723.34,Óptimo,92,0.0,Kraft Foods,2026-03-11,187,Vigente,Estante 1
+2025-07-18,FAC-9674,Cliente Interno,P015,Cloro 1L,Limpieza,440,45,0,0,485,Kg,186.64,90520.4,Exceso,49,0.0,Induveca,2025-12-13,99,Vigente,Zona Fría
+2025-06-04,FAC-2929,Cliente Interno,P024,Naranja 1kg,Frutas,145,109,0,0,254,Kg,134.58,34183.32,Óptimo,93,0.0,Procter & Gamble,2026-01-26,143,Vigente,Depósito Sur
+2025-08-28,FAC-2213,Cliente Interno,P030,Bizcocho 250g,Panadería,301,44,0,0,345,Unidad,228.76,78922.2,Exceso,8,0.0,Bimbo,2025-12-29,115,Vigente,Zona Seca
+2025-08-10,FAC-3852,Cliente 092,P018,Maíz en Lata 300g,Enlatados,198,0,21,21,177,Caja,397.88,70424.76,Óptimo,26,10.61,La Famosa,2025-06-20,-77,Vencido,Almacén B
+2025-06-18,FAC-7044,Cliente Interno,P008,Galletas Chocolate 100g,Snacks,454,102,0,0,556,Caja,236.37,131421.72,Exceso,79,0.0,La Famosa,2026-04-07,214,Vigente,Almacén B
+2025-08-31,FAC-2208,Cliente 053,P024,Naranja 1kg,Frutas,295,0,99,99,196,Kg,67.04,13139.84,Óptimo,5,33.56,Induveca,2026-08-20,349,Vigente,Almacén B
+2025-07-15,FAC-3981,Cliente 082,P005,Yogurt Natural 200g,Lácteos,499,0,71,71,428,Paquete,385.05,164801.4,Exceso,52,14.23,Unilever,2026-07-05,303,Vigente,Almacén A
+2025-06-20,FAC-4694,Cliente Interno,P010,Shampoo 400ml,Cuidado Personal,134,191,0,0,325,Litro,176.28,57291.0,Exceso,77,0.0,La Famosa,2026-02-05,153,Vigente,Almacén B
+2025-06-17,FAC-3762,Cliente 065,P021,Chuleta Ahumada 500g,Carnes,205,0,12,12,193,Caja,297.95,57504.35,Óptimo,80,5.85,Kraft Foods,2026-03-06,182,Vigente,Estante 1
+2025-08-12,FAC-5336,Cliente 006,P002,Refresco Cola 1.5L,Bebidas,472,0,11,11,461,Paquete,327.31,150889.91,Exceso,24,2.33,Kraft Foods,2026-04-07,214,Vigente,Almacén A
+2025-08-22,FAC-7653,Cliente Interno,P010,Shampoo 400ml,Cuidado Personal,297,185,0,0,482,Kg,152.23,73374.86,Exceso,14,0.0,PepsiCo,2026-06-20,288,Vigente,Almacén A
+2025-08-01,FAC-6121,Cliente Interno,P015,Cloro 1L,Limpieza,154,46,0,0,200,Kg,431.44,86288.0,Óptimo,35,0.0,Induveca,2025-07-23,-44,Vencido,Zona Seca
+2025-07-18,FAC-8642,Cliente Interno,P017,Atún en Lata 170g,Enlatados,337,71,0,0,408,Caja,65.65,26785.2,Exceso,49,0.0,Bimbo,2026-03-13,189,Vigente,Estante 1
+2025-07-20,FAC-6364,Cliente Interno,P028,Pan de Molde 500g,Panadería,365,50,0,0,415,Caja,467.21,193892.15,Exceso,47,0.0,Induveca,2026-07-08,306,Vigente,Estante 1
+2025-07-30,FAC-2475,Cliente Interno,P016,Sardinas en Lata 125g,Enlatados,500,15,0,0,515,Paquete,472.89,243538.35,Exceso,37,0.0,La Famosa,2026-04-26,233,Vigente,Estante 2
+2025-06-07,FAC-8710,Cliente Interno,P002,Refresco Cola 1.5L,Bebidas,194,177,0,0,371,Unidad,146.45,54332.95,Exceso,90,0.0,Nestlé,2026-01-18,135,Vigente,Depósito Norte
+2025-07-17,FAC-1838,Cliente Interno,P025,Tomate 1kg,Verduras,256,112,0,0,368,Litro,287.29,105722.72,Exceso,50,0.0,Colgate-Palmolive,2026-06-30,298,Vigente,Zona Fría
+2025-07-28,FAC-2946,Cliente Interno,P025,Tomate 1kg,Verduras,331,169,0,0,500,Paquete,68.69,34345.0,Exceso,39,0.0,PepsiCo,2026-04-17,224,Vigente,Zona Seca
+2025-08-11,FAC-9341,Cliente Interno,P012,Pasta Dental 75ml,Cuidado Personal,436,164,0,0,600,Unidad,203.69,122214.0,Exceso,25,0.0,Nestlé,2026-04-28,235,Vigente,Almacén A
+2025-07-31,FAC-3290,Cliente Interno,P017,Atún en Lata 170g,Enlatados,283,141,0,0,424,Litro,167.34,70952.16,Exceso,36,0.0,Kraft Foods,2026-03-31,207,Vigente,Estante 1
+2025-08-15,FAC-5911,Cliente 063,P011,Jabón de Tocador 100g,Cuidado Personal,309,0,69,69,240,Litro,240.07,57616.8,Óptimo,21,22.33,Nestlé,2026-06-14,282,Vigente,Zona Seca
+2025-08-14,FAC-1436,Cliente 081,P010,Shampoo 400ml,Cuidado Personal,457,0,89,89,368,Kg,300.47,110572.96,Exceso,22,19.47,Procter & Gamble,2026-07-15,313,Vigente,Estante 2
+2025-06-22,FAC-3421,Cliente 049,P017,Atún en Lata 170g,Enlatados,372,0,100,100,272,Unidad,411.72,111987.84,Óptimo,75,26.88,Colgate-Palmolive,2026-05-03,240,Vigente,Almacén B
+2025-07-11,FAC-7723,Cliente Interno,P014,Suavizante 500ml,Limpieza,127,62,0,0,189,Paquete,253.4,47892.6,Óptimo,56,0.0,Kraft Foods,2026-07-01,299,Vigente,Almacén A
+2025-06-27,FAC-7173,Cliente 068,P018,Maíz en Lata 300g,Enlatados,216,0,62,62,154,Paquete,160.31,24687.74,Óptimo,70,28.7,Unilever,2026-02-07,155,Vigente,Zona Seca
+2025-08-18,FAC-5890,Cliente 072,P016,Sardinas en Lata 125g,Enlatados,148,0,36,36,112,Litro,116.31,13026.72,Óptimo,18,24.32,Procter & Gamble,2026-07-24,322,Vigente,Estante 2
+2025-07-11,FAC-5715,Cliente 036,P016,Sardinas en Lata 125g,Enlatados,228,0,93,93,135,Paquete,65.33,8819.55,Óptimo,56,40.79,La Famosa,2025-12-22,108,Vigente,Depósito Norte
+2025-07-08,FAC-8247,Cliente 045,P002,Refresco Cola 1.5L,Bebidas,197,0,11,11,186,Caja,329.71,61326.06,Óptimo,59,5.58,Bimbo,2026-02-21,169,Vigente,Estante 2
+2025-08-11,FAC-4920,Cliente Interno,P023,Banana 1kg,Frutas,189,167,0,0,356,Caja,125.02,44507.12,Exceso,25,0.0,La Famosa,2026-06-08,276,Vigente,Estante 2
+2025-07-13,FAC-1084,Cliente Interno,P023,Banana 1kg,Frutas,291,45,0,0,336,Paquete,482.44,162099.84,Exceso,54,0.0,Unilever,2026-01-21,138,Vigente,Depósito Sur
+2025-07-07,FAC-4804,Cliente 012,P011,Jabón de Tocador 100g,Cuidado Personal,196,0,99,99,97,Caja,269.9,26180.3,Óptimo,60,50.51,Nestlé,2026-01-03,120,Vigente,Depósito Norte
+2025-06-05,FAC-5742,Cliente 096,P027,Cebolla 1kg,Verduras,253,0,24,24,229,Litro,438.99,100528.71,Óptimo,92,9.49,Nestlé,2025-06-16,-81,Vencido,Almacén B
+2025-07-07,FAC-9261,Cliente 018,P015,Cloro 1L,Limpieza,378,0,64,64,314,Unidad,236.67,74314.38,Exceso,60,16.93,Colgate-Palmolive,2026-05-27,264,Vigente,Zona Seca
+2025-08-22,FAC-6523,Cliente Interno,P009,Maní Salado 200g,Snacks,417,198,0,0,615,Kg,396.43,243804.45,Exceso,14,0.0,Kraft Foods,2026-06-15,283,Vigente,Estante 2
+2025-07-25,FAC-2562,Cliente Interno,P017,Atún en Lata 170g,Enlatados,217,181,0,0,398,Paquete,96.47,38395.06,Exceso,42,0.0,Unilever,2025-07-26,-41,Vencido,Zona Seca
+2025-07-04,FAC-6400,Cliente Interno,P013,Detergente 1kg,Limpieza,170,78,0,0,248,Unidad,154.46,38306.08,Óptimo,63,0.0,Kraft Foods,2026-01-30,147,Vigente,Zona Fría
+2025-06-08,FAC-7642,Cliente Interno,P022,Manzana Roja 1kg,Frutas,110,50,0,0,160,Kg,344.61,55137.6,Óptimo,89,0.0,Procter & Gamble,2026-02-04,152,Vigente,Almacén B
+2025-07-18,FAC-8834,Cliente Interno,P020,Carne Molida 1kg,Carnes,163,44,0,0,207,Litro,80.83,16731.81,Óptimo,49,0.0,Kraft Foods,2026-06-14,282,Vigente,Depósito Norte
+2025-08-08,FAC-2341,Cliente 032,P026,Lechuga 1 pieza,Verduras,390,0,98,98,292,Kg,265.13,77417.96,Óptimo,28,25.13,La Famosa,2026-01-02,119,Vigente,Zona Seca
+2025-06-08,FAC-9792,Cliente 074,P027,Cebolla 1kg,Verduras,330,0,26,26,304,Botella,79.18,24070.72,Exceso,89,7.88,Induveca,2025-12-20,106,Vigente,Depósito Sur
+2025-08-31,FAC-8298,Cliente Interno,P019,Pollo Entero 2kg,Carnes,300,140,0,0,440,Caja,405.3,178332.0,Exceso,5,0.0,Bimbo,2025-12-28,114,Vigente,Depósito Norte
+2025-08-11,FAC-7487,Cliente 003,P015,Cloro 1L,Limpieza,394,0,93,93,301,Kg,130.96,39418.96,Exceso,25,23.6,Nestlé,2025-12-02,88,Vigente,Estante 2
+2025-07-25,FAC-2130,Cliente Interno,P012,Pasta Dental 75ml,Cuidado Personal,408,25,0,0,433,Unidad,493.14,213529.62,Exceso,42,0.0,Bimbo,2025-12-31,117,Vigente,Zona Fría
+2025-08-22,FAC-8348,Cliente 049,P024,Naranja 1kg,Frutas,380,0,48,48,332,Paquete,435.46,144572.72,Exceso,14,12.63,Coca-Cola,2026-01-27,144,Vigente,Almacén B
+2025-08-23,FAC-7439,Cliente Interno,P028,Pan de Molde 500g,Panadería,228,147,0,0,375,Unidad,266.78,100042.5,Exceso,13,0.0,Colgate-Palmolive,2025-07-24,-43,Vencido,Almacén A
+2025-08-26,FAC-4762,Cliente Interno,P024,Naranja 1kg,Frutas,328,107,0,0,435,Caja,127.52,55471.2,Exceso,10,0.0,Induveca,2026-01-20,137,Vigente,Zona Fría
+2025-06-05,FAC-4943,Cliente Interno,P026,Lechuga 1 pieza,Verduras,388,14,0,0,402,Botella,107.01,43018.02,Exceso,92,0.0,PepsiCo,2025-09-27,22,Próximo a Vencer,Almacén A
+2025-07-02,FAC-9843,Cliente Interno,P024,Naranja 1kg,Frutas,72,69,0,0,141,Caja,112.55,15869.55,Óptimo,65,0.0,Nestlé,2026-03-12,188,Vigente,Zona Fría
+2025-08-13,FAC-5944,Cliente 031,P020,Carne Molida 1kg,Carnes,445,0,42,42,403,Caja,438.75,176816.25,Exceso,23,9.44,La Famosa,2025-12-12,98,Vigente,Depósito Norte
+2025-08-11,FAC-7999,Cliente 081,P019,Pollo Entero 2kg,Carnes,500,0,23,23,477,Litro,280.15,133631.55,Exceso,25,4.6,Nestlé,2026-04-21,228,Vigente,Depósito Norte
+2025-08-29,FAC-4012,Cliente Interno,P014,Suavizante 500ml,Limpieza,259,106,0,0,365,Caja,378.44,138130.6,Exceso,7,0.0,Bimbo,2026-02-08,156,Vigente,Estante 2
+2025-07-30,FAC-9683,Cliente 072,P030,Bizcocho 250g,Panadería,79,0,54,54,25,Litro,71.38,1784.5,Bajo,37,68.35,Colgate-Palmolive,2025-12-07,93,Vigente,Estante 2
+2025-07-28,FAC-4120,Cliente Interno,P028,Pan de Molde 500g,Panadería,239,195,0,0,434,Kg,30.51,13241.34,Exceso,39,0.0,Coca-Cola,2026-01-30,147,Vigente,Almacén A
+2025-08-15,FAC-6455,Cliente 027,P024,Naranja 1kg,Frutas,393,0,62,62,331,Caja,155.08,51331.48,Exceso,21,15.78,Nestlé,2025-08-19,-17,Vencido,Estante 2
+2025-08-01,FAC-7498,Cliente 027,P030,Bizcocho 250g,Panadería,174,0,91,91,83,Litro,457.99,38013.17,Óptimo,35,52.3,La Famosa,2026-07-30,328,Vigente,Zona Fría
+2025-08-23,FAC-9147,Cliente Interno,P012,Pasta Dental 75ml,Cuidado Personal,207,141,0,0,348,Litro,235.67,82013.16,Exceso,13,0.0,Bimbo,2026-06-20,288,Vigente,Estante 2
+2025-06-06,FAC-1265,Cliente Interno,P019,Pollo Entero 2kg,Carnes,492,47,0,0,539,Botella,134.08,72269.12,Exceso,91,0.0,Kraft Foods,2025-12-13,99,Vigente,Depósito Norte
+2025-07-13,FAC-6530,Cliente 064,P008,Galletas Chocolate 100g,Snacks,244,0,32,32,212,Kg,132.38,28064.56,Óptimo,54,13.11,Bimbo,2026-04-09,216,Vigente,Depósito Sur
+2025-06-22,FAC-1962,Cliente 070,P005,Yogurt Natural 200g,Lácteos,418,0,24,24,394,Kg,264.35,104153.9,Exceso,75,5.74,PepsiCo,2026-04-19,226,Vigente,Almacén A
+2025-06-18,FAC-3474,Cliente Interno,P027,Cebolla 1kg,Verduras,372,191,0,0,563,Paquete,9.53,5365.39,Exceso,79,0.0,La Famosa,2026-05-21,258,Vigente,Zona Seca
+2025-08-24,FAC-7739,Cliente Interno,P016,Sardinas en Lata 125g,Enlatados,58,151,0,0,209,Kg,10.87,2271.83,Óptimo,12,0.0,La Famosa,2026-04-17,224,Vigente,Zona Fría
+2025-06-03,FAC-2753,Cliente 023,P017,Atún en Lata 170g,Enlatados,466,0,56,56,410,Caja,459.43,188366.3,Exceso,94,12.02,La Famosa,2026-05-28,265,Vigente,Estante 2
+2025-07-03,FAC-2294,Cliente Interno,P027,Cebolla 1kg,Verduras,231,111,0,0,342,Paquete,189.66,64863.72,Exceso,64,0.0,Coca-Cola,2025-06-18,-79,Vencido,Estante 2
+2025-07-09,FAC-1519,Cliente 084,P022,Manzana Roja 1kg,Frutas,473,0,84,84,389,Paquete,51.28,19947.92,Exceso,58,17.76,Coca-Cola,2025-10-11,36,Vigente,Depósito Sur
+2025-08-29,FAC-6427,Cliente Interno,P006,Queso Cheddar 250g,Lácteos,92,121,0,0,213,Botella,285.1,60726.3,Óptimo,7,0.0,PepsiCo,2026-07-28,326,Vigente,Almacén A
+2025-07-05,FAC-1539,Cliente 070,P002,Refresco Cola 1.5L,Bebidas,88,0,36,36,52,Unidad,93.78,4876.56,Óptimo,62,40.91,Induveca,2026-04-24,231,Vigente,Estante 2
+2025-06-10,FAC-9856,Cliente 050,P010,Shampoo 400ml,Cuidado Personal,133,0,73,73,60,Kg,169.21,10152.6,Óptimo,87,54.89,Unilever,2026-03-04,180,Vigente,Almacén B
+2025-06-07,FAC-6580,Cliente Interno,P004,Leche Entera 1L,Lácteos,273,29,0,0,302,Botella,304.56,91977.12,Exceso,90,0.0,Kraft Foods,2025-06-18,-79,Vencido,Depósito Norte
+2025-06-04,FAC-4737,Cliente 063,P021,Chuleta Ahumada 500g,Carnes,189,0,58,58,131,Paquete,181.13,23728.03,Óptimo,93,30.69,Coca-Cola,2026-03-15,191,Vigente,Estante 1
+2025-06-11,FAC-2204,Cliente Interno,P025,Tomate 1kg,Verduras,366,73,0,0,439,Paquete,45.61,20022.79,Exceso,86,0.0,Unilever,2026-02-18,166,Vigente,Estante 1
+2025-07-17,FAC-8286,Cliente Interno,P004,Leche Entera 1L,Lácteos,96,88,0,0,184,Unidad,183.16,33701.44,Óptimo,50,0.0,Procter & Gamble,2026-05-23,260,Vigente,Estante 1
+2025-07-28,FAC-2468,Cliente 004,P018,Maíz en Lata 300g,Enlatados,334,0,14,14,320,Botella,180.19,57660.8,Exceso,39,4.19,PepsiCo,2025-11-01,57,Vigente,Zona Seca
+2025-07-08,FAC-4977,Cliente 072,P014,Suavizante 500ml,Limpieza,248,0,93,93,155,Kg,288.12,44658.6,Óptimo,59,37.5,Unilever,2026-02-20,168,Vigente,Depósito Norte
+2025-07-09,FAC-8121,Cliente Interno,P009,Maní Salado 200g,Snacks,302,52,0,0,354,Paquete,141.6,50126.4,Exceso,58,0.0,Procter & Gamble,2026-02-10,158,Vigente,Almacén B
+2025-08-20,FAC-3219,Cliente 014,P016,Sardinas en Lata 125g,Enlatados,354,0,59,59,295,Litro,155.81,45963.95,Óptimo,16,16.67,Coca-Cola,2026-05-05,242,Vigente,Depósito Norte
+2025-07-27,FAC-3230,Cliente 077,P011,Jabón de Tocador 100g,Cuidado Personal,270,0,84,84,186,Kg,153.72,28591.92,Óptimo,40,31.11,Kraft Foods,2026-01-23,140,Vigente,Estante 2
+2025-07-21,FAC-4971,Cliente 063,P011,Jabón de Tocador 100g,Cuidado Personal,199,0,82,82,117,Paquete,166.31,19458.27,Óptimo,46,41.21,Procter & Gamble,2026-01-29,146,Vigente,Zona Seca
+2025-08-15,FAC-8563,Cliente 004,P018,Maíz en Lata 300g,Enlatados,142,0,71,71,71,Paquete,471.77,33495.67,Óptimo,21,50.0,Colgate-Palmolive,2025-12-18,104,Vigente,Zona Fría
+2025-07-23,FAC-4965,Cliente Interno,P022,Manzana Roja 1kg,Frutas,305,87,0,0,392,Kg,130.08,50991.36,Exceso,44,0.0,Unilever,2025-11-27,83,Vigente,Depósito Norte
+2025-07-28,FAC-7853,Cliente 065,P020,Carne Molida 1kg,Carnes,295,0,69,69,226,Kg,274.1,61946.6,Óptimo,39,23.39,Induveca,2026-03-02,178,Vigente,Almacén B
+2025-08-24,FAC-1725,Cliente Interno,P022,Manzana Roja 1kg,Frutas,231,166,0,0,397,Litro,283.79,112664.63,Exceso,12,0.0,Coca-Cola,2026-01-11,128,Vigente,Depósito Norte
+2025-07-04,FAC-4621,Cliente 075,P008,Galletas Chocolate 100g,Snacks,311,0,72,72,239,Paquete,225.66,53932.74,Óptimo,63,23.15,Coca-Cola,2025-10-14,39,Vigente,Estante 1
+2025-08-01,FAC-2901,Cliente Interno,P004,Leche Entera 1L,Lácteos,201,31,0,0,232,Litro,416.5,96628.0,Óptimo,35,0.0,Unilever,2026-02-12,160,Vigente,Zona Fría
+2025-08-06,FAC-8412,Cliente Interno,P016,Sardinas en Lata 125g,Enlatados,228,122,0,0,350,Unidad,162.86,57001.0,Exceso,30,0.0,Procter & Gamble,2026-04-28,235,Vigente,Almacén B
+2025-08-22,FAC-9454,Cliente 032,P004,Leche Entera 1L,Lácteos,396,0,95,95,301,Litro,91.35,27496.35,Exceso,14,23.99,Unilever,2025-08-30,-6,Vencido,Depósito Norte
+2025-07-22,FAC-8080,Cliente Interno,P021,Chuleta Ahumada 500g,Carnes,144,178,0,0,322,Caja,200.81,64660.82,Exceso,45,0.0,Kraft Foods,2026-05-07,244,Vigente,Depósito Sur
+2025-06-01,FAC-2025,Cliente Interno,P023,Banana 1kg,Frutas,159,190,0,0,349,Caja,290.79,101485.71,Exceso,96,0.0,La Famosa,2026-04-21,228,Vigente,Zona Seca
+2025-06-15,FAC-6134,Cliente 082,P009,Maní Salado 200g,Snacks,393,0,68,68,325,Paquete,300.5,97662.5,Exceso,82,17.3,Kraft Foods,2026-05-05,242,Vigente,Almacén B
+2025-08-19,FAC-2388,Cliente 079,P006,Queso Cheddar 250g,Lácteos,466,0,39,39,427,Unidad,337.69,144193.63,Exceso,17,8.37,Induveca,2026-02-18,166,Vigente,Estante 2
+2025-07-18,FAC-3258,Cliente 077,P023,Banana 1kg,Frutas,122,0,54,54,68,Caja,289.53,19688.04,Óptimo,49,44.26,Coca-Cola,2026-01-12,129,Vigente,Depósito Sur
+2025-08-11,FAC-6154,Cliente Interno,P006,Queso Cheddar 250g,Lácteos,300,57,0,0,357,Unidad,421.78,150575.46,Exceso,25,0.0,Kraft Foods,2025-08-27,-9,Vencido,Zona Seca
+2025-06-18,FAC-9281,Cliente Interno,P007,Papas Fritas 150g,Snacks,467,153,0,0,620,Kg,328.27,203527.4,Exceso,79,0.0,Coca-Cola,2026-05-01,238,Vigente,Depósito Sur
+2025-08-02,FAC-1535,Cliente 038,P006,Queso Cheddar 250g,Lácteos,92,0,29,29,63,Litro,141.05,8886.15,Óptimo,34,31.52,La Famosa,2026-07-11,309,Vigente,Estante 1
+2025-08-10,FAC-9898,Cliente 100,P017,Atún en Lata 170g,Enlatados,107,0,35,35,72,Botella,412.52,29701.44,Óptimo,26,32.71,Induveca,2026-06-21,289,Vigente,Almacén A
+2025-08-09,FAC-5055,Cliente Interno,P007,Papas Fritas 150g,Snacks,267,177,0,0,444,Paquete,152.37,67652.28,Exceso,27,0.0,Nestlé,2025-12-21,107,Vigente,Zona Fría
+2025-07-27,FAC-6744,Cliente 027,P028,Pan de Molde 500g,Panadería,110,0,31,31,79,Kg,431.22,34066.38,Óptimo,40,28.18,Kraft Foods,2026-01-04,121,Vigente,Depósito Norte
+2025-06-27,FAC-9720,Cliente 045,P027,Cebolla 1kg,Verduras,155,0,73,73,82,Caja,144.14,11819.48,Óptimo,70,47.1,La Famosa,2025-06-08,-89,Vencido,Zona Seca
+2025-07-08,FAC-2560,Cliente 087,P019,Pollo Entero 2kg,Carnes,186,0,66,66,120,Unidad,72.12,8654.4,Óptimo,59,35.48,Coca-Cola,2025-12-09,95,Vigente,Zona Fría
+2025-08-29,FAC-6277,Cliente Interno,P028,Pan de Molde 500g,Panadería,117,192,0,0,309,Paquete,415.1,128265.9,Exceso,7,0.0,Coca-Cola,2026-04-13,220,Vigente,Estante 1
+2025-08-20,FAC-2525,Cliente Interno,P014,Suavizante 500ml,Limpieza,242,172,0,0,414,Kg,204.41,84625.74,Exceso,16,0.0,Procter & Gamble,2026-07-25,323,Vigente,Zona Seca
+2025-07-12,FAC-8511,Cliente 012,P019,Pollo Entero 2kg,Carnes,51,0,47,47,4,Unidad,319.25,1277.0,Bajo,55,92.16,Induveca,2026-05-17,254,Vigente,Depósito Norte
+2025-06-28,FAC-6533,Cliente Interno,P016,Sardinas en Lata 125g,Enlatados,187,82,0,0,269,Botella,275.92,74222.48,Óptimo,69,0.0,Unilever,2025-10-20,45,Vigente,Depósito Sur
+2025-06-06,FAC-3035,Cliente 003,P004,Leche Entera 1L,Lácteos,370,0,59,59,311,Paquete,465.07,144636.77,Exceso,91,15.95,Unilever,2026-04-11,218,Vigente,Depósito Sur
+2025-06-26,FAC-5489,Cliente 021,P023,Banana 1kg,Frutas,117,0,39,39,78,Litro,51.2,3993.6,Óptimo,71,33.33,Induveca,2025-12-17,103,Vigente,Almacén B
+2025-06-07,FAC-4836,Cliente Interno,P013,Detergente 1kg,Limpieza,370,189,0,0,559,Kg,217.47,121565.73,Exceso,90,0.0,PepsiCo,2026-05-07,244,Vigente,Almacén B
+2025-06-10,FAC-8291,Cliente Interno,P005,Yogurt Natural 200g,Lácteos,353,184,0,0,537,Unidad,9.6,5155.2,Exceso,87,0.0,Induveca,2026-05-10,247,Vigente,Depósito Norte
+2025-06-10,FAC-2690,Cliente Interno,P008,Galletas Chocolate 100g,Snacks,246,36,0,0,282,Caja,160.11,45151.02,Óptimo,87,0.0,Procter & Gamble,2025-11-15,71,Vigente,Depósito Norte
+2025-08-22,FAC-1138,Cliente Interno,P022,Manzana Roja 1kg,Frutas,123,154,0,0,277,Paquete,307.11,85069.47,Óptimo,14,0.0,Unilever,2026-02-05,153,Vigente,Zona Seca
+2025-07-23,FAC-2420,Cliente Interno,P020,Carne Molida 1kg,Carnes,401,65,0,0,466,Unidad,448.81,209145.46,Exceso,44,0.0,Unilever,2026-05-28,265,Vigente,Depósito Norte
+2025-07-11,FAC-2380,Cliente Interno,P026,Lechuga 1 pieza,Verduras,121,175,0,0,296,Botella,127.84,37840.64,Óptimo,56,0.0,Kraft Foods,2025-10-22,47,Vigente,Zona Fría
+2025-08-24,FAC-9348,Cliente Interno,P029,Croissant 100g,Panadería,204,165,0,0,369,Litro,98.38,36302.22,Exceso,12,0.0,Coca-Cola,2026-03-24,200,Vigente,Almacén A
+2025-08-03,FAC-2163,Cliente Interno,P013,Detergente 1kg,Limpieza,107,173,0,0,280,Litro,266.5,74620.0,Óptimo,33,0.0,Nestlé,2026-06-04,272,Vigente,Zona Seca
+2025-07-17,FAC-2195,Cliente Interno,P018,Maíz en Lata 300g,Enlatados,399,130,0,0,529,Unidad,13.26,7014.54,Exceso,50,0.0,PepsiCo,2025-11-14,70,Vigente,Zona Fría
+2025-07-21,FAC-7806,Cliente 099,P017,Atún en Lata 170g,Enlatados,196,0,65,65,131,Unidad,214.67,28121.77,Óptimo,46,33.16,Coca-Cola,2026-03-26,202,Vigente,Estante 1
+2025-06-11,FAC-6353,Cliente 069,P017,Atún en Lata 170g,Enlatados,154,0,20,20,134,Litro,198.41,26586.94,Óptimo,86,12.99,PepsiCo,2026-01-09,126,Vigente,Depósito Norte
+2025-06-08,FAC-1901,Cliente 059,P008,Galletas Chocolate 100g,Snacks,94,0,15,15,79,Unidad,158.1,12489.9,Óptimo,89,15.96,Unilever,2025-09-11,6,Próximo a Vencer,Almacén A
+2025-06-21,FAC-3735,Cliente 034,P016,Sardinas en Lata 125g,Enlatados,227,0,93,93,134,Kg,189.08,25336.72,Óptimo,76,40.97,Procter & Gamble,2025-10-04,29,Próximo a Vencer,Almacén B
+2025-07-13,FAC-5308,Cliente Interno,P026,Lechuga 1 pieza,Verduras,269,26,0,0,295,Kg,357.6,105492.0,Óptimo,54,0.0,Kraft Foods,2026-06-29,297,Vigente,Almacén B
+2025-07-17,FAC-3577,Cliente 048,P002,Refresco Cola 1.5L,Bebidas,305,0,22,22,283,Botella,131.28,37152.24,Óptimo,50,7.21,PepsiCo,2026-07-02,300,Vigente,Almacén B
+2025-06-01,FAC-8729,Cliente 006,P002,Refresco Cola 1.5L,Bebidas,489,0,32,32,457,Caja,185.17,84622.69,Exceso,96,6.54,Unilever,2026-04-01,208,Vigente,Almacén A
+2025-06-29,FAC-6241,Cliente Interno,P011,Jabón de Tocador 100g,Cuidado Personal,177,194,0,0,371,Botella,139.27,51669.17,Exceso,68,0.0,PepsiCo,2025-10-23,48,Vigente,Zona Seca
+2025-06-23,FAC-2129,Cliente 052,P008,Galletas Chocolate 100g,Snacks,461,0,6,6,455,Litro,439.11,199795.05,Exceso,74,1.3,Procter & Gamble,2026-05-12,249,Vigente,Zona Seca
+2025-06-02,FAC-4974,Cliente Interno,P012,Pasta Dental 75ml,Cuidado Personal,152,87,0,0,239,Paquete,234.64,56078.96,Óptimo,95,0.0,Kraft Foods,2026-01-03,120,Vigente,Estante 2
+2025-06-20,FAC-6675,Cliente Interno,P001,Agua Mineral 500ml,Bebidas,259,148,0,0,407,Litro,319.79,130154.53,Exceso,77,0.0,Nestlé,2026-03-29,205,Vigente,Almacén A
+2025-07-10,FAC-9061,Cliente 054,P004,Leche Entera 1L,Lácteos,155,0,31,31,124,Kg,480.79,59617.96,Óptimo,57,20.0,Unilever,2026-02-03,151,Vigente,Zona Fría
+2025-08-06,FAC-2391,Cliente 096,P014,Suavizante 500ml,Limpieza,408,0,59,59,349,Caja,292.48,102075.52,Exceso,30,14.46,La Famosa,2025-12-05,91,Vigente,Depósito Norte
+2025-07-26,FAC-6161,Cliente Interno,P022,Manzana Roja 1kg,Frutas,116,76,0,0,192,Kg,463.39,88970.88,Óptimo,41,0.0,Coca-Cola,2026-03-12,188,Vigente,Zona Seca
+2025-06-30,FAC-2785,Cliente Interno,P003,Jugo de Naranja 1L,Bebidas,153,159,0,0,312,Paquete,81.93,25562.16,Exceso,67,0.0,Unilever,2025-11-28,84,Vigente,Depósito Sur
+2025-08-08,FAC-8591,Cliente Interno,P012,Pasta Dental 75ml,Cuidado Personal,444,88,0,0,532,Unidad,136.18,72447.76,Exceso,28,0.0,PepsiCo,2026-04-10,217,Vigente,Estante 1
+2025-08-30,FAC-3430,Cliente Interno,P023,Banana 1kg,Frutas,358,93,0,0,451,Litro,50.15,22617.65,Exceso,6,0.0,Colgate-Palmolive,2026-04-30,237,Vigente,Depósito Norte
+2025-07-04,FAC-8408,Cliente Interno,P027,Cebolla 1kg,Verduras,139,113,0,0,252,Caja,280.2,70610.4,Óptimo,63,0.0,La Famosa,2025-12-12,98,Vigente,Almacén B
+2025-06-16,FAC-4246,Cliente 017,P001,Agua Mineral 500ml,Bebidas,81,0,29,29,52,Kg,412.72,21461.44,Óptimo,81,35.8,Induveca,2026-01-24,141,Vigente,Almacén B
+2025-06-10,FAC-8265,Cliente Interno,P001,Agua Mineral 500ml,Bebidas,83,175,0,0,258,Litro,405.6,104644.8,Óptimo,87,0.0,PepsiCo,2026-05-02,239,Vigente,Almacén B
+2025-06-07,FAC-7471,Cliente Interno,P006,Queso Cheddar 250g,Lácteos,343,195,0,0,538,Kg,250.58,134812.04,Exceso,90,0.0,Coca-Cola,2025-12-23,109,Vigente,Depósito Norte
+2025-06-24,FAC-1567,Cliente Interno,P009,Maní Salado 200g,Snacks,193,48,0,0,241,Caja,308.98,74464.18,Óptimo,73,0.0,Kraft Foods,2026-05-25,262,Vigente,Zona Fría
+2025-06-08,FAC-4267,Cliente Interno,P003,Jugo de Naranja 1L,Bebidas,193,117,0,0,310,Caja,323.11,100164.1,Exceso,89,0.0,La Famosa,2025-04-18,-140,Vencido,Almacén A
+2025-08-31,FAC-9231,Cliente 045,P012,Pasta Dental 75ml,Cuidado Personal,295,0,63,63,232,Caja,164.19,38092.08,Óptimo,5,21.36,Procter & Gamble,2026-03-21,197,Vigente,Almacén A
+2025-06-04,FAC-9674,Cliente 061,P029,Croissant 100g,Panadería,465,0,8,8,457,Caja,181.93,83142.01,Exceso,93,1.72,Kraft Foods,2026-01-03,120,Vigente,Estante 1
+2025-07-05,FAC-4594,Cliente 008,P018,Maíz en Lata 300g,Enlatados,467,0,95,95,372,Litro,289.97,107868.84,Exceso,62,20.34,Coca-Cola,2026-03-14,190,Vigente,Estante 1
+2025-08-29,FAC-6761,Cliente Interno,P012,Pasta Dental 75ml,Cuidado Personal,352,189,0,0,541,Caja,474.04,256455.64,Exceso,7,0.0,Kraft Foods,2026-08-06,335,Vigente,Estante 2
+2025-08-09,FAC-1920,Cliente Interno,P010,Shampoo 400ml,Cuidado Personal,139,33,0,0,172,Unidad,120.15,20665.8,Óptimo,27,0.0,Colgate-Palmolive,2026-02-18,166,Vigente,Depósito Sur
+2025-06-17,FAC-1975,Cliente Interno,P011,Jabón de Tocador 100g,Cuidado Personal,417,92,0,0,509,Kg,15.85,8067.65,Exceso,80,0.0,Kraft Foods,2026-06-11,279,Vigente,Estante 1
+2025-07-17,FAC-2655,Cliente 051,P003,Jugo de Naranja 1L,Bebidas,241,0,85,85,156,Caja,171.6,26769.6,Óptimo,50,35.27,Induveca,2026-05-26,263,Vigente,Estante 1
+2025-08-21,FAC-6846,Cliente Interno,P016,Sardinas en Lata 125g,Enlatados,382,191,0,0,573,Caja,115.5,66181.5,Exceso,15,0.0,Kraft Foods,2026-04-18,225,Vigente,Depósito Norte
+2025-06-17,FAC-7415,Cliente Interno,P006,Queso Cheddar 250g,Lácteos,423,189,0,0,612,Unidad,426.12,260785.44,Exceso,80,0.0,Kraft Foods,2026-01-06,123,Vigente,Estante 1
+2025-08-21,FAC-2274,Cliente 043,P019,Pollo Entero 2kg,Carnes,103,0,19,19,84,Caja,122.81,10316.04,Óptimo,15,18.45,Induveca,2026-05-09,246,Vigente,Almacén B
+2025-07-28,FAC-2110,Cliente Interno,P001,Agua Mineral 500ml,Bebidas,185,187,0,0,372,Kg,178.49,66398.28,Exceso,39,0.0,PepsiCo,2026-06-07,275,Vigente,Almacén A
+2025-07-24,FAC-6754,Cliente Interno,P006,Queso Cheddar 250g,Lácteos,261,106,0,0,367,Paquete,275.28,101027.76,Exceso,43,0.0,PepsiCo,2025-11-28,84,Vigente,Estante 2
+2025-06-05,FAC-2215,Cliente Interno,P010,Shampoo 400ml,Cuidado Personal,60,36,0,0,96,Caja,174.2,16723.2,Óptimo,92,0.0,Coca-Cola,2025-10-20,45,Vigente,Almacén B
+2025-07-14,FAC-8066,Cliente 004,P020,Carne Molida 1kg,Carnes,364,0,91,91,273,Botella,471.51,128722.23,Óptimo,53,25.0,Unilever,2025-12-02,88,Vigente,Depósito Norte
+2025-07-13,FAC-9849,Cliente Interno,P007,Papas Fritas 150g,Snacks,147,151,0,0,298,Litro,136.31,40620.38,Óptimo,54,0.0,Procter & Gamble,2026-04-30,237,Vigente,Estante 2
+2025-08-13,FAC-6911,Cliente Interno,P018,Maíz en Lata 300g,Enlatados,480,23,0,0,503,Litro,6.89,3465.67,Exceso,23,0.0,PepsiCo,2025-11-24,80,Vigente,Depósito Sur
+2025-06-27,FAC-8758,Cliente Interno,P006,Queso Cheddar 250g,Lácteos,376,30,0,0,406,Paquete,422.67,171604.02,Exceso,70,0.0,Procter & Gamble,2026-02-07,155,Vigente,Depósito Sur
+2025-06-12,FAC-7249,Cliente Interno,P021,Chuleta Ahumada 500g,Carnes,328,104,0,0,432,Unidad,187.85,81151.2,Exceso,85,0.0,Bimbo,2026-01-22,139,Vigente,Zona Fría
+2025-06-29,FAC-2584,Cliente 097,P027,Cebolla 1kg,Verduras,187,0,20,20,167,Botella,47.43,7920.81,Óptimo,68,10.7,Induveca,2025-05-22,-106,Vencido,Depósito Norte
+2025-06-30,FAC-9773,Cliente 054,P018,Maíz en Lata 300g,Enlatados,81,0,67,67,14,Botella,345.1,4831.4,Bajo,67,82.72,Bimbo,2025-11-07,63,Vigente,Estante 2
+2025-07-21,FAC-9467,Cliente 074,P029,Croissant 100g,Panadería,487,0,65,65,422,Caja,401.22,169314.84,Exceso,46,13.35,Kraft Foods,2025-08-05,-31,Vencido,Almacén B
+2025-06-23,FAC-7936,Cliente 006,P006,Queso Cheddar 250g,Lácteos,158,0,17,17,141,Caja,43.79,6174.39,Óptimo,74,10.76,Coca-Cola,2026-01-31,148,Vigente,Estante 1
+2025-07-11,FAC-7358,Cliente 012,P030,Bizcocho 250g,Panadería,422,0,9,9,413,Litro,280.4,115805.2,Exceso,56,2.13,La Famosa,2025-10-15,40,Vigente,Zona Fría
+2025-08-29,FAC-7790,Cliente 015,P020,Carne Molida 1kg,Carnes,350,0,54,54,296,Botella,79.07,23404.72,Óptimo,7,15.43,Kraft Foods,2025-09-17,12,Próximo a Vencer,Almacén B
+2025-06-13,FAC-5327,Cliente 053,P026,Lechuga 1 pieza,Verduras,196,0,45,45,151,Botella,194.61,29386.11,Óptimo,84,22.96,Bimbo,2026-01-30,147,Vigente,Depósito Sur
+2025-07-22,FAC-1635,Cliente 052,P005,Yogurt Natural 200g,Lácteos,366,0,89,89,277,Kg,200.92,55654.84,Óptimo,45,24.32,Induveca,2026-06-20,288,Vigente,Estante 2
+2025-07-05,FAC-6094,Cliente Interno,P029,Croissant 100g,Panadería,240,87,0,0,327,Kg,143.77,47012.79,Exceso,62,0.0,Bimbo,2025-06-20,-77,Vencido,Almacén B
+2025-06-18,FAC-5414,Cliente Interno,P010,Shampoo 400ml,Cuidado Personal,430,92,0,0,522,Kg,365.76,190926.72,Exceso,79,0.0,Kraft Foods,2026-01-02,119,Vigente,Almacén B
+2025-07-23,FAC-9442,Cliente 008,P024,Naranja 1kg,Frutas,298,0,48,48,250,Litro,396.79,99197.5,Óptimo,44,16.11,PepsiCo,2026-07-16,314,Vigente,Depósito Norte
+2025-08-12,FAC-1944,Cliente Interno,P001,Agua Mineral 500ml,Bebidas,138,61,0,0,199,Unidad,128.5,25571.5,Óptimo,24,0.0,Bimbo,2026-03-30,206,Vigente,Zona Seca
+2025-07-18,FAC-1500,Cliente 016,P027,Cebolla 1kg,Verduras,287,0,82,82,205,Botella,124.76,25575.8,Óptimo,49,28.57,Bimbo,2026-06-15,283,Vigente,Depósito Sur
+2025-08-15,FAC-2480,Cliente Interno,P018,Maíz en Lata 300g,Enlatados,229,76,0,0,305,Unidad,146.11,44563.55,Exceso,21,0.0,Coca-Cola,2026-03-02,178,Vigente,Estante 1
+2025-06-29,FAC-7709,Cliente 084,P021,Chuleta Ahumada 500g,Carnes,165,0,35,35,130,Paquete,259.07,33679.1,Óptimo,68,21.21,Nestlé,2025-10-01,26,Próximo a Vencer,Estante 1
+2025-06-29,FAC-5511,Cliente 092,P009,Maní Salado 200g,Snacks,361,0,40,40,321,Litro,214.78,68944.38,Exceso,68,11.08,Coca-Cola,2026-05-23,260,Vigente,Depósito Sur
+2025-07-09,FAC-2676,Cliente 075,P022,Manzana Roja 1kg,Frutas,316,0,51,51,265,Botella,8.64,2289.6,Óptimo,58,16.14,Induveca,2025-12-01,87,Vigente,Zona Fría
+2025-08-01,FAC-5536,Cliente 042,P003,Jugo de Naranja 1L,Bebidas,222,0,82,82,140,Caja,134.27,18797.8,Óptimo,35,36.94,Procter & Gamble,2026-03-02,178,Vigente,Estante 1
+2025-06-08,FAC-6236,Cliente 052,P026,Lechuga 1 pieza,Verduras,488,0,77,77,411,Kg,341.97,140549.67,Exceso,89,15.78,Nestlé,2025-05-22,-106,Vencido,Depósito Sur
+2025-07-24,FAC-4111,Cliente 091,P013,Detergente 1kg,Limpieza,248,0,75,75,173,Kg,174.87,30252.51,Óptimo,43,30.24,Colgate-Palmolive,2025-08-15,-21,Vencido,Depósito Sur
+2025-07-16,FAC-3967,Cliente 072,P017,Atún en Lata 170g,Enlatados,203,0,85,85,118,Caja,150.42,17749.56,Óptimo,51,41.87,Bimbo,2026-01-15,132,Vigente,Zona Fría
+2025-08-27,FAC-4659,Cliente 046,P029,Croissant 100g,Panadería,221,0,29,29,192,Paquete,373.38,71688.96,Óptimo,9,13.12,Procter & Gamble,2026-04-24,231,Vigente,Zona Seca
+2025-07-30,FAC-2166,Cliente Interno,P028,Pan de Molde 500g,Panadería,110,172,0,0,282,Botella,238.75,67327.5,Óptimo,37,0.0,Colgate-Palmolive,2026-05-11,248,Vigente,Almacén B
+2025-08-07,FAC-3250,Cliente Interno,P010,Shampoo 400ml,Cuidado Personal,261,48,0,0,309,Paquete,496.21,153328.89,Exceso,29,0.0,Induveca,2026-02-05,153,Vigente,Depósito Sur
+2025-06-11,FAC-1950,Cliente 041,P016,Sardinas en Lata 125g,Enlatados,220,0,23,23,197,Caja,7.33,1444.01,Óptimo,86,10.45,Procter & Gamble,2025-11-29,85,Vigente,Estante 1
+2025-08-02,FAC-8105,Cliente 079,P026,Lechuga 1 pieza,Verduras,440,0,17,17,423,Paquete,318.58,134759.34,Exceso,34,3.86,Coca-Cola,2025-11-19,75,Vigente,Depósito Sur
+2025-08-08,FAC-6279,Cliente Interno,P007,Papas Fritas 150g,Snacks,424,13,0,0,437,Caja,379.64,165902.68,Exceso,28,0.0,La Famosa,2026-03-13,189,Vigente,Almacén A
+2025-06-29,FAC-2682,Cliente Interno,P023,Banana 1kg,Frutas,499,43,0,0,542,Litro,194.86,105614.12,Exceso,68,0.0,Kraft Foods,2025-10-20,45,Vigente,Estante 1
+2025-07-09,FAC-6535,Cliente 068,P010,Shampoo 400ml,Cuidado Personal,283,0,77,77,206,Litro,219.66,45249.96,Óptimo,58,27.21,Unilever,2026-01-11,128,Vigente,Depósito Sur
+2025-06-22,FAC-4675,Cliente Interno,P030,Bizcocho 250g,Panadería,465,68,0,0,533,Caja,364.95,194518.35,Exceso,75,0.0,Unilever,2025-12-15,101,Vigente,Almacén A
+2025-06-16,FAC-5190,Cliente 049,P012,Pasta Dental 75ml,Cuidado Personal,414,0,5,5,409,Unidad,386.77,158188.93,Exceso,81,1.21,Kraft Foods,2025-09-24,19,Próximo a Vencer,Almacén A
+2025-06-07,FAC-3024,Cliente Interno,P023,Banana 1kg,Frutas,109,107,0,0,216,Kg,275.9,59594.4,Óptimo,90,0.0,Bimbo,2025-09-09,4,Próximo a Vencer,Estante 1
+2025-07-09,FAC-5423,Cliente Interno,P014,Suavizante 500ml,Limpieza,388,143,0,0,531,Paquete,313.28,166351.68,Exceso,58,0.0,Unilever,2025-12-06,92,Vigente,Almacén B
+2025-07-07,FAC-4272,Cliente Interno,P004,Leche Entera 1L,Lácteos,451,60,0,0,511,Caja,390.09,199335.99,Exceso,60,0.0,La Famosa,2026-03-05,181,Vigente,Zona Seca
+2025-06-21,FAC-8875,Cliente Interno,P002,Refresco Cola 1.5L,Bebidas,330,63,0,0,393,Unidad,168.65,66279.45,Exceso,76,0.0,Nestlé,2025-07-18,-49,Vencido,Almacén B
+2025-08-13,FAC-9383,Cliente Interno,P022,Manzana Roja 1kg,Frutas,302,33,0,0,335,Litro,42.15,14120.25,Exceso,23,0.0,PepsiCo,2026-04-11,218,Vigente,Estante 2
+2025-07-04,FAC-1646,Cliente Interno,P015,Cloro 1L,Limpieza,75,54,0,0,129,Kg,426.86,55064.94,Óptimo,63,0.0,Induveca,2025-11-30,86,Vigente,Zona Seca
+2025-06-13,FAC-3793,Cliente 018,P028,Pan de Molde 500g,Panadería,438,0,2,2,436,Botella,167.69,73112.84,Exceso,84,0.46,Bimbo,2025-10-28,53,Vigente,Zona Fría
+2025-07-18,FAC-7557,Cliente Interno,P027,Cebolla 1kg,Verduras,225,112,0,0,337,Paquete,481.34,162211.58,Exceso,49,0.0,Procter & Gamble,2026-01-09,126,Vigente,Depósito Sur
+2025-06-15,FAC-7816,Cliente 014,P005,Yogurt Natural 200g,Lácteos,406,0,21,21,385,Botella,456.06,175583.1,Exceso,82,5.17,Bimbo,2026-03-26,202,Vigente,Depósito Sur
+2025-07-16,FAC-8997,Cliente 062,P020,Carne Molida 1kg,Carnes,64,0,17,17,47,Paquete,60.9,2862.3,Bajo,51,26.56,Coca-Cola,2026-03-23,199,Vigente,Almacén A
+2025-06-02,FAC-4669,Cliente 096,P023,Banana 1kg,Frutas,494,0,99,99,395,Botella,489.06,193178.7,Exceso,95,20.04,Induveca,2026-01-05,122,Vigente,Almacén B
+2025-08-01,FAC-1894,Cliente 020,P012,Pasta Dental 75ml,Cuidado Personal,389,0,50,50,339,Botella,10.76,3647.64,Exceso,35,12.85,Unilever,2026-01-22,139,Vigente,Depósito Sur
+2025-06-10,FAC-5557,Cliente Interno,P025,Tomate 1kg,Verduras,301,94,0,0,395,Botella,29.92,11818.4,Exceso,87,0.0,Colgate-Palmolive,2026-01-06,123,Vigente,Depósito Norte
+2025-06-11,FAC-9166,Cliente 012,P015,Cloro 1L,Limpieza,277,0,58,58,219,Paquete,226.3,49559.7,Óptimo,86,20.94,PepsiCo,2026-04-08,215,Vigente,Almacén A
+2025-06-05,FAC-5990,Cliente Interno,P018,Maíz en Lata 300g,Enlatados,331,33,0,0,364,Caja,445.6,162198.4,Exceso,92,0.0,La Famosa,2025-06-17,-80,Vencido,Depósito Sur
+2025-06-07,FAC-8751,Cliente 072,P027,Cebolla 1kg,Verduras,164,0,43,43,121,Kg,359.75,43529.75,Óptimo,90,26.22,Induveca,2025-12-27,113,Vigente,Depósito Sur
+2025-06-01,FAC-9552,Cliente 071,P011,Jabón de Tocador 100g,Cuidado Personal,231,0,38,38,193,Unidad,190.08,36685.44,Óptimo,96,16.45,PepsiCo,2026-03-27,203,Vigente,Estante 1
+2025-06-14,FAC-7437,Cliente Interno,P009,Maní Salado 200g,Snacks,362,40,0,0,402,Kg,111.72,44911.44,Exceso,83,0.0,Colgate-Palmolive,2026-04-12,219,Vigente,Zona Seca
+2025-06-06,FAC-8381,Cliente 016,P030,Bizcocho 250g,Panadería,374,0,76,76,298,Botella,231.41,68960.18,Óptimo,91,20.32,Kraft Foods,2025-06-07,-90,Vencido,Estante 1
+2025-08-07,FAC-8912,Cliente 075,P024,Naranja 1kg,Frutas,74,0,56,56,18,Kg,462.56,8326.08,Bajo,29,75.68,Unilever,2026-01-09,126,Vigente,Estante 1
+2025-06-14,FAC-7302,Cliente 065,P013,Detergente 1kg,Limpieza,386,0,42,42,344,Kg,212.24,73010.56,Exceso,83,10.88,Kraft Foods,2026-03-06,182,Vigente,Estante 2
+2025-07-08,FAC-9393,Cliente Interno,P015,Cloro 1L,Limpieza,462,115,0,0,577,Litro,152.96,88257.92,Exceso,59,0.0,La Famosa,2026-03-03,179,Vigente,Estante 2
+2025-08-27,FAC-3913,Cliente Interno,P012,Pasta Dental 75ml,Cuidado Personal,394,191,0,0,585,Kg,254.43,148841.55,Exceso,9,0.0,Induveca,2026-07-28,326,Vigente,Almacén B
+2025-08-14,FAC-9747,Cliente 096,P019,Pollo Entero 2kg,Carnes,391,0,87,87,304,Unidad,146.53,44545.12,Exceso,22,22.25,Coca-Cola,2026-01-25,142,Vigente,Almacén B
+2025-06-07,FAC-5695,Cliente Interno,P022,Manzana Roja 1kg,Frutas,78,51,0,0,129,Unidad,343.28,44283.12,Óptimo,90,0.0,Unilever,2025-09-21,16,Próximo a Vencer,Zona Fría
+2025-07-16,FAC-4675,Cliente Interno,P027,Cebolla 1kg,Verduras,281,182,0,0,463,Paquete,372.49,172462.87,Exceso,51,0.0,La Famosa,2026-03-10,186,Vigente,Estante 2
+2025-08-28,FAC-6122,Cliente 054,P022,Manzana Roja 1kg,Frutas,74,0,50,50,24,Unidad,483.09,11594.16,Bajo,8,67.57,Nestlé,2026-07-10,308,Vigente,Zona Fría
+2025-06-29,FAC-9955,Cliente 048,P030,Bizcocho 250g,Panadería,374,0,83,83,291,Kg,370.53,107824.23,Óptimo,68,22.19,Colgate-Palmolive,2025-12-26,112,Vigente,Estante 2
+2025-08-27,FAC-2955,Cliente 066,P003,Jugo de Naranja 1L,Bebidas,145,0,95,95,50,Litro,191.71,9585.5,Óptimo,9,65.52,Coca-Cola,2026-04-04,211,Vigente,Zona Fría
+2025-06-01,FAC-3518,Cliente 006,P011,Jabón de Tocador 100g,Cuidado Personal,288,0,20,20,268,Unidad,464.67,124531.56,Óptimo,96,6.94,Kraft Foods,2026-03-01,177,Vigente,Zona Fría
+2025-06-10,FAC-4012,Cliente Interno,P026,Lechuga 1 pieza,Verduras,412,66,0,0,478,Caja,262.7,125570.6,Exceso,87,0.0,La Famosa,2026-04-02,209,Vigente,Depósito Norte
+2025-06-12,FAC-6424,Cliente 043,P012,Pasta Dental 75ml,Cuidado Personal,163,0,85,85,78,Botella,183.59,14320.02,Óptimo,85,52.15,Colgate-Palmolive,2025-04-20,-138,Vencido,Depósito Sur
+2025-08-23,FAC-4994,Cliente 031,P001,Agua Mineral 500ml,Bebidas,108,0,58,58,50,Paquete,479.65,23982.5,Óptimo,13,53.7,Induveca,2026-04-14,221,Vigente,Almacén B
+2025-06-04,FAC-9335,Cliente 066,P030,Bizcocho 250g,Panadería,314,0,48,48,266,Litro,225.55,59996.3,Óptimo,93,15.29,Nestlé,2025-10-14,39,Vigente,Estante 2
+2025-06-13,FAC-2072,Cliente 081,P006,Queso Cheddar 250g,Lácteos,445,0,1,1,444,Kg,109.34,48546.96,Exceso,84,0.22,Colgate-Palmolive,2025-12-25,111,Vigente,Depósito Norte
+2025-08-08,FAC-8130,Cliente 100,P027,Cebolla 1kg,Verduras,409,0,95,95,314,Kg,325.05,102065.7,Exceso,28,23.23,PepsiCo,2026-04-24,231,Vigente,Estante 1
+2025-06-05,FAC-2154,Cliente Interno,P003,Jugo de Naranja 1L,Bebidas,87,74,0,0,161,Litro,289.61,46627.21,Óptimo,92,0.0,Colgate-Palmolive,2026-03-29,205,Vigente,Depósito Norte
+2025-07-26,FAC-9762,Cliente Interno,P011,Jabón de Tocador 100g,Cuidado Personal,58,40,0,0,98,Unidad,7.92,776.16,Óptimo,41,0.0,Kraft Foods,2025-11-30,86,Vigente,Almacén A
+2025-07-16,FAC-5937,Cliente Interno,P030,Bizcocho 250g,Panadería,307,185,0,0,492,Paquete,305.25,150183.0,Exceso,51,0.0,Procter & Gamble,2025-10-29,54,Vigente,Depósito Norte
+2025-07-31,FAC-9941,Cliente Interno,P006,Queso Cheddar 250g,Lácteos,323,110,0,0,433,Litro,151.01,65387.33,Exceso,36,0.0,Unilever,2025-08-01,-35,Vencido,Zona Seca
+2025-08-10,FAC-1082,Cliente Interno,P028,Pan de Molde 500g,Panadería,334,20,0,0,354,Botella,288.5,102129.0,Exceso,26,0.0,Coca-Cola,2026-05-03,240,Vigente,Almacén B
+2025-06-28,FAC-4014,Cliente 021,P014,Suavizante 500ml,Limpieza,380,0,19,19,361,Caja,114.29,41258.69,Exceso,69,5.0,Procter & Gamble,2025-10-23,48,Vigente,Almacén B
+2025-08-10,FAC-2103,Cliente 086,P015,Cloro 1L,Limpieza,380,0,38,38,342,Kg,129.09,44148.78,Exceso,26,10.0,Colgate-Palmolive,2025-08-22,-14,Vencido,Depósito Sur
+2025-06-17,FAC-2143,Cliente Interno,P022,Manzana Roja 1kg,Frutas,385,82,0,0,467,Paquete,450.56,210411.52,Exceso,80,0.0,Induveca,2026-02-18,166,Vigente,Depósito Sur
+2025-08-28,FAC-8017,Cliente 041,P019,Pollo Entero 2kg,Carnes,128,0,47,47,81,Caja,88.48,7166.88,Óptimo,8,36.72,Induveca,2026-07-07,305,Vigente,Estante 2
+2025-07-06,FAC-6432,Cliente Interno,P027,Cebolla 1kg,Verduras,234,197,0,0,431,Paquete,439.55,189446.05,Exceso,61,0.0,Bimbo,2026-06-10,278,Vigente,Zona Seca
+2025-08-10,FAC-3293,Cliente 036,P004,Leche Entera 1L,Lácteos,139,0,11,11,128,Litro,446.19,57112.32,Óptimo,26,7.91,Colgate-Palmolive,2025-11-17,73,Vigente,Almacén B
+2025-08-04,FAC-4485,Cliente 099,P021,Chuleta Ahumada 500g,Carnes,65,0,52,52,13,Litro,453.62,5897.06,Bajo,32,80.0,La Famosa,2026-01-17,134,Vigente,Depósito Sur
+2025-07-17,FAC-5767,Cliente 094,P013,Detergente 1kg,Limpieza,164,0,76,76,88,Botella,71.27,6271.76,Óptimo,50,46.34,La Famosa,2026-06-29,297,Vigente,Almacén B
+2025-06-02,FAC-3717,Cliente 088,P022,Manzana Roja 1kg,Frutas,172,0,79,79,93,Paquete,379.82,35323.26,Óptimo,95,45.93,Unilever,2025-11-13,69,Vigente,Estante 1
+2025-08-01,FAC-4796,Cliente Interno,P012,Pasta Dental 75ml,Cuidado Personal,70,134,0,0,204,Caja,36.12,7368.48,Óptimo,35,0.0,Induveca,2026-07-22,320,Vigente,Almacén A
+2025-07-17,FAC-6309,Cliente 006,P013,Detergente 1kg,Limpieza,290,0,6,6,284,Kg,56.1,15932.4,Óptimo,50,2.07,La Famosa,2026-02-26,174,Vigente,Zona Fría
+2025-08-14,FAC-7201,Cliente Interno,P018,Maíz en Lata 300g,Enlatados,341,177,0,0,518,Botella,185.82,96254.76,Exceso,22,0.0,PepsiCo,2026-03-06,182,Vigente,Zona Fría
+2025-08-06,FAC-8898,Cliente 063,P013,Detergente 1kg,Limpieza,230,0,45,45,185,Botella,444.15,82167.75,Óptimo,30,19.57,Nestlé,2026-03-01,177,Vigente,Estante 1
+2025-06-10,FAC-4062,Cliente Interno,P017,Atún en Lata 170g,Enlatados,379,48,0,0,427,Kg,82.89,35394.03,Exceso,87,0.0,Kraft Foods,2026-04-08,215,Vigente,Almacén B
+2025-07-13,FAC-8848,Cliente Interno,P024,Naranja 1kg,Frutas,108,132,0,0,240,Kg,109.3,26232.0,Óptimo,54,0.0,Unilever,2025-11-02,58,Vigente,Depósito Norte
+2025-06-17,FAC-9399,Cliente Interno,P019,Pollo Entero 2kg,Carnes,353,171,0,0,524,Caja,24.4,12785.6,Exceso,80,0.0,Kraft Foods,2025-12-16,102,Vigente,Almacén A
+2025-08-06,FAC-5644,Cliente 003,P013,Detergente 1kg,Limpieza,356,0,82,82,274,Paquete,473.89,129845.86,Óptimo,30,23.03,Colgate-Palmolive,2026-01-30,147,Vigente,Depósito Sur
+2025-06-29,FAC-3979,Cliente 099,P027,Cebolla 1kg,Verduras,260,0,75,75,185,Litro,313.49,57995.65,Óptimo,68,28.85,La Famosa,2026-03-21,197,Vigente,Estante 1
+2025-07-29,FAC-7315,Cliente Interno,P020,Carne Molida 1kg,Carnes,352,106,0,0,458,Caja,70.45,32266.1,Exceso,38,0.0,Nestlé,2025-12-15,101,Vigente,Depósito Norte
+2025-06-23,FAC-2925,Cliente 065,P016,Sardinas en Lata 125g,Enlatados,364,0,69,69,295,Botella,51.13,15083.35,Óptimo,74,18.96,Unilever,2026-04-29,236,Vigente,Almacén A
+2025-08-06,FAC-8028,Cliente 068,P014,Suavizante 500ml,Limpieza,239,0,90,90,149,Paquete,118.6,17671.4,Óptimo,30,37.66,Bimbo,2025-12-24,110,Vigente,Zona Seca
+2025-07-25,FAC-2373,Cliente Interno,P005,Yogurt Natural 200g,Lácteos,180,69,0,0,249,Paquete,145.22,36159.78,Óptimo,42,0.0,La Famosa,2025-10-26,51,Vigente,Zona Fría
+2025-08-13,FAC-4365,Cliente 084,P017,Atún en Lata 170g,Enlatados,110,0,49,49,61,Paquete,345.44,21071.84,Óptimo,23,44.55,Induveca,2026-06-17,285,Vigente,Zona Seca
+2025-08-23,FAC-7939,Cliente Interno,P019,Pollo Entero 2kg,Carnes,179,147,0,0,326,Litro,284.51,92750.26,Exceso,13,0.0,Kraft Foods,2026-06-20,288,Vigente,Depósito Norte
+2025-08-10,FAC-8925,Cliente Interno,P026,Lechuga 1 pieza,Verduras,335,104,0,0,439,Botella,130.62,57342.18,Exceso,26,0.0,Procter & Gamble,2026-05-30,267,Vigente,Zona Seca
+2025-06-18,FAC-8317,Cliente 030,P028,Pan de Molde 500g,Panadería,492,0,96,96,396,Unidad,392.64,155485.44,Exceso,79,19.51,Unilever,2026-03-08,184,Vigente,Estante 2
+2025-08-10,FAC-7375,Cliente 021,P020,Carne Molida 1kg,Carnes,406,0,7,7,399,Unidad,482.46,192501.54,Exceso,26,1.72,Nestlé,2026-06-18,286,Vigente,Estante 1
+2025-06-12,FAC-1618,Cliente Interno,P003,Jugo de Naranja 1L,Bebidas,184,30,0,0,214,Botella,363.62,77814.68,Óptimo,85,0.0,Coca-Cola,2025-10-09,34,Vigente,Zona Fría
+2025-06-23,FAC-9489,Cliente Interno,P021,Chuleta Ahumada 500g,Carnes,303,61,0,0,364,Botella,146.57,53351.48,Exceso,74,0.0,Nestlé,2025-10-09,34,Vigente,Estante 2
+2025-07-17,FAC-2422,Cliente Interno,P008,Galletas Chocolate 100g,Snacks,385,50,0,0,435,Litro,498.42,216812.7,Exceso,50,0.0,Coca-Cola,2026-01-25,142,Vigente,Depósito Norte
+2025-08-06,FAC-5661,Cliente 071,P001,Agua Mineral 500ml,Bebidas,427,0,12,12,415,Botella,364.44,151242.6,Exceso,30,2.81,La Famosa,2026-03-25,201,Vigente,Zona Seca
+2025-06-29,FAC-1076,Cliente Interno,P020,Carne Molida 1kg,Carnes,149,113,0,0,262,Botella,134.25,35173.5,Óptimo,68,0.0,Coca-Cola,2026-06-11,279,Vigente,Almacén B
+2025-07-08,FAC-5098,Cliente 069,P011,Jabón de Tocador 100g,Cuidado Personal,109,0,33,33,76,Botella,348.62,26495.12,Óptimo,59,30.28,Coca-Cola,2026-03-28,204,Vigente,Depósito Sur
+2025-07-29,FAC-2904,Cliente 062,P022,Manzana Roja 1kg,Frutas,285,0,4,4,281,Kg,132.62,37266.22,Óptimo,38,1.4,Coca-Cola,2026-02-21,169,Vigente,Estante 2
+2025-07-11,FAC-5314,Cliente 090,P014,Suavizante 500ml,Limpieza,230,0,2,2,228,Paquete,127.89,29158.92,Óptimo,56,0.87,PepsiCo,2026-01-08,125,Vigente,Zona Seca
+2025-07-31,FAC-5408,Cliente Interno,P011,Jabón de Tocador 100g,Cuidado Personal,231,156,0,0,387,Paquete,95.48,36950.76,Exceso,36,0.0,Colgate-Palmolive,2026-03-01,177,Vigente,Estante 2
+2025-07-04,FAC-6833,Cliente Interno,P007,Papas Fritas 150g,Snacks,167,73,0,0,240,Unidad,82.22,19732.8,Óptimo,63,0.0,PepsiCo,2026-06-11,279,Vigente,Almacén B
+2025-08-18,FAC-7081,Cliente 062,P001,Agua Mineral 500ml,Bebidas,441,0,6,6,435,Botella,312.23,135820.05,Exceso,18,1.36,Bimbo,2026-08-04,333,Vigente,Zona Fría
+2025-07-06,FAC-9613,Cliente 007,P013,Detergente 1kg,Limpieza,163,0,17,17,146,Botella,400.64,58493.44,Óptimo,61,10.43,Bimbo,2026-04-23,230,Vigente,Almacén A
+2025-08-27,FAC-9490,Cliente Interno,P025,Tomate 1kg,Verduras,139,40,0,0,179,Unidad,232.73,41658.67,Óptimo,9,0.0,Nestlé,2026-01-15,132,Vigente,Estante 2
+2025-07-12,FAC-5306,Cliente 071,P012,Pasta Dental 75ml,Cuidado Personal,363,0,24,24,339,Botella,122.38,41486.82,Exceso,55,6.61,Bimbo,2026-06-22,290,Vigente,Zona Seca
+2025-07-25,FAC-7563,Cliente 047,P007,Papas Fritas 150g,Snacks,264,0,48,48,216,Botella,143.42,30978.72,Óptimo,42,18.18,Unilever,2025-06-11,-86,Vencido,Estante 1
+2025-06-30,FAC-8081,Cliente 072,P027,Cebolla 1kg,Verduras,101,0,31,31,70,Caja,428.87,30020.9,Óptimo,67,30.69,Colgate-Palmolive,2025-10-02,27,Próximo a Vencer,Estante 1
+2025-06-23,FAC-9470,Cliente Interno,P014,Suavizante 500ml,Limpieza,305,171,0,0,476,Paquete,269.32,128196.32,Exceso,74,0.0,Induveca,2025-10-15,40,Vigente,Zona Fría
+2025-07-21,FAC-5166,Cliente Interno,P004,Leche Entera 1L,Lácteos,403,65,0,0,468,Paquete,240.89,112736.52,Exceso,46,0.0,PepsiCo,2026-04-21,228,Vigente,Zona Seca
+2025-08-11,FAC-7746,Cliente Interno,P018,Maíz en Lata 300g,Enlatados,464,15,0,0,479,Caja,65.01,31139.79,Exceso,25,0.0,Kraft Foods,2025-07-23,-44,Vencido,Estante 1
+2025-07-16,FAC-8322,Cliente 095,P011,Jabón de Tocador 100g,Cuidado Personal,394,0,100,100,294,Botella,445.37,130938.78,Óptimo,51,25.38,Coca-Cola,2025-12-27,113,Vigente,Zona Fría
+2025-06-22,FAC-7631,Cliente 081,P021,Chuleta Ahumada 500g,Carnes,463,0,54,54,409,Unidad,425.21,173910.89,Exceso,75,11.66,PepsiCo,2026-02-27,175,Vigente,Estante 1
+2025-07-11,FAC-7479,Cliente 083,P021,Chuleta Ahumada 500g,Carnes,199,0,78,78,121,Litro,139.27,16851.67,Óptimo,56,39.2,Bimbo,2026-01-11,128,Vigente,Depósito Sur
+2025-06-03,FAC-2311,Cliente Interno,P005,Yogurt Natural 200g,Lácteos,422,74,0,0,496,Unidad,109.23,54178.08,Exceso,94,0.0,Coca-Cola,2026-05-01,238,Vigente,Almacén B
+2025-08-10,FAC-2363,Cliente 098,P002,Refresco Cola 1.5L,Bebidas,63,0,34,34,29,Caja,56.44,1636.76,Bajo,26,53.97,Kraft Foods,2026-05-26,263,Vigente,Almacén B
+2025-07-10,FAC-3071,Cliente 081,P008,Galletas Chocolate 100g,Snacks,176,0,57,57,119,Unidad,69.98,8327.62,Óptimo,57,32.39,Unilever,2026-03-23,199,Vigente,Almacén A
+2025-07-31,FAC-8288,Cliente 071,P015,Cloro 1L,Limpieza,495,0,35,35,460,Caja,71.88,33064.8,Exceso,36,7.07,La Famosa,2026-06-08,276,Vigente,Depósito Sur
+2025-08-07,FAC-9841,Cliente 062,P021,Chuleta Ahumada 500g,Carnes,377,0,45,45,332,Paquete,117.43,38986.76,Exceso,29,11.94,PepsiCo,2026-03-18,194,Vigente,Zona Fría
+2025-06-20,FAC-6634,Cliente Interno,P010,Shampoo 400ml,Cuidado Personal,55,44,0,0,99,Unidad,146.95,14548.05,Óptimo,77,0.0,La Famosa,2025-07-06,-61,Vencido,Depósito Sur
+2025-07-09,FAC-4788,Cliente Interno,P001,Agua Mineral 500ml,Bebidas,442,84,0,0,526,Litro,399.4,210084.4,Exceso,58,0.0,La Famosa,2026-05-18,255,Vigente,Estante 2
+2025-07-21,FAC-7199,Cliente 050,P008,Galletas Chocolate 100g,Snacks,133,0,83,83,50,Paquete,114.19,5709.5,Óptimo,46,62.41,PepsiCo,2026-03-07,183,Vigente,Estante 2
+2025-07-07,FAC-4080,Cliente 053,P021,Chuleta Ahumada 500g,Carnes,430,0,35,35,395,Caja,427.47,168850.65,Exceso,60,8.14,Unilever,2026-05-26,263,Vigente,Zona Fría
+2025-08-19,FAC-6253,Cliente 025,P015,Cloro 1L,Limpieza,189,0,63,63,126,Botella,14.6,1839.6,Óptimo,17,33.33,Nestlé,2026-01-08,125,Vigente,Almacén A
+2025-07-07,FAC-4814,Cliente 002,P009,Maní Salado 200g,Snacks,114,0,94,94,20,Paquete,49.65,993.0,Bajo,60,82.46,Nestlé,2026-03-13,189,Vigente,Estante 2
+2025-08-03,FAC-2314,Cliente 043,P012,Pasta Dental 75ml,Cuidado Personal,287,0,5,5,282,Unidad,422.56,119161.92,Óptimo,33,1.74,Unilever,2025-12-07,93,Vigente,Zona Fría
+2025-08-09,FAC-7251,Cliente Interno,P016,Sardinas en Lata 125g,Enlatados,142,74,0,0,216,Kg,414.98,89635.68,Óptimo,27,0.0,PepsiCo,2026-06-21,289,Vigente,Estante 2
+2025-07-02,FAC-2539,Cliente Interno,P024,Naranja 1kg,Frutas,67,198,0,0,265,Paquete,262.96,69684.4,Óptimo,65,0.0,Colgate-Palmolive,2026-03-08,184,Vigente,Depósito Norte
+2025-07-12,FAC-9534,Cliente 071,P006,Queso Cheddar 250g,Lácteos,372,0,96,96,276,Kg,65.46,18066.96,Óptimo,55,25.81,Bimbo,2025-11-05,61,Vigente,Zona Fría
+2025-08-25,FAC-6316,Cliente Interno,P007,Papas Fritas 150g,Snacks,107,121,0,0,228,Botella,12.46,2840.88,Óptimo,11,0.0,Procter & Gamble,2026-03-27,203,Vigente,Almacén B
+2025-06-02,FAC-3539,Cliente 089,P002,Refresco Cola 1.5L,Bebidas,347,0,61,61,286,Caja,188.84,54008.24,Óptimo,95,17.58,PepsiCo,2026-02-20,168,Vigente,Estante 1
+2025-08-20,FAC-9787,Cliente Interno,P002,Refresco Cola 1.5L,Bebidas,80,49,0,0,129,Paquete,396.78,51184.62,Óptimo,16,0.0,Unilever,2026-05-14,251,Vigente,Estante 2
+2025-07-27,FAC-6868,Cliente Interno,P024,Naranja 1kg,Frutas,148,106,0,0,254,Unidad,363.58,92349.32,Óptimo,40,0.0,Procter & Gamble,2026-03-24,200,Vigente,Depósito Sur
+2025-08-09,FAC-9906,Cliente Interno,P023,Banana 1kg,Frutas,300,57,0,0,357,Litro,177.09,63221.13,Exceso,27,0.0,Bimbo,2026-01-25,142,Vigente,Estante 1
+2025-07-28,FAC-8439,Cliente Interno,P010,Shampoo 400ml,Cuidado Personal,469,103,0,0,572,Paquete,5.36,3065.92,Exceso,39,0.0,La Famosa,2026-04-30,237,Vigente,Estante 1
+2025-08-19,FAC-7348,Cliente 069,P008,Galletas Chocolate 100g,Snacks,214,0,85,85,129,Botella,98.99,12769.71,Óptimo,17,39.72,Bimbo,2026-05-01,238,Vigente,Estante 1
+2025-07-23,FAC-2092,Cliente Interno,P021,Chuleta Ahumada 500g,Carnes,214,143,0,0,357,Caja,26.67,9521.19,Exceso,44,0.0,Unilever,2026-06-26,294,Vigente,Almacén A
+2025-06-25,FAC-9026,Cliente 085,P004,Leche Entera 1L,Lácteos,66,0,50,50,16,Litro,265.28,4244.48,Bajo,72,75.76,Kraft Foods,2025-10-29,54,Vigente,Almacén A
+2025-06-02,FAC-1994,Cliente 060,P030,Bizcocho 250g,Panadería,156,0,11,11,145,Litro,183.66,26630.7,Óptimo,95,7.05,Coca-Cola,2026-01-14,131,Vigente,Almacén A
+2025-08-07,FAC-2276,Cliente Interno,P002,Refresco Cola 1.5L,Bebidas,425,87,0,0,512,Unidad,472.58,241960.96,Exceso,29,0.0,La Famosa,2026-08-04,333,Vigente,Almacén B
+2025-07-20,FAC-3931,Cliente 073,P007,Papas Fritas 150g,Snacks,148,0,32,32,116,Paquete,281.42,32644.72,Óptimo,47,21.62,La Famosa,2026-04-19,226,Vigente,Almacén B
+2025-08-26,FAC-3955,Cliente 022,P015,Cloro 1L,Limpieza,409,0,14,14,395,Litro,277.23,109505.85,Exceso,10,3.42,La Famosa,2026-07-08,306,Vigente,Estante 1
+2025-07-16,FAC-7755,Cliente 048,P029,Croissant 100g,Panadería,211,0,42,42,169,Kg,383.27,64772.63,Óptimo,51,19.91,Coca-Cola,2026-01-31,148,Vigente,Zona Seca
+2025-07-19,FAC-8412,Cliente 047,P025,Tomate 1kg,Verduras,331,0,33,33,298,Unidad,226.51,67499.98,Óptimo,48,9.97,Coca-Cola,2025-06-10,-87,Vencido,Almacén A
+2025-06-03,FAC-5920,Cliente 001,P017,Atún en Lata 170g,Enlatados,119,0,39,39,80,Litro,492.28,39382.4,Óptimo,94,32.77,Colgate-Palmolive,2026-01-20,137,Vigente,Almacén A
+2025-08-10,FAC-2544,Cliente 020,P017,Atún en Lata 170g,Enlatados,334,0,74,74,260,Caja,23.68,6156.8,Óptimo,26,22.16,Induveca,2026-03-15,191,Vigente,Estante 1
+2025-06-30,FAC-7550,Cliente Interno,P009,Maní Salado 200g,Snacks,465,156,0,0,621,Kg,286.69,178034.49,Exceso,67,0.0,Colgate-Palmolive,2026-06-02,270,Vigente,Almacén B
+2025-06-23,FAC-2562,Cliente 074,P016,Sardinas en Lata 125g,Enlatados,472,0,90,90,382,Unidad,299.64,114462.48,Exceso,74,19.07,Procter & Gamble,2025-10-19,44,Vigente,Depósito Norte
+2025-07-13,FAC-4714,Cliente 016,P012,Pasta Dental 75ml,Cuidado Personal,500,0,54,54,446,Unidad,375.1,167294.6,Exceso,54,10.8,Kraft Foods,2026-07-06,304,Vigente,Depósito Norte
+2025-06-06,FAC-4617,Cliente 065,P011,Jabón de Tocador 100g,Cuidado Personal,326,0,42,42,284,Paquete,80.83,22955.72,Óptimo,91,12.88,Coca-Cola,2026-01-30,147,Vigente,Almacén B
+2025-07-21,FAC-1807,Cliente Interno,P005,Yogurt Natural 200g,Lácteos,117,131,0,0,248,Unidad,276.34,68532.32,Óptimo,46,0.0,Procter & Gamble,2025-12-24,110,Vigente,Depósito Norte
+2025-06-18,FAC-4212,Cliente Interno,P016,Sardinas en Lata 125g,Enlatados,336,111,0,0,447,Caja,282.78,126402.66,Exceso,79,0.0,La Famosa,2026-04-24,231,Vigente,Estante 2
+2025-07-12,FAC-7776,Cliente Interno,P022,Manzana Roja 1kg,Frutas,344,181,0,0,525,Caja,214.65,112691.25,Exceso,55,0.0,Induveca,2025-10-22,47,Vigente,Zona Seca
+2025-07-10,FAC-3389,Cliente 080,P006,Queso Cheddar 250g,Lácteos,229,0,57,57,172,Caja,223.03,38361.16,Óptimo,57,24.89,Colgate-Palmolive,2025-11-20,76,Vigente,Zona Seca
+2025-06-15,FAC-3419,Cliente Interno,P024,Naranja 1kg,Frutas,77,168,0,0,245,Unidad,435.03,106582.35,Óptimo,82,0.0,Procter & Gamble,2025-11-08,64,Vigente,Zona Seca
+2025-07-10,FAC-9814,Cliente Interno,P015,Cloro 1L,Limpieza,291,63,0,0,354,Botella,109.88,38897.52,Exceso,57,0.0,La Famosa,2025-12-19,105,Vigente,Zona Fría
+2025-08-28,FAC-9631,Cliente Interno,P023,Banana 1kg,Frutas,392,159,0,0,551,Unidad,26.52,14612.52,Exceso,8,0.0,Unilever,2026-04-13,220,Vigente,Zona Fría
+2025-06-07,FAC-5445,Cliente 050,P015,Cloro 1L,Limpieza,385,0,9,9,376,Unidad,333.18,125275.68,Exceso,90,2.34,Induveca,2026-03-21,197,Vigente,Almacén A
+2025-06-30,FAC-8940,Cliente 041,P013,Detergente 1kg,Limpieza,310,0,13,13,297,Unidad,434.05,128912.85,Óptimo,67,4.19,La Famosa,2026-05-20,257,Vigente,Estante 1
+2025-08-11,FAC-9673,Cliente Interno,P030,Bizcocho 250g,Panadería,414,73,0,0,487,Paquete,155.94,75942.78,Exceso,25,0.0,Bimbo,2026-05-08,245,Vigente,Estante 1
+2025-07-16,FAC-5519,Cliente Interno,P021,Chuleta Ahumada 500g,Carnes,204,138,0,0,342,Paquete,406.89,139156.38,Exceso,51,0.0,Procter & Gamble,2025-07-25,-42,Vencido,Almacén A
+2025-06-29,FAC-2438,Cliente 018,P005,Yogurt Natural 200g,Lácteos,224,0,85,85,139,Kg,366.3,50915.7,Óptimo,68,37.95,La Famosa,2025-12-14,100,Vigente,Estante 2
+2025-07-25,FAC-3158,Cliente Interno,P010,Shampoo 400ml,Cuidado Personal,359,148,0,0,507,Botella,107.34,54421.38,Exceso,42,0.0,Unilever,2026-03-30,206,Vigente,Estante 2
+2025-08-28,FAC-3378,Cliente 099,P023,Banana 1kg,Frutas,318,0,56,56,262,Caja,329.83,86415.46,Óptimo,8,17.61,Kraft Foods,2026-08-25,354,Vigente,Zona Seca
+2025-06-16,FAC-1483,Cliente 094,P006,Queso Cheddar 250g,Lácteos,212,0,19,19,193,Paquete,383.89,74090.77,Óptimo,81,8.96,Coca-Cola,2026-02-01,149,Vigente,Zona Fría
+2025-06-20,FAC-1429,Cliente Interno,P025,Tomate 1kg,Verduras,146,57,0,0,203,Botella,382.41,77629.23,Óptimo,77,0.0,Kraft Foods,2026-01-14,131,Vigente,Zona Fría
+2025-08-16,FAC-8808,Cliente 011,P008,Galletas Chocolate 100g,Snacks,168,0,46,46,122,Paquete,71.37,8707.14,Óptimo,20,27.38,Kraft Foods,2026-05-31,268,Vigente,Zona Seca
+2025-08-02,FAC-1528,Cliente Interno,P016,Sardinas en Lata 125g,Enlatados,120,67,0,0,187,Litro,207.25,38755.75,Óptimo,34,0.0,Nestlé,2026-02-11,159,Vigente,Depósito Norte
+2025-06-27,FAC-9027,Cliente 079,P003,Jugo de Naranja 1L,Bebidas,140,0,57,57,83,Caja,345.49,28675.67,Óptimo,70,40.71,Bimbo,2025-10-16,41,Vigente,Depósito Norte
+2025-08-17,FAC-7457,Cliente Interno,P024,Naranja 1kg,Frutas,472,90,0,0,562,Botella,307.69,172921.78,Exceso,19,0.0,Kraft Foods,2026-07-04,302,Vigente,Almacén A
+2025-07-29,FAC-9498,Cliente Interno,P027,Cebolla 1kg,Verduras,499,72,0,0,571,Botella,271.25,154883.75,Exceso,38,0.0,Nestlé,2025-11-21,77,Vigente,Depósito Norte
+2025-06-25,FAC-5684,Cliente Interno,P010,Shampoo 400ml,Cuidado Personal,275,87,0,0,362,Litro,233.37,84479.94,Exceso,72,0.0,Coca-Cola,2025-12-04,90,Vigente,Almacén A
+2025-07-30,FAC-9202,Cliente Interno,P027,Cebolla 1kg,Verduras,380,194,0,0,574,Kg,61.02,35025.48,Exceso,37,0.0,Kraft Foods,2026-04-11,218,Vigente,Estante 1
+2025-07-28,FAC-4308,Cliente Interno,P001,Agua Mineral 500ml,Bebidas,141,192,0,0,333,Litro,441.86,147139.38,Exceso,39,0.0,PepsiCo,2026-01-17,134,Vigente,Zona Seca
+2025-08-31,FAC-8362,Cliente Interno,P024,Naranja 1kg,Frutas,113,190,0,0,303,Botella,318.87,96617.61,Exceso,5,0.0,PepsiCo,2026-08-17,346,Vigente,Depósito Norte
+2025-08-18,FAC-3799,Cliente 099,P006,Queso Cheddar 250g,Lácteos,243,0,6,6,237,Kg,456.57,108207.09,Óptimo,18,2.47,Kraft Foods,2026-01-29,146,Vigente,Estante 1
+2025-06-23,FAC-6071,Cliente Interno,P025,Tomate 1kg,Verduras,414,88,0,0,502,Litro,366.43,183947.86,Exceso,74,0.0,Bimbo,2025-11-27,83,Vigente,Estante 1
+2025-06-26,FAC-9153,Cliente 059,P001,Agua Mineral 500ml,Bebidas,368,0,2,2,366,Unidad,428.43,156805.38,Exceso,71,0.54,La Famosa,2026-05-25,262,Vigente,Depósito Sur
+2025-07-29,FAC-1107,Cliente Interno,P014,Suavizante 500ml,Limpieza,276,163,0,0,439,Litro,126.13,55371.07,Exceso,38,0.0,La Famosa,2026-01-10,127,Vigente,Estante 2
+2025-06-08,FAC-5889,Cliente Interno,P021,Chuleta Ahumada 500g,Carnes,228,18,0,0,246,Unidad,168.9,41549.4,Óptimo,89,0.0,PepsiCo,2025-12-06,92,Vigente,Almacén B
+2025-06-21,FAC-3906,Cliente 090,P022,Manzana Roja 1kg,Frutas,195,0,89,89,106,Litro,483.32,51231.92,Óptimo,76,45.64,Kraft Foods,2026-02-19,167,Vigente,Almacén A
+2025-07-12,FAC-2063,Cliente 055,P012,Pasta Dental 75ml,Cuidado Personal,244,0,98,98,146,Unidad,149.95,21892.7,Óptimo,55,40.16,Unilever,2026-05-09,246,Vigente,Zona Fría
+2025-08-07,FAC-2790,Cliente Interno,P007,Papas Fritas 150g,Snacks,406,24,0,0,430,Unidad,287.83,123766.9,Exceso,29,0.0,La Famosa,2026-04-01,208,Vigente,Depósito Sur
+2025-07-25,FAC-6797,Cliente Interno,P020,Carne Molida 1kg,Carnes,484,144,0,0,628,Botella,463.92,291341.76,Exceso,42,0.0,Kraft Foods,2026-07-04,302,Vigente,Depósito Sur
+2025-08-03,FAC-5759,Cliente 091,P026,Lechuga 1 pieza,Verduras,142,0,30,30,112,Unidad,489.73,54849.76,Óptimo,33,21.13,Nestlé,2025-12-31,117,Vigente,Almacén A
+2025-06-27,FAC-6468,Cliente 006,P026,Lechuga 1 pieza,Verduras,365,0,53,53,312,Unidad,178.08,55560.96,Exceso,70,14.52,Colgate-Palmolive,2026-02-02,150,Vigente,Estante 2

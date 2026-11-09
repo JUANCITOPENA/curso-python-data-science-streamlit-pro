@@ -1,0 +1,51 @@
+Fecha,ClienteID,NombreCliente,ApellidoCliente,Región,Ciudad,Latitud,Longitud,ProductoID,Producto,Categoría,PrecioUnitario,PrecioCompra,UnidadesVendidas,TotalVenta,CostoTotal,Margen,%Margen,MétodoPago,Satisfacción,VisitasWeb,Recompra,NombreVendedor,ApellidoVendedor,EstadoCompra
+2025-01-27,C006,Laura,Hernández,Norte,Puerto Plata,19.7934,-70.6884,P010,Disco Duro Externo 2TB Seagate,Accesorios,100,70,3,300,210,90,30.0,Tarjeta,4.5,2,Sí,Carmen,Reyes,Entregado
+2025-01-29,C007,José,Fernández,Oeste,San Juan,18.807,-71.2299,P003,"Monitor LG UltraWide 29""",Tecnología,300,240,2,600,480,120,20.0,Tarjeta,3.5,1,Sí,Ramón,Paredes,Entregado
+2025-01-18,C007,José,Fernández,Oeste,Montecristi,19.8494,-71.644,P009,Cámara Canon EOS R10,Tecnología,950,800,5,4750,4000,750,15.79,Efectivo,3.5,1,No,Verónica,Peña,Entregado
+2025-01-02,C003,Carlos,Martínez,Norte,Puerto Plata,19.7934,-70.6884,P001,Laptop Lenovo LOQ i5 13Gen,Tecnología,850,700,3,2550,2100,450,17.65,Efectivo,4.3,5,No,Carmen,Reyes,Entregado
+2025-01-13,C002,María,López,Norte,La Vega,19.2221,-70.5289,P009,Cámara Canon EOS R10,Tecnología,950,800,5,4750,4000,750,15.79,Tarjeta,4.5,4,No,Andrés,Santos,Entregado
+2025-01-23,C003,Carlos,Martínez,Norte,Santiago,19.4517,-70.697,P009,Cámara Canon EOS R10,Tecnología,950,800,3,2850,2400,450,15.79,Transferencia,4.1,4,Sí,Patricia,Mejía,Devuelto parcial
+2025-01-02,C002,María,López,Oeste,San Juan,18.807,-71.2299,P005,Teclado Mecánico Razer,Accesorios,150,110,2,300,220,80,26.67,Tarjeta,3.6,1,Sí,Verónica,Peña,Entregado
+2025-01-30,C005,Pedro,Rodríguez,Norte,La Vega,19.2221,-70.5289,P008,Smartphone iPhone 15 Pro,Tecnología,1200,1000,5,6000,5000,1000,16.67,Transferencia,4.3,2,Sí,Andrés,Santos,Entregado
+2025-01-17,C006,Laura,Hernández,Sur,Azua,18.4532,-70.7349,P003,"Monitor LG UltraWide 29""",Tecnología,300,240,4,1200,960,240,20.0,Tarjeta,4.1,2,Sí,Roberto,Mendoza,Entregado
+2025-01-14,C003,Carlos,Martínez,Oeste,San Juan,18.807,-71.2299,P001,Laptop Lenovo LOQ i5 13Gen,Tecnología,850,700,4,3400,2800,600,17.65,Transferencia,4.8,3,Sí,Verónica,Peña,Entregado
+2025-01-29,C006,Laura,Hernández,Norte,La Vega,19.2221,-70.5289,P004,Mouse Logitech MX Master 3S,Accesorios,120,90,3,360,270,90,25.0,Efectivo,3.2,2,Sí,Carmen,Reyes,Entregado
+2025-01-06,C002,María,López,Sur,Barahona,18.2085,-71.1008,P006,Audífonos Sony WH-1000XM5,Accesorios,400,320,2,800,640,160,20.0,Efectivo,3.9,2,No,Gabriela,Silva,Entregado
+2025-01-19,C010,Lucía,Flores,Oeste,Montecristi,19.8494,-71.644,P010,Disco Duro Externo 2TB Seagate,Accesorios,100,70,5,500,350,150,30.0,Transferencia,4.6,3,Sí,Verónica,Peña,Entregado
+2025-01-18,C008,Sofía,Ramírez,Oeste,Dajabón,19.5489,-71.7083,P002,Tablet Samsung Galaxy Tab S9,Tecnología,600,500,3,1800,1500,300,16.67,Efectivo,3.0,5,No,Ramón,Paredes,Entregado
+2025-01-12,C010,Lucía,Flores,Oeste,San Juan,18.807,-71.2299,P009,Cámara Canon EOS R10,Tecnología,950,800,2,1900,1600,300,15.79,Efectivo,3.7,3,Sí,Ramón,Paredes,Entregado
+2025-01-01,C006,Laura,Hernández,Norte,Puerto Plata,19.7934,-70.6884,P003,"Monitor LG UltraWide 29""",Tecnología,300,240,4,1200,960,240,20.0,Transferencia,3.8,5,No,Luis,Gómez,Entregado
+2025-01-13,C002,María,López,Norte,La Vega,19.2221,-70.5289,P008,Smartphone iPhone 15 Pro,Tecnología,1200,1000,2,2400,2000,400,16.67,Tarjeta,5.0,1,Sí,Carmen,Reyes,Entregado
+2025-01-17,C005,Pedro,Rodríguez,Este,Punta Cana,18.5818,-68.4043,P001,Laptop Lenovo LOQ i5 13Gen,Tecnología,850,700,1,850,700,150,17.65,Transferencia,3.3,5,No,Héctor,Paniagua,Cancelado
+2025-01-11,C003,Carlos,Martínez,Oeste,San Juan,18.807,-71.2299,P005,Teclado Mecánico Razer,Accesorios,150,110,2,300,220,80,26.67,Tarjeta,5.0,3,Sí,Natalia,Almonte,Entregado
+2025-01-07,C008,Sofía,Ramírez,Norte,La Vega,19.2221,-70.5289,P005,Teclado Mecánico Razer,Accesorios,150,110,2,300,220,80,26.67,Efectivo,4.7,5,No,Andrés,Santos,Entregado
+2025-01-17,C008,Sofía,Ramírez,Este,La Romana,18.4273,-68.9728,P002,Tablet Samsung Galaxy Tab S9,Tecnología,600,500,4,2400,2000,400,16.67,Transferencia,4.1,2,No,Diana,Vásquez,Entregado
+2025-01-14,C001,Juan,Pérez,Este,Punta Cana,18.5818,-68.4043,P002,Tablet Samsung Galaxy Tab S9,Tecnología,600,500,3,1800,1500,300,16.67,Efectivo,3.2,2,No,Claudia,Peralta,Entregado
+2025-01-25,C004,Ana,García,Este,La Romana,18.4273,-68.9728,P009,Cámara Canon EOS R10,Tecnología,950,800,2,1900,1600,300,15.79,Tarjeta,4.0,1,Sí,Diana,Vásquez,Cancelado
+2025-01-22,C008,Sofía,Ramírez,Oeste,Dajabón,19.5489,-71.7083,P006,Audífonos Sony WH-1000XM5,Accesorios,400,320,1,400,320,80,20.0,Efectivo,3.7,5,No,Natalia,Almonte,Entregado
+2025-01-13,C002,María,López,Oeste,Montecristi,19.8494,-71.644,P008,Smartphone iPhone 15 Pro,Tecnología,1200,1000,1,1200,1000,200,16.67,Transferencia,4.6,5,Sí,Natalia,Almonte,Entregado
+2025-01-03,C003,Carlos,Martínez,Oeste,Dajabón,19.5489,-71.7083,P001,Laptop Lenovo LOQ i5 13Gen,Tecnología,850,700,1,850,700,150,17.65,Efectivo,3.9,2,Sí,Verónica,Peña,Entregado
+2025-01-29,C007,José,Fernández,Oeste,Montecristi,19.8494,-71.644,P001,Laptop Lenovo LOQ i5 13Gen,Tecnología,850,700,2,1700,1400,300,17.65,Transferencia,3.7,1,No,Simón,Jiménez,Entregado
+2025-01-06,C006,Laura,Hernández,Norte,La Vega,19.2221,-70.5289,P006,Audífonos Sony WH-1000XM5,Accesorios,400,320,5,2000,1600,400,20.0,Efectivo,4.3,2,Sí,Patricia,Mejía,Entregado
+2025-01-08,C008,Sofía,Ramírez,Sur,Azua,18.4532,-70.7349,P008,Smartphone iPhone 15 Pro,Tecnología,1200,1000,2,2400,2000,400,16.67,Transferencia,4.8,5,Sí,Elena,Cruz,Entregado
+2025-01-18,C007,José,Fernández,Norte,La Vega,19.2221,-70.5289,P004,Mouse Logitech MX Master 3S,Accesorios,120,90,1,120,90,30,25.0,Efectivo,4.1,4,No,Andrés,Santos,Entregado
+2025-01-11,C010,Lucía,Flores,Este,Higüey,18.615,-68.708,P002,Tablet Samsung Galaxy Tab S9,Tecnología,600,500,5,3000,2500,500,16.67,Transferencia,3.2,3,No,Alberto,Morales,Entregado
+2025-01-08,C008,Sofía,Ramírez,Este,Higüey,18.615,-68.708,P008,Smartphone iPhone 15 Pro,Tecnología,1200,1000,1,1200,1000,200,16.67,Transferencia,3.3,2,Sí,Claudia,Peralta,Entregado
+2025-01-28,C005,Pedro,Rodríguez,Oeste,San Juan,18.807,-71.2299,P003,"Monitor LG UltraWide 29""",Tecnología,300,240,4,1200,960,240,20.0,Transferencia,3.1,3,No,Simón,Jiménez,Entregado
+2025-01-31,C005,Pedro,Rodríguez,Este,La Romana,18.4273,-68.9728,P002,Tablet Samsung Galaxy Tab S9,Tecnología,600,500,4,2400,2000,400,16.67,Tarjeta,3.6,4,Sí,Claudia,Peralta,Entregado
+2025-01-14,C003,Carlos,Martínez,Sur,Azua,18.4532,-70.7349,P010,Disco Duro Externo 2TB Seagate,Accesorios,100,70,4,400,280,120,30.0,Efectivo,3.4,3,Sí,Felipe,Rivas,Entregado
+2025-01-29,C008,Sofía,Ramírez,Oeste,Montecristi,19.8494,-71.644,P006,Audífonos Sony WH-1000XM5,Accesorios,400,320,4,1600,1280,320,20.0,Efectivo,4.4,2,No,Ramón,Paredes,Entregado
+2025-01-29,C001,Juan,Pérez,Norte,Santiago,19.4517,-70.697,P003,"Monitor LG UltraWide 29""",Tecnología,300,240,5,1500,1200,300,20.0,Transferencia,3.4,3,Sí,Luis,Gómez,Entregado
+2025-01-14,C003,Carlos,Martínez,Sur,San Cristóbal,18.4167,-70.1333,P002,Tablet Samsung Galaxy Tab S9,Tecnología,600,500,5,3000,2500,500,16.67,Transferencia,3.3,2,Sí,Gabriela,Silva,Entregado
+2025-01-22,C004,Ana,García,Oeste,Dajabón,19.5489,-71.7083,P005,Teclado Mecánico Razer,Accesorios,150,110,2,300,220,80,26.67,Efectivo,3.9,2,Sí,Natalia,Almonte,Devuelto parcial
+2025-01-12,C002,María,López,Oeste,San Juan,18.807,-71.2299,P002,Tablet Samsung Galaxy Tab S9,Tecnología,600,500,3,1800,1500,300,16.67,Tarjeta,3.5,2,Sí,Natalia,Almonte,Entregado
+2025-01-22,C008,Sofía,Ramírez,Este,La Romana,18.4273,-68.9728,P004,Mouse Logitech MX Master 3S,Accesorios,120,90,5,600,450,150,25.0,Efectivo,3.2,1,Sí,Héctor,Paniagua,Entregado
+2025-01-05,C005,Pedro,Rodríguez,Este,Punta Cana,18.5818,-68.4043,P006,Audífonos Sony WH-1000XM5,Accesorios,400,320,5,2000,1600,400,20.0,Transferencia,3.8,1,No,Diana,Vásquez,Entregado
+2025-01-25,C007,José,Fernández,Oeste,Montecristi,19.8494,-71.644,P009,Cámara Canon EOS R10,Tecnología,950,800,1,950,800,150,15.79,Transferencia,3.9,5,No,Verónica,Peña,Entregado
+2025-01-29,C009,Miguel,Torres,Este,Punta Cana,18.5818,-68.4043,P001,Laptop Lenovo LOQ i5 13Gen,Tecnología,850,700,5,4250,3500,750,17.65,Tarjeta,3.1,2,No,Diana,Vásquez,Entregado
+2025-01-09,C008,Sofía,Ramírez,Sur,Barahona,18.2085,-71.1008,P002,Tablet Samsung Galaxy Tab S9,Tecnología,600,500,4,2400,2000,400,16.67,Efectivo,3.0,3,No,Felipe,Rivas,Entregado
+2025-01-17,C008,Sofía,Ramírez,Este,Punta Cana,18.5818,-68.4043,P007,Impresora HP LaserJet Pro,Tecnología,200,160,2,400,320,80,20.0,Efectivo,4.0,5,No,Diana,Vásquez,Entregado
+2025-01-23,C008,Sofía,Ramírez,Norte,Puerto Plata,19.7934,-70.6884,P007,Impresora HP LaserJet Pro,Tecnología,200,160,5,1000,800,200,20.0,Tarjeta,4.5,1,No,Patricia,Mejía,No entregado
+2025-01-23,C008,Sofía,Ramírez,Sur,Barahona,18.2085,-71.1008,P007,Impresora HP LaserJet Pro,Tecnología,200,160,3,600,480,120,20.0,Efectivo,3.7,3,No,Elena,Cruz,Entregado
+2025-01-16,C009,Miguel,Torres,Norte,Puerto Plata,19.7934,-70.6884,P004,Mouse Logitech MX Master 3S,Accesorios,120,90,5,600,450,150,25.0,Tarjeta,4.8,3,No,Andrés,Santos,Entregado
+2025-01-08,C003,Carlos,Martínez,Norte,Puerto Plata,19.7934,-70.6884,P006,Audífonos Sony WH-1000XM5,Accesorios,400,320,2,800,640,160,20.0,Efectivo,4.1,5,Sí,Andrés,Santos,Entregado
